@@ -47,9 +47,9 @@
     el.removeColorBtn.addEventListener("click", removeSelectedColor);
     el.undoBtn.addEventListener("click", undo);
     el.resetBtn.addEventListener("click", resetAll);
-    el.showLegend.addEventListener("change", () => { state.legendVisible = el.showLegend.checked; scheduleSave(); });
-    el.legendPosition.addEventListener("change", () => { state.legendPosition = el.legendPosition.value; scheduleSave(); });
-    el.addLegendBtn.addEventListener("click", () => { state.legend.push({ label: "Legenda baru", color: el.colorPicker.value }); renderLegendEditor(); scheduleSave(); });
+    el.showLegend.addEventListener("change", () => { state.legendVisible = el.showLegend.checked; refreshMapLegend(); scheduleSave(); });
+    el.legendPosition.addEventListener("change", () => { state.legendPosition = el.legendPosition.value; refreshMapLegend(); scheduleSave(); });
+    el.addLegendBtn.addEventListener("click", () => { state.legend.push({ label: "Legenda baru", color: el.colorPicker.value }); renderLegendEditor(); refreshMapLegend(); scheduleSave(); });
     el.previewCsvBtn.addEventListener("click", previewCsv);
     el.applyCsvBtn.addEventListener("click", applyCsv);
     el.saveProjectBtn.addEventListener("click", saveProject);
@@ -87,6 +87,7 @@
       populateFilters();
       renderLegendEditor(false);
       restoreAutosave();
+      refreshMapLegend();
       el.loadingIndicator.textContent = `${state.features.length} wilayah dimuat.`;
     } catch (error) {
       showError(error.message);
@@ -226,6 +227,7 @@
     mapApi.setHighlights(state.highlights);
     renderHighlightList();
     renderLegendEditor(false);
+    refreshMapLegend();
     scheduleSave();
   }
 
@@ -259,18 +261,40 @@
         <button type="button" class="secondary" data-legend-up="${index}" aria-label="Naik">↑</button>
         <button type="button" class="danger" data-legend-remove="${index}" aria-label="Hapus">×</button>
       </div>`).join("");
-    el.legendItems.querySelectorAll("[data-legend-color]").forEach((input) => input.addEventListener("input", () => { state.legend[Number(input.dataset.legendColor)].color = input.value; scheduleSave(); }));
-    el.legendItems.querySelectorAll("[data-legend-label]").forEach((input) => input.addEventListener("input", () => { state.legend[Number(input.dataset.legendLabel)].label = input.value.slice(0, 80); scheduleSave(); }));
+    el.legendItems.querySelectorAll("[data-legend-color]").forEach((input) => input.addEventListener("input", () => { state.legend[Number(input.dataset.legendColor)].color = input.value; refreshMapLegend(); scheduleSave(); }));
+    el.legendItems.querySelectorAll("[data-legend-label]").forEach((input) => input.addEventListener("input", () => { state.legend[Number(input.dataset.legendLabel)].label = input.value.slice(0, 80); refreshMapLegend(); scheduleSave(); }));
     el.legendItems.querySelectorAll("[data-legend-up]").forEach((button) => button.addEventListener("click", () => {
       const i = Number(button.dataset.legendUp);
       if (i > 0) [state.legend[i - 1], state.legend[i]] = [state.legend[i], state.legend[i - 1]];
       renderLegendEditor();
+      refreshMapLegend();
     }));
     el.legendItems.querySelectorAll("[data-legend-remove]").forEach((button) => button.addEventListener("click", () => {
       state.legend.splice(Number(button.dataset.legendRemove), 1);
       renderLegendEditor();
+      refreshMapLegend();
     }));
     if (save) scheduleSave();
+  }
+
+  function buildLegendItems() {
+    const highlighted = Object.keys(state.highlights).map((id) => {
+      const item = state.highlights[id];
+      const feature = state.featureById.get(id);
+      const labelParts = [feature ? displayName(feature) : id];
+      if (item.category) labelParts.push(item.category);
+      if (item.value) labelParts.push(item.value);
+      return {
+        color: item.color,
+        label: labelParts.join(" - ")
+      };
+    }).sort((a, b) => a.label.localeCompare(b.label, "id"));
+    return highlighted.length ? highlighted : state.legend;
+  }
+
+  function refreshMapLegend() {
+    if (!mapApi) return;
+    mapApi.setLegend(buildLegendItems(), state.legendVisible, state.legendPosition);
   }
 
   function buildIndexes() {
@@ -375,27 +399,43 @@
   }
 
   function exportSvg() {
-    MapExport.exportSvg(state.features, state, {
+    const payload = getExportPayload();
+    MapExport.exportSvg(payload.features, state, {
       ratio: el.exportRatio.value,
       labels: el.exportLabels.checked,
-      transparent: el.transparentBg.checked
+      transparent: el.transparentBg.checked,
+      viewBounds: payload.viewBounds,
+      legendFeatures: state.features
     });
   }
 
   async function exportPng() {
     el.loadingIndicator.textContent = "Membuat PNG...";
     try {
-      await MapExport.exportPng(state.features, state, {
+      const payload = getExportPayload();
+      await MapExport.exportPng(payload.features, state, {
         pngSize: el.pngSize.value,
         ratio: el.exportRatio.value,
         labels: el.exportLabels.checked,
-        transparent: el.transparentBg.checked
+        transparent: el.transparentBg.checked,
+        viewBounds: payload.viewBounds,
+        legendFeatures: state.features
       });
       el.loadingIndicator.textContent = "PNG selesai dibuat.";
     } catch (error) {
       showError("PNG gagal dibuat: " + error.message);
       el.loadingIndicator.textContent = "Ekspor PNG gagal.";
     }
+  }
+
+  function getExportPayload() {
+    if (el.exportRatio.value !== "bounds") return { features: state.features, viewBounds: null };
+    const view = mapApi.getCurrentView();
+    const features = view.visibleIds.map((id) => state.featureById.get(id)).filter(Boolean);
+    return {
+      features: features.length ? features : state.features,
+      viewBounds: view.bounds
+    };
   }
 
   function downloadText(filename, text, type) {

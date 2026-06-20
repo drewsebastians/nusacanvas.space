@@ -25,7 +25,7 @@ Do not upload the `manual-upload-package` folder itself as a nested folder. Open
 8. Wait until all files finish uploading.
 9. In the commit message box, enter:
 
-   `Add Peta Warna Wilayah Indonesia static app`
+   `Update map legend labels and current view export`
 
 10. Choose **Commit directly to the main branch** if this is your first upload.
 11. Click **Commit changes**.
@@ -64,4 +64,3 @@ Expected URL:
 7. Try **Ekspor SVG**.
 8. Try **Ekspor PNG**.
 9. Try importing `sample/sample-region-colors.csv`.
-

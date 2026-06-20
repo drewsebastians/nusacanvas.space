@@ -24,6 +24,9 @@
         minY = Math.min(minY, y); maxY = Math.max(maxY, y);
       });
     });
+    if (!features.length || !Number.isFinite(minX)) {
+      return { minX: 94, minY: -12, maxX: 142, maxY: 8 };
+    }
     return { minX, minY, maxX, maxY };
   }
 
@@ -57,12 +60,36 @@
     return count ? [sx / count, sy / count] : [0, 0];
   }
 
+  function displayName(feature) {
+    const p = feature.properties || {};
+    return p.display_name || p.geometry_source_name || p.region_name || p.region_id || "Wilayah";
+  }
+
+  function buildLegendItems(state, features) {
+    const featureById = new Map((features || []).map((feature) => [feature.properties.region_id, feature]));
+    const highlightItems = Object.keys(state.highlights || {}).map((id) => {
+      const item = state.highlights[id];
+      const feature = featureById.get(id);
+      const labelParts = [feature ? displayName(feature) : id];
+      if (item.category) labelParts.push(item.category);
+      if (item.value) labelParts.push(item.value);
+      return {
+        color: item.color,
+        label: labelParts.join(" - ")
+      };
+    }).sort((a, b) => a.label.localeCompare(b.label, "id"));
+    if (highlightItems.length) return highlightItems;
+    return Array.isArray(state.legend) ? state.legend : [];
+  }
+
   function buildSvg(features, state, options) {
     const size = getSize(options);
     const margin = 58;
     const legendWidth = 290;
-    const bounds = getBounds(features);
-    const scale = Math.min((size.width - margin * 2) / (bounds.maxX - bounds.minX), (size.height - margin * 2 - 70) / (bounds.maxY - bounds.minY));
+    const bounds = options.viewBounds || getBounds(features);
+    const boundsWidth = Math.max(bounds.maxX - bounds.minX, 0.001);
+    const boundsHeight = Math.max(bounds.maxY - bounds.minY, 0.001);
+    const scale = Math.min((size.width - margin * 2) / boundsWidth, (size.height - margin * 2 - 70) / boundsHeight);
     const mapWidth = (bounds.maxX - bounds.minX) * scale;
     const mapHeight = (bounds.maxY - bounds.minY) * scale;
     const offsetX = (size.width - mapWidth) / 2;
@@ -76,31 +103,36 @@
       const stroke = item ? "#49535d" : "#aeb8c2";
       return `<path d="${pathForGeometry(feature.geometry, project)}" fill="${fill}" stroke="${stroke}" stroke-width="0.75" vector-effect="non-scaling-stroke"><title>${escapeXml(feature.properties.display_name)}</title></path>`;
     }).join("\n");
-    const labels = options.labels ? features.filter((feature) => state.highlights[feature.properties.region_id]).slice(0, 90).map((feature) => {
+    const labels = options.labels ? features.map((feature) => {
       const c = centroid(feature);
       const p = project(c[0], c[1]);
-      return `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" font-size="12" fill="#1e2933">${escapeXml(feature.properties.display_name)}</text>`;
+      return `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" font-size="11" paint-order="stroke" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="#1e2933">${escapeXml(displayName(feature))}</text>`;
     }).join("\n") : "";
-    const legend = state.legendVisible ? buildLegend(state, size, legendWidth) : "";
+    const legend = state.legendVisible ? buildLegend(state, size, legendWidth, options.legendFeatures || features) : "";
     return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}" role="img" aria-label="${escapeXml(state.title)}">\n${background}\n<text x="${size.width / 2}" y="44" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1e2933">${escapeXml(state.title)}</text>\n<g font-family="Arial, Helvetica, sans-serif">${paths}\n${labels}\n${legend}</g>\n<text x="${margin}" y="${size.height - 24}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">Data: geoBoundaries/HDX COD-AB Indonesia ADM2, CC BY-IGO. Batas referensi visual.</text>\n</svg>`;
   }
 
-  function buildLegend(state, size, legendWidth) {
-    const items = state.legend.length ? state.legend : Object.values(state.highlights).reduce((acc, item) => {
-      const label = item.category || item.color;
-      if (!acc.some((x) => x.label === label && x.color === item.color)) acc.push({ label, color: item.color });
-      return acc;
-    }, []);
+  function buildLegend(state, size, legendWidth, features) {
+    const items = buildLegendItems(state, features);
     if (!items.length) return "";
-    const height = 34 + items.length * 24;
+    const rowHeight = 23;
+    const maxRows = Math.max(1, Math.floor((size.height - 170) / rowHeight));
+    const columns = Math.min(3, Math.ceil(items.length / maxRows));
+    const rowsPerColumn = Math.ceil(items.length / columns);
+    const columnWidth = legendWidth;
+    const width = Math.min(size.width - 116, columnWidth * columns);
+    const height = 34 + rowsPerColumn * rowHeight;
     const pos = state.legendPosition || "bottom-right";
-    const x = pos.includes("right") ? size.width - legendWidth - 58 : 58;
+    const x = pos.includes("right") ? size.width - width - 58 : 58;
     const y = pos.includes("top") ? 76 : size.height - height - 54;
     const rows = items.map((item, index) => {
-      const yy = y + 34 + index * 24;
-      return `<rect x="${x + 14}" y="${yy - 12}" width="14" height="14" fill="${item.color}" stroke="#4b5563"/><text x="${x + 38}" y="${yy}" font-size="14" fill="#1e2933">${escapeXml(item.label)}</text>`;
+      const column = Math.floor(index / rowsPerColumn);
+      const row = index % rowsPerColumn;
+      const xx = x + column * columnWidth;
+      const yy = y + 34 + row * rowHeight;
+      return `<rect x="${xx + 14}" y="${yy - 12}" width="14" height="14" fill="${item.color}" stroke="#4b5563"/><text x="${xx + 38}" y="${yy}" font-size="13" fill="#1e2933">${escapeXml(item.label)}</text>`;
     }).join("");
-    return `<g><rect x="${x}" y="${y}" width="${legendWidth}" height="${height}" fill="#ffffff" stroke="#d8dee6"/><text x="${x + 14}" y="${y + 22}" font-size="15" font-weight="700" fill="#1e2933">Legenda</text>${rows}</g>`;
+    return `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#ffffff" stroke="#d8dee6"/><text x="${x + 14}" y="${y + 22}" font-size="15" font-weight="700" fill="#1e2933">Legenda</text>${rows}</g>`;
   }
 
   function downloadText(filename, text, type) {
@@ -156,4 +188,3 @@
 
   window.MapExport = { buildSvg, exportSvg, exportPng };
 })();
-

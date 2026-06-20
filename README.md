@@ -12,8 +12,9 @@ Live demo: enable GitHub Pages from the repository root, then add the generated 
 - Highlighted-region review list.
 - CSV import processed only in the browser.
 - Project JSON save/open with optional browser autosave.
-- Editable legend.
-- SVG and PNG export for presentation use.
+- Live legend for highlighted kabupaten/kota regions.
+- Always-visible kabupaten/kota names on the map.
+- SVG and PNG export for the whole map or the current zoomed map view.
 - No backend, database, accounts, analytics, external map tiles, or API keys.
 
 ## Screenshot
@@ -57,7 +58,7 @@ Use **Simpan Proyek** to download a JSON project file. Use **Buka Proyek** to re
 
 ## Export
 
-SVG export is best for PowerPoint and editing. PNG export supports 1920 x 1080, 2560 x 1440, and 3840 x 2160.
+SVG export is best for PowerPoint and editing. PNG export supports 1920 x 1080, 2560 x 1440, and 3840 x 2160. Choose **Tampilan peta saat ini** in the export ratio menu to export only the area currently visible on the map while keeping the highlighted-region legend.
 
 ## Data source
 

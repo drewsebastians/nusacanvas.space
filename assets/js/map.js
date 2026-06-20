@@ -15,6 +15,8 @@
     });
     const layersById = new Map();
     let geoLayer = null;
+    let legendControl = null;
+    let legendContainer = null;
     let selectedId = null;
     let features = [];
     let highlights = {};
@@ -41,8 +43,9 @@
           const id = feature.properties.region_id;
           layersById.set(id, layer);
           layer.bindTooltip(feature.properties.display_name || feature.properties.geometry_source_name, {
-            sticky: true,
-            direction: "top"
+            permanent: true,
+            direction: "center",
+            className: "region-name-label"
           });
           layer.on({
             click() {
@@ -101,13 +104,77 @@
       layersById.forEach((layer) => layer.setStyle(styleFeature(layer.feature)));
     }
 
+    function setLegend(items, visible, position) {
+      if (!legendControl) {
+        legendControl = L.control({ position: toLeafletPosition(position || "bottom-right") });
+        legendControl.onAdd = function () {
+          legendContainer = L.DomUtil.create("div", "map-legend");
+          L.DomEvent.disableClickPropagation(legendContainer);
+          return legendContainer;
+        };
+        legendControl.addTo(map);
+      }
+      if (legendControl.getPosition() !== toLeafletPosition(position || "bottom-right")) {
+        legendControl.setPosition(toLeafletPosition(position || "bottom-right"));
+      }
+      renderLegend(items || [], visible !== false);
+    }
+
+    function renderLegend(items, visible) {
+      if (!legendContainer) return;
+      legendContainer.innerHTML = "";
+      legendContainer.style.display = visible && items.length ? "block" : "none";
+      if (!visible || !items.length) return;
+      const title = document.createElement("div");
+      title.className = "map-legend-title";
+      title.textContent = "Legenda";
+      legendContainer.appendChild(title);
+      const list = document.createElement("div");
+      list.className = "map-legend-list";
+      items.forEach((item) => {
+        const row = document.createElement("div");
+        row.className = "map-legend-row";
+        const chip = document.createElement("span");
+        chip.className = "map-legend-chip";
+        chip.style.backgroundColor = item.color;
+        const label = document.createElement("span");
+        label.textContent = item.label;
+        row.append(chip, label);
+        list.appendChild(row);
+      });
+      legendContainer.appendChild(list);
+    }
+
+    function toLeafletPosition(position) {
+      if (position === "top-left") return "topleft";
+      if (position === "top-right") return "topright";
+      if (position === "bottom-left") return "bottomleft";
+      return "bottomright";
+    }
+
+    function getCurrentView() {
+      const bounds = map.getBounds();
+      const visibleIds = [];
+      layersById.forEach((layer, id) => {
+        if (bounds.intersects(layer.getBounds())) visibleIds.push(id);
+      });
+      return {
+        bounds: {
+          minX: bounds.getWest(),
+          minY: bounds.getSouth(),
+          maxX: bounds.getEast(),
+          maxY: bounds.getNorth()
+        },
+        visibleIds
+      };
+    }
+
     function invalidate() {
       map.invalidateSize();
     }
 
-    return { map, render, fitIndonesia, fitProvince, select, zoomTo, setHighlights, invalidate, get selectedId() { return selectedId; } };
+    return { map, render, fitIndonesia, fitProvince, select, zoomTo, setHighlights, setLegend, getCurrentView, invalidate, get selectedId() { return selectedId; } };
   }
 
   window.IndonesiaMap = { createMap };
 })();
-
