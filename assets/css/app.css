@@ -193,6 +193,12 @@ label {
   padding-right: 4px;
 }
 
+.grouping-list {
+  max-height: 306px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
 .highlight-item, .legend-item, .preview-block, .grouping-item {
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -273,11 +279,11 @@ label {
 #map {
   min-height: 620px;
   height: calc(100vh - 62px);
-  background: #fbfbfa;
+  background: #97d2e2;
 }
 
 .leaflet-container {
-  background: #fbfbfa;
+  background: #97d2e2;
 }
 
 .region-name-label {
@@ -297,6 +303,10 @@ label {
 }
 
 .region-name-label::before {
+  display: none;
+}
+
+.region-name-label.label-hidden {
   display: none;
 }
 
