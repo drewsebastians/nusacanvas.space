@@ -13,6 +13,7 @@
     ],
     legendVisible: true,
     legendPosition: "bottom-right",
+    groupNames: {},
     exportSettings: {},
     undo: []
   };
@@ -27,7 +28,7 @@
       "projectTitle", "searchInput", "searchResults", "provinceSelect", "regionSelect", "selectedRegion",
       "colorPicker", "quickColors", "categoryInput", "valueInput", "applyColorBtn", "removeColorBtn",
       "undoBtn", "resetBtn", "highlightCount", "highlightList", "showLegend", "legendPosition",
-      "legendItems", "addLegendBtn", "csvFile", "previewCsvBtn", "applyCsvBtn", "csvPreview",
+      "groupCount", "groupingList", "legendItems", "addLegendBtn", "csvFile", "previewCsvBtn", "applyCsvBtn", "csvPreview",
       "saveProjectBtn", "openProjectBtn", "projectFile", "clearProjectBtn", "autosaveStatus",
       "exportRatio", "exportLabels", "transparentBg", "pngSize", "exportSvgBtn", "exportPngBtn",
       "fitIndonesiaBtn", "loadingIndicator", "errorArea"
@@ -87,6 +88,8 @@
       populateFilters();
       renderLegendEditor(false);
       restoreAutosave();
+      renderHighlightList();
+      renderGroupingEditor();
       refreshMapLegend();
       el.loadingIndicator.textContent = `${state.features.length} wilayah dimuat.`;
     } catch (error) {
@@ -226,6 +229,7 @@
   function updateAfterHighlightChange() {
     mapApi.setHighlights(state.highlights);
     renderHighlightList();
+    renderGroupingEditor();
     renderLegendEditor(false);
     refreshMapLegend();
     scheduleSave();
@@ -277,19 +281,78 @@
     if (save) scheduleSave();
   }
 
-  function buildLegendItems() {
-    const highlighted = Object.keys(state.highlights).map((id) => {
+  function getColorGroups() {
+    // Group highlighted regions by exact hex color so the legend can show one row per color.
+    const groups = new Map();
+    Object.keys(state.highlights).forEach((id) => {
       const item = state.highlights[id];
-      const feature = state.featureById.get(id);
-      const labelParts = [feature ? displayName(feature) : id];
-      if (item.category) labelParts.push(item.category);
-      if (item.value) labelParts.push(item.value);
+      const color = normalizeColor(item.color);
+      if (!groups.has(color)) groups.set(color, { color, ids: [] });
+      groups.get(color).ids.push(id);
+    });
+    return Array.from(groups.values()).sort((a, b) => getGroupLabel(a).localeCompare(getGroupLabel(b), "id"));
+  }
+
+  function getGroupLabel(group) {
+    return (state.groupNames[group.color] || defaultGroupName(group.color)).trim();
+  }
+
+  function defaultGroupName(color) {
+    const names = {
+      "#4472C4": "Group Warna Biru",
+      "#5B9BD5": "Group Warna Biru Muda",
+      "#E74C3C": "Group Warna Merah",
+      "#70AD47": "Group Warna Hijau",
+      "#FFC000": "Group Warna Kuning",
+      "#A64D79": "Group Warna Ungu",
+      "#00A388": "Group Warna Toska",
+      "#7F6000": "Group Warna Coklat"
+    };
+    return names[color] || `Group Warna ${color}`;
+  }
+
+  function normalizeColor(color) {
+    return String(color || "#4472C4").toUpperCase();
+  }
+
+  function renderGroupingEditor() {
+    // The grouping editor is rebuilt from the current highlights, so removed colors disappear automatically.
+    const groups = getColorGroups();
+    el.groupCount.textContent = groups.length;
+    if (!groups.length) {
+      el.groupingList.innerHTML = `<p class="status-line">Belum ada grup warna.</p>`;
+      return;
+    }
+    el.groupingList.innerHTML = groups.map((group) => {
+      const names = group.ids.map((id) => displayName(state.featureById.get(id))).sort((a, b) => a.localeCompare(b, "id"));
+      return `<div class="grouping-item">
+        <span class="color-chip" style="background:${group.color}"></span>
+        <div>
+          <label for="group-${escapeAttr(group.color.slice(1))}">Nama grup</label>
+          <input id="group-${escapeAttr(group.color.slice(1))}" type="text" value="${escapeAttr(getGroupLabel(group))}" maxlength="80" data-group-color="${escapeAttr(group.color)}">
+          <div class="grouping-meta">${group.ids.length} wilayah: ${escapeHtml(names.join(", "))}</div>
+        </div>
+      </div>`;
+    }).join("");
+    el.groupingList.querySelectorAll("[data-group-color]").forEach((input) => {
+      input.addEventListener("input", () => {
+        const color = normalizeColor(input.dataset.groupColor);
+        state.groupNames[color] = input.value.trim().slice(0, 80) || defaultGroupName(color);
+        refreshMapLegend();
+        scheduleSave();
+      });
+    });
+  }
+
+  function buildLegendItems() {
+    // Highlighted colors override the manual legend and use the editable group labels.
+    const grouped = getColorGroups().map((group) => {
       return {
-        color: item.color,
-        label: labelParts.join(" - ")
+        color: group.color,
+        label: getGroupLabel(group)
       };
     }).sort((a, b) => a.label.localeCompare(b.label, "id"));
-    return highlighted.length ? highlighted : state.legend;
+    return grouped.length ? grouped : state.legend;
   }
 
   function refreshMapLegend() {
@@ -377,6 +440,7 @@
     state.legend = project.legend.length ? project.legend : state.legend;
     state.legendVisible = project.legendVisible;
     state.legendPosition = project.legendPosition;
+    state.groupNames = project.groupNames || {};
     el.projectTitle.value = state.title;
     updateAfterHighlightChange();
     renderLegendEditor(false);
@@ -387,6 +451,7 @@
     if (!confirm("Bersihkan proyek dan autosave di browser ini?")) return;
     pushUndo();
     state.highlights = {};
+    state.groupNames = {};
     ProjectStorage.clearAutosave();
     updateAfterHighlightChange();
     el.autosaveStatus.textContent = "Autosave dibersihkan.";
@@ -429,10 +494,10 @@
   }
 
   function getExportPayload() {
-    if (el.exportRatio.value !== "bounds") return { features: state.features, viewBounds: null };
     const view = mapApi.getCurrentView();
     const features = view.visibleIds.map((id) => state.featureById.get(id)).filter(Boolean);
     return {
+      // Export follows the user's current zoom and pan position for every export ratio.
       features: features.length ? features : state.features,
       viewBounds: view.bounds
     };
