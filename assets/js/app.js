@@ -14,6 +14,7 @@
     legendVisible: true,
     legendPosition: "bottom-right",
     groupNames: {},
+    groupMeta: {},
     exportSettings: {},
     undo: []
   };
@@ -294,6 +295,14 @@
   }
 
   function getGroupLabel(group) {
+    const parts = [(state.groupNames[group.color] || defaultGroupName(group.color)).trim()];
+    const meta = state.groupMeta[group.color] || {};
+    if (meta.category) parts.push(meta.category);
+    if (meta.value) parts.push(meta.value);
+    return parts.join(" - ");
+  }
+
+  function getGroupName(group) {
     return (state.groupNames[group.color] || defaultGroupName(group.color)).trim();
   }
 
@@ -325,19 +334,35 @@
     }
     el.groupingList.innerHTML = groups.map((group) => {
       const names = group.ids.map((id) => displayName(state.featureById.get(id))).sort((a, b) => a.localeCompare(b, "id"));
+      const meta = state.groupMeta[group.color] || {};
       return `<div class="grouping-item">
         <span class="color-chip" style="background:${group.color}"></span>
         <div>
           <label for="group-${escapeAttr(group.color.slice(1))}">Nama grup</label>
-          <input id="group-${escapeAttr(group.color.slice(1))}" type="text" value="${escapeAttr(getGroupLabel(group))}" maxlength="80" data-group-color="${escapeAttr(group.color)}">
+          <input id="group-${escapeAttr(group.color.slice(1))}" type="text" value="${escapeAttr(getGroupName(group))}" maxlength="80" data-group-name="${escapeAttr(group.color)}">
+          <label for="group-category-${escapeAttr(group.color.slice(1))}">Kategori</label>
+          <input id="group-category-${escapeAttr(group.color.slice(1))}" type="text" value="${escapeAttr(meta.category || "")}" maxlength="80" placeholder="Opsional" data-group-category="${escapeAttr(group.color)}">
+          <label for="group-value-${escapeAttr(group.color.slice(1))}">Nilai</label>
+          <input id="group-value-${escapeAttr(group.color.slice(1))}" type="text" value="${escapeAttr(meta.value || "")}" maxlength="80" placeholder="Opsional" data-group-value="${escapeAttr(group.color)}">
           <div class="grouping-meta">${group.ids.length} wilayah: ${escapeHtml(names.join(", "))}</div>
         </div>
       </div>`;
     }).join("");
-    el.groupingList.querySelectorAll("[data-group-color]").forEach((input) => {
+    el.groupingList.querySelectorAll("[data-group-name]").forEach((input) => {
       input.addEventListener("input", () => {
-        const color = normalizeColor(input.dataset.groupColor);
+        const color = normalizeColor(input.dataset.groupName);
         state.groupNames[color] = input.value.trim().slice(0, 80) || defaultGroupName(color);
+        refreshMapLegend();
+        scheduleSave();
+      });
+    });
+    el.groupingList.querySelectorAll("[data-group-category], [data-group-value]").forEach((input) => {
+      input.addEventListener("input", () => {
+        const color = normalizeColor(input.dataset.groupCategory || input.dataset.groupValue);
+        const meta = state.groupMeta[color] || { category: "", value: "" };
+        if (input.dataset.groupCategory) meta.category = input.value.trim().slice(0, 80);
+        if (input.dataset.groupValue) meta.value = input.value.trim().slice(0, 80);
+        state.groupMeta[color] = meta;
         refreshMapLegend();
         scheduleSave();
       });
@@ -441,6 +466,7 @@
     state.legendVisible = project.legendVisible;
     state.legendPosition = project.legendPosition;
     state.groupNames = project.groupNames || {};
+    state.groupMeta = project.groupMeta || {};
     el.projectTitle.value = state.title;
     updateAfterHighlightChange();
     renderLegendEditor(false);
@@ -452,6 +478,7 @@
     pushUndo();
     state.highlights = {};
     state.groupNames = {};
+    state.groupMeta = {};
     ProjectStorage.clearAutosave();
     updateAfterHighlightChange();
     el.autosaveStatus.textContent = "Autosave dibersihkan.";
