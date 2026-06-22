@@ -30,6 +30,11 @@
       label: String(item.label || "Legenda").slice(0, 80),
       color: item.color
     })) : [];
+    const groupNames = {};
+    Object.entries(raw.groupNames || {}).slice(0, 200).forEach(([color, label]) => {
+      const normalizedColor = String(color || "").toUpperCase();
+      if (isColor(normalizedColor)) groupNames[normalizedColor] = String(label || "").slice(0, 80);
+    });
     return {
       appVersion: APP_VERSION,
       schemaVersion: PROJECT_SCHEMA,
@@ -39,6 +44,7 @@
       legend,
       legendVisible: raw.legendVisible !== false,
       legendPosition: String(raw.legendPosition || "bottom-right"),
+      groupNames,
       exportSettings: raw.exportSettings || {},
       savedAt: raw.savedAt || new Date().toISOString()
     };
@@ -54,6 +60,7 @@
       legend: state.legend,
       legendVisible: state.legendVisible,
       legendPosition: state.legendPosition,
+      groupNames: state.groupNames || {},
       exportSettings: state.exportSettings || {},
       savedAt: new Date().toISOString()
     };
