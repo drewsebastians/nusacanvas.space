@@ -8,11 +8,12 @@
 
   function createMap(elementId, callbacks) {
     const map = L.map(elementId, {
-      zoomControl: true,
+      zoomControl: false,
       attributionControl: false,
       minZoom: 4,
       maxZoom: 12
     });
+    L.control.zoom({ position: "bottomleft" }).addTo(map);
     const layersById = new Map();
     let geoLayer = null;
     let legendControl = null;
