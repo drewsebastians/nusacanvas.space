@@ -102,10 +102,13 @@
       groups.get(color).count += 1;
     });
     const highlightItems = Array.from(groups.values()).map((group) => {
-      const label = (state.groupNames && state.groupNames[group.color]) || defaultGroupName(group.color);
+      const labelParts = [(state.groupNames && state.groupNames[group.color]) || defaultGroupName(group.color)];
+      const meta = (state.groupMeta && state.groupMeta[group.color]) || {};
+      if (meta.category) labelParts.push(meta.category);
+      if (meta.value) labelParts.push(meta.value);
       return {
         color: group.color,
-        label
+        label: labelParts.join(" - ")
       };
     }).sort((a, b) => a.label.localeCompare(b.label, "id"));
     if (highlightItems.length) return highlightItems;
@@ -140,7 +143,15 @@
       return `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" font-size="11" paint-order="stroke" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="#1e2933">${escapeXml(labelText(feature, state))}</text>`;
     }).join("\n");
     const legend = state.legendVisible ? buildLegend(state, size, options.legendFeatures || features) : "";
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}" role="img" aria-label="${escapeXml(state.title)}">\n${background}\n<text x="${size.width / 2}" y="44" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1e2933">${escapeXml(state.title)}</text>\n<g font-family="Arial, Helvetica, sans-serif">${paths}\n${labels}\n${legend}</g>\n<text x="${margin}" y="${size.height - 24}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">Data: geoBoundaries/HDX COD-AB Indonesia ADM2, CC BY-IGO. Batas referensi visual.</text>\n</svg>`;
+    const title = buildTitle(state.title, size);
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}" role="img" aria-label="${escapeXml(state.title)}">\n${background}\n${title}\n<g font-family="Arial, Helvetica, sans-serif">${paths}\n${labels}\n${legend}</g>\n<text x="${margin}" y="${size.height - 24}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">Data: geoBoundaries/HDX COD-AB Indonesia ADM2, CC BY-IGO. Batas referensi visual.</text>\n</svg>`;
+  }
+
+  function buildTitle(title, size) {
+    const text = String(title || "Peta Sorotan Wilayah Indonesia").slice(0, 90);
+    const width = Math.min(size.width - 116, Math.max(360, text.length * 18));
+    const x = (size.width - width) / 2;
+    return `<g><rect x="${x.toFixed(1)}" y="17" width="${width.toFixed(1)}" height="42" rx="6" fill="rgba(255,255,255,0.92)" stroke="#d8dee6"/><text x="${size.width / 2}" y="44" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1e2933">${escapeXml(text)}</text></g>`;
   }
 
   function avoidLabelCollisions(features, state, project) {
@@ -169,13 +180,13 @@
     const items = buildLegendItems(state, features);
     if (!items.length) return "";
     const rowHeight = 22;
-    const x = 58;
-    const width = size.width - 116;
     const maxRows = 4;
     const columns = Math.min(3, Math.ceil(items.length / maxRows));
     const rowsPerColumn = Math.ceil(items.length / columns);
-    const columnWidth = width / columns;
+    const columnWidth = Math.min(330, Math.max(190, Math.max(...items.map((item) => item.label.length)) * 7.2 + 54));
+    const width = Math.min(size.width - 116, columns * columnWidth);
     const height = 46 + rowsPerColumn * rowHeight;
+    const x = (size.width - width) / 2;
     const y = size.height - height - 54;
     const rows = items.map((item, index) => {
       const column = Math.floor(index / rowsPerColumn);
@@ -184,7 +195,7 @@
       const yy = y + 48 + row * rowHeight;
       return `<rect x="${xx + 14}" y="${yy - 12}" width="14" height="14" fill="${item.color}" stroke="#4b5563"/><text x="${xx + 38}" y="${yy}" font-size="13" fill="#1e2933">${escapeXml(item.label)}</text>`;
     }).join("");
-    return `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#ffffff" stroke="#d8dee6"/><text x="${x + 14}" y="${y + 22}" font-size="15" font-weight="700" fill="#1e2933">Legenda Warna</text>${rows}</g>`;
+    return `<g><rect x="${x.toFixed(1)}" y="${y}" width="${width.toFixed(1)}" height="${height}" fill="#ffffff" stroke="#d8dee6"/><text x="${x + 14}" y="${y + 22}" font-size="15" font-weight="700" fill="#1e2933">Legenda Warna</text>${rows}</g>`;
   }
 
   function downloadText(filename, text, type) {
