@@ -68,6 +68,7 @@ label {
   display: grid;
   grid-template-columns: minmax(320px, 390px) 1fr;
   min-height: 100vh;
+  transition: grid-template-columns .22s ease;
 }
 
 .app-shell.sidebar-collapsed {
@@ -97,6 +98,11 @@ label {
   padding: 0;
   border-radius: 50%;
   box-shadow: 0 6px 18px rgba(30, 41, 51, .22);
+  transition: left .22s ease, right .22s ease, top .22s ease;
+}
+
+.app-shell.sidebar-collapsed .sidebar-toggle {
+  left: 12px;
 }
 
 .floating-export-btn {
@@ -310,9 +316,13 @@ label {
   background: #fff;
 }
 
-.leaflet-bottom.leaflet-left {
-  bottom: 14px;
-  left: 10px;
+.leaflet-top.leaflet-left {
+  top: 78px;
+  left: 12px;
+}
+
+.leaflet-control-zoom {
+  box-shadow: 0 6px 18px rgba(30, 41, 51, .18);
 }
 
 #map {
@@ -450,8 +460,8 @@ summary {
   }
 
   .sidebar-toggle {
-    left: auto;
-    right: 12px;
+    left: 12px;
+    right: auto;
   }
 
   .map-toolbar {
