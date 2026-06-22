@@ -89,14 +89,18 @@ label {
 
 .sidebar-toggle {
   position: fixed;
-  top: 12px;
-  left: 12px;
+  top: 14px;
+  left: min(402px, calc(100vw - 58px));
   z-index: 1100;
   width: 42px;
   min-height: 42px;
   padding: 0;
   border-radius: 50%;
   box-shadow: 0 6px 18px rgba(30, 41, 51, .22);
+}
+
+.app-shell.sidebar-collapsed .sidebar-toggle {
+  left: 12px;
 }
 
 .floating-export-btn {
@@ -112,7 +116,7 @@ label {
 }
 
 .app-header {
-  padding: 28px 18px 18px 82px;
+  padding: 28px 18px 18px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -444,8 +448,18 @@ summary {
     display: none;
   }
 
+  .sidebar-toggle {
+    left: auto;
+    right: 12px;
+  }
+
+  .app-shell.sidebar-collapsed .sidebar-toggle {
+    left: 12px;
+    right: auto;
+  }
+
   .app-header {
-    padding: 28px 18px 18px 82px;
+    padding: 28px 70px 18px 18px;
   }
 
   #map {
