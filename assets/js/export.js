@@ -65,6 +65,15 @@
     return p.display_name || p.geometry_source_name || p.region_name || p.region_id || "Wilayah";
   }
 
+  function labelText(feature, state) {
+    const id = feature.properties && feature.properties.region_id;
+    const item = state.highlights && state.highlights[id];
+    const parts = [displayName(feature)];
+    if (item && item.category) parts.push(item.category);
+    if (item && item.value) parts.push(item.value);
+    return parts.join(" - ");
+  }
+
   function normalizeColor(color) {
     return String(color || "#4472C4").toUpperCase();
   }
@@ -116,7 +125,7 @@
     const offsetX = (size.width - mapWidth) / 2;
     const offsetY = 92 + ((size.height - 88 - legendAreaHeight - mapHeight) / 2);
     const project = (x, y) => ({ x: offsetX + (x - bounds.minX) * scale, y: offsetY + (bounds.maxY - y) * scale });
-    const background = options.transparent ? "" : `<rect width="100%" height="100%" fill="#ffffff"/>`;
+    const background = options.transparent ? "" : `<rect width="100%" height="100%" fill="#97d2e2"/>`;
     const paths = features.map((feature) => {
       const id = feature.properties.region_id;
       const item = state.highlights[id];
@@ -124,13 +133,36 @@
       const stroke = item ? "#49535d" : "#aeb8c2";
       return `<path d="${pathForGeometry(feature.geometry, project)}" fill="${fill}" stroke="${stroke}" stroke-width="0.75" vector-effect="non-scaling-stroke"><title>${escapeXml(feature.properties.display_name)}</title></path>`;
     }).join("\n");
-    const labels = options.labels ? features.map((feature) => {
+    const labelFeatures = options.labels ? avoidLabelCollisions(features, state, project) : [];
+    const labels = labelFeatures.map((feature) => {
       const c = centroid(feature);
       const p = project(c[0], c[1]);
-      return `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" font-size="11" paint-order="stroke" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="#1e2933">${escapeXml(displayName(feature))}</text>`;
-    }).join("\n") : "";
+      return `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" font-size="11" paint-order="stroke" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="#1e2933">${escapeXml(labelText(feature, state))}</text>`;
+    }).join("\n");
     const legend = state.legendVisible ? buildLegend(state, size, options.legendFeatures || features) : "";
     return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}" role="img" aria-label="${escapeXml(state.title)}">\n${background}\n<text x="${size.width / 2}" y="44" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1e2933">${escapeXml(state.title)}</text>\n<g font-family="Arial, Helvetica, sans-serif">${paths}\n${labels}\n${legend}</g>\n<text x="${margin}" y="${size.height - 24}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">Data: geoBoundaries/HDX COD-AB Indonesia ADM2, CC BY-IGO. Batas referensi visual.</text>\n</svg>`;
+  }
+
+  function avoidLabelCollisions(features, state, project) {
+    const placed = [];
+    return features.slice().sort((a, b) => {
+      const ah = Boolean(state.highlights && state.highlights[a.properties.region_id]);
+      const bh = Boolean(state.highlights && state.highlights[b.properties.region_id]);
+      return Number(bh) - Number(ah);
+    }).filter((feature) => {
+      const c = centroid(feature);
+      const p = project(c[0], c[1]);
+      const text = labelText(feature, state);
+      const width = Math.max(36, text.length * 6.4);
+      const box = { left: p.x - width / 2, right: p.x + width / 2, top: p.y - 9, bottom: p.y + 5 };
+      const collides = placed.some((item) => boxesOverlap(box, item, 5));
+      if (!collides) placed.push(box);
+      return !collides;
+    });
+  }
+
+  function boxesOverlap(a, b, padding) {
+    return !(a.right + padding < b.left || a.left - padding > b.right || a.bottom + padding < b.top || a.top - padding > b.bottom);
   }
 
   function buildLegend(state, size, features) {
@@ -143,13 +175,13 @@
     const columns = Math.min(3, Math.ceil(items.length / maxRows));
     const rowsPerColumn = Math.ceil(items.length / columns);
     const columnWidth = width / columns;
-    const height = 34 + rowsPerColumn * rowHeight;
+    const height = 46 + rowsPerColumn * rowHeight;
     const y = size.height - height - 54;
     const rows = items.map((item, index) => {
       const column = Math.floor(index / rowsPerColumn);
       const row = index % rowsPerColumn;
       const xx = x + column * columnWidth;
-      const yy = y + 34 + row * rowHeight;
+      const yy = y + 48 + row * rowHeight;
       return `<rect x="${xx + 14}" y="${yy - 12}" width="14" height="14" fill="${item.color}" stroke="#4b5563"/><text x="${xx + 38}" y="${yy}" font-size="13" fill="#1e2933">${escapeXml(item.label)}</text>`;
     }).join("");
     return `<g><rect x="${x}" y="${y}" width="${width}" height="${height}" fill="#ffffff" stroke="#d8dee6"/><text x="${x + 14}" y="${y + 22}" font-size="15" font-weight="700" fill="#1e2933">Legenda Warna</text>${rows}</g>`;
