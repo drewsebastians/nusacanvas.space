@@ -89,7 +89,7 @@ label {
 
 .sidebar-toggle {
   position: fixed;
-  top: 14px;
+  top: 92px;
   left: min(402px, calc(100vw - 58px));
   z-index: 1100;
   width: 42px;
@@ -101,13 +101,13 @@ label {
 
 .app-shell.sidebar-collapsed .sidebar-toggle {
   left: 12px;
-  top: 88px;
+  top: 92px;
 }
 
 .floating-export-btn {
   position: fixed;
   left: 14px;
-  bottom: 14px;
+  bottom: 86px;
   z-index: 1100;
   box-shadow: 0 8px 22px rgba(30, 41, 51, .25);
 }
@@ -117,7 +117,7 @@ label {
 }
 
 .app-header {
-  padding: 28px 18px 18px;
+  padding: 18px 18px 12px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -310,9 +310,14 @@ label {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 12px 10px 72px;
+  padding: 10px 12px;
   border-bottom: 1px solid var(--line);
   background: #fff;
+}
+
+.leaflet-bottom.leaflet-left {
+  bottom: 14px;
+  left: 10px;
 }
 
 #map {
@@ -457,15 +462,15 @@ summary {
   .app-shell.sidebar-collapsed .sidebar-toggle {
     left: 12px;
     right: auto;
-    top: 88px;
+    top: 92px;
   }
 
   .map-toolbar {
-    padding-left: 72px;
+    padding-left: 12px;
   }
 
   .app-header {
-    padding: 28px 70px 18px 18px;
+    padding: 18px 70px 12px 18px;
   }
 
   #map {
