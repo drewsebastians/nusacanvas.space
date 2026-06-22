@@ -20,6 +20,7 @@
     let selectedId = null;
     let features = [];
     let highlights = {};
+    let collisionFrame = null;
 
     function styleFeature(feature) {
       const id = feature.properties.region_id;
@@ -42,7 +43,7 @@
         onEachFeature(feature, layer) {
           const id = feature.properties.region_id;
           layersById.set(id, layer);
-          layer.bindTooltip(feature.properties.display_name || feature.properties.geometry_source_name, {
+          layer.bindTooltip(labelText(feature), {
             permanent: true,
             direction: "center",
             className: "region-name-label"
@@ -60,7 +61,64 @@
           });
         }
       }).addTo(map);
+      map.on("zoomend moveend resize", scheduleLabelCollisionUpdate);
       fitIndonesia();
+      refreshTooltipLabels();
+    }
+
+    function labelText(feature) {
+      const p = feature.properties || {};
+      const item = highlights[p.region_id];
+      const parts = [p.display_name || p.geometry_source_name || p.region_name || "Wilayah"];
+      if (item && item.category) parts.push(item.category);
+      if (item && item.value) parts.push(item.value);
+      return parts.join(" - ");
+    }
+
+    function refreshTooltipLabels() {
+      layersById.forEach((layer) => {
+        const tooltip = layer.getTooltip && layer.getTooltip();
+        if (tooltip) tooltip.setContent(labelText(layer.feature));
+      });
+      scheduleLabelCollisionUpdate();
+    }
+
+    function scheduleLabelCollisionUpdate() {
+      if (collisionFrame) cancelAnimationFrame(collisionFrame);
+      collisionFrame = requestAnimationFrame(updateLabelCollisions);
+    }
+
+    function updateLabelCollisions() {
+      collisionFrame = null;
+      const labels = [];
+      layersById.forEach((layer, id) => {
+        const tooltip = layer.getTooltip && layer.getTooltip();
+        const element = tooltip && tooltip.getElement && tooltip.getElement();
+        if (!element) return;
+        element.classList.remove("label-hidden");
+        const bounds = element.getBoundingClientRect();
+        if (!bounds.width || !bounds.height) return;
+        labels.push({
+          id,
+          element,
+          bounds,
+          highlighted: Boolean(highlights[id]),
+          selected: id === selectedId
+        });
+      });
+
+      // Prioritize selected and highlighted labels, then hide later labels whose boxes overlap.
+      labels.sort((a, b) => Number(b.selected) - Number(a.selected) || Number(b.highlighted) - Number(a.highlighted));
+      const visible = [];
+      labels.forEach((label) => {
+        const overlaps = visible.some((item) => boxesOverlap(label.bounds, item.bounds, 4));
+        if (overlaps) label.element.classList.add("label-hidden");
+        else visible.push(label);
+      });
+    }
+
+    function boxesOverlap(a, b, padding) {
+      return !(a.right + padding < b.left || a.left - padding > b.right || a.bottom + padding < b.top || a.top - padding > b.bottom);
     }
 
     function fitIndonesia() {
@@ -77,6 +135,7 @@
         layer.bringToFront();
         if (notify && callbacks && callbacks.onSelect) callbacks.onSelect(layer.feature);
       }
+      scheduleLabelCollisionUpdate();
     }
 
     function zoomTo(id) {
@@ -102,6 +161,7 @@
     function setHighlights(next) {
       highlights = next || {};
       layersById.forEach((layer) => layer.setStyle(styleFeature(layer.feature)));
+      refreshTooltipLabels();
     }
 
     function setLegend(items, visible, position) {
@@ -171,6 +231,7 @@
 
     function invalidate() {
       map.invalidateSize();
+      scheduleLabelCollisionUpdate();
     }
 
     return { map, render, fitIndonesia, fitProvince, select, zoomTo, setHighlights, setLegend, getCurrentView, invalidate, get selectedId() { return selectedId; } };
