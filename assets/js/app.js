@@ -6,10 +6,6 @@
       url: "./data/indonesia-adm2-detailed.geojson"
     },
     {
-      type: "geojson",
-      url: "https://raw.githubusercontent.com/wmgeolab/geoBoundaries/main/releaseData/gbOpen/IDN/ADM2/geoBoundaries-IDN-ADM2.geojson"
-    },
-    {
       type: "api",
       url: "https://www.geoboundaries.org/api/current/gbOpen/IDN/ADM2/"
     }
@@ -140,8 +136,9 @@
           const metadataResponse = await fetch(source.url, { cache: "force-cache" });
           if (!metadataResponse.ok) throw new Error("Metadata geometri detail tidak tersedia.");
           const metadata = await metadataResponse.json();
-          if (!metadata.gjDownloadURL) throw new Error("URL GeoJSON detail tidak ditemukan.");
-          return await fetchGeoJson(metadata.gjDownloadURL);
+          const downloadUrl = metadata.gjDownloadURL || metadata.simplifiedGeometryGeoJSON;
+          if (!downloadUrl) throw new Error("URL GeoJSON detail tidak ditemukan.");
+          return await fetchGeoJson(downloadUrl);
         }
         return await fetchGeoJson(source.url);
       } catch (error) {
@@ -154,7 +151,11 @@
   async function fetchGeoJson(url) {
     const response = await fetch(url, { cache: "force-cache" });
     if (!response.ok) throw new Error("Geometri detail tidak dapat dimuat.");
-    const collection = await response.json();
+    const text = await response.text();
+    if (/^version https:\/\/git-lfs.github.com\/spec\/v1/.test(text.trim())) {
+      throw new Error("URL mengarah ke Git LFS pointer, bukan GeoJSON asli.");
+    }
+    const collection = JSON.parse(text);
     if (!collection || collection.type !== "FeatureCollection" || !Array.isArray(collection.features)) {
       throw new Error("Format geometri detail tidak valid.");
     }
