@@ -122,7 +122,7 @@
       refreshMapLegend();
       el.loadingIndicator.textContent = merged.matched > 450
         ? `${state.features.length} wilayah dimuat dengan geometri detail.`
-        : `${state.features.length} wilayah dimuat. Geometri detail cocok ${merged.matched}/${state.features.length}.`;
+        : `${state.features.length} wilayah dimuat. Geometri detail cocok ${merged.matched}/${state.features.length}; cek nama field detail GeoJSON.`;
     } catch (error) {
       showError(error.message);
       el.loadingIndicator.textContent = "Gagal memuat peta.";
@@ -200,8 +200,9 @@
     addKey(keys, "shape:" + (properties.geometry_source_id || properties.shapeID || properties.shapeId || properties.shape_id || properties.ShapeID || ""));
     addKey(keys, "code:" + normalizeCode(properties.official_code || properties.official_code_normalized || properties.ADM2_PCODE || properties.ADM2_CODE || properties.kode || properties.KODE || ""));
     const province = properties.province_name || properties.ADM1_EN || properties.ADM1_ID || properties.PROVINSI || properties.Province || properties.province || "";
-    const region = properties.region_name || properties.display_name || properties.ADM2_EN || properties.ADM2_ID || properties.KAB_KOTA || properties.NAME_2 || properties.name || "";
+    const region = properties.region_name || properties.display_name || properties.shapeName || properties.ShapeName || properties.ADM2_EN || properties.ADM2_ID || properties.KAB_KOTA || properties.NAME_2 || properties.name || properties.NAME || "";
     addKey(keys, "name:" + normalizeText(province) + "|" + normalizeText(region));
+    addKey(keys, "region-name:" + normalizeText(region));
     return keys;
   }
 
