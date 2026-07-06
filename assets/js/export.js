@@ -144,7 +144,7 @@
     }).join("\n");
     const legend = state.legendVisible ? buildLegend(state, size, options.legendFeatures || features) : "";
     const title = buildTitle(state.title, size);
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}" role="img" aria-label="${escapeXml(state.title)}">\n${background}\n${title}\n<g font-family="Arial, Helvetica, sans-serif">${paths}\n${labels}\n${legend}</g>\n<text x="${margin}" y="${size.height - 24}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">Data: geoBoundaries/HDX COD-AB Indonesia ADM2, CC BY-IGO. Batas referensi visual.</text>\n</svg>`;
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}" role="img" aria-label="${escapeXml(state.title)}">\n${background}\n<g font-family="Arial, Helvetica, sans-serif">${paths}\n${labels}\n${legend}</g>\n${title}\n<text x="${margin}" y="${size.height - 24}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">Data: geoBoundaries/HDX COD-AB Indonesia ADM2, CC BY-IGO. Batas referensi visual.</text>\n</svg>`;
   }
 
   function buildTitle(title, size) {
