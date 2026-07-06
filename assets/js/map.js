@@ -11,7 +11,10 @@
       zoomControl: false,
       attributionControl: false,
       minZoom: 4,
-      maxZoom: 12
+      maxZoom: 12,
+      zoomSnap: 0.25,
+      zoomDelta: 0.25,
+      wheelPxPerZoomLevel: 240
     });
     L.control.zoom({ position: "topleft" }).addTo(map);
     const layersById = new Map();
