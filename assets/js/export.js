@@ -140,7 +140,7 @@
     const labels = labelFeatures.map((feature) => {
       const c = centroid(feature);
       const p = project(c[0], c[1]);
-      return `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" font-size="11" paint-order="stroke" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" fill="#1e2933">${escapeXml(labelText(feature, state))}</text>`;
+      return `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" font-size="18" paint-order="stroke" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round" fill="#1e2933">${escapeXml(labelText(feature, state))}</text>`;
     }).join("\n");
     const legend = state.legendVisible ? buildLegend(state, size, options.legendFeatures || features) : "";
     const title = buildTitle(state.title, size);
@@ -164,8 +164,8 @@
       const c = centroid(feature);
       const p = project(c[0], c[1]);
       const text = labelText(feature, state);
-      const width = Math.max(36, text.length * 6.4);
-      const box = { left: p.x - width / 2, right: p.x + width / 2, top: p.y - 9, bottom: p.y + 5 };
+      const width = Math.max(54, text.length * 10.5);
+      const box = { left: p.x - width / 2, right: p.x + width / 2, top: p.y - 14, bottom: p.y + 8 };
       const collides = placed.some((item) => boxesOverlap(box, item, 5));
       if (!collides) placed.push(box);
       return !collides;
