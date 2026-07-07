@@ -123,6 +123,7 @@
     const boundsWidth = Math.max(bounds.maxX - bounds.minX, 0.001);
     const boundsHeight = Math.max(bounds.maxY - bounds.minY, 0.001);
     const scale = Math.min((size.width - margin * 2) / boundsWidth, (size.height - margin * 2 - legendAreaHeight) / boundsHeight);
+    const labelSize = getLabelSize(boundsWidth);
     const mapWidth = (bounds.maxX - bounds.minX) * scale;
     const mapHeight = (bounds.maxY - bounds.minY) * scale;
     const offsetX = (size.width - mapWidth) / 2;
@@ -136,9 +137,9 @@
       const stroke = item ? "#49535d" : "#aeb8c2";
       return `<path d="${pathForGeometry(feature.geometry, project)}" fill="${fill}" stroke="${stroke}" stroke-width="0.75" vector-effect="non-scaling-stroke"><title>${escapeXml(feature.properties.display_name)}</title></path>`;
     }).join("\n");
-    const labelPlacements = options.labels ? placeLabels(features, state, project, size) : [];
+    const labelPlacements = options.labels ? placeLabels(features, state, project, size, labelSize) : [];
     const labels = labelPlacements.map((item) => {
-      return `<text x="${item.x.toFixed(1)}" y="${item.y.toFixed(1)}" text-anchor="middle" font-size="18" paint-order="stroke" stroke="#ffffff" stroke-width="4.5" stroke-linejoin="round" fill="#1e2933">${escapeXml(labelText(item.feature, state))}</text>`;
+      return `<text x="${item.x.toFixed(1)}" y="${item.y.toFixed(1)}" text-anchor="middle" font-size="${labelSize}" paint-order="stroke" stroke="#ffffff" stroke-width="${(labelSize / 4).toFixed(1)}" stroke-linejoin="round" fill="#1e2933">${escapeXml(labelText(item.feature, state))}</text>`;
     }).join("\n");
     const legend = state.legendVisible ? buildLegend(state, size, options.legendFeatures || features) : "";
     const title = buildTitle(state.title, size);
@@ -152,7 +153,11 @@
     return `<g><rect x="${x.toFixed(1)}" y="17" width="${width.toFixed(1)}" height="42" rx="6" fill="rgba(255,255,255,0.92)" stroke="#d8dee6"/><text x="${size.width / 2}" y="44" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1e2933">${escapeXml(text)}</text></g>`;
   }
 
-  function placeLabels(features, state, project, size) {
+  function getLabelSize(boundsWidth) {
+    return Math.round(clamp(18 + (16 - boundsWidth) * 1.4, 18, 32));
+  }
+
+  function placeLabels(features, state, project, size, labelSize) {
     const placed = [];
     return features.slice().sort((a, b) => {
       const ah = Boolean(state.highlights && state.highlights[a.properties.region_id]);
@@ -162,8 +167,8 @@
       const c = centroid(feature);
       const p = project(c[0], c[1]);
       const text = labelText(feature, state);
-      const width = Math.max(54, text.length * 10.5);
-      const height = 22;
+      const width = Math.max(labelSize * 3, text.length * labelSize * 0.58);
+      const height = labelSize * 1.25;
       const offsets = [
         [0, 0], [0, -26], [0, 26], [-60, 0], [60, 0],
         [-60, -26], [60, -26], [-60, 26], [60, 26],
