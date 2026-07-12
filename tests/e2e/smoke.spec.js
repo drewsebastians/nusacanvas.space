@@ -28,6 +28,8 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
 
   await page.goto("/");
   await expect(page.locator("#loadingIndicator")).toContainText(/wilayah dimuat/i, { timeout: 60000 });
+  await expect(page.locator("#dataTruthBadge")).toContainText(/snapshot ADM2 2020/i);
+  await expect(page.locator("#dataTruthBadge")).toContainText(/Registry/i);
   await expect(page.locator(".leaflet-interactive").first()).toBeVisible();
   const forbiddenStartup = requests.filter((request) => forbiddenStartupPatterns.some((pattern) => request.url.toLowerCase().includes(pattern)));
   expect(forbiddenStartup).toEqual([]);

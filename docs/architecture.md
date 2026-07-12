@@ -20,6 +20,17 @@ No backend, database, API key, external tiles, analytics, or CDN dependency is r
 - `project-storage.js`: project schema, JSON validation, local autosave.
 - `export.js`: SVG and PNG export generation.
 
+## Registry and project versioning
+
+The runtime geometry remains keyed by legacy `region_id` values for compatibility. Batch 1 adds a registry adapter layer:
+
+- `data/canonical-provinces-v1.csv` defines 38 current provinces.
+- `data/canonical-regions-v1.csv` defines stable canonical region IDs for all 519 production geometry features.
+- `data/crosswalk-region-ids-v1.csv` maps every legacy geometry ID to a canonical ID.
+- `project-storage.js` writes project schema `1.1` with `boundaryVersion`, `registryVersion`, `sourceVersion`, `regionRefs`, and `migrationReport`.
+
+This avoids destructive geometry renaming while giving saved projects a forward migration path.
+
 ## Data flow
 
 1. Browser loads `data/indonesia-adm2-simplified.geojson`.

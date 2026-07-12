@@ -14,3 +14,11 @@
 - Offline/PWA support is deferred; the app is currently an online static Cloudflare Workers app.
 - This map is not a legal boundary determination.
 
+## Data truth notes
+
+- Boundary version `IDN-ADM2-2020-geoboundaries-22746128` is a historical geometry snapshot, not a current/latest boundary claim.
+- Registry version `IDN-ADM-REGISTRY-v1-2025-06-23` records current 38-province metadata separately from the old geometry lineage.
+- The 519 number is a geometry feature count. It should not be described as the current number of autonomous kabupaten/kota.
+- Official province codes are intentionally blank in registry v1 until row-level lampiran evidence is committed.
+- Project files may contain `unresolvedHighlights` after migration if a saved region cannot be applied to the active geometry.
+

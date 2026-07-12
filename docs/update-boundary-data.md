@@ -7,11 +7,24 @@
 5. Convert SHP, KML, geodatabase, WFS, or FeatureServer output to EPSG:4326 GeoJSON.
 6. Preserve Polygon and MultiPolygon geometry.
 7. Validate null geometry, coordinate ranges, invalid rings, duplicate IDs, overlaps, and gaps.
-8. Create or update stable `region_id` values.
+8. Do not rename existing geometry IDs in-place. Create a candidate boundary version and a crosswalk first.
 9. Match official codes and names without forcing ambiguous matches.
-10. Update `indonesia-adm2-registry.csv`, `unmatched-and-extra-regions.csv`, and `boundary-validation-summary.json`.
+10. Update `indonesia-adm2-registry.csv`, `canonical-regions-v1.csv`, `crosswalk-region-ids-v1.csv`, `boundary-version-crosswalk-v1.json`, `unmatched-and-extra-regions.csv`, and `boundary-validation-summary.json`.
 11. Simplify only a copy, preserving small islands as far as practical.
 12. Update `ATTRIBUTION.md`, `data/README.md`, and source-research documentation.
-13. Run data, CSV, project, and export tests.
-14. Version the boundary data and disclose any changes in release notes.
+13. Add project migration fixtures for unchanged, split, merge, retired, ambiguous, and missing regions.
+14. Run data, CSV, project, migration, performance, and export tests.
+15. Version the boundary data and disclose any changes in release notes.
+
+## Boundary replacement gate
+
+A newer administrative list is not sufficient to replace the active geometry. A production replacement requires:
+
+- clear redistribution and modification rights;
+- exact source artifact and checksum;
+- topology validation;
+- crosswalk coverage for all existing project IDs;
+- migration preview/report behavior;
+- startup performance proof;
+- updated noindex/staging verification.
 

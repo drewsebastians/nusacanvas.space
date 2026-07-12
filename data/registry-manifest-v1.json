@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0",
+  "registryVersion": "IDN-ADM-REGISTRY-v1-2025-06-23",
+  "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+  "sourceVersion": "Kepmendagri-300.2.2-2138-2025-as-amended-by-300.2.2-2430-2025",
+  "accessDate": "2026-07-12",
+  "counts": {
+    "provinces": 38,
+    "canonicalRegions": 519,
+    "geometryFeatures": 519,
+    "matchedUniqueName": 466,
+    "ambiguousMetadata": 53,
+    "crosswalk": 519,
+    "crosswalkStatus": {
+      "remapped_to_canonical_id": 466,
+      "ambiguous_metadata": 53
+    }
+  },
+  "productionGeometry": {
+    "artifact": "data/indonesia-adm2-simplified.geojson",
+    "detailedArtifact": "data/indonesia-adm2-detailed.geojson",
+    "boundaryId": "IDN-ADM2-22746128",
+    "representedYear": "2020",
+    "featureCount": 519,
+    "sourceUrl": "https://www.geoboundaries.org/api/current/gbOpen/IDN/ADM2/",
+    "license": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+    "licenseStatus": "redistribution and modification considered acceptable with attribution based on source metadata; not legal advice"
+  },
+  "administrativeMetadata": {
+    "source": "Kementerian Dalam Negeri / JDIH via BPK metadata pages",
+    "sourceUrls": [
+      "https://peraturan.bpk.go.id/Details/322942/keputusan-mendagri-no-nomor-30022-2138-tahun",
+      "https://peraturan.bpk.go.id/Details/322912/keputusan-mendagri-no-30022-2430-tahun-2025"
+    ],
+    "licenseStatus": "metadata used for citation/versioning; official attachments are not redistributed by this app",
+    "limitation": "Province registry is current v1 scaffolding; province official codes stay blank until row-level lampiran audit is committed."
+  },
+  "fileHashesSha256": {
+    "data/indonesia-adm2-simplified.geojson": "6d735512fb7cab04ac7ca6048aa41437eba4f53595b83d8da4f25c198ba01f91",
+    "data/indonesia-adm2-detailed.geojson": "5a5cc09736dea030b30536cec6958c8f9aaad4b61f71b1c45500db95bcc360e8",
+    "data/indonesia-adm2-registry.csv": "db269ffe8bd12ba2c337fefd7812d9e4c9059e61bb5339a2697a78836c6ca116",
+    "data/canonical-provinces-v1.csv": "d0b8c535fb52dd14ab1bce61f2f8d2ff01f955cbd4fe773edf4a134c0fab78f6",
+    "data/canonical-regions-v1.csv": "fa96c08734f0eee7a77cb57d5af66271aedcf760db078b7e629c786bcf9156e6",
+    "data/crosswalk-region-ids-v1.csv": "5305578b5761640c7f72ffb371aecbd10cf9374bab559f634091e5e2edfe999f",
+    "data/boundary-version-crosswalk-v1.json": "e987e611d85f59430e5a01b0fe5fa2909f785303bc0099d0a4ece22a1dfe2e47"
+  }
+}

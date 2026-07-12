@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0",
+  "registryVersion": "IDN-ADM-REGISTRY-v1-2025-06-23",
+  "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+  "cases": [
+    {
+      "name": "unchanged geometry ID adapter",
+      "legacyRegionId": "gb-22746128B65593111718524",
+      "canonicalRegionId": "idn-adm2-gb-22746128b65593111718524",
+      "expectedStatus": "mapped"
+    },
+    {
+      "name": "renamed display value keeps stable ID",
+      "legacyRegionId": "gb-22746128B65593111718524",
+      "alternateDisplayName": "Kabupaten Aceh Barat (label changed)",
+      "canonicalRegionId": "idn-adm2-gb-22746128b65593111718524",
+      "expectedStatus": "mapped"
+    },
+    {
+      "name": "new province administrative mapping on old geometry",
+      "legacyProvinceName": "Papua",
+      "canonicalProvinceIdsRepresentedInRegistry": [
+        "idn-prov-94-papua",
+        "idn-prov-93-papua-selatan",
+        "idn-prov-95-papua-tengah",
+        "idn-prov-96-papua-pegunungan"
+      ],
+      "expectedStatus": "historical_geometry_snapshot"
+    },
+    {
+      "name": "ambiguous region stays reviewable",
+      "legacyRegionId": "gb-22746128B73297609500416",
+      "canonicalRegionId": "idn-adm2-gb-22746128b73297609500416",
+      "expectedStatus": "ambiguous_metadata"
+    },
+    {
+      "name": "deprecated legacy ID",
+      "legacyRegionId": "gb-deprecated-example",
+      "canonicalRegionId": "",
+      "expectedStatus": "missing"
+    },
+    {
+      "name": "unsupported version",
+      "schemaVersion": "9.9",
+      "expectedStatus": "rejected"
+    }
+  ]
+}

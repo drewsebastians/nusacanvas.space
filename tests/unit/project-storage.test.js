@@ -4,12 +4,13 @@ const path = require("node:path");
 const test = require("node:test");
 const vm = require("node:vm");
 
-function loadProjectStorage() {
+function loadProjectStorage(localStorageOverrides = {}) {
   const file = path.resolve(__dirname, "..", "..", "assets", "js", "project-storage.js");
   const sandbox = {
     Blob: function Blob() {},
     Date,
     JSON,
+    Map,
     Set,
     String,
     URL: { createObjectURL: () => "blob:test", revokeObjectURL: () => {} },
@@ -17,7 +18,8 @@ function loadProjectStorage() {
     localStorage: {
       getItem: () => null,
       removeItem: () => {},
-      setItem: () => {}
+      setItem: () => {},
+      ...localStorageOverrides
     },
     window: {}
   };
@@ -26,8 +28,19 @@ function loadProjectStorage() {
   return sandbox.window.ProjectStorage;
 }
 
-test("sanitizeProject accepts valid highlights and strips unknown region IDs", () => {
+function sampleFeature(id = "known-id", matchStatus = "matched_unique_name") {
+  return {
+    properties: {
+      region_id: id,
+      geometry_source_id: "22746128BTEST",
+      match_status: matchStatus
+    }
+  };
+}
+
+test("sanitizeProject migrates legacy highlights without silently dropping unknown IDs", () => {
   const storage = loadProjectStorage();
+  const adapter = storage.createRegionAdapter([sampleFeature()]);
   const project = storage.sanitizeProject({
     schemaVersion: "1.0",
     title: "A".repeat(120),
@@ -38,13 +51,72 @@ test("sanitizeProject accepts valid highlights and strips unknown region IDs", (
     legend: [{ label: "Good", color: "#70AD47" }],
     groupNames: { "#4472c4": "Blue group" },
     groupMeta: { "#4472c4": { category: "Meta", value: "100" } }
-  }, new Set(["known-id"]));
+  }, adapter);
 
-  assert.equal(project.schemaVersion, "1.0");
+  assert.equal(project.schemaVersion, "1.1");
+  assert.equal(project.registryVersion, storage.REGISTRY_VERSION);
   assert.equal(project.title.length, 90);
   assert.deepEqual(Object.keys(project.highlights), ["known-id"]);
+  assert.deepEqual(Object.keys(project.unresolvedHighlights), ["unknown-id"]);
+  assert.equal(project.regionRefs["known-id"].canonicalRegionId, "idn-adm2-gb-22746128btest");
+  assert.equal(project.migrationReport.summary.mapped, 1);
+  assert.equal(project.migrationReport.summary.missing, 1);
+  assert.equal(project.migrationReport.summary.silentLoss, false);
   assert.equal(project.groupNames["#4472C4"], "Blue group");
   assert.equal(project.groupMeta["#4472C4"].value, "100");
+});
+
+test("sanitizeProject keeps ambiguous geometry highlights but marks them for review", () => {
+  const storage = loadProjectStorage();
+  const adapter = storage.createRegionAdapter([sampleFeature("ambiguous-id", "ambiguous_name")]);
+  const project = storage.sanitizeProject({
+    schemaVersion: "1.0",
+    highlights: {
+      "ambiguous-id": { color: "#4472C4" }
+    }
+  }, adapter);
+
+  assert.equal(project.highlights["ambiguous-id"].color, "#4472C4");
+  assert.equal(project.regionRefs["ambiguous-id"].migrationStatus, "ambiguous_metadata");
+  assert.equal(project.migrationReport.summary.ambiguous, 1);
+  assert.equal(project.migrationReport.requiresUserReview, true);
+});
+
+test("buildProject stores schema, boundary, registry, and canonical region references", () => {
+  const storage = loadProjectStorage();
+  const features = [sampleFeature()];
+  const project = storage.buildProject({
+    title: "Project",
+    features,
+    highlights: { "known-id": { color: "#4472C4" } },
+    legend: [],
+    legendVisible: true,
+    legendPosition: "bottom-right",
+    groupNames: {},
+    groupMeta: {},
+    exportSettings: {}
+  }, storage.createRegionAdapter(features));
+
+  assert.equal(project.schemaVersion, "1.1");
+  assert.equal(project.boundaryVersion, "IDN-ADM2-2020-geoboundaries-22746128");
+  assert.equal(project.registryVersion, "IDN-ADM-REGISTRY-v1-2025-06-23");
+  assert.equal(project.regionRefs["known-id"].legacyRegionId, "known-id");
+});
+
+test("loadAutosave migrates legacy autosave through the same safe path", () => {
+  const raw = JSON.stringify({
+    schemaVersion: "1.0",
+    highlights: {
+      "known-id": { color: "#70AD47" }
+    }
+  });
+  const storage = loadProjectStorage({ getItem: () => raw });
+  const adapter = storage.createRegionAdapter([sampleFeature()]);
+  const project = storage.loadAutosave(adapter);
+
+  assert.equal(project.schemaVersion, "1.1");
+  assert.equal(project.highlights["known-id"].color, "#70AD47");
+  assert.equal(project.migrationReport.summary.mapped, 1);
 });
 
 test("sanitizeProject rejects unsupported schema versions", () => {
@@ -69,6 +141,12 @@ test("sanitizeProject rejects oversized highlight payloads", () => {
   assert.throws(() => storage.sanitizeProject({ schemaVersion: "1.0", highlights }, new Set()), /terlalu besar/);
 });
 
+test("sanitizeProject rejects prototype-pollution structures", () => {
+  const storage = loadProjectStorage();
+  const polluted = JSON.parse('{"schemaVersion":"1.0","highlights":{},"__proto__":{"polluted":true}}');
+  assert.throws(() => storage.sanitizeProject(polluted, new Set()), /tidak aman/);
+});
+
 test("isColor only accepts six-digit hex colors", () => {
   const storage = loadProjectStorage();
   assert.equal(storage.isColor("#abcdef"), true);
@@ -76,4 +154,3 @@ test("isColor only accepts six-digit hex colors", () => {
   assert.equal(storage.isColor("#abcd"), false);
   assert.equal(storage.isColor("red"), false);
 });
-

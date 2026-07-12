@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0",
+  "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+  "createdAt": "2026-07-12",
+  "purpose": "Forward-compatible structure for future exact-boundary migrations. The 2020 geometry is not renamed in-place.",
+  "versions": [
+    {
+      "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "sourceBoundaryId": "IDN-ADM2-22746128",
+      "representedYear": "2020",
+      "featureCount": 519,
+      "status": "active_historical_snapshot",
+      "compatibility": "legacy geometry feature IDs retained"
+    }
+  ],
+  "futureMigrationRules": [
+    "A newer boundary artifact must pass license, topology, feature reconciliation, and project migration review before use.",
+    "Display-name changes alone must not change canonical IDs.",
+    "Split, merge, and retirement events require explicit crosswalk rows and user-visible migration reports.",
+    "Unresolved regions must remain unresolved instead of being fuzzy matched silently."
+  ],
+  "mappings": []
+}

@@ -19,6 +19,15 @@ Production geometry is based on the Indonesia ADM2 dataset made available throug
 
 The MIT License for this project does not apply to third-party boundary data.
 
+## Administrative metadata references
+
+The canonical registry v1 cites, but does not redistribute, Kemendagri/JDIH legal metadata:
+
+- Keputusan Mendagri Nomor 300.2.2-2138 Tahun 2025, accessed through BPK/JDIH: https://peraturan.bpk.go.id/Details/322942/keputusan-mendagri-no-nomor-30022-2138-tahun
+- Keputusan Mendagri Nomor 300.2.2-2430 Tahun 2025 amendment, accessed through BPK/JDIH: https://peraturan.bpk.go.id/Details/322912/keputusan-mendagri-no-30022-2430-tahun-2025
+
+Official code fields are populated only when row-level evidence is available in committed source artifacts. Province code fields in registry v1 remain blank pending a lampiran row audit.
+
 ## Leaflet
 
 Leaflet 1.9.4 is included locally for static map rendering.

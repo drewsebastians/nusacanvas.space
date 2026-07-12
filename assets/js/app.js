@@ -1,6 +1,7 @@
 (function () {
   const DATA_URL = "./data/indonesia-adm2-simplified.geojson";
-  const BOUNDARY_VERSION = "IDN-ADM2-2020-CODAB-geoboundaries";
+  const BOUNDARY_VERSION = "IDN-ADM2-2020-geoboundaries-22746128";
+  const REGISTRY_VERSION = "IDN-ADM-REGISTRY-v1-2025-06-23";
   const DETAILED_GEOMETRY = {
     url: "./data/indonesia-adm2-detailed.geojson",
     sha256: "5a5cc09736dea030b30536cec6958c8f9aaad4b61f71b1c45500db95bcc360e8"
@@ -21,6 +22,8 @@
     groupNames: {},
     groupMeta: {},
     exportSettings: {},
+    unresolvedHighlights: {},
+    migrationReport: null,
     highDetailCollection: null,
     highDetailFeatureById: new Map(),
     undo: []
@@ -38,6 +41,7 @@
       "undoBtn", "resetBtn", "highlightCount", "highlightList", "showLegend", "legendPosition",
       "groupCount", "groupingList", "legendItems", "addLegendBtn", "csvFile", "previewCsvBtn", "applyCsvBtn", "csvPreview",
       "saveProjectBtn", "openProjectBtn", "projectFile", "clearProjectBtn", "autosaveStatus",
+      "migrationReportBtn", "dataTruthBadge",
       "exportRatio", "exportLabels", "transparentBg", "exportHighDetail", "pngSize", "exportSvgBtn", "exportPngBtn",
       "fitIndonesiaBtn", "loadingIndicator", "errorArea", "appShell", "controlPanel", "sidebarToggleBtn", "floatingExportBtn"
     ].forEach((id) => { el[id] = document.getElementById(id); });
@@ -64,6 +68,7 @@
     el.saveProjectBtn.addEventListener("click", saveProject);
     el.openProjectBtn.addEventListener("click", () => el.projectFile.click());
     el.projectFile.addEventListener("change", openProject);
+    el.migrationReportBtn.addEventListener("click", downloadMigrationReport);
     el.clearProjectBtn.addEventListener("click", clearProject);
     el.exportSvgBtn.addEventListener("click", exportSvg);
     el.exportPngBtn.addEventListener("click", exportPng);
@@ -115,6 +120,7 @@
       renderGroupingEditor();
       refreshMapLegend();
       el.loadingIndicator.textContent = `${state.features.length} wilayah dimuat dari snapshot batas ${BOUNDARY_VERSION} (geometri standar).`;
+      el.dataTruthBadge.textContent = `Batas: snapshot ADM2 2020 (${state.features.length} fitur geometri) · Registry: ${REGISTRY_VERSION}`;
     } catch (error) {
       showError(error.message);
       el.loadingIndicator.textContent = "Gagal memuat peta.";
@@ -215,8 +221,7 @@
 
   function restoreAutosave() {
     try {
-      const validIds = new Set(state.features.map((feature) => feature.properties.region_id));
-      const saved = ProjectStorage.loadAutosave(validIds);
+      const saved = ProjectStorage.loadAutosave(ProjectStorage.createRegionAdapter(state.features));
       if (saved && confirm("Ada autosave di browser ini. Buka autosave?")) {
         applyProject(saved);
       }
@@ -555,7 +560,7 @@
   }
 
   function saveProject() {
-    ProjectStorage.downloadJson("peta-warna-indonesia-project.json", ProjectStorage.buildProject(state));
+    ProjectStorage.downloadJson("peta-warna-indonesia-project.json", ProjectStorage.buildProject(state, ProjectStorage.createRegionAdapter(state.features)));
   }
 
   async function openProject() {
@@ -564,8 +569,14 @@
     if (file.size > 1_000_000) return showError("File proyek terlalu besar.");
     try {
       const data = JSON.parse(await file.text());
-      const validIds = new Set(state.features.map((feature) => feature.properties.region_id));
-      applyProject(ProjectStorage.sanitizeProject(data, validIds));
+      const project = ProjectStorage.sanitizeProject(data, ProjectStorage.createRegionAdapter(state.features));
+      if (project.migrationReport && project.migrationReport.requiresUserReview) {
+        const summary = project.migrationReport.summary;
+        const message = `File proyek perlu migrasi: ${summary.mapped} ID dipetakan, ${summary.ambiguous} ambigu, ${summary.missing} tidak ditemukan. Lanjut buka proyek dan simpan laporan migrasi?`;
+        if (!confirm(message)) return;
+      }
+      if (!confirm("Buka file proyek ini? Proyek aktif dan autosave browser akan diganti setelah berhasil dibuka.")) return;
+      applyProject(project);
     } catch (error) {
       showError(error.message);
     } finally {
@@ -576,6 +587,8 @@
   function applyProject(project) {
     state.title = project.title;
     state.highlights = project.highlights;
+    state.unresolvedHighlights = project.unresolvedHighlights || {};
+    state.migrationReport = project.migrationReport || null;
     state.legend = project.legend.length ? project.legend : state.legend;
     state.legendVisible = project.legendVisible;
     state.legendPosition = project.legendPosition;
@@ -584,24 +597,47 @@
     el.projectTitle.value = state.title;
     updateAfterHighlightChange();
     renderLegendEditor(false);
-    el.autosaveStatus.textContent = "Proyek dibuka di browser ini.";
+    updateMigrationReportUi();
   }
 
   function clearProject() {
     if (!confirm("Bersihkan proyek dan autosave di browser ini?")) return;
     pushUndo();
     state.highlights = {};
+    state.unresolvedHighlights = {};
+    state.migrationReport = null;
     state.groupNames = {};
     state.groupMeta = {};
     ProjectStorage.clearAutosave();
     updateAfterHighlightChange();
     el.autosaveStatus.textContent = "Autosave dibersihkan.";
+    updateMigrationReportUi();
   }
 
   function scheduleSave() {
     if (!state.features.length) return;
     const ok = ProjectStorage.autosave(state);
     el.autosaveStatus.textContent = ok ? "Autosave tersimpan di browser ini." : "Autosave tidak tersedia.";
+  }
+
+  function updateMigrationReportUi() {
+    const report = state.migrationReport;
+    if (!report) {
+      el.migrationReportBtn.hidden = true;
+      el.autosaveStatus.textContent = "Proyek dibuka di browser ini.";
+      return;
+    }
+    const summary = report.summary || {};
+    const unresolved = (summary.ambiguous || 0) + (summary.missing || 0) + (summary.unsupported || 0);
+    el.migrationReportBtn.hidden = false;
+    el.autosaveStatus.textContent = unresolved
+      ? `Proyek dibuka. ${unresolved} item perlu review; laporan migrasi tersedia.`
+      : `Proyek dibuka. Migrasi schema ${report.fromSchemaVersion} -> ${report.toSchemaVersion} selesai tanpa kehilangan diam-diam.`;
+  }
+
+  function downloadMigrationReport() {
+    if (!state.migrationReport) return;
+    ProjectStorage.downloadJson("laporan-migrasi-proyek.json", state.migrationReport);
   }
 
   async function exportSvg() {
