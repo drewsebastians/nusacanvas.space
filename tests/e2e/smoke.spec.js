@@ -30,7 +30,7 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
   await expect(page.locator("#loadingIndicator")).toContainText(/wilayah dimuat/i, { timeout: 60000 });
   await expect(page.locator("#dataTruthBadge")).toContainText(/snapshot ADM2 2020/i);
   await expect(page.locator("#dataTruthBadge")).toContainText(/Registry/i);
-  await expect(page.locator(".leaflet-interactive").first()).toBeVisible();
+  await expect.poll(async () => page.locator(".leaflet-interactive").count()).toBeGreaterThan(500);
   const forbiddenStartup = requests.filter((request) => forbiddenStartupPatterns.some((pattern) => request.url.toLowerCase().includes(pattern)));
   expect(forbiddenStartup).toEqual([]);
 
@@ -56,7 +56,11 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
 
   const svgDownload = page.waitForEvent("download");
   await page.locator("#exportSvgBtn").click();
-  expect((await svgDownload).suggestedFilename()).toBe("peta-warna-indonesia.svg");
+  const svg = await svgDownload;
+  expect(svg.suggestedFilename()).toBe("peta-warna-indonesia.svg");
+  const svgText = fs.readFileSync(await svg.path(), "utf8");
+  expect(svgText).toContain("IDN-ADM2-2020-geoboundaries-22746128");
+  expect(svgText).toContain("Referensi visual; bukan penetapan batas hukum");
 
   await page.locator("#exportLabels").uncheck();
   await page.locator("#pngSize").selectOption("1920x1080");
@@ -131,4 +135,33 @@ test("PNG export supports largest, transparent, and fallback paths", async ({ pa
   expect((await download).suggestedFilename()).toBe("peta-warna-indonesia.png");
   expect(fallback.fallbackUsed).toBe(true);
   expect(fallback.size).toEqual({ width: 1920, height: 1080 });
+});
+
+test("CSV sample, undo, old project migration, and keyboard navigation work", async ({ page }) => {
+  const sampleCsv = path.resolve(__dirname, "..", "..", "sample", "sample-region-colors.csv");
+  const sampleProject = path.resolve(__dirname, "..", "..", "sample", "sample-project.json");
+  page.on("dialog", (dialog) => dialog.accept());
+
+  await page.goto("/");
+  await expect(page.locator("#loadingIndicator")).toContainText(/wilayah dimuat/i, { timeout: 60000 });
+
+  await page.locator("#csvFile").setInputFiles(sampleCsv);
+  await page.locator("#previewCsvBtn").click();
+  await expect(page.locator("#csvPreview")).toContainText("3");
+  await page.locator("#applyCsvBtn").click();
+  await expect(page.locator("#highlightCount")).toHaveText("3");
+  await page.locator("#undoBtn").focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator("#highlightCount")).toHaveText("0");
+
+  await page.locator("#projectFile").setInputFiles(sampleProject);
+  await expect(page.locator("#migrationReportBtn")).toBeVisible();
+  await expect(page.locator("#autosaveStatus")).toContainText(/Migrasi|Proyek dibuka/i);
+  await expect(page.locator("#highlightCount")).toHaveText("1");
+
+  for (let index = 0; index < 20; index += 1) {
+    await page.keyboard.press("Tab");
+  }
+  const activeElement = await page.evaluate(() => document.activeElement && document.activeElement.tagName);
+  expect(activeElement).not.toBe("BODY");
 });

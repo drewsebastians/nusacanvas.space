@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Kontak dan Laporan Data</title>
+  <link rel="stylesheet" href="../assets/css/content.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-inner site-nav" aria-label="Navigasi utama">
+      <a class="brand" href="../">Mapnesia</a>
+      <a href="../about/">Tentang</a>
+      <a href="../sources-licenses/">Sumber & Lisensi</a>
+      <a href="../data-methodology/">Metodologi Data</a>
+      <a href="../limitations/">Batasan</a>
+      <a href="../contact/">Kontak</a>
+    </nav>
+  </header>
+  <main>
+    <p class="eyebrow">Terakhir ditinjau: 2026-07-12</p>
+    <h1>Kontak dan laporan data</h1>
+    <p class="lead">Saat ini belum ada alamat email atau kanal publik lain yang terverifikasi di repository. Karena itu, halaman ini menyediakan template laporan yang bisa disalin atau diunduh tanpa mengirim data apa pun otomatis.</p>
+
+    <section class="note soft">
+      <h2>Status kanal eksternal</h2>
+      <p>Owner perlu menentukan satu tujuan kontak publik sebelum fitur pelaporan dapat disebut lengkap. Sampai saat itu, jangan masukkan isi CSV, isi proyek, nama file, atau informasi pribadi ke laporan kecuali memang ingin dibagikan secara manual.</p>
+    </section>
+
+    <section id="laporkan-data">
+      <h2>Laporkan kesalahan data</h2>
+      <p>Isi hanya informasi yang relevan. Template otomatis menyertakan versi aplikasi, versi batas, dan versi registry, tetapi tidak membaca file proyek atau spreadsheet dari browser.</p>
+
+      <label for="issueCategory">Kategori isu</label>
+      <select id="issueCategory">
+        <option value="">Pilih kategori...</option>
+        <option>Nama wilayah</option>
+        <option>Kode wilayah</option>
+        <option>Provinsi/induk administrasi</option>
+        <option>Bentuk geometri</option>
+        <option>Wilayah hilang atau ambigu</option>
+        <option>Sumber atau atribusi</option>
+      </select>
+
+      <label for="geometryId">Geometry/legacy region ID</label>
+      <input id="geometryId" type="text" autocomplete="off" placeholder="Contoh: gb-22746128B65593111718524">
+
+      <label for="canonicalId">Canonical region ID</label>
+      <input id="canonicalId" type="text" autocomplete="off" placeholder="Contoh: idn-adm2-gb-22746128b65593111718524">
+
+      <label for="issueDescription">Deskripsi</label>
+      <textarea id="issueDescription" maxlength="2000" placeholder="Jelaskan data yang menurut Anda perlu diperiksa, serta sumber pembanding bila ada."></textarea>
+
+      <h3>Template laporan</h3>
+      <div id="reportOutput" class="note report-output" aria-live="polite"></div>
+      <div class="button-row">
+        <button id="copyReportBtn" type="button">Salin laporan</button>
+        <button id="downloadReportBtn" type="button" class="secondary">Unduh laporan</button>
+      </div>
+      <p id="reportStatus" class="meta" aria-live="polite"></p>
+    </section>
+
+    <p class="meta">Kembali ke <a href="../">Map Studio</a> atau baca <a href="../data-methodology/">metodologi data</a>.</p>
+  </main>
+  <footer class="site-footer">
+    <div class="site-inner">
+      <p class="meta">Tidak ada akun, backend, analytics, atau pengiriman formulir otomatis.</p>
+    </div>
+  </footer>
+  <script src="../assets/js/report-template.js"></script>
+</body>
+</html>

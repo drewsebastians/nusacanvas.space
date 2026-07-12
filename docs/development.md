@@ -50,13 +50,31 @@ Runs Node unit tests for project parsing and sanitization.
 npm run test:e2e:smoke
 ```
 
-Builds `dist/`, serves it locally, and verifies the current load, color, save, SVG export, and smallest PNG export workflow in Chromium.
+Builds `dist/`, serves it locally, and verifies load, search/select, color, undo, CSV sample, old-project migration, SVG export, PNG export/fallback, and high-detail opt-in behavior across the configured browser matrix.
+
+```text
+npm run test:e2e:trust
+```
+
+Verifies trust page navigation, report-error template copy/download behavior, source/version links, noindex metadata, and unknown-route handling.
 
 ```text
 npm run test:a11y
 ```
 
 Runs an axe scan and fails on serious or critical violations. Full findings are written under `artifacts/batch-1/`.
+
+```text
+npm run test:content
+```
+
+Checks static trust-page HTML, internal links, no map bundle loading on content pages, report template fields, robots, and security header configuration.
+
+```text
+npm run test:security
+```
+
+Runs the local security/privacy audit: secrets scan, runtime external request inventory, CSP checks, project JSON limits, CSV formula escaping, object URL cleanup, Cloudflare-only docs scan, and dependency license manifest audit.
 
 ```text
 npm run test:performance
@@ -74,7 +92,13 @@ Writes reproducible size, checksum, geometry, schema, and network-baseline artif
 npm run check
 ```
 
-Runs the non-deployment local gate: build, data tests, unit tests, smoke tests, accessibility test, measurements, and performance budgets.
+Runs the legacy non-deployment local gate.
+
+```text
+npm run verify:batch1
+```
+
+Runs the complete Batch 1 local gate: clean build, data/license/reproducibility pipeline, geometry tests, unit/migration tests, browser smoke matrix, trust-page tests, accessibility matrix, performance budgets, static content checks, and security checks.
 
 ## Notes
 

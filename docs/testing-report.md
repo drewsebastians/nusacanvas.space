@@ -1,88 +1,44 @@
 # Testing Report
 
-Test date: 2026-06-18
+Test date: 2026-07-12
 
-## Automated checks
+## Integrated local gate
 
-Commands:
+Command:
 
 ```text
-python tests/run_data_tests.py
-npm run check
+npm run verify:batch1
 ```
+
+Result: passed locally.
 
 Coverage:
 
-- GeoJSON parses.
-- FeatureCollection type is present.
-- Expected 519 features are present.
-- Stable region IDs are unique.
-- Only Polygon and MultiPolygon geometry types are present.
-- Required display and matching fields are populated.
-- Geometry coordinates are nonempty and within valid lon/lat ranges.
-- Registry rows reconcile with GeoJSON features.
-- Sample CSV codes match the registry.
-- Sample project IDs match the GeoJSON.
-- Project JSON sanitization rejects invalid schema, oversized payloads, and invalid colors.
-- Playwright smoke test verifies load, select, color, save, SVG export, smallest PNG export, tiered labels, high-detail opt-in export, largest PNG, transparent PNG, and fallback PNG behavior.
-- Axe scan fails on serious or critical accessibility issues.
-- Performance budget gate checks initial compressed size, simplified geometry gzip size, shell JavaScript gzip size, startup request count, and forbidden startup geometry URLs.
+- clean allowlisted build;
+- data/license/reproducibility pipeline;
+- Python geometry and registry tests;
+- Node unit tests for project parsing, migration, and rejection paths;
+- Playwright smoke matrix across Chromium desktop, Firefox desktop, WebKit desktop, and Chromium mobile;
+- trust-page navigation and report-error template tests;
+- axe accessibility matrix with no serious or critical violations;
+- performance budgets;
+- static trust-content and header checks;
+- security/privacy and forbidden-network checks.
 
-Result: passed locally on 2026-07-12 after Batch 1 Prompt 3 changes.
+## Evidence summary
 
-Evidence:
+- Data: 519 features, 287 Polygon, 232 MultiPolygon.
+- Registry: 519 canonical regions, 38 canonical provinces, 53 ambiguous metadata rows preserved.
+- Unit/migration: 9/9 passed.
+- Browser smoke: 16/16 passed.
+- Trust page tests: 12/12 passed.
+- Accessibility: 8/8 passed.
+- Performance: initial 590,827 gzip bytes; simplified geometry 518,479 gzip bytes; shell JS 63,795 gzip bytes.
+- Static content: 9 trust pages checked.
+- Security/privacy: 8 checks passed.
 
-```text
-PASSED
-features=519 polygon=287 multipolygon=232
-registry=519 sample_csv_rows=3
-```
+## Live staging status
 
-## Manual functional checklist
+Live Cloudflare deployment could not be performed in this run because the deployment action was blocked by approval policy. The existing staging URL still fails header verification because it has not received the new `_headers` configuration.
 
-The following should be verified in a browser after deployment or local static serving:
-
-| Area | Test | Expected |
-|---|---|---|
-| Map | App loads | 519 regions render with no basemap dependency |
-| Map | Click region | Selection text updates and polygon outline changes |
-| Search | Search Surabaya | Result zooms to Kota Surabaya |
-| Filter | Choose a province | Region dropdown filters and map fits province |
-| Highlight | Apply several colors | Colors persist during pan, zoom, hover, and selection |
-| Highlight | Remove, undo, reset | Changes behave as labelled |
-| CSV | Import sample CSV | Three valid rows preview and apply |
-| CSV | Invalid color | Row is rejected and error report can be downloaded |
-| Project | Save/open sample project | JSON validates and restores highlights |
-| Export | SVG | File downloads and contains map, title, legend, attribution |
-| Export | PNG | File downloads at selected size |
-| Privacy | Network | Startup resources are same-site static files only |
-| Performance | Startup network | Detailed geometry and external boundary endpoints are not requested |
-| Export | High-detail opt-in | Detailed geometry is fetched only after explicit high-detail export selection |
-| Export | PNG fallback | Forced canvas failure retries with 1920 x 1080 fallback |
-| Mobile | Narrow viewport | Controls stack above the map and remain reachable |
-
-## Current limitations
-
-## Browser smoke test evidence
-
-Local URL:
-
-```text
-http://localhost:8000/
-```
-
-Observed in the in-app browser:
-
-- Page title: Peta Warna Wilayah Indonesia
-- Loading status: 519 wilayah dimuat from the standard geometry snapshot.
-- Rendered Leaflet SVG paths: 519
-- Region dropdown options: 520
-- Console errors: 0
-- Search for `Surabaya`: one result, `Kota Surabaya - Jawa Timur`
-- Applying `#E74C3C` to Surabaya: highlight count became 1
-- SVG and PNG export buttons were enabled
-- Screenshot capture attempted, but the browser capture timed out on the large map surface; capture should be repeated manually after deployment or in a fresh browser.
-
-## Current limitations
-
-Cloudflare Workers smoke testing still needs to be run after a verified deployment with the required noindex headers. Cross-browser checks in Edge, Chrome, and Firefox were not completed in this environment.
+GitHub Pages verification through the GitHub API returned 404, which indicates Pages is not configured.

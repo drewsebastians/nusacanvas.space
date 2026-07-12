@@ -24,7 +24,7 @@ Do not commit Cloudflare credentials to the repository, workflow files, logs, sc
 
 ```text
 npm ci
-npm run check
+npm run verify:batch1
 npm run build
 ```
 
@@ -83,8 +83,10 @@ The workflow records the staging URL in the job summary. It does not contain cre
 - `wrangler deploy` deploys Worker `mapnesia`.
 - `https://mapnesia.andrew-sebastian91.workers.dev` returns HTTP 200.
 - Required CSS, JS, Leaflet, GeoJSON, and sample assets return HTTP 200.
+- Trust pages return HTTP 200: `/about/`, `/contact/`, `/privacy/`, `/terms/`, `/sources-licenses/`, `/data-methodology/`, `/limitations/`, `/changelog/`, and `/guides/mengapa-jumlah-wilayah-peta-berbeda/`.
 - Unknown paths return HTTP 404.
 - Responses include `X-Robots-Tag: noindex, nofollow, noarchive`.
+- Responses include the Batch 1 Content Security Policy.
 - `robots.txt` contains `Disallow: /`.
 - The Playwright smoke flow passes against the live staging URL.
 
@@ -95,8 +97,9 @@ Staging includes three layers of noindex protection:
 - `robots.txt` blocks crawling.
 - `_headers` sends `X-Robots-Tag: noindex, nofollow, noarchive`.
 - `index.html` includes a robots meta tag.
+- Trust pages include robots meta tags.
 
-Do not add a canonical URL pointing to workers.dev. Content Security Policy is deferred until the runtime external geoBoundaries fallback is removed.
+Do not add a canonical URL pointing to workers.dev. The current CSP allows same-origin scripts, styles, images, and fetches only; object/embed/base/form/frame entry points are blocked.
 
 ## Cache Behavior
 

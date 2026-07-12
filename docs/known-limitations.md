@@ -23,4 +23,6 @@
 - Project files may contain `unresolvedHighlights` after migration if a saved region cannot be applied to the active geometry.
 - The deterministic pipeline validates parseability, rings, coordinates, joins, source checksums, license records, and reproducibility, but legal-grade topology overlap/gap review remains a manual/native-GIS release gate.
 - `data:refresh` is not a normal build or CI step. New upstream data must stop for source, checksum, license, diff, versioning, and migration review before production use.
+- The report-error page can copy/download a structured report, but external submission remains blocked until the owner approves a public contact destination.
+- Live Cloudflare staging needs a fresh authorized deployment before the active workers.dev URL can pass noindex/CSP/trust-page verification.
 

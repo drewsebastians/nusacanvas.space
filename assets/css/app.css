@@ -145,6 +145,24 @@ label {
   font-weight: 700;
 }
 
+.trust-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.trust-links a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.trust-links a:focus {
+  outline: 3px solid #8cc7df;
+  outline-offset: 2px;
+}
+
 .panel-section {
   padding: 14px 18px;
   border-bottom: 1px solid var(--line);

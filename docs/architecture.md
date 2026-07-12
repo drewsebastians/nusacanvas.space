@@ -6,9 +6,11 @@ Peta Warna Wilayah Indonesia is a static Cloudflare Workers Static Assets applic
 
 - `index.html`
 - Local CSS in `assets/css/app.css`
+- Lightweight content CSS in `assets/css/content.css`
 - Local JavaScript in `assets/js/`
 - Local Leaflet 1.9.4 in `assets/vendor/leaflet/`
 - Local GeoJSON data in `data/`
+- Static trust pages under `/about/`, `/contact/`, `/privacy/`, `/terms/`, `/sources-licenses/`, `/data-methodology/`, `/limitations/`, `/changelog/`, and `/guides/mengapa-jumlah-wilayah-peta-berbeda/`
 
 No backend, database, API key, external tiles, analytics, or CDN dependency is required at runtime.
 
@@ -19,6 +21,7 @@ No backend, database, API key, external tiles, analytics, or CDN dependency is r
 - `csv-import.js`: CSV parsing, validation, matching, formula-injection-safe error reports.
 - `project-storage.js`: project schema, JSON validation, local autosave.
 - `export.js`: SVG and PNG export generation.
+- `report-template.js`: data-error report copy/download helper used only on `/contact/`.
 
 ## Registry and project versioning
 
@@ -59,4 +62,16 @@ Normal startup must not request:
 - HDX or other unpinned external boundary data
 
 The detailed GeoJSON is allowed only after explicit high-detail export selection.
+
+Trust/content pages do not load Leaflet, map JavaScript, GeoJSON, external fonts, analytics, ads, or third-party scripts.
+
+## Security headers
+
+Cloudflare staging uses `_headers` to keep the workers.dev site non-indexable and locked down:
+
+- `X-Robots-Tag: noindex, nofollow, noarchive`
+- `Content-Security-Policy` with same-origin scripts/connects, `object-src 'none'`, `base-uri 'none'`, `form-action 'none'`, and `frame-ancestors 'none'`
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- restrictive `Permissions-Policy`
 

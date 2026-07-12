@@ -15,3 +15,4 @@
 - Added project schema 1.1 with boundary/registry/source version fields, canonical region references, migration reports, unresolved highlight preservation, and prototype-pollution rejection.
 - Added a compact source/version badge and export metadata that distinguish the 2020 boundary snapshot from current administrative metadata.
 - Added deterministic offline data pipeline commands, immutable source inventory, machine-readable license manifest/schema, reproducibility and diff reports, expanded geometry validation, and CI data/license gates.
+- Added Indonesian trust pages, data-error report template, CSP/security headers, browser matrix tests, static content checks, security/privacy audit, and the `verify:batch1` release gate.

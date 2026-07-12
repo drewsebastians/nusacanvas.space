@@ -38,9 +38,28 @@ module.exports = defineConfig({
   } : undefined,
   projects: [
     {
-      name: "chromium",
+      name: "chromium-desktop",
       use: {
         ...devices["Desktop Chrome"],
+        launchOptions: executablePath ? { executablePath } : {}
+      }
+    },
+    {
+      name: "firefox-desktop",
+      use: {
+        ...devices["Desktop Firefox"]
+      }
+    },
+    {
+      name: "webkit-desktop",
+      use: {
+        ...devices["Desktop Safari"]
+      }
+    },
+    {
+      name: "chromium-mobile",
+      use: {
+        ...devices["Pixel 5"],
         launchOptions: executablePath ? { executablePath } : {}
       }
     }

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Metodologi Data</title>
+  <link rel="stylesheet" href="../assets/css/content.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-inner site-nav" aria-label="Navigasi utama">
+      <a class="brand" href="../">Mapnesia</a>
+      <a href="../about/">Tentang</a>
+      <a href="../sources-licenses/">Sumber & Lisensi</a>
+      <a href="../data-methodology/">Metodologi Data</a>
+      <a href="../limitations/">Batasan</a>
+      <a href="../contact/">Kontak</a>
+    </nav>
+  </header>
+  <main>
+    <p class="eyebrow">Terakhir ditinjau: 2026-07-12</p>
+    <h1>Metodologi data</h1>
+    <p class="lead">Batch 1 memilih kejelasan dan stabilitas lebih dulu: peta memakai snapshot geometri yang dipin, registry metadata dipisahkan, dan perubahan data harus melewati diff serta review.</p>
+
+    <h2>1. Snapshot geometri</h2>
+    <p>Geometri produksi berasal dari geoBoundaries Indonesia ADM2 boundary ID `IDN-ADM2-22746128`, merepresentasikan snapshot 2020. File sederhana dipakai untuk startup normal; file detail lokal hanya dimuat saat pengguna memilih ekspor detail.</p>
+
+    <h2>2. Matching metadata</h2>
+    <p>HDX tabular ADM2 dipakai untuk enrichment ketika nama ADM2 yang dinormalisasi cocok secara unik. Hasil Batch 1 mencatat 466 match unik dan 53 baris ambigu. Baris ambigu tetap bisa diwarnai, tetapi tidak diberi kode/nama/provinsi resmi secara paksa.</p>
+
+    <h2>3. Registry dan stable ID</h2>
+    <p>`canonical-provinces-v1.csv` menyimpan 38 provinsi saat ini. `canonical-regions-v1.csv` menyimpan 519 baris canonical region berbasis geometri. `crosswalk-region-ids-v1.csv` menjaga kompatibilitas proyek lama.</p>
+
+    <h2>4. Penyederhanaan peta</h2>
+    <p>Geometri startup disederhanakan dari file detail dengan Douglas-Peucker per ring pada toleransi `0.018` derajat. Ring kecil dipertahankan sejauh praktis; test mencakup beberapa fixture pulau kecil.</p>
+
+    <h2>5. Reproducibility dan lisensi</h2>
+    <p>Pipeline offline memvalidasi source inventory, license manifest, checksum, diff data, dan reproduksi dua kali. Hasil terakhir: 10 artifact comparable direproduksi identik dengan hash `a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8`.</p>
+
+    <section class="note soft">
+      <h2>Review topology</h2>
+      <p>Batch 1 tidak mengklaim validasi topology legal-grade untuk overlap/gap. Validasi mendalam dengan native GIS tetap menjadi review gate sebelum penggantian boundary.</p>
+    </section>
+
+    <div class="button-row">
+      <a class="button" href="../guides/mengapa-jumlah-wilayah-peta-berbeda/">Mengapa jumlah wilayah berbeda?</a>
+      <a class="button secondary" href="../contact/#laporkan-data">Laporkan kesalahan data</a>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="site-inner">
+      <p class="meta"><a href="../sources-licenses/">Sumber & Lisensi</a> - <a href="../limitations/">Batasan</a> - <a href="../">Map Studio</a></p>
+    </div>
+  </footer>
+</body>
+</html>

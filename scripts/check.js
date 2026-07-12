@@ -10,7 +10,10 @@ const commands = [
   ["test:data"],
   ["test:unit"],
   ["test:e2e:smoke"],
+  ["test:e2e:trust"],
   ["test:a11y"],
+  ["test:content"],
+  ["test:security"],
   ["measure"],
   ["test:performance"]
 ];

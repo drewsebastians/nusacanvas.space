@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "secrets scan",
+    "runtime external request inventory",
+    "CSP/security headers",
+    "project JSON parsing limits",
+    "CSV formula-injection protections",
+    "download object URL cleanup",
+    "Cloudflare-only documentation scan",
+    "dependency license manifest audit"
+  ],
+  "failures": []
+}

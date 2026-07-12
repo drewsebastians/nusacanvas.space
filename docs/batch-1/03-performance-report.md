@@ -12,10 +12,10 @@ Normal startup now loads only the simplified production geometry. The detailed g
 |---|---:|---:|
 | Startup geometry files | simplified + detailed | simplified only |
 | Startup boundary external fallback | geoBoundaries `/current/` present in runtime code | removed |
-| Initial compressed transfer estimate | 3,587,970 bytes | 588,014 bytes |
+| Initial compressed transfer estimate | 3,587,970 bytes | 590,827 bytes |
 | Simplified geometry gzip | 518,479 bytes | 518,479 bytes |
 | Detailed geometry gzip | 2,999,956 bytes at startup | 2,999,956 bytes on demand only |
-| Shell JavaScript gzip | about 60 KB | 61,496 bytes |
+| Shell JavaScript gzip | about 60 KB | 63,795 bytes |
 | Initial required request count | about 11 | 10 |
 | Forbidden startup URL budget | not enforced | enforced by `npm run test:performance` |
 
@@ -60,11 +60,10 @@ The staging `_headers` file keeps noindex safeguards and uses conservative cache
 - HTML and deployment control files revalidate with `no-cache`;
 - local app assets use short browser caching;
 - unversioned GeoJSON uses one-day caching, not year-long immutable caching;
-- no Content Security Policy is added yet because Prompt 2 deferred CSP until boundary fallback work was complete.
+- Content Security Policy now allows same-origin runtime assets and blocks object/base/form/frame entry points.
 
 ## Residual Risks
 
 - The detailed GeoJSON is still large and can be expensive on low-memory browsers when users opt into high-detail export.
 - Label thresholds are deterministic lab defaults; real low-end phones still need manual device testing.
-- Cloudflare live verification remains blocked until valid Cloudflare credentials are available and the target deployment includes the required noindex headers.
-
+- Cloudflare live verification remains blocked until an authorized deployment updates the active staging target with the required noindex and CSP headers.

@@ -7,7 +7,7 @@ Peta Warna Wilayah Indonesia is a static browser application.
 - The app does not create accounts, upload imported data, use analytics, or send imported CSV/project content to a server.
 - Autosave uses browser `localStorage` on the same device and browser profile.
 - Autosave may disappear if browser data is cleared.
-- GitHub Pages may retain ordinary hosting access logs outside this application's control.
+- Cloudflare may retain ordinary hosting access logs outside this application's control.
 - Users must not commit confidential company data, customer data, employee data, or real sales data to the public repository.
 
 Security review notes:

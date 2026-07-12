@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Sumber dan Lisensi</title>
+  <link rel="stylesheet" href="../assets/css/content.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-inner site-nav" aria-label="Navigasi utama">
+      <a class="brand" href="../">Mapnesia</a>
+      <a href="../about/">Tentang</a>
+      <a href="../sources-licenses/">Sumber & Lisensi</a>
+      <a href="../data-methodology/">Metodologi Data</a>
+      <a href="../limitations/">Batasan</a>
+      <a href="../contact/">Kontak</a>
+    </nav>
+  </header>
+  <main>
+    <p class="eyebrow">Terakhir ditinjau: 2026-07-12</p>
+    <h1>Sumber dan lisensi</h1>
+    <p class="lead">Halaman ini merangkum sumber yang digunakan aplikasi. Catatan lengkap tersimpan di `ATTRIBUTION.md`, `data/README.md`, `data/sources/source-inventory-v1.json`, dan `data/license-manifest-v1.json`.</p>
+
+    <section class="card">
+      <h2>Geometri peta</h2>
+      <p>Geometri produksi memakai geoBoundaries Indonesia ADM2 dari lineage HDX/OCHA COD-AB Indonesia. Snapshot yang dipakai merepresentasikan tahun 2020 dengan boundary ID `IDN-ADM2-22746128` dan 519 fitur geometri.</p>
+      <p>Lisensi yang tercatat di metadata sumber: CC BY 3.0 IGO / CC BY-IGO. Atribusi wajib dipertahankan pada aplikasi dan ekspor.</p>
+    </section>
+
+    <section class="card">
+      <h2>Metadata administrasi</h2>
+      <p>Registry v1 memisahkan metadata saat ini dari geometri 2020. Registry merujuk Kepmendagri 300.2.2-2138/2025 dan perubahan 300.2.2-2430/2025, tetapi tidak mendistribusikan lampiran resmi. Field kode resmi yang belum punya bukti baris tetap dikosongkan.</p>
+    </section>
+
+    <section class="card">
+      <h2>Library dan aset</h2>
+      <p>Leaflet 1.9.4 disertakan lokal untuk rendering peta dan berlisensi BSD 2-Clause. Package pengujian seperti Playwright, axe-core, dan Wrangler tercatat sebagai dependency pengembangan dan tidak ikut dikirim sebagai bundle runtime aplikasi.</p>
+    </section>
+
+    <section class="note soft">
+      <h2>Audit lisensi</h2>
+      <p>Production source/license gate terakhir lulus dengan 6 source records, 17 license assets, dan 9 file produksi pihak ketiga yang tercakup. Publikasi sebuah file di internet tidak dianggap cukup sebagai izin komersial atau redistribusi.</p>
+    </section>
+
+    <div class="button-row">
+      <a class="button" href="../contact/#laporkan-data">Laporkan kesalahan data</a>
+      <a class="button secondary" href="../data-methodology/">Baca metodologi data</a>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="site-inner">
+      <p class="meta"><a href="../">Map Studio</a> - <a href="../limitations/">Batasan</a> - <a href="../privacy/">Privasi</a></p>
+    </div>
+  </footer>
+</body>
+</html>

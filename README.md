@@ -15,6 +15,7 @@ Target staging URL: `https://mapnesia.andrew-sebastian91.workers.dev` (Cloudflar
 - Live legend for highlighted kabupaten/kota regions.
 - Always-visible kabupaten/kota names on the map.
 - SVG and PNG export for the whole map or the current zoomed map view.
+- Lightweight trust pages for sources, methodology, limitations, privacy, terms, changelog, and data-error reports.
 - No backend, database, accounts, analytics, external map tiles, or API keys.
 
 ## Screenshot
@@ -72,6 +73,18 @@ Production geometry is based on geoBoundaries Indonesia ADM2 using the HDX/OCHA 
 
 See `ATTRIBUTION.md`, `data/README.md`, and `docs/boundary-source-research.md`.
 
+Trust pages:
+
+- `/about/`
+- `/contact/`
+- `/privacy/`
+- `/terms/`
+- `/sources-licenses/`
+- `/data-methodology/`
+- `/limitations/`
+- `/changelog/`
+- `/guides/mengapa-jumlah-wilayah-peta-berbeda/`
+
 ## Privacy
 
 Imported CSV and project files stay in the browser. The app does not upload user data or use analytics. See `PRIVACY.md`.
@@ -117,7 +130,7 @@ The staging target is Cloudflare Workers Static Assets at `https://mapnesia.andr
 Run the complete non-deployment local gate:
 
 ```text
-npm run check
+npm run verify:batch1
 ```
 
 Individual checks:
@@ -126,7 +139,10 @@ Individual checks:
 npm run test:data
 npm run test:unit
 npm run test:e2e:smoke
+npm run test:e2e:trust
 npm run test:a11y
+npm run test:content
+npm run test:security
 npm run measure
 ```
 

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Changelog</title>
+  <link rel="stylesheet" href="../assets/css/content.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-inner site-nav" aria-label="Navigasi utama">
+      <a class="brand" href="../">Mapnesia</a>
+      <a href="../about/">Tentang</a>
+      <a href="../sources-licenses/">Sumber & Lisensi</a>
+      <a href="../data-methodology/">Metodologi Data</a>
+      <a href="../limitations/">Batasan</a>
+      <a href="../contact/">Kontak</a>
+    </nav>
+  </header>
+  <main>
+    <p class="eyebrow">Terakhir ditinjau: 2026-07-12</p>
+    <h1>Changelog</h1>
+    <p class="lead">Ringkasan perubahan penting untuk staging Batch 1.</p>
+
+    <h2>Batch 1</h2>
+    <ul>
+      <li>Build statis allowlisted dan workflow CI dasar.</li>
+      <li>Migrasi staging ke Cloudflare Workers Static Assets dengan aturan noindex.</li>
+      <li>Startup lebih ringan: geometri detail tidak dimuat otomatis.</li>
+      <li>Export SVG/PNG, fallback PNG, dan performance budget otomatis.</li>
+      <li>Registry canonical v1: 38 provinsi, 519 canonical region rows, 53 metadata ambigu eksplisit.</li>
+      <li>Project schema 1.1 dengan migration report dan perlindungan prototype-pollution.</li>
+      <li>Pipeline data deterministik, source inventory, license manifest, diff report, dan reproducibility check.</li>
+      <li>Halaman trust: about, contact, privacy, terms, sources/licenses, methodology, limitations, changelog, dan guide jumlah wilayah.</li>
+    </ul>
+
+    <h2>Yang belum dirilis</h2>
+    <p>Custom domain, indexing, analytics, AdSense, akun pengguna, backend, dan fitur Batch 2 belum diaktifkan.</p>
+
+    <div class="button-row">
+      <a class="button" href="../">Buka Map Studio</a>
+      <a class="button secondary" href="../limitations/">Baca batasan</a>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="site-inner">
+      <p class="meta">Catatan teknis lengkap tetap ada di `CHANGELOG.md` dan `docs/batch-1/`.</p>
+    </div>
+  </footer>
+</body>
+</html>
