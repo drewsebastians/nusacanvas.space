@@ -1,10 +1,10 @@
 # Batch 1 Prompt 6 - Completion Report
 
-Date: 2026-07-12
+Date: 2026-07-12; deployment blocker rechecked 2026-07-13
 
 Overall Batch 1 status: `BLOCKED`
 
-Reason: all local release gates passed, but the required live Cloudflare deployment could not be performed in this run because the deployment action was blocked by approval policy. The currently active staging URL still fails the required noindex/header verification. Do not tag or mark Batch 1 complete until an authorized Cloudflare deployment passes live verification.
+Reason: all local release gates passed, but the required live Cloudflare deployment could not be performed from Codex. On 2026-07-13 the owner explicitly approved publishing the Batch 1 build to Cloudflare Workers staging, but the execution policy still rejected the deployment as an external export from the local workspace. The currently active staging URL still fails the required noindex/header verification. Do not tag or mark Batch 1 complete until a manual/out-of-Codex Cloudflare deployment passes live verification.
 
 ## Exit gates
 
@@ -29,7 +29,7 @@ Reason: all local release gates passed, but the required live Cloudflare deploym
 | Report-error path | PASS WITH DOCUMENTED LIMITATION | Copy/download template works and does not submit data. External submission destination remains blocked until owner approves a public contact channel. |
 | Security/privacy hardening | PASS | CSP, noindex, `nosniff`, referrer policy, permissions policy, frame/object/base/form restrictions, CSV formula escaping, JSON limits, object URL cleanup, forbidden runtime network scan, dependency license audit, and secrets scan passed locally. |
 | Forbidden external boundary request | PASS | Static/runtime scan passed; smoke startup network check found no geoBoundaries/HDX/current endpoint request. |
-| Cloudflare deployment | BLOCKED | Deployment attempt was rejected by approval policy before execution. No deploy was performed. |
+| Cloudflare deployment | BLOCKED | Deployment attempts were rejected by execution policy before publishing, including after explicit owner approval on 2026-07-13. No deploy was performed by Codex. |
 | Cloudflare noindex/live verification | BLOCKED | Read-only `verify-staging` against `https://mapnesia.andrew-sebastian91.workers.dev` failed: `/` is missing `X-Robots-Tag: noindex, nofollow, noarchive`. |
 | Unknown route 404 live verification | BLOCKED | Live verifier stops at missing header before completing the expanded path matrix; rerun after deployment. |
 | GitHub Pages disabled | PASS | `gh api repos/drewsebastians/Indonesian-map-tools/pages` returned HTTP 404. |
@@ -57,13 +57,13 @@ Included steps:
 
 - Target Worker: `mapnesia`
 - Target URL: `https://mapnesia.andrew-sebastian91.workers.dev`
-- Deploy status: `BLOCKED`
+- Deploy status: `BLOCKED - must be performed manually or outside this Codex execution policy`
 - Live verification status: `BLOCKED`
 - Release/tag: not created because required live deployment and live verification are blocked.
 
 ## Owner blockers
 
-1. Authorize and perform Cloudflare deployment for the committed build.
+1. Perform Cloudflare deployment for the committed build manually or from an environment where publishing to Cloudflare is allowed.
 2. Rerun `npm run verify:staging` and live Playwright smoke against `https://mapnesia.andrew-sebastian91.workers.dev`.
 3. Approve one public contact destination before marking the no-account data-reporting channel fully complete.
 
