@@ -4,7 +4,7 @@
   const REGISTRY_VERSION = "IDN-ADM-REGISTRY-v1-2025-06-23";
   const DETAILED_GEOMETRY = {
     url: "./data/indonesia-adm2-detailed.geojson",
-    sha256: "5a5cc09736dea030b30536cec6958c8f9aaad4b61f71b1c45500db95bcc360e8"
+    sha256: "146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c"
   };
   const quickColors = ["#4472C4", "#E74C3C", "#70AD47", "#FFC000", "#5B9BD5", "#A64D79", "#00A388", "#7F6000"];
   const state = {

@@ -3,8 +3,8 @@
   "status": "passed",
   "tempRoot": "temporary",
   "comparedOutputCount": 10,
-  "runAHash": "a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8",
-  "runBHash": "a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8",
+  "runAHash": "215deb9d81f1ddfe40656dd2191d9ad872646863844971084b756167a4baac61",
+  "runBHash": "215deb9d81f1ddfe40656dd2191d9ad872646863844971084b756167a4baac61",
   "mismatches": [],
   "trackedMismatches": []
 }

@@ -37,7 +37,7 @@
   },
   "fileHashesSha256": {
     "data/indonesia-adm2-simplified.geojson": "6d735512fb7cab04ac7ca6048aa41437eba4f53595b83d8da4f25c198ba01f91",
-    "data/indonesia-adm2-detailed.geojson": "5a5cc09736dea030b30536cec6958c8f9aaad4b61f71b1c45500db95bcc360e8",
+    "data/indonesia-adm2-detailed.geojson": "146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c",
     "data/indonesia-adm2-registry.csv": "db269ffe8bd12ba2c337fefd7812d9e4c9059e61bb5339a2697a78836c6ca116",
     "data/canonical-provinces-v1.csv": "d0b8c535fb52dd14ab1bce61f2f8d2ff01f955cbd4fe773edf4a134c0fab78f6",
     "data/canonical-regions-v1.csv": "fa96c08734f0eee7a77cb57d5af66271aedcf760db078b7e629c786bcf9156e6",
