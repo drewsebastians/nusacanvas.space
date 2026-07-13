@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "batch2.closure.v1",
+  "status": "ready_for_staging",
+  "date": "2026-07-13",
+  "releaseScope": "Batch 2 spreadsheet-to-map release candidate",
+  "openP0": 0,
+  "openP1": 0,
+  "batch3Started": false,
+  "firstUserFlow": {
+    "artifact": "artifacts/batch-1/first-user-flow.json",
+    "dataset": "synthetic-three-column",
+    "firstValidPreviewMs": 1048,
+    "firstValidMapMs": 2466,
+    "firstExportMs": 2740,
+    "blockingErrors": 0,
+    "humanComprehensionVerified": false
+  },
+  "gates": {
+    "build": "passed",
+    "dataPipeline": "passed",
+    "unitIntegration": "passed_31",
+    "chromiumDesktopSmoke": "passed_13",
+    "crossBrowserCoreSmoke": "passed_chromium_desktop_mobile_firefox_webkit",
+    "trustContent": "passed_17_pages",
+    "accessibility": "passed_2",
+    "performance": "passed",
+    "securityPrivacy": "passed_8",
+    "sourceLicense": "passed_6_sources_18_assets"
+  },
+  "performance": {
+    "initialGzipBytes": 611533,
+    "simplifiedGeometryGzipBytes": 518479,
+    "shellJavascriptGzipBytes": 81974,
+    "importBenchmark": "artifacts/batch-2/import-core-benchmark.json"
+  },
+  "manualFollowUp": "Run docs/batch-2/08-first-user-manual-protocol.md before production/domain rollout.",
+  "deployment": {
+    "target": "Cloudflare Workers staging only",
+    "status": "pending"
+  }
+}

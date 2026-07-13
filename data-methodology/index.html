@@ -38,6 +38,12 @@
     <h2>5. Reproducibility dan lisensi</h2>
     <p>Pipeline offline memvalidasi source inventory, license manifest, checksum, diff data, dan reproduksi dua kali. Hasil terakhir: 10 artifact comparable direproduksi identik dengan hash `a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8`.</p>
 
+    <h2>6. Data spreadsheet dan matching</h2>
+    <p>Paste, CSV, TSV, dan XLSX memasuki kontrak tabular yang sama. Kode wilayah yang terverifikasi diprioritaskan, lalu kombinasi nama dan provinsi. Nama ambigu, tidak cocok, duplikat, diabaikan, kosong, dan invalid tetap dicatat sebagai status berbeda; tidak ada kecocokan yang dipilih secara diam-diam.</p>
+
+    <h2>7. Visualisasi dan ekspor</h2>
+    <p>Kategori, interval sama, kuantil, batas manual, dan divergen dihitung deterministik dari baris yang cocok dan valid. Nilai kosong bukan nol. Legenda yang sama dipakai peta dan ekspor. SVG, PNG, PDF raster, serta mapping CSV dibuat lokal di browser dengan atribusi boundary wajib.</p>
+
     <section class="note soft">
       <h2>Review topology</h2>
       <p>Batch 1 tidak mengklaim validasi topology legal-grade untuk overlap/gap. Validasi mendalam dengan native GIS tetap menjadi review gate sebelum penggantian boundary.</p>

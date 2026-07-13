@@ -10,7 +10,7 @@ Peta Warna Wilayah Indonesia is a static Cloudflare Workers Static Assets applic
 - Local JavaScript in `assets/js/`
 - Local Leaflet 1.9.4 in `assets/vendor/leaflet/`
 - Local GeoJSON data in `data/`
-- Static trust pages under `/about/`, `/contact/`, `/privacy/`, `/terms/`, `/sources-licenses/`, `/data-methodology/`, `/limitations/`, `/changelog/`, and `/guides/mengapa-jumlah-wilayah-peta-berbeda/`
+- Static trust and preview pages under `/about/`, `/contact/`, `/privacy/`, `/terms/`, `/sources-licenses/`, `/data-methodology/`, `/limitations/`, `/changelog/`, `/excel-to-map/`, and `/guides/`
 
 No backend, database, API key, external tiles, analytics, or CDN dependency is required at runtime.
 
@@ -18,9 +18,11 @@ No backend, database, API key, external tiles, analytics, or CDN dependency is r
 
 - `app.js`: UI state, events, region selection, highlighting, import workflow, save/load, export actions.
 - `map.js`: Leaflet map rendering and interaction.
-- `csv-import.js`: CSV parsing, validation, matching, formula-injection-safe error reports.
-- `project-storage.js`: project schema, JSON validation, local autosave.
-- `export.js`: SVG and PNG export generation.
+- `import-core.js`, `csv-import.js`, and `xlsx-import.js`: one local spreadsheet pipeline with parsing limits and guards.
+- `matching-engine.js`: lazy deterministic canonical matching and correction rules.
+- `visualization-engine.js`: lazy local palette registry and deterministic classification.
+- `project-storage.js`: project schema, JSON validation, local autosave, visualization, manual colors, and export metadata.
+- `export.js`: shared export specification for SVG, PNG, raster PDF, and mapping CSV.
 - `report-template.js`: data-error report copy/download helper used only on `/contact/`.
 
 ## Registry and project versioning
@@ -40,8 +42,9 @@ This avoids destructive geometry renaming while giving saved projects a forward 
 2. Leaflet renders polygons without a basemap.
 3. Runtime labels are tiered: selected and highlighted labels are prioritized, while general labels appear only above the configured zoom threshold.
 4. User selections are stored by stable `region_id`.
-5. CSV and project files are processed locally by File APIs.
-6. SVG/PNG export is generated in-browser.
+5. Paste/CSV/TSV/XLSX and project files are processed locally by File APIs.
+6. Matching decisions, visualization specification, and export metadata stay in browser state/project JSON.
+7. SVG/PNG/PDF/mapping CSV export is generated in-browser; PDF is currently raster.
 7. If the user explicitly selects high-detail export, the browser fetches the pinned local `data/indonesia-adm2-detailed.geojson` file, verifies its checksum, and uses it only for that export. The on-screen map remains on the simplified snapshot.
 
 All paths are relative so the app works from the Cloudflare Workers staging host and future custom domain.

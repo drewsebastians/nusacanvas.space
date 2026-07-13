@@ -13,7 +13,15 @@ const requiredPages = [
   "data-methodology/index.html",
   "limitations/index.html",
   "changelog/index.html",
-  "guides/mengapa-jumlah-wilayah-peta-berbeda/index.html"
+  "guides/mengapa-jumlah-wilayah-peta-berbeda/index.html",
+  "guides/cara-membuat-peta-kabupaten-kota-dari-excel/index.html",
+  "guides/memperbaiki-nama-wilayah/index.html",
+  "guides/csv-vs-xlsx-untuk-data-peta/index.html",
+  "guides/equal-interval-vs-quantile/index.html",
+  "guides/legenda-peta-tidak-menyesatkan/index.html",
+  "guides/ekspor-peta-ke-powerpoint/index.html",
+  "guides/contoh-peta-nilai-kota/index.html",
+  "excel-to-map/index.html"
 ];
 
 const forbiddenContentPageAssets = [

@@ -9,6 +9,10 @@
 - Small islands are preserved in the GeoJSON where present, but clickability depends on browser zoom and screen size.
 - SVG/PNG export uses a browser-side projection intended for presentation maps, not survey or legal mapping.
 - Very large PNG exports may warn or fall back to 1920 x 1080 on memory-constrained browsers.
+- PDF export is currently a locally generated raster PDF; text is not selectable and very large layouts can use substantial browser memory.
+- Spreadsheet rows that target the same region are never aggregated automatically; users must resolve or ignore duplicate targets before visualizing.
+- Browser-side XLSX safeguards reduce parser exposure but are not a malware scanner or a guarantee that every malformed office document is harmless.
+- Batch 2 project state is stored in downloadable JSON and localStorage. Very large projects may exceed browser storage; IndexedDB is deferred.
 - High-detail export is opt-in and loads an additional local file of about 10.5 MB only after user confirmation.
 - General map labels are intentionally tiered for performance; selected and highlighted labels remain prioritized, and all-label export remains available.
 - Offline/PWA support is deferred; the app is currently an online static Cloudflare Workers app.

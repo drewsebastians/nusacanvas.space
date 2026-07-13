@@ -38,12 +38,15 @@
       </section>
       <section class="card">
         <h2>Ekspor visual</h2>
-        <p>SVG/PNG memakai proyeksi browser untuk visualisasi, bukan pengukuran presisi atau penetapan batas.</p>
+        <p>SVG/PNG memakai proyeksi browser untuk visualisasi, bukan pengukuran presisi atau penetapan batas. PDF saat ini adalah raster, bukan PDF vektor dengan teks selectable.</p>
       </section>
     </div>
 
     <h2>Batasan performa</h2>
     <p>Startup normal memakai geometri sederhana agar ringan. Ekspor detail memuat file lokal sekitar 10,5 MB hanya setelah dipilih pengguna dan dapat menggunakan memori lebih besar.</p>
+
+    <h2>Batasan spreadsheet</h2>
+    <p>Mapnesia tidak menggabungkan beberapa baris sumber ke satu wilayah secara otomatis. Baris duplikat harus diselesaikan atau diabaikan pengguna. Guard XLSX membantu membatasi parsing browser, tetapi bukan pemindai malware. Project besar dapat melebihi localStorage; penyimpanan IndexedDB belum tersedia.</p>
 
     <h2>Batasan hukum dan lisensi</h2>
     <p>Atribusi sumber data harus dipertahankan. Teks privacy/terms pada staging adalah draft operasional dan tidak menggantikan nasihat hukum profesional.</p>

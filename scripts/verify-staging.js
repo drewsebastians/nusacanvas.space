@@ -11,6 +11,8 @@ const requiredPaths = [
   "/data/indonesia-adm2-simplified.geojson",
   "/data/indonesia-adm2-detailed.geojson",
   "/sample/sample-region-colors.csv",
+  "/sample/contoh-nilai-kota.csv",
+  "/sample/contoh-nilai-kota.tsv",
   "/about/",
   "/contact/",
   "/privacy/",
@@ -19,7 +21,15 @@ const requiredPaths = [
   "/data-methodology/",
   "/limitations/",
   "/changelog/",
-  "/guides/mengapa-jumlah-wilayah-peta-berbeda/"
+  "/guides/mengapa-jumlah-wilayah-peta-berbeda/",
+  "/excel-to-map/",
+  "/guides/cara-membuat-peta-kabupaten-kota-dari-excel/",
+  "/guides/memperbaiki-nama-wilayah/",
+  "/guides/csv-vs-xlsx-untuk-data-peta/",
+  "/guides/equal-interval-vs-quantile/",
+  "/guides/legenda-peta-tidak-menyesatkan/",
+  "/guides/ekspor-peta-ke-powerpoint/",
+  "/guides/contoh-peta-nilai-kota/"
 ];
 
 async function get(path) {

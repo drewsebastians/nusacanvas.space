@@ -1,161 +1,63 @@
-# Peta Warna Wilayah Indonesia
+# Mapnesia — Peta Warna Wilayah Indonesia
 
-Peta Warna Wilayah Indonesia is a static browser app for coloring Indonesia kabupaten/kota regions for reports, presentations, and planning notes. It is designed for non-GIS users: select a region, choose a color, review highlights, then export the map.
+Mapnesia adalah aplikasi statis, local-first, untuk mengubah spreadsheet menjadi visual peta kabupaten/kota Indonesia. Produk ini ditujukan bagi pengguna non-GIS: masukkan data, periksa kecocokan wilayah, pilih visualisasi yang dapat dijelaskan, tinjau tabel/peta/legenda, lalu ekspor.
 
-Target staging URL: `https://mapnesia.andrew-sebastian91.workers.dev` (Cloudflare Workers; must remain noindex before migration is considered complete).
+Staging: `https://mapnesia.andrew-sebastian91.workers.dev`. Target workers.dev ini sengaja `noindex`; ini bukan domain produksi atau situs yang diindeks.
 
-## Features
+## Fitur Batch 2
 
-- Indonesia ADM2 map with 519 kabupaten/kota-level polygons.
-- Search, province filter, dropdown selection, and click selection.
-- Multiple region colors with remove, undo, and reset.
-- Highlighted-region review list.
-- CSV import processed only in the browser.
-- Project JSON save/open with optional browser autosave.
-- Live legend for highlighted kabupaten/kota regions.
-- Always-visible kabupaten/kota names on the map.
-- SVG and PNG export for the whole map or the current zoomed map view.
-- Lightweight trust pages for sources, methodology, limitations, privacy, terms, changelog, and data-error reports.
-- No backend, database, accounts, analytics, external map tiles, or API keys.
+- Paste, CSV, TSV, dan XLSX lokal melalui satu pipeline import.
+- Pemetaan kolom, normalisasi angka Indonesia/internasional, dan batas input browser-side.
+- Matching canonical deterministik; nama ambigu, tidak cocok, duplikat, dan baris diabaikan tetap eksplisit.
+- Resolve/ignore lokal untuk baris ambigu tanpa mengunggah data.
+- Workflow Input → Match → Visualize → Export dan tabel data yang terhubung dengan peta.
+- Kategori, interval sama, kuantil, batas manual, dan divergen berpusat; no-data tidak diperlakukan sebagai nol.
+- SVG, PNG, PDF raster A4/A3, serta mapping CSV dengan atribusi wajib.
+- Project JSON dan autosave lokal untuk warna manual, hasil import, visualisasi, koreksi, dan metadata ekspor.
 
-## Screenshot
+Tidak ada backend, akun, analytics, external map tiles, runtime AI, atau CDN runtime.
 
-Screenshot capture should be added after running the app locally or on the Cloudflare staging URL:
+## Cara pakai
 
-```text
-docs/screenshots/app.png
-```
+1. Buka studio dan pilih **Coba contoh lokal**, paste tabel, atau pilih file.
+2. Tekan **Pratinjau Import** dan pastikan pemetaan kolom benar.
+3. Selesaikan nama ambigu atau tambahkan provinsi/kode wilayah.
+4. Terapkan baris valid, pilih visualisasi, dan periksa peta, tabel, serta legenda.
+5. Isi judul, sumber, periode, dan catatan bila perlu.
+6. Ekspor SVG, PNG, PDF, atau mapping CSV.
 
-## How to use
+Contoh sintetis tersedia sebagai [CSV](./sample/contoh-nilai-kota.csv) dan [TSV](./sample/contoh-nilai-kota.tsv). Lihat juga halaman preview [Excel to Map](./excel-to-map/) dan panduan di `guides/`.
 
-1. Open the app.
-2. Search or choose a province and kabupaten/kota.
-3. Choose a color.
-4. Select **Terapkan Warna**.
-5. Repeat for other regions.
-6. Review **Wilayah Disorot**.
-7. Export SVG or PNG.
+## Format spreadsheet dan keamanan
 
-## CSV format
+Header tidak dikunci. Mapper mengenali kolom wilayah, provinsi, kode, nilai, kategori, sumber, dan periode. Kode resmi diprioritaskan, kemudian nama+provinsi; nama yang ambigu tidak diterapkan otomatis.
 
-Use `sample/sample-region-colors.csv` as a starting point.
+XLSX diproses lokal setelah pemeriksaan struktur ZIP. Workbook bermakro, objek tertanam, external link, encryption marker, dan format yang tidak didukung ditolak. Safeguard ini menjaga pemrosesan browser, bukan klaim perlindungan malware atau pemeriksaan forensik dokumen.
 
-Required headers:
+## Ekspor dan privasi
 
-```csv
-Official_Code,Province,Region_Name,Color,Value,Category
-```
+SVG paling sesuai untuk PowerPoint/editing; PNG untuk gambar siap pakai; PDF A4/A3 memakai raster lokal; mapping CSV memuat status kecocokan dan meng-escape awalan formula. Cakupan **Seluruh Indonesia** dan **Tampilan peta saat ini** dipilih secara eksplisit.
 
-Matching priority:
+Data import dan project diproses di browser. Tidak ada unggahan data pengguna atau analytics. Cloudflare dapat memiliki log akses hosting biasa di luar kontrol aplikasi. Baca [PRIVACY.md](./PRIVACY.md) dan [docs arsitektur](./docs/architecture.md).
 
-1. `Official_Code`
-2. `Province` + `Region_Name`
+## Data dan keterbatasan
 
-Ambiguous names are not applied automatically. Use official codes where possible.
+Geometri produksi mengikuti lineage geoBoundaries/HDX OCHA COD-AB ADM2 tahun 2020 dengan 519 fitur. Ini adalah referensi visual, bukan penetapan batas hukum atau klaim struktur administrasi terbaru. Atribusi wajib dipertahankan.
 
-## Project save and load
+Lihat [ATTRIBUTION.md](./ATTRIBUTION.md), `data/license-manifest-v1.json`, dan [known limitations](./docs/known-limitations.md). PDF saat ini raster, agregasi beberapa baris untuk satu wilayah tidak dilakukan otomatis, dan project besar dibatasi penyimpanan browser.
 
-Use **Simpan Proyek** to download a JSON project file. Use **Buka Proyek** to reopen it. Autosave is browser-specific and may disappear if browser data is cleared.
+## Pengembangan dan quality gate
 
-## Export
-
-SVG export is best for PowerPoint and editing. PNG export supports 1920 x 1080, 2560 x 1440, and 3840 x 2160. Choose **Tampilan peta saat ini** in the export ratio menu to export only the area currently visible on the map while keeping the highlighted-region legend.
-
-## Data source
-
-Production geometry is based on geoBoundaries Indonesia ADM2 using the HDX/OCHA COD-AB Indonesia lineage.
-
-- Boundary year represented: 2020
-- Feature count: 519
-- License reported by source metadata: CC BY-IGO / CC BY 3.0 IGO
-- Unique metadata matches: 466
-- Ambiguous same-name geometry features: 53
-
-See `ATTRIBUTION.md`, `data/README.md`, and `docs/boundary-source-research.md`.
-
-Trust pages:
-
-- `/about/`
-- `/contact/`
-- `/privacy/`
-- `/terms/`
-- `/sources-licenses/`
-- `/data-methodology/`
-- `/limitations/`
-- `/changelog/`
-- `/guides/mengapa-jumlah-wilayah-peta-berbeda/`
-
-## Privacy
-
-Imported CSV and project files stay in the browser. The app does not upload user data or use analytics. See `PRIVACY.md`.
-
-## Known limitations
-
-The boundary data is for visual reference and is not a legal boundary determination. It uses a 2020 source lineage and does not fully represent the latest 38-province administrative structure. See `docs/known-limitations.md`.
-
-## Local development
-
-Use Node.js 24.x and npm, then install dependencies:
+Gunakan Node.js 24.x.
 
 ```text
 npm ci
-```
-
-Serve the Cloudflare Workers static-assets build locally:
-
-```text
-npm run dev
-```
-
-Then open:
-
-```text
-Wrangler will print the local preview URL.
-```
-
-Create the deployable static build:
-
-```text
 npm run build
-```
-
-The build copies only allowlisted production files into `dist/`.
-
-## Cloudflare Workers deployment
-
-The staging target is Cloudflare Workers Static Assets at `https://mapnesia.andrew-sebastian91.workers.dev`. See `docs/deployment-guide.md`.
-
-## Testing
-
-Run the complete non-deployment local gate:
-
-```text
 npm run verify:batch1
 ```
 
-Individual checks:
+`npm run build` hanya menyalin aset produksi yang diizinkan ke `dist/`. Lihat `docs/development.md`, `docs/deployment-guide.md`, dan laporan `docs/batch-2/` untuk detail pengujian dan staging.
 
-```text
-npm run test:data
-npm run test:unit
-npm run test:e2e:smoke
-npm run test:e2e:trust
-npm run test:a11y
-npm run test:content
-npm run test:security
-npm run measure
-```
+## Lisensi
 
-Batch 1 baseline evidence is generated in `artifacts/batch-1/` and summarized in `docs/batch-1/01-baseline-audit.md`. See `docs/development.md` for command details.
-
-## License
-
-Application code is MIT licensed. Third-party boundary data remains under its source license. Leaflet is BSD 2-Clause licensed.
-
-## Contributing
-
-Keep the app static, privacy-preserving, and friendly for non-GIS users. Do not commit confidential data or unlicensed geographic datasets.
-
-## Updating boundary data
-
-See `docs/update-boundary-data.md` for the repeatable update process.
+Kode aplikasi berlisensi MIT. Data batas dan library pihak ketiga tetap tunduk pada lisensi serta atribusi sumber masing-masing.

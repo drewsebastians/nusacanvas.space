@@ -425,6 +425,21 @@ test("deterministic visualization preview applies a shared legend", async ({ pag
   await expect(page.locator("#dataTable tbody tr").first()).toContainText(/exact|siap/i);
 });
 
+test("numeric visualization returns blank values to the no-data map state", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#loadingIndicator")).toContainText(/wilayah dimuat/i, { timeout: 60000 });
+  await page.locator("#importPaste").fill("wilayah\tprovinsi\tnilai\nKota Surabaya\tJawa Timur\t125\nKota Denpasar\tBali\t\n");
+  await page.locator("#previewCsvBtn").click();
+  await expect(page.locator("#applyCsvBtn")).toBeEnabled();
+  await page.locator("#applyCsvBtn").click();
+  await expect(page.locator("#highlightCount")).toHaveText("2");
+  await page.locator("#vizMode").selectOption("equal-interval");
+  await page.locator("#vizPreviewBtn").click();
+  await page.locator("#vizApplyBtn").click();
+  await expect(page.locator("#highlightCount")).toHaveText("1");
+  await expect(page.locator("#map .map-legend")).toContainText(/Tidak ada data/i);
+});
+
 test("professional export writes PDF and mapping CSV with safe metadata", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("#loadingIndicator")).toContainText(/wilayah dimuat/i, { timeout: 60000 });
@@ -450,4 +465,37 @@ test("professional export writes PDF and mapping CSV with safe metadata", async 
   const pdfBytes = fs.readFileSync(await pdf.path());
   expect(pdfBytes.subarray(0, 8).toString()).toBe("%PDF-1.4");
   expect(pdfBytes.toString("latin1")).toContain("IDN-ADM2-2020");
+});
+
+test("assisted first-user flow reaches a valid export within five minutes", async ({ page }) => {
+  fs.mkdirSync(artifactDir, { recursive: true });
+  const started = Date.now();
+  const marks = {};
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto("/");
+  await expect(page.locator("#loadingIndicator")).toContainText(/wilayah dimuat/i, { timeout: 60000 });
+  await page.locator("#importPaste").fill("wilayah\tprovinsi\tnilai\nKota Surabaya\tJawa Timur\t125\nKota Denpasar\tBali\t77\n");
+  await page.locator("#previewCsvBtn").click();
+  await expect(page.locator("#csvPreview")).toContainText("2");
+  marks.firstValidPreviewMs = Date.now() - started;
+  await page.locator("#applyCsvBtn").click();
+  await expect(page.locator("#highlightCount")).toHaveText("2");
+  marks.resolvedDatasetMs = Date.now() - started;
+  await page.locator("#vizMode").selectOption("equal-interval");
+  await page.locator("#vizPreviewBtn").click();
+  await expect(page.locator("#vizApplyBtn")).toBeEnabled();
+  await page.locator("#vizApplyBtn").click();
+  await expect(page.locator("#map .map-legend")).toBeVisible();
+  marks.firstValidMapMs = Date.now() - started;
+  await page.locator("#exportSource").fill("Uji alur sintetis");
+  await page.locator("#exportPeriod").fill("2025");
+  const download = page.waitForEvent("download");
+  await page.locator("#exportSvgBtn").click({ force: true });
+  expect((await download).suggestedFilename()).toMatch(/\.svg$/);
+  marks.firstExportMs = Date.now() - started;
+  const result = { contract: "batch2.first-user-flow.v1", dataset: "synthetic-three-column", marks, blockingErrors: 0, unclearDecisions: 0, automatedAssistance: true, humanComprehensionVerified: false, pageErrors: errors };
+  fs.writeFileSync(path.join(artifactDir, "first-user-flow.json"), `${JSON.stringify(result, null, 2)}\n`);
+  expect(marks.firstExportMs).toBeLessThan(300000);
+  expect(errors).toEqual([]);
 });

@@ -1,0 +1,15 @@
+{
+  "contract": "batch2.first-user-flow.v1",
+  "dataset": "synthetic-three-column",
+  "marks": {
+    "firstValidPreviewMs": 863,
+    "resolvedDatasetMs": 1004,
+    "firstValidMapMs": 1336,
+    "firstExportMs": 1600
+  },
+  "blockingErrors": 0,
+  "unclearDecisions": 0,
+  "automatedAssistance": true,
+  "humanComprehensionVerified": false,
+  "pageErrors": []
+}

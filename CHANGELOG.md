@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Batch 2: added local spreadsheet import (paste/CSV/TSV/XLSX), deterministic matching, linked data table, five deterministic visualization modes, shared export specification, SVG/PNG/PDF/mapping CSV export, and Batch 2 project state.
+- Added Indonesian Excel-to-map preview content, synthetic examples, and release-closure evidence for workers.dev staging.
+
 - Added a minimal Node 24 toolchain for deterministic build, local development, tests, measurements, and CI.
 - Added an allowlisted static build into `dist/`.
 - Added baseline size/checksum/network documentation and machine-readable artifacts.

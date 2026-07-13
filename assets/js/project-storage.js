@@ -147,6 +147,18 @@
     };
   }
 
+  function sanitizeExportSettings(raw) {
+    const value = raw && typeof raw === "object" ? raw : {};
+    return {
+      ratio: ["16:9", "4:3", "a4", "a3", "1:1", "bounds"].includes(value.ratio) ? value.ratio : "16:9",
+      extent: value.extent === "current-view" ? "current-view" : "national",
+      labels: value.labels !== false,
+      transparent: Boolean(value.transparent),
+      highDetail: Boolean(value.highDetail),
+      pngSize: ["1920x1080", "2560x1440", "3840x2160"].includes(value.pngSize) ? value.pngSize : "1920x1080"
+    };
+  }
+
   function emptyMigrationReport(fromSchema) {
     return {
       createdAt: new Date().toISOString(),
@@ -219,6 +231,11 @@
         migrationReport.mapped.push({ legacyRegionId: id, canonicalRegionId: ref.canonicalRegionId });
       }
     });
+    const manualHighlights = {};
+    Object.entries(raw.manualHighlights || {}).slice(0, 2000).forEach(([id, item]) => {
+      if (!adapter.has(id)) return;
+      manualHighlights[id] = sanitizeHighlight(item);
+    });
     const legend = Array.isArray(raw.legend) ? raw.legend.filter((item) => item && isColor(item.color)).slice(0, 20).map((item) => ({
       label: String(item.label || "Legenda").slice(0, 80),
       color: item.color
@@ -258,6 +275,7 @@
       sourceVersion: SOURCE_VERSION,
       title: String(raw.title || "Peta Sorotan Wilayah Indonesia").slice(0, 90),
       highlights,
+      manualHighlights,
       regionRefs,
       unresolvedHighlights,
       legend,
@@ -271,7 +289,7 @@
       importRows: sanitizeImportRows(raw.importRows),
       visualization: sanitizeVisualization(raw.visualization),
       exportMeta: sanitizeExportMeta(raw.exportMeta),
-      exportSettings: raw.exportSettings || {},
+      exportSettings: sanitizeExportSettings(raw.exportSettings),
       migrationReport: finalizeMigrationReport(migrationReport),
       savedAt: raw.savedAt || new Date().toISOString()
     };
@@ -303,6 +321,7 @@
       sourceVersion: SOURCE_VERSION,
       title: state.title,
       highlights: state.highlights,
+      manualHighlights: state.manualHighlights || {},
       regionRefs: buildRegionRefs(state, adapter || createRegionAdapter(state.features || [])),
       unresolvedHighlights: state.unresolvedHighlights || {},
       legend: state.legend,
@@ -316,7 +335,7 @@
       importRows: sanitizeImportRows(state.importRows),
       visualization: sanitizeVisualization(state.visualization),
       exportMeta: sanitizeExportMeta(state.exportMeta),
-      exportSettings: state.exportSettings || {},
+      exportSettings: sanitizeExportSettings(state.exportSettings),
       migrationReport: state.migrationReport || null,
       savedAt: new Date().toISOString()
     };

@@ -8,7 +8,7 @@
   "sourceInventoryVersion": "IDN-DATA-SOURCES-v1-2026-07-12",
   "licenseManifestVersion": "IDN-LICENSE-MANIFEST-v1-2026-07-12",
   "sourceRecordCount": 6,
-  "licenseAssetCount": 17,
+  "licenseAssetCount": 18,
   "productionGeometry": {
     "path": "data/indonesia-adm2-simplified.geojson",
     "featureCount": 519,

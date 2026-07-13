@@ -12,6 +12,7 @@
     features: [],
     featureById: new Map(),
     highlights: {},
+    manualHighlights: {},
     legend: [
       { label: "Di atas target", color: "#70AD47" },
       { label: "Perlu perhatian", color: "#FFC000" },
@@ -102,6 +103,7 @@
     el.exportPngBtn.addEventListener("click", exportPng);
     el.exportPdfBtn.addEventListener("click", exportPdf);
     el.exportMappingBtn.addEventListener("click", exportMapping);
+    ["exportRatio", "exportExtent", "exportLabels", "transparentBg", "exportHighDetail", "pngSize"].forEach((id) => el[id].addEventListener("change", saveExportSettings));
     el.sidebarToggleBtn.addEventListener("click", toggleSidebar);
     el.floatingExportBtn.addEventListener("click", exportPng);
     el.fitIndonesiaBtn.addEventListener("click", () => mapApi.fitIndonesia());
@@ -183,6 +185,9 @@
     if (!pendingVisualization) return previewVisualization();
     pushUndo();
     state.visualization = pendingVisualization;
+    // A spreadsheet visualization owns only matched rows with a valid assignment.
+    // Manual colors are preserved, while blank/no-data spreadsheet rows return to the base map style.
+    state.highlights = Object.assign({}, state.manualHighlights);
     const byId = new Map(state.importRows.map((row) => [row.matchedId, row]));
     Object.entries(pendingVisualization.assignments).forEach(([matchedId, assignment]) => {
       const row = byId.get(matchedId);
@@ -497,11 +502,12 @@
     const id = mapApi.selectedId;
     if (!id) return showError("Pilih wilayah terlebih dahulu.");
     pushUndo();
-    state.highlights[id] = {
+    state.manualHighlights[id] = {
       color: el.colorPicker.value,
       category: el.categoryInput.value.trim(),
       value: el.valueInput.value.trim()
     };
+    state.highlights[id] = state.manualHighlights[id];
     updateAfterHighlightChange();
   }
 
@@ -511,18 +517,21 @@
     if (!state.highlights[id]) return;
     pushUndo();
     delete state.highlights[id];
+    delete state.manualHighlights[id];
     updateAfterHighlightChange();
   }
 
   function pushUndo() {
-    state.undo.push(JSON.stringify(state.highlights));
+    state.undo.push(JSON.stringify({ highlights: state.highlights, manualHighlights: state.manualHighlights }));
     if (state.undo.length > 30) state.undo.shift();
   }
 
   function undo() {
     const previous = state.undo.pop();
     if (!previous) return;
-    state.highlights = JSON.parse(previous);
+    const snapshot = JSON.parse(previous);
+    state.highlights = snapshot.highlights || snapshot;
+    state.manualHighlights = snapshot.manualHighlights || {};
     updateAfterHighlightChange();
   }
 
@@ -531,6 +540,7 @@
     if (!confirm("Hapus semua warna dari peta?")) return;
     pushUndo();
     state.highlights = {};
+    state.manualHighlights = {};
     updateAfterHighlightChange();
   }
 
@@ -561,6 +571,7 @@
     el.highlightList.querySelectorAll("[data-remove]").forEach((button) => button.addEventListener("click", () => {
       pushUndo();
       delete state.highlights[button.dataset.remove];
+      delete state.manualHighlights[button.dataset.remove];
       updateAfterHighlightChange();
     }));
   }
@@ -1063,6 +1074,7 @@
   function applyProject(project) {
     state.title = project.title;
     state.highlights = project.highlights;
+    state.manualHighlights = project.manualHighlights || {};
     state.unresolvedHighlights = project.unresolvedHighlights || {};
     state.migrationReport = project.migrationReport || null;
     state.legend = project.legend.length ? project.legend : state.legend;
@@ -1084,6 +1096,13 @@
     el.exportFootnote.value = state.exportMeta.footnote || "";
     el.exportLegendTitle.value = state.exportMeta.legendTitle || "Legenda";
     el.exportFilenameSlug.value = state.exportMeta.filenameSlug || "peta-warna-indonesia";
+    state.exportSettings = project.exportSettings || {};
+    el.exportRatio.value = state.exportSettings.ratio || "16:9";
+    el.exportExtent.value = state.exportSettings.extent || "national";
+    el.exportLabels.checked = state.exportSettings.labels !== false;
+    el.transparentBg.checked = Boolean(state.exportSettings.transparent);
+    el.exportHighDetail.checked = Boolean(state.exportSettings.highDetail);
+    el.pngSize.value = state.exportSettings.pngSize || "1920x1080";
     setMode(state.uiMode);
     updateAfterHighlightChange();
     el.dataTablePanel.hidden = !state.importRows.length;
@@ -1097,10 +1116,37 @@
     if (!confirm("Bersihkan proyek dan autosave di browser ini?")) return;
     pushUndo();
     state.highlights = {};
+    state.manualHighlights = {};
     state.unresolvedHighlights = {};
     state.migrationReport = null;
     state.groupNames = {};
     state.groupMeta = {};
+    state.importCorrections = {};
+    state.importRows = [];
+    state.visualization = null;
+    state.selectedDataRow = null;
+    state.exportMeta = {
+      subtitle: "",
+      source: "",
+      period: "",
+      footnote: "",
+      legendTitle: "Legenda",
+      filenameSlug: "peta-warna-indonesia"
+    };
+    state.exportSettings = {};
+    el.exportSubtitle.value = "";
+    el.exportSource.value = "";
+    el.exportPeriod.value = "";
+    el.exportFootnote.value = "";
+    el.exportLegendTitle.value = "Legenda";
+    el.exportFilenameSlug.value = "peta-warna-indonesia";
+    el.exportRatio.value = "16:9";
+    el.exportExtent.value = "national";
+    el.exportLabels.checked = true;
+    el.transparentBg.checked = false;
+    el.exportHighDetail.checked = false;
+    el.pngSize.value = "1920x1080";
+    el.dataTablePanel.hidden = true;
     ProjectStorage.clearAutosave();
     updateAfterHighlightChange();
     el.autosaveStatus.textContent = "Autosave dibersihkan.";
@@ -1198,6 +1244,18 @@
   function exportMapping() {
     if (!state.importRows.length) return showError("Belum ada data mapping untuk diekspor.");
     MapExport.exportMappingCsv(state.importRows, state);
+  }
+
+  function saveExportSettings() {
+    state.exportSettings = {
+      ratio: el.exportRatio.value,
+      extent: el.exportExtent.value,
+      labels: el.exportLabels.checked,
+      transparent: el.transparentBg.checked,
+      highDetail: el.exportHighDetail.checked,
+      pngSize: el.pngSize.value
+    };
+    scheduleSave();
   }
 
   async function getExportPayload() {

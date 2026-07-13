@@ -2,6 +2,7 @@ node_modules/
 dist/
 artifacts/batch-1/a11y-axe-results.json
 artifacts/batch-1/smoke-network.json
+artifacts/batch-1/synthetic-import-*.xlsx
 playwright-report/
 test-results/
 .cache/

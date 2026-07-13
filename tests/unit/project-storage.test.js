@@ -102,7 +102,8 @@ test("buildProject stores schema, boundary, registry, and canonical region refer
     importRows: [{ rowId: "row-1", rowNumber: 2, record: { regionName: "Surabaya", province: "Jawa Timur" }, matchedId: "known-id", matchedName: "Surabaya - Jawa Timur", matchStatus: "exact-code", errors: [], warnings: [] }],
     visualization: { version: "IDN-VIS-v1", paletteVersion: "IDN-PALETTE-v1", method: "equal-interval", assignments: { "known-id": { classKey: "0", color: "#4472C4" } }, legend: [{ label: "0–10", color: "#4472C4", key: "0" }] },
     exportMeta: { subtitle: "Sub", source: "Source", period: "2025", footnote: "Foot", legendTitle: "Legend", filenameSlug: "safe-file" },
-    exportSettings: {}
+    exportSettings: { ratio: "a3", extent: "current-view", labels: false, transparent: true, highDetail: true, pngSize: "2560x1440" },
+    manualHighlights: { "known-id": { color: "#70AD47", category: "Manual", value: "Override" } }
   }, storage.createRegionAdapter(features));
 
   assert.equal(project.schemaVersion, "1.1");
@@ -115,6 +116,23 @@ test("buildProject stores schema, boundary, registry, and canonical region refer
   assert.equal(project.importRows[0].matchedId, "known-id");
   assert.equal(project.visualization.method, "equal-interval");
   assert.equal(project.exportMeta.filenameSlug, "safe-file");
+  assert.equal(project.manualHighlights["known-id"].color, "#70AD47");
+  assert.equal(project.exportSettings.ratio, "a3");
+  assert.equal(project.exportSettings.pngSize, "2560x1440");
+});
+
+test("sanitizeProject keeps valid manual highlights and rejects unsafe export preferences", () => {
+  const storage = loadProjectStorage();
+  const adapter = storage.createRegionAdapter([sampleFeature()]);
+  const project = storage.sanitizeProject({
+    schemaVersion: "1.1",
+    highlights: {},
+    manualHighlights: { "known-id": { color: "#ED7D31", category: "Pilihan manual" } },
+    exportSettings: { ratio: "not-a-ratio", extent: "outside", labels: "yes", transparent: true, highDetail: true, pngSize: "huge" }
+  }, adapter);
+
+  assert.equal(project.manualHighlights["known-id"].color, "#ED7D31");
+  assert.deepEqual(JSON.parse(JSON.stringify(project.exportSettings)), { ratio: "16:9", extent: "national", labels: true, transparent: true, highDetail: true, pngSize: "1920x1080" });
 });
 
 test("sanitizeProject keeps only registry-current import corrections", () => {

@@ -3,8 +3,8 @@
   "sourceResult": {
     "status": "passed",
     "sourceRecords": 6,
-    "licenseAssets": 17,
-    "productionThirdPartyFiles": 9,
+    "licenseAssets": 18,
+    "productionThirdPartyFiles": 10,
     "errors": []
   },
   "simplifyResult": "passed",
