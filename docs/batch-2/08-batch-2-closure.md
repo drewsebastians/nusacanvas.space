@@ -1,7 +1,7 @@
 # Batch 2 closure — release candidate
 
 Tanggal: 13 Juli 2026  
-Status: **READY FOR STAGING**
+Status: **COMPLETE — STAGING VERIFIED**
 
 ## Hasil untuk pengguna
 
@@ -38,4 +38,4 @@ Tidak ada peserta non-GIS independen yang direkrut pada closure ini. Karena itu 
 
 ## Keputusan
 
-Tidak ada P0 atau P1 yang terbuka untuk build ini. Kandidat dapat diterbitkan ke Cloudflare Workers staging setelah gate lokal di atas selesai. **Batch 3 belum dimulai.**
+Tidak ada P0 atau P1 yang terbuka untuk build ini. Kandidat telah diterbitkan dan diverifikasi di [mapnesia.andrew-sebastian91.workers.dev](https://mapnesia.andrew-sebastian91.workers.dev). **Batch 3 belum dimulai.**

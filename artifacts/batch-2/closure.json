@@ -1,6 +1,6 @@
 {
   "schemaVersion": "batch2.closure.v1",
-  "status": "ready_for_staging",
+  "status": "complete_staging_verified",
   "date": "2026-07-13",
   "releaseScope": "Batch 2 spreadsheet-to-map release candidate",
   "openP0": 0,
@@ -36,6 +36,8 @@
   "manualFollowUp": "Run docs/batch-2/08-first-user-manual-protocol.md before production/domain rollout.",
   "deployment": {
     "target": "Cloudflare Workers staging only",
-    "status": "pending"
+    "status": "verified",
+    "url": "https://mapnesia.andrew-sebastian91.workers.dev",
+    "verification": "scripts/verify-staging.js passed for assets, 17 trust/content pages, security headers, robots, and 404."
   }
 }
