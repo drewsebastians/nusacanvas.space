@@ -20,7 +20,7 @@ body {
   color: var(--ink);
 }
 
-button, input, select {
+button, input, select, textarea {
   font: inherit;
 }
 
@@ -41,7 +41,7 @@ button.secondary:hover { background: #eef6fa; }
 button.danger { background: #fff; color: var(--danger); border-color: var(--danger); }
 button.danger:hover { background: #fff0ef; }
 
-input, select {
+input, select, textarea {
   width: 100%;
   min-height: 40px;
   border: 1px solid var(--line);
@@ -51,7 +51,12 @@ input, select {
   color: var(--ink);
 }
 
-input:focus, select:focus, button:focus {
+textarea {
+  min-height: 118px;
+  resize: vertical;
+}
+
+input:focus, select:focus, textarea:focus, button:focus {
   outline: 3px solid #8cc7df;
   outline-offset: 2px;
 }
@@ -251,7 +256,7 @@ label {
   text-align: left;
 }
 
-.highlight-list, .legend-editor, .import-preview, .grouping-list {
+.highlight-list, .legend-editor, .import-preview, .import-mapping, .grouping-list {
   display: grid;
   gap: 8px;
   margin-top: 8px;
@@ -269,7 +274,7 @@ label {
   padding-right: 4px;
 }
 
-.highlight-item, .legend-item, .preview-block, .grouping-item {
+.highlight-item, .legend-item, .preview-block, .mapping-row, .grouping-item {
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 8px;
@@ -312,6 +317,20 @@ label {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.35;
+}
+
+.mapping-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(150px, 1.25fr);
+  gap: 8px;
+  align-items: center;
+}
+
+.import-summary {
+  display: grid;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 .legend-item input[type="color"] {

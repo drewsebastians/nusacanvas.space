@@ -94,13 +94,31 @@
       </section>
 
       <section class="panel-section">
-        <h2>Impor CSV</h2>
-        <p class="notice">File diproses hanya di browser ini dan tidak diunggah ke server.</p>
-        <input id="csvFile" type="file" accept=".csv,text/csv" aria-label="Pilih file CSV">
+        <h2>Impor Data</h2>
+        <p class="notice">Paste, CSV, dan TSV diproses hanya di browser ini dan tidak diunggah ke server.</p>
+        <label for="importPaste">Paste dari Excel/Sheets</label>
+        <textarea id="importPaste" rows="5" spellcheck="false" placeholder="wilayah&#9;nilai&#10;Kota Surabaya&#9;125"></textarea>
+        <label for="csvFile">Atau pilih file CSV/TSV</label>
+        <input id="csvFile" type="file" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values,text/plain" aria-label="Pilih file CSV atau TSV">
+        <label for="importDelimiter">Delimiter</label>
+        <select id="importDelimiter">
+          <option value="auto">Deteksi otomatis</option>
+          <option value="comma">Koma (,)</option>
+          <option value="semicolon">Titik koma (;)</option>
+          <option value="tab">Tab</option>
+        </select>
+        <label for="importLocale">Format angka</label>
+        <select id="importLocale">
+          <option value="auto">Deteksi otomatis</option>
+          <option value="id-ID">Indonesia: 1.234,56</option>
+          <option value="en-US">Internasional: 1,234.56</option>
+        </select>
         <div class="button-grid">
-          <button id="previewCsvBtn" type="button">Pratinjau CSV</button>
+          <button id="previewCsvBtn" type="button">Pratinjau Import</button>
           <button id="applyCsvBtn" type="button" class="secondary" disabled>Terapkan Hasil Valid</button>
+          <button id="cancelImportBtn" type="button" class="secondary">Batalkan Import</button>
         </div>
+        <div id="importMapping" class="import-mapping" aria-live="polite"></div>
         <div id="csvPreview" class="import-preview"></div>
       </section>
 
@@ -169,6 +187,7 @@
 
   <script src="./assets/vendor/leaflet/leaflet.js"></script>
   <script src="./assets/js/project-storage.js"></script>
+  <script src="./assets/js/import-core.js"></script>
   <script src="./assets/js/csv-import.js"></script>
   <script src="./assets/js/export.js"></script>
   <script src="./assets/js/map.js"></script>

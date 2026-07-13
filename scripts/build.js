@@ -12,6 +12,7 @@ const requiredFiles = [
   "assets/css/app.css",
   "assets/css/content.css",
   "assets/js/app.js",
+  "assets/js/import-core.js",
   "assets/js/csv-import.js",
   "assets/js/export.js",
   "assets/js/map.js",

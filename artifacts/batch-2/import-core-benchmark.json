@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "batch2.importCoreBenchmark.v1",
+  "measuredAt": "2026-07-13",
+  "environment": "local Codex Windows runtime, Node 24.14.0",
+  "fixture": "generated deterministic CSV, 5000 rows, 5 columns",
+  "rows": 5000,
+  "columns": 5,
+  "cells": 25000,
+  "bytes": 181987,
+  "parseMs": 19.83,
+  "detectedDelimiter": "comma",
+  "decision": "Keep Prompt 2 parser synchronous for allowed small/medium text; use the configured worker/yield threshold as the Prompt 3+ trigger for XLSX and larger parsing work."
+}

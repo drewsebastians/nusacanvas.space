@@ -165,3 +165,19 @@ test("CSV sample, undo, old project migration, and keyboard navigation work", as
   const activeElement = await page.evaluate(() => document.activeElement && document.activeElement.tagName);
   expect(activeElement).not.toBe("BODY");
 });
+
+test("paste import previews mapping and waits for explicit apply", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator("#loadingIndicator")).toContainText(/wilayah dimuat/i, { timeout: 60000 });
+
+  await page.locator("#importPaste").fill("wilayah\tnilai\nKota Surabaya\t125\nKota Denpasar\t0\n");
+  await page.locator("#previewCsvBtn").click();
+  await expect(page.locator("#importMapping")).toContainText("Paste lokal");
+  await expect(page.locator("#map-regionName")).toHaveValue("wilayah");
+  await expect(page.locator("#map-numericValue")).toHaveValue("nilai");
+  await expect(page.locator("#csvPreview")).toContainText("2");
+  await expect(page.locator("#highlightCount")).toHaveText("0");
+
+  await page.locator("#applyCsvBtn").click();
+  await expect(page.locator("#highlightCount")).toHaveText("2");
+});

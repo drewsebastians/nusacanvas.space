@@ -42,7 +42,7 @@ const playwright = playwrightCli();
 run("clean build", node, ["scripts/build.js"]);
 run("data/license/reproducibility pipeline", node, ["scripts/data-pipeline.js", "test"]);
 run("geometry and registry tests", python, ["tests/run_data_tests.py"]);
-run("unit and migration tests", node, ["--test", "--test-isolation=none", "tests/unit/project-storage.test.js"]);
+run("unit and migration tests", node, ["--test", "--test-isolation=none", "tests/unit/*.test.js"]);
 run("browser smoke matrix", node, [playwright, "test", "--config=playwright.config.js", "tests/e2e/smoke.spec.js"]);
 run("trust page and report template browser checks", node, [playwright, "test", "--config=playwright.config.js", "tests/e2e/trust.spec.js"]);
 run("accessibility checks", node, [playwright, "test", "--config=playwright.config.js", "tests/e2e/a11y.spec.js"]);

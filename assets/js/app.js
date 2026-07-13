@@ -39,7 +39,8 @@
       "projectTitle", "searchInput", "searchResults", "provinceSelect", "regionSelect", "selectedRegion",
       "colorPicker", "quickColors", "categoryInput", "valueInput", "applyColorBtn", "removeColorBtn",
       "undoBtn", "resetBtn", "highlightCount", "highlightList", "showLegend", "legendPosition",
-      "groupCount", "groupingList", "legendItems", "addLegendBtn", "csvFile", "previewCsvBtn", "applyCsvBtn", "csvPreview",
+      "groupCount", "groupingList", "legendItems", "addLegendBtn", "importPaste", "csvFile", "importDelimiter",
+      "importLocale", "previewCsvBtn", "applyCsvBtn", "cancelImportBtn", "importMapping", "csvPreview",
       "saveProjectBtn", "openProjectBtn", "projectFile", "clearProjectBtn", "autosaveStatus",
       "migrationReportBtn", "dataTruthBadge",
       "exportRatio", "exportLabels", "transparentBg", "exportHighDetail", "pngSize", "exportSvgBtn", "exportPngBtn",
@@ -65,6 +66,9 @@
     el.addLegendBtn.addEventListener("click", () => { state.legend.push({ label: "Legenda baru", color: el.colorPicker.value }); renderLegendEditor(); refreshMapLegend(); scheduleSave(); });
     el.previewCsvBtn.addEventListener("click", previewCsv);
     el.applyCsvBtn.addEventListener("click", applyCsv);
+    el.cancelImportBtn.addEventListener("click", cancelImport);
+    el.importLocale.addEventListener("change", () => { if (pendingCsv) rerenderImportPreviewFromMapping(); });
+    el.importDelimiter.addEventListener("change", () => { if (pendingCsv) previewCsv(); });
     el.saveProjectBtn.addEventListener("click", saveProject);
     el.openProjectBtn.addEventListener("click", () => el.projectFile.click());
     el.projectFile.addEventListener("change", openProject);
@@ -507,25 +511,50 @@
   function buildIndexes() {
     const byCode = new Map();
     const byProvinceName = new Map();
+    const byName = new Map();
     state.features.forEach((feature) => {
       const p = feature.properties;
       if (p.official_code) byCode.set(CsvImport.normalizeCode(p.official_code), { id: p.region_id, feature });
+      if (p.region_name) {
+        const nameKey = CsvImport.normalizeText(p.region_name);
+        if (!byName.has(nameKey)) byName.set(nameKey, []);
+        byName.get(nameKey).push({ id: p.region_id, feature });
+      }
       if (p.province_name && p.region_name) {
         const key = CsvImport.normalizeText(p.province_name) + "|" + CsvImport.normalizeText(p.region_name);
         if (!byProvinceName.has(key)) byProvinceName.set(key, []);
         byProvinceName.get(key).push({ id: p.region_id, feature });
       }
     });
-    return { byCode, byProvinceName };
+    return { byCode, byProvinceName, byName };
+  }
+
+  async function readImportSource() {
+    const file = el.csvFile.files[0];
+    const paste = el.importPaste.value.trim();
+    if (file) {
+      const name = file.name.toLowerCase();
+      if (!/\.(csv|tsv|txt)$/.test(name) || file.size > 2_500_000) throw new Error("Gunakan file .csv, .tsv, atau .txt dengan ukuran wajar.");
+      return {
+        text: await file.text(),
+        sourceType: name.endsWith(".tsv") ? "tsv" : "csv",
+        sourceLabel: name.endsWith(".tsv") ? "File TSV lokal" : "File CSV lokal"
+      };
+    }
+    if (!paste) throw new Error("Paste tabel atau pilih file CSV/TSV terlebih dahulu.");
+    return { text: el.importPaste.value, sourceType: "paste", sourceLabel: "Paste lokal" };
   }
 
   async function previewCsv() {
-    const file = el.csvFile.files[0];
-    if (!file) return showError("Pilih file CSV terlebih dahulu.");
-    if (!file.name.toLowerCase().endsWith(".csv") || file.size > 2_500_000) return showError("Gunakan file .csv dengan ukuran wajar.");
     try {
-      const text = await file.text();
-      pendingCsv = CsvImport.validateAndMatch(text, buildIndexes());
+      const source = await readImportSource();
+      pendingCsv = CsvImport.validateAndMatch(source.text, buildIndexes(), {
+        sourceType: source.sourceType,
+        sourceLabel: source.sourceLabel,
+        delimiterOverride: el.importDelimiter.value,
+        localeOverride: el.importLocale.value
+      });
+      renderImportMapping();
       renderCsvPreview();
       el.applyCsvBtn.disabled = !pendingCsv.valid.length;
     } catch (error) {
@@ -533,14 +562,76 @@
     }
   }
 
+  function cancelImport() {
+    pendingCsv = null;
+    el.csvFile.value = "";
+    el.importPaste.value = "";
+    el.importMapping.innerHTML = "";
+    el.csvPreview.innerHTML = "";
+    el.applyCsvBtn.disabled = true;
+  }
+
+  function buildMappingFromControls() {
+    const roles = {};
+    el.importMapping.querySelectorAll("[data-import-role]").forEach((select) => {
+      roles[select.dataset.importRole] = select.value || null;
+    });
+    return {
+      contractVersion: "batch2.columnMapping.v1",
+      roles,
+      ignoredColumns: pendingCsv.headers.filter((header) => !Object.values(roles).includes(header)),
+      suggestions: pendingCsv.mapping.suggestions
+    };
+  }
+
+  function rerenderImportPreviewFromMapping() {
+    if (!pendingCsv) return;
+    pendingCsv = CsvImport.validateParsed(pendingCsv.parsed, buildIndexes(), buildMappingFromControls(), {
+      locale: el.importLocale.value
+    });
+    renderCsvPreview();
+    el.applyCsvBtn.disabled = !pendingCsv.valid.length;
+  }
+
+  function renderImportMapping() {
+    const roles = [
+      ["regionCode", "Kode wilayah"],
+      ["regionName", "Nama wilayah"],
+      ["province", "Provinsi"],
+      ["numericValue", "Nilai"],
+      ["category", "Kategori"],
+      ["source", "Sumber"],
+      ["period", "Periode"]
+    ];
+    const options = (selected) => `<option value="">Abaikan</option>` + pendingCsv.headers.map((header) => {
+      return `<option value="${escapeAttr(header)}"${header === selected ? " selected" : ""}>${escapeHtml(header)}</option>`;
+    }).join("");
+    const source = pendingCsv.importedSource;
+    const warnings = source.warnings.length ? `<p class="status-line">${escapeHtml(source.warnings.map((item) => item.message).join(" "))}</p>` : "";
+    el.importMapping.innerHTML = `
+      <div class="preview-block">
+        <div class="import-summary">
+          <span>${escapeHtml(source.sourceLabel)}: ${source.counts.rows} baris, ${source.counts.columns} kolom.</span>
+          <span>Delimiter: ${escapeHtml(source.detected.delimiter)}. Format angka: ${escapeHtml(el.importLocale.value)}.</span>
+        </div>
+        ${warnings}
+      </div>
+      ${roles.map(([role, label]) => `
+        <div class="mapping-row">
+          <label for="map-${escapeAttr(role)}">${escapeHtml(label)}</label>
+          <select id="map-${escapeAttr(role)}" data-import-role="${escapeAttr(role)}">${options(pendingCsv.mapping.roles[role])}</select>
+        </div>`).join("")}`;
+    el.importMapping.querySelectorAll("[data-import-role]").forEach((select) => select.addEventListener("change", rerenderImportPreviewFromMapping));
+  }
+
   function renderCsvPreview() {
     const rows = pendingCsv.all.slice(0, 30).map((item) => {
-      const status = item.errors.length ? item.errors.join("; ") : "Siap diterapkan";
+      const status = item.errors.length ? item.errors.join("; ") : (item.warnings.length ? item.warnings.join("; ") : "Siap diterapkan");
       const target = item.matched ? displayName(item.matched.feature) : "-";
-      return `<tr><td>${item.rowNumber}</td><td>${escapeHtml(target)}</td><td>${escapeHtml(item.record.Color || "")}</td><td>${escapeHtml(status)}</td></tr>`;
+      return `<tr><td>${item.rowNumber}</td><td>${escapeHtml(target)}</td><td>${escapeHtml(item.record.numericValue || "")}</td><td>${escapeHtml(item.record.category || "")}</td><td>${escapeHtml(status)}</td></tr>`;
     }).join("");
     const errorButton = pendingCsv.invalid.length ? `<button type="button" class="secondary" id="downloadCsvErrors">Unduh laporan error</button>` : "";
-    el.csvPreview.innerHTML = `<div class="preview-block"><strong>${pendingCsv.valid.length}</strong> valid, <strong>${pendingCsv.invalid.length}</strong> perlu diperiksa.${errorButton}<table class="preview-table"><thead><tr><th>Baris</th><th>Wilayah</th><th>Warna</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    el.csvPreview.innerHTML = `<div class="preview-block"><strong>${pendingCsv.valid.length}</strong> valid, <strong>${pendingCsv.warning.length}</strong> peringatan, <strong>${pendingCsv.invalid.length}</strong> perlu diperiksa.${errorButton}<table class="preview-table"><thead><tr><th>Baris</th><th>Wilayah</th><th>Nilai</th><th>Kategori</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     const button = document.getElementById("downloadCsvErrors");
     if (button) button.addEventListener("click", () => downloadText("laporan-error-impor.csv", CsvImport.buildErrorCsv(pendingCsv), "text/csv"));
   }
@@ -551,8 +642,8 @@
     pendingCsv.valid.forEach((item) => {
       state.highlights[item.matched.id] = {
         color: item.color,
-        category: item.record.Category,
-        value: item.record.Value
+        category: item.record.category,
+        value: item.record.numericValue
       };
     });
     updateAfterHighlightChange();
