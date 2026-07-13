@@ -48,12 +48,15 @@ function scanRuntimeExternalRequests() {
   }
   const runtimeFiles = [
     "index.html",
+    "assets/js/import-core.js",
+    "assets/js/xlsx-import.js",
     "assets/js/app.js",
     "assets/js/map.js",
     "assets/js/export.js",
     "assets/js/csv-import.js",
     "assets/js/project-storage.js",
-    "assets/js/report-template.js"
+    "assets/js/report-template.js",
+    "assets/vendor/read-excel-file/read-excel-file.min.js"
   ];
   const forbiddenRuntimePatterns = [
     /fetch\(["']https?:\/\//i,
@@ -76,7 +79,7 @@ function scanRuntimeExternalRequests() {
 function scanHeaders() {
   const headers = read("_headers");
   const csp = headers.split(/\r?\n/).find((line) => line.trim().startsWith("Content-Security-Policy:")) || "";
-  for (const directive of ["default-src 'self'", "connect-src 'self'", "object-src 'none'", "base-uri 'none'", "form-action 'none'", "frame-ancestors 'none'", "frame-src 'none'"]) {
+  for (const directive of ["default-src 'self'", "connect-src 'self'", "object-src 'none'", "base-uri 'none'", "form-action 'none'", "frame-ancestors 'none'", "frame-src 'none'", "worker-src 'self' blob:"]) {
     if (!csp.includes(directive)) failures.push(`CSP missing directive: ${directive}`);
   }
 }
@@ -103,7 +106,7 @@ function scanDependencyManifest() {
   const lock = JSON.parse(read("package-lock.json"));
   const manifest = JSON.parse(read("data/license-manifest-v1.json"));
   const reviewed = new Map((manifest.assets || []).filter((asset) => asset.lockfilePackage).map((asset) => [asset.lockfilePackage, asset.licenseId]));
-  for (const name of ["node_modules/@playwright/test", "node_modules/axe-core", "node_modules/wrangler"]) {
+  for (const name of ["node_modules/@playwright/test", "node_modules/axe-core", "node_modules/wrangler", "node_modules/read-excel-file"]) {
     const pkg = lock.packages && lock.packages[name];
     if (!pkg) failures.push(`dependency missing from lockfile: ${name}`);
     if (!reviewed.has(name)) failures.push(`dependency missing from license manifest: ${name}`);

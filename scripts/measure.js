@@ -12,6 +12,8 @@ const runtimeFiles = [
   "robots.txt",
   "assets/css/app.css",
   "assets/js/project-storage.js",
+  "assets/js/import-core.js",
+  "assets/js/xlsx-import.js",
   "assets/js/csv-import.js",
   "assets/js/export.js",
   "assets/js/map.js",
@@ -24,7 +26,8 @@ const runtimeFiles = [
 ];
 
 const onDemandFiles = [
-  "data/indonesia-adm2-detailed.geojson"
+  "data/indonesia-adm2-detailed.geojson",
+  "assets/vendor/read-excel-file/read-excel-file.min.js"
 ];
 
 const productionFiles = [

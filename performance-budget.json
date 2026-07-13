@@ -23,6 +23,8 @@
     "assets/css/app.css",
     "assets/vendor/leaflet/leaflet.js",
     "assets/js/project-storage.js",
+    "assets/js/import-core.js",
+    "assets/js/xlsx-import.js",
     "assets/js/csv-import.js",
     "assets/js/export.js",
     "assets/js/map.js",
@@ -30,4 +32,3 @@
     "data/indonesia-adm2-simplified.geojson"
   ]
 }
-

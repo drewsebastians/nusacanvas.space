@@ -103,6 +103,30 @@
       "productionApproved": true
     },
     {
+      "id": "vendor-read-excel-file-js",
+      "category": "production-library",
+      "title": "read-excel-file browser bundle",
+      "packageName": "read-excel-file",
+      "lockfilePackage": "node_modules/read-excel-file",
+      "path": "assets/vendor/read-excel-file/read-excel-file.min.js",
+      "publisherOwner": "catamphetamine / read-excel-file contributors",
+      "exactSource": "https://www.npmjs.com/package/read-excel-file version 9.3.1, bundle/read-excel-file.min.js",
+      "sha256": "9f2c26e44c7fdb69d8ea70f05e44eb64de152c084e15d245b114d0f8cf77db73",
+      "mediaType": "text/javascript",
+      "licenseId": "MIT",
+      "commercialUseStatus": "allowed",
+      "modificationStatus": "unmodified vendored runtime asset from pinned npm package",
+      "redistributionStatus": "approved",
+      "attributionRequired": true,
+      "attributionText": "read-excel-file 9.3.1, MIT License, https://gitlab.com/catamphetamine/read-excel-file.",
+      "review": {
+        "status": "approved",
+        "reviewer": "Batch 2 dependency review",
+        "date": "2026-07-13"
+      },
+      "productionApproved": true
+    },
+    {
       "id": "vendor-leaflet-layers-png",
       "category": "production-image",
       "title": "Leaflet layers icon",

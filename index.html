@@ -95,11 +95,13 @@
 
       <section class="panel-section">
         <h2>Impor Data</h2>
-        <p class="notice">Paste, CSV, dan TSV diproses hanya di browser ini dan tidak diunggah ke server.</p>
+        <p class="notice">Paste, CSV, TSV, dan XLSX diproses hanya di browser ini dan tidak diunggah ke server.</p>
         <label for="importPaste">Paste dari Excel/Sheets</label>
         <textarea id="importPaste" rows="5" spellcheck="false" placeholder="wilayah&#9;nilai&#10;Kota Surabaya&#9;125"></textarea>
-        <label for="csvFile">Atau pilih file CSV/TSV</label>
-        <input id="csvFile" type="file" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values,text/plain" aria-label="Pilih file CSV atau TSV">
+        <label for="csvFile">Atau pilih file CSV/TSV/XLSX</label>
+        <input id="csvFile" type="file" accept=".csv,.tsv,.txt,.xlsx,text/csv,text/tab-separated-values,text/plain,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" aria-label="Pilih file CSV, TSV, atau XLSX">
+        <label for="xlsxSheet" class="hidden">Sheet XLSX</label>
+        <select id="xlsxSheet" class="hidden" aria-label="Pilih sheet XLSX"></select>
         <label for="importDelimiter">Delimiter</label>
         <select id="importDelimiter">
           <option value="auto">Deteksi otomatis</option>
@@ -188,6 +190,7 @@
   <script src="./assets/vendor/leaflet/leaflet.js"></script>
   <script src="./assets/js/project-storage.js"></script>
   <script src="./assets/js/import-core.js"></script>
+  <script src="./assets/js/xlsx-import.js"></script>
   <script src="./assets/js/csv-import.js"></script>
   <script src="./assets/js/export.js"></script>
   <script src="./assets/js/map.js"></script>

@@ -22,6 +22,8 @@ const simplifiedGeometryGzipBytes = gzipBytes("data/indonesia-adm2-simplified.ge
 const shellJavaScriptGzipBytes = [
   "assets/vendor/leaflet/leaflet.js",
   "assets/js/project-storage.js",
+  "assets/js/import-core.js",
+  "assets/js/xlsx-import.js",
   "assets/js/csv-import.js",
   "assets/js/export.js",
   "assets/js/map.js",
@@ -64,4 +66,3 @@ const report = {
 fs.mkdirSync(path.join(root, "artifacts", "batch-1"), { recursive: true });
 fs.writeFileSync(path.join(root, "artifacts", "batch-1", "performance-budget-report.json"), `${JSON.stringify(report, null, 2)}\n`);
 console.log(`Performance budgets passed: initial=${initialCompressedBytes} gzip bytes, simplified=${simplifiedGeometryGzipBytes}, shell_js=${shellJavaScriptGzipBytes}.`);
-

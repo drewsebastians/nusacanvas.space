@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const zlib = require("node:zlib");
 const { expect, test } = require("@playwright/test");
 
 const artifactDir = path.resolve(__dirname, "..", "..", "artifacts", "batch-1");
@@ -9,6 +10,134 @@ const forbiddenStartupPatterns = [
   "data.humdata.org",
   "hdx"
 ];
+const encoder = new TextEncoder();
+
+function crc32(bytes) {
+  let crc = 0xffffffff;
+  for (const byte of bytes) {
+    crc ^= byte;
+    for (let bit = 0; bit < 8; bit += 1) crc = (crc >>> 1) ^ (0xedb88320 & -(crc & 1));
+  }
+  return (crc ^ 0xffffffff) >>> 0;
+}
+
+function u16(value) {
+  const buffer = Buffer.alloc(2);
+  buffer.writeUInt16LE(value);
+  return buffer;
+}
+
+function u32(value) {
+  const buffer = Buffer.alloc(4);
+  buffer.writeUInt32LE(value >>> 0);
+  return buffer;
+}
+
+function makeZip(files) {
+  const localParts = [];
+  const centralParts = [];
+  let offset = 0;
+  files.forEach((file) => {
+    const name = encoder.encode(file.name);
+    const raw = encoder.encode(file.content);
+    const body = zlib.deflateRawSync(Buffer.from(raw));
+    const method = 8;
+    const crc = crc32(raw);
+    const local = Buffer.concat([
+      u32(0x04034b50), u16(20), u16(0), u16(method), u16(0), u16(0), u32(crc),
+      u32(body.length), u32(raw.length), u16(name.length), u16(0), Buffer.from(name), body
+    ]);
+    const central = Buffer.concat([
+      u32(0x02014b50), u16(20), u16(20), u16(0), u16(method), u16(0), u16(0), u32(crc),
+      u32(body.length), u32(raw.length), u16(name.length), u16(0), u16(0), u16(0), u16(0),
+      u32(0), u32(offset), Buffer.from(name)
+    ]);
+    localParts.push(local);
+    centralParts.push(central);
+    offset += local.length;
+  });
+  const central = Buffer.concat(centralParts);
+  return Buffer.concat([
+    ...localParts,
+    central,
+    u32(0x06054b50), u16(0), u16(0), u16(files.length), u16(files.length), u32(central.length), u32(offset), u16(0)
+  ]);
+}
+
+function writeSyntheticXlsx(filePath) {
+  const files = [
+    {
+      name: "[Content_Types].xml",
+      content: `<?xml version="1.0" encoding="UTF-8"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
+  <Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>
+  <Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>
+  <Override PartName="/xl/worksheets/sheet2.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>
+</Types>`
+    },
+    {
+      name: "_rels/.rels",
+      content: `<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
+</Relationships>`
+    },
+    {
+      name: "xl/workbook.xml",
+      content: `<?xml version="1.0" encoding="UTF-8"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <sheets>
+    <sheet name="Data" sheetId="1" r:id="rId1"/>
+    <sheet name="Cadangan" sheetId="2" r:id="rId2"/>
+  </sheets>
+</workbook>`
+    },
+    {
+      name: "xl/_rels/workbook.xml.rels",
+      content: `<?xml version="1.0" encoding="UTF-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
+  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet2.xml"/>
+  <Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+</Relationships>`
+    },
+    {
+      name: "xl/styles.xml",
+      content: `<?xml version="1.0" encoding="UTF-8"?>
+<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <cellStyleXfs count="1"><xf numFmtId="0"/></cellStyleXfs>
+  <cellXfs count="1"><xf numFmtId="0" xfId="0"/></cellXfs>
+</styleSheet>`
+    },
+    {
+      name: "xl/worksheets/sheet1.xml",
+      content: `<?xml version="1.0" encoding="UTF-8"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <dimension ref="A1:B3"/>
+  <sheetData>
+    <row r="1"><c r="A1" t="inlineStr"><is><t>wilayah</t></is></c><c r="B1" t="inlineStr"><is><t>nilai</t></is></c></row>
+    <row r="2"><c r="A2" t="inlineStr"><is><t>Kota Surabaya</t></is></c><c r="B2"><v>125</v></c></row>
+    <row r="3"><c r="A3" t="inlineStr"><is><t>Kota Denpasar</t></is></c><c r="B3"><v>0</v></c></row>
+  </sheetData>
+</worksheet>`
+    },
+    {
+      name: "xl/worksheets/sheet2.xml",
+      content: `<?xml version="1.0" encoding="UTF-8"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <dimension ref="A1:B2"/>
+  <sheetData>
+    <row r="1"><c r="A1" t="inlineStr"><is><t>wilayah</t></is></c><c r="B1" t="inlineStr"><is><t>nilai</t></is></c></row>
+    <row r="2"><c r="A2" t="inlineStr"><is><t>Kota Denpasar</t></is></c><c r="B2"><v>77</v></c></row>
+  </sheetData>
+</worksheet>`
+    }
+  ];
+  fs.writeFileSync(filePath, makeZip(files));
+}
 
 test("load, color, save, SVG export, and smallest PNG export", async ({ page }) => {
   fs.mkdirSync(artifactDir, { recursive: true });
@@ -180,4 +309,40 @@ test("paste import previews mapping and waits for explicit apply", async ({ page
 
   await page.locator("#applyCsvBtn").click();
   await expect(page.locator("#highlightCount")).toHaveText("2");
+});
+
+test("XLSX import lazy-loads parser and uses the shared preview pipeline", async ({ page }, testInfo) => {
+  fs.mkdirSync(artifactDir, { recursive: true });
+  const safeProjectName = testInfo.project.name.replace(/[^a-z0-9_-]+/gi, "-");
+  const xlsxPath = path.join(artifactDir, `synthetic-import-${safeProjectName}.xlsx`);
+  writeSyntheticXlsx(xlsxPath);
+  const requests = [];
+  page.on("request", (request) => requests.push(request.url()));
+
+  await page.goto("/");
+  await expect(page.locator("#loadingIndicator")).toContainText(/wilayah dimuat/i, { timeout: 60000 });
+  expect(requests.some((url) => url.includes("read-excel-file.min.js"))).toBe(false);
+
+  await page.locator("#importPaste").fill("wilayah\tnilai\nKota Surabaya\t125\n");
+  await page.locator("#previewCsvBtn").click();
+  await expect(page.locator("#importMapping")).toContainText("Paste lokal");
+  expect(requests.some((url) => url.includes("read-excel-file.min.js"))).toBe(false);
+
+  await page.locator("#importPaste").evaluate((textarea) => {
+    textarea.value = "";
+    textarea.dispatchEvent(new Event("input", { bubbles: true }));
+  });
+  await page.locator("#csvFile").setInputFiles(xlsxPath);
+  await expect.poll(() => page.locator("#csvFile").evaluate((input) => input.files.length)).toBe(1);
+  await page.locator("#previewCsvBtn").click();
+  await expect(page.locator("#importMapping")).toContainText("File XLSX lokal");
+  await expect(page.locator("#importMapping")).toContainText("Sheet: Data");
+  await expect(page.locator("#xlsxSheet")).toBeVisible();
+  await expect(page.locator("#csvPreview")).toContainText("2");
+  expect(requests.some((url) => url.includes("read-excel-file.min.js"))).toBe(true);
+  expect(requests.filter((url) => /^https?:\/\//.test(url) && !url.startsWith("http://127.0.0.1:4173/"))).toEqual([]);
+
+  await page.locator("#xlsxSheet").selectOption("Cadangan");
+  await expect(page.locator("#importMapping")).toContainText("Sheet: Cadangan");
+  await expect(page.locator("#csvPreview")).toContainText("1");
 });

@@ -30,6 +30,8 @@
   };
   let mapApi = null;
   let pendingCsv = null;
+  let pendingXlsx = null;
+  let pendingImportSignal = null;
 
   const el = {};
   document.addEventListener("DOMContentLoaded", init);
@@ -39,7 +41,7 @@
       "projectTitle", "searchInput", "searchResults", "provinceSelect", "regionSelect", "selectedRegion",
       "colorPicker", "quickColors", "categoryInput", "valueInput", "applyColorBtn", "removeColorBtn",
       "undoBtn", "resetBtn", "highlightCount", "highlightList", "showLegend", "legendPosition",
-      "groupCount", "groupingList", "legendItems", "addLegendBtn", "importPaste", "csvFile", "importDelimiter",
+      "groupCount", "groupingList", "legendItems", "addLegendBtn", "importPaste", "csvFile", "xlsxSheet", "importDelimiter",
       "importLocale", "previewCsvBtn", "applyCsvBtn", "cancelImportBtn", "importMapping", "csvPreview",
       "saveProjectBtn", "openProjectBtn", "projectFile", "clearProjectBtn", "autosaveStatus",
       "migrationReportBtn", "dataTruthBadge",
@@ -69,6 +71,7 @@
     el.cancelImportBtn.addEventListener("click", cancelImport);
     el.importLocale.addEventListener("change", () => { if (pendingCsv) rerenderImportPreviewFromMapping(); });
     el.importDelimiter.addEventListener("change", () => { if (pendingCsv) previewCsv(); });
+    el.xlsxSheet.addEventListener("change", () => { if (pendingXlsx) useSelectedXlsxSheet(); });
     el.saveProjectBtn.addEventListener("click", saveProject);
     el.openProjectBtn.addEventListener("click", () => el.projectFile.click());
     el.projectFile.addEventListener("change", openProject);
@@ -534,7 +537,10 @@
     const paste = el.importPaste.value.trim();
     if (file) {
       const name = file.name.toLowerCase();
-      if (!/\.(csv|tsv|txt)$/.test(name) || file.size > 2_500_000) throw new Error("Gunakan file .csv, .tsv, atau .txt dengan ukuran wajar.");
+      if (name.endsWith(".xlsx")) {
+        return { file, sourceType: "xlsx", sourceLabel: "File XLSX lokal" };
+      }
+      if (!/\.(csv|tsv|txt)$/.test(name) || file.size > 2_500_000) throw new Error("Gunakan file .csv, .tsv, .txt, atau .xlsx dengan ukuran wajar.");
       return {
         text: await file.text(),
         sourceType: name.endsWith(".tsv") ? "tsv" : "csv",
@@ -547,28 +553,78 @@
 
   async function previewCsv() {
     try {
+      if (pendingImportSignal) pendingImportSignal.canceled = true;
+      pendingImportSignal = { canceled: false };
+      el.previewCsvBtn.disabled = true;
+      el.previewCsvBtn.textContent = "Membaca...";
       const source = await readImportSource();
-      pendingCsv = CsvImport.validateAndMatch(source.text, buildIndexes(), {
-        sourceType: source.sourceType,
-        sourceLabel: source.sourceLabel,
-        delimiterOverride: el.importDelimiter.value,
-        localeOverride: el.importLocale.value
-      });
+      if (source.sourceType === "xlsx") {
+        pendingXlsx = await XlsxImport.parseFile(source.file, {
+          sheetName: el.xlsxSheet.value || undefined,
+          localeOverride: el.importLocale.value,
+          signal: pendingImportSignal
+        });
+        pendingCsv = CsvImport.validateParsed(pendingXlsx.parsed, buildIndexes(), pendingXlsx.parsed.mapping, {
+          locale: el.importLocale.value
+        });
+        renderXlsxSheetChooser();
+      } else {
+        pendingXlsx = null;
+        renderXlsxSheetChooser();
+        pendingCsv = CsvImport.validateAndMatch(source.text, buildIndexes(), {
+          sourceType: source.sourceType,
+          sourceLabel: source.sourceLabel,
+          delimiterOverride: el.importDelimiter.value,
+          localeOverride: el.importLocale.value
+        });
+      }
       renderImportMapping();
       renderCsvPreview();
       el.applyCsvBtn.disabled = !pendingCsv.valid.length;
     } catch (error) {
       showError(error.message);
+    } finally {
+      el.previewCsvBtn.disabled = false;
+      el.previewCsvBtn.textContent = "Pratinjau Import";
     }
   }
 
   function cancelImport() {
+    if (pendingImportSignal) pendingImportSignal.canceled = true;
     pendingCsv = null;
+    pendingXlsx = null;
     el.csvFile.value = "";
     el.importPaste.value = "";
+    el.xlsxSheet.innerHTML = "";
+    el.xlsxSheet.classList.add("hidden");
+    const label = document.querySelector("label[for='xlsxSheet']");
+    if (label) label.classList.add("hidden");
     el.importMapping.innerHTML = "";
     el.csvPreview.innerHTML = "";
     el.applyCsvBtn.disabled = true;
+  }
+
+  function renderXlsxSheetChooser() {
+    const label = document.querySelector("label[for='xlsxSheet']");
+    if (!pendingXlsx || pendingXlsx.sheets.length <= 1) {
+      el.xlsxSheet.innerHTML = "";
+      el.xlsxSheet.classList.add("hidden");
+      if (label) label.classList.add("hidden");
+      return;
+    }
+    el.xlsxSheet.innerHTML = pendingXlsx.sheets.map((sheet) => {
+      const selected = sheet.name === pendingXlsx.selectedSheetName ? " selected" : "";
+      return `<option value="${escapeAttr(sheet.name)}"${selected}>${escapeHtml(sheet.name)} (${sheet.rows} baris, ${sheet.columns} kolom)</option>`;
+    }).join("");
+    el.xlsxSheet.classList.remove("hidden");
+    if (label) label.classList.remove("hidden");
+  }
+
+  function useSelectedXlsxSheet() {
+    if (!pendingXlsx) return;
+    const selected = pendingXlsx.sheets.find((sheet) => sheet.name === el.xlsxSheet.value);
+    if (!selected || selected.name === pendingXlsx.selectedSheetName) return;
+    previewCsv();
   }
 
   function buildMappingFromControls() {
@@ -608,11 +664,15 @@
     }).join("");
     const source = pendingCsv.importedSource;
     const warnings = source.warnings.length ? `<p class="status-line">${escapeHtml(source.warnings.map((item) => item.message).join(" "))}</p>` : "";
+    const sheetLine = source.sheetName ? `<span>Sheet: ${escapeHtml(source.sheetName)}.</span>` : "";
+    const xlsxLine = pendingXlsx ? `<span>XLSX: ${pendingXlsx.zipSummary.entryCount} entry, parser dimuat lazy.</span>` : "";
     el.importMapping.innerHTML = `
       <div class="preview-block">
         <div class="import-summary">
           <span>${escapeHtml(source.sourceLabel)}: ${source.counts.rows} baris, ${source.counts.columns} kolom.</span>
           <span>Delimiter: ${escapeHtml(source.detected.delimiter)}. Format angka: ${escapeHtml(el.importLocale.value)}.</span>
+          ${sheetLine}
+          ${xlsxLine}
         </div>
         ${warnings}
       </div>

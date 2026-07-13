@@ -41,5 +41,8 @@
     "@playwright/test": "1.61.1",
     "axe-core": "4.12.1",
     "wrangler": "4.110.0"
+  },
+  "dependencies": {
+    "read-excel-file": "9.3.1"
   }
 }

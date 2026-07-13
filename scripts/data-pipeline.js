@@ -29,6 +29,7 @@ const THIRD_PARTY_PRODUCTION_PATHS = [
   "data/indonesia-adm2-detailed.geojson",
   "assets/vendor/leaflet/leaflet.css",
   "assets/vendor/leaflet/leaflet.js",
+  "assets/vendor/read-excel-file/read-excel-file.min.js",
   "assets/vendor/leaflet/images/layers-2x.png",
   "assets/vendor/leaflet/images/layers.png",
   "assets/vendor/leaflet/images/marker-icon-2x.png",
