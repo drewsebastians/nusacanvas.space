@@ -3,150 +3,121 @@
   "batch": "2",
   "prompt": "1",
   "checkedAt": "2026-07-13",
-  "status": "blocked",
-  "readyForBatch2": false,
+  "status": "ready",
+  "readyForBatch2": true,
   "branch": "main",
-  "commit": "0bd660512cc2a388df1fdf60e965befad8a34e94",
-  "repositoryStateBeforeReport": {
-    "aheadOfOriginMain": 7,
-    "dirty": false
-  },
-  "reason": "Batch 1 local gates are green, but required live Cloudflare Workers staging deployment/noindex verification is blocked.",
+  "verifiedDeploymentCommit": "8655c6821f57f47e1029e67cbac3fbad38eacc80",
+  "reason": "Batch 1 hard gates pass, Cloudflare Workers staging is deployed, live staging is non-indexable, and Batch 2 contracts, budgets, fixtures, documentation, and test planning are present.",
   "gates": [
     {
-      "id": "clean-build",
+      "id": "clean-install-build",
       "status": "pass",
-      "command": "node scripts/build.js",
-      "evidence": [
-        "Built dist with 32 allowlisted files."
-      ]
+      "commands": ["GitHub CI 29222660931", "node scripts/build.js"],
+      "evidencePaths": ["package.json", ".github/workflows/ci.yml"]
     },
     {
-      "id": "data-source-license-reproducibility",
+      "id": "source-license",
       "status": "pass",
-      "command": "node scripts/data-pipeline.js test",
-      "evidence": [
-        "6 source records",
-        "17 license assets",
-        "10 comparable artifacts",
-        "run hash a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8",
-        "dataDiffStatus=no_drift"
-      ]
+      "commands": ["node scripts/data-pipeline.js verify-sources"],
+      "evidencePaths": ["data/sources/source-inventory-v1.json", "data/license-manifest-v1.json"]
     },
     {
-      "id": "geometry-registry-data-tests",
+      "id": "deterministic-data-pipeline",
       "status": "pass",
-      "command": "python tests/run_data_tests.py",
-      "evidence": [
-        "519 features",
-        "287 Polygon",
-        "232 MultiPolygon",
-        "519 canonical regions",
-        "38 provinces",
-        "53 ambiguous rows"
-      ]
+      "commands": ["node scripts/data-pipeline.js test"],
+      "evidencePaths": ["artifacts/batch-1/reproducibility-report.json", "artifacts/batch-1/data-test-report.json"]
     },
     {
-      "id": "unit-migration-tests",
+      "id": "geometry-registry-tests",
       "status": "pass",
-      "command": "node --test --test-isolation=none tests/unit/*.test.js",
-      "evidence": [
-        "9 tests passed",
-        "0 failed"
-      ]
+      "commands": ["python tests/run_data_tests.py"],
+      "evidencePaths": ["tests/run_data_tests.py", "data/canonical-regions-v1.csv", "data/crosswalk-region-ids-v1.csv"]
     },
     {
-      "id": "static-content",
+      "id": "unit-project-migration-tests",
       "status": "pass",
-      "command": "node scripts/check-static-content.js",
-      "evidence": [
-        "Static content checks passed: 9 trust pages."
-      ]
+      "commands": ["node --test --test-isolation=none tests/unit/project-storage.test.js"],
+      "evidencePaths": ["tests/unit/project-storage.test.js", "data/stable-id-fixtures.json"]
     },
     {
-      "id": "security-privacy",
+      "id": "browser-smoke",
       "status": "pass",
-      "command": "node scripts/security-audit.js",
-      "evidence": [
-        "Security/privacy audit passed: 8 checks."
-      ]
+      "commands": ["PLAYWRIGHT_BASE_URL=https://mapnesia.andrew-sebastian91.workers.dev playwright test smoke.spec.js"],
+      "evidencePaths": ["tests/e2e/smoke.spec.js", "artifacts/batch-1/smoke-network.json"]
     },
     {
-      "id": "batch1-full-local-release-gate",
+      "id": "accessibility",
       "status": "pass",
-      "command": "npm run verify:batch1",
-      "evidence": [
-        "Recorded in docs/batch-1/06-completion-report.md as locally passed.",
-        "Includes browser matrix, accessibility matrix, performance budgets, trust pages, and security/privacy checks."
-      ]
+      "commands": ["npm run verify:batch1"],
+      "evidencePaths": ["tests/e2e/a11y.spec.js", "docs/batch-1/06-completion-report.md"]
+    },
+    {
+      "id": "performance-budget",
+      "status": "pass",
+      "commands": ["node scripts/check-performance-budgets.js"],
+      "evidencePaths": ["performance-budget.json", "artifacts/batch-1/performance-budget-report.json"]
+    },
+    {
+      "id": "startup-network-ban",
+      "status": "pass",
+      "commands": ["npm run verify:batch1"],
+      "evidencePaths": ["performance-budget.json", "artifacts/batch-1/smoke-network.json"]
+    },
+    {
+      "id": "cloudflare-staging-noindex",
+      "status": "pass",
+      "commands": ["node scripts/verify-staging.js https://mapnesia.andrew-sebastian91.workers.dev"],
+      "evidencePaths": ["_headers", "robots.txt", "scripts/verify-staging.js"]
     },
     {
       "id": "github-pages-shutdown",
       "status": "pass",
-      "evidence": [
-        "docs/batch-1/02-github-pages-shutdown-evidence.md",
-        "docs/batch-1/06-completion-report.md records GitHub Pages API returned HTTP 404/not configured."
-      ]
+      "commands": ["gh api repos/drewsebastians/Indonesian-map-tools/pages"],
+      "evidencePaths": ["docs/batch-1/02-github-pages-shutdown-evidence.md"]
     },
     {
-      "id": "cloudflare-deployment",
-      "status": "blocked",
-      "blockerType": "environment-policy",
-      "evidence": [
-        "docs/batch-1/06-completion-report.md records Codex deployment attempts rejected by execution policy, including after owner approval on 2026-07-13."
-      ]
+      "id": "public-contact-destination",
+      "status": "pass",
+      "classification": "documented-limitation",
+      "evidencePaths": ["contact/index.html", "docs/batch-1/06-completion-report.md"]
     },
     {
-      "id": "live-cloudflare-noindex",
-      "status": "blocked",
-      "blockerType": "live-deployment",
-      "command": "node scripts/verify-staging.js https://mapnesia.andrew-sebastian91.workers.dev",
-      "evidence": [
-        "/ missing X-Robots-Tag",
-        "expected noindex, nofollow, noarchive",
-        "actual null"
-      ]
-    },
-    {
-      "id": "unknown-route-live-verification",
-      "status": "blocked",
-      "blockerType": "live-deployment",
-      "evidence": [
-        "Live verifier stops at missing noindex header before completing the expanded route matrix."
-      ]
+      "id": "github-actions-deploy-fallback",
+      "status": "not-applicable",
+      "classification": "manual-fallback-only",
+      "evidencePaths": [".github/workflows/deploy-cloudflare.yml", "docs/deployment-guide.md"]
     }
   ],
-  "blockers": [
-    {
-      "id": "manual-cloudflare-deploy-required",
-      "type": "environment-policy",
-      "description": "Deploy the current committed build to Cloudflare Workers staging from outside the Codex execution policy."
-    },
-    {
-      "id": "live-noindex-header-missing",
-      "type": "live-deployment",
-      "description": "The active workers.dev staging root lacks X-Robots-Tag: noindex, nofollow, noarchive."
-    },
-    {
-      "id": "public-contact-destination-pending",
-      "type": "owner-decision",
-      "description": "Approve one public contact/report destination before broader public release. This is documented as a limitation, not the immediate Batch 2 stop condition."
-    }
+  "contracts": [
+    "docs/batch-2/contracts/spreadsheet-to-map-contracts.schema.json"
   ],
-  "nextActions": [
-    "Deploy the current committed build manually or from an environment allowed to publish to Cloudflare Workers.",
-    "Run npm run verify:staging against https://mapnesia.andrew-sebastian91.workers.dev.",
-    "Confirm the deployed URL is the intended Batch 1 staging surface.",
-    "Only after live verification passes, rerun Batch 2 Prompt 1 and create docs/batch-2/00-preflight-and-contract.md."
+  "budgets": [
+    "artifacts/batch-2/resource-budget-v1.json"
   ],
-  "batch2OutputsCreated": [
-    "docs/batch-2/00-blockers.md",
-    "artifacts/batch-2/preflight.json"
+  "fixtures": [
+    "tests/fixtures/batch-2/import/paste-two-column.tsv",
+    "tests/fixtures/batch-2/import/comma.csv",
+    "tests/fixtures/batch-2/import/semicolon.csv",
+    "tests/fixtures/batch-2/import/tab.tsv",
+    "tests/fixtures/batch-2/import/locale-numbers.csv",
+    "tests/fixtures/batch-2/import/edge-cases.csv",
+    "tests/fixtures/batch-2/import/malformed.csv",
+    "tests/fixtures/batch-2/import/large-benchmark-spec.json"
   ],
-  "batch2OutputsIntentionallyNotCreated": [
+  "docs": [
     "docs/batch-2/00-preflight-and-contract.md",
-    "Batch 2 contracts",
-    "Batch 2 fixtures",
-    "Spreadsheet importer/runtime features"
+    "docs/batch-2/01-architecture-data-flow.md",
+    "docs/batch-2/02-import-privacy-threat-model.md",
+    "docs/batch-2/03-test-matrix.md"
+  ],
+  "nonGoalsConfirmed": [
+    "no runtime AI",
+    "no Batch 2 user-facing feature implementation",
+    "no XLSX parser dependency",
+    "no analytics, ads, indexing, custom domain, backend, or accounts"
+  ],
+  "blockers": [],
+  "documentedLimitations": [
+    "Owner still needs to approve one public contact/report destination before broader public release."
   ]
 }

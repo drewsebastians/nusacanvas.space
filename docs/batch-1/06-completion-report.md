@@ -1,10 +1,10 @@
 # Batch 1 Prompt 6 - Completion Report
 
-Date: 2026-07-12; deployment blocker rechecked 2026-07-13
+Date: 2026-07-12; deployment verified 2026-07-13
 
-Overall Batch 1 status: `BLOCKED`
+Overall Batch 1 status: `PASS WITH DOCUMENTED LIMITATION`
 
-Reason: all local release gates passed, but the required live Cloudflare deployment could not be performed from Codex. On 2026-07-13 the owner explicitly approved publishing the Batch 1 build to Cloudflare Workers staging, but the execution policy still rejected the deployment as an external export from the local workspace. The currently active staging URL still fails the required noindex/header verification. Do not tag or mark Batch 1 complete until a manual/out-of-Codex Cloudflare deployment passes live verification.
+Reason: local release gates passed, the current `main` branch has been deployed to Cloudflare Workers staging, and live staging verification passed on 2026-07-13. The only remaining documented limitation is the owner decision for a public contact/report destination; the current no-account report template remains local copy/download only.
 
 ## Exit gates
 
@@ -18,7 +18,7 @@ Reason: all local release gates passed, but the required live Cloudflare deploym
 | Source/version visible | PASS | Source/version badge links to sources, limitations, and data-error report path; export metadata includes boundary and registry versions. |
 | Required export attribution/disclaimer | PASS | SVG/PNG source SVG includes source, registry, feature-scope metadata, and visual-reference/legal-boundary disclaimer. |
 | Production datasets/assets pass license gate | PASS | `scripts/data-pipeline.js test`: 6 source records, 17 license assets, 9 third-party production files, 0 errors. |
-| Deterministic pipeline | PASS | Reproducibility run A/B hash: `a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8`; no mismatches. |
+| Deterministic pipeline | PASS | Reproducibility run A/B hash after LF normalization: `215deb9d81f1ddfe40656dd2191d9ad872646863844971084b756167a4baac61`; no mismatches. |
 | Data diff | PASS | `dataDiffStatus=no_drift`; added/removed/checksum/license/source changes all 0. |
 | Old project migration | PASS | Unit/migration tests 9/9 passed; smoke test opens schema 1.0 sample project and exposes migration report. |
 | Data tests | PASS | 519 features, 287 Polygon, 232 MultiPolygon, 519 canonical regions, 38 provinces, 53 ambiguous rows preserved. |
@@ -29,9 +29,9 @@ Reason: all local release gates passed, but the required live Cloudflare deploym
 | Report-error path | PASS WITH DOCUMENTED LIMITATION | Copy/download template works and does not submit data. External submission destination remains blocked until owner approves a public contact channel. |
 | Security/privacy hardening | PASS | CSP, noindex, `nosniff`, referrer policy, permissions policy, frame/object/base/form restrictions, CSV formula escaping, JSON limits, object URL cleanup, forbidden runtime network scan, dependency license audit, and secrets scan passed locally. |
 | Forbidden external boundary request | PASS | Static/runtime scan passed; smoke startup network check found no geoBoundaries/HDX/current endpoint request. |
-| Cloudflare deployment | BLOCKED | Deployment attempts were rejected by execution policy before publishing, including after explicit owner approval on 2026-07-13. No deploy was performed by Codex. |
-| Cloudflare noindex/live verification | BLOCKED | Read-only `verify-staging` against `https://mapnesia.andrew-sebastian91.workers.dev` failed: `/` is missing `X-Robots-Tag: noindex, nofollow, noarchive`. |
-| Unknown route 404 live verification | BLOCKED | Live verifier stops at missing header before completing the expanded path matrix; rerun after deployment. |
+| Cloudflare deployment | PASS | Cloudflare direct build deployed commit `8655c6821f57f47e1029e67cbac3fbad38eacc80` to Worker `mapnesia`. |
+| Cloudflare noindex/live verification | PASS | `node scripts/verify-staging.js https://mapnesia.andrew-sebastian91.workers.dev` verified required assets, noindex headers, CSP, robots.txt, and unknown-route 404. |
+| Live staging smoke matrix | PASS | Playwright smoke against live staging passed 16/16 across Chromium desktop, Firefox desktop, WebKit desktop, and Chromium mobile. |
 | GitHub Pages disabled | PASS | `gh api repos/drewsebastians/Indonesian-map-tools/pages` returned HTTP 404. |
 | Repository docs point to Cloudflare staging | PASS | README/deployment docs use Cloudflare staging; legacy manual upload note now says GitHub Pages is not approved. |
 | No custom domain, analytics, ads, backend, runtime AI | PASS | Static/security scan and content review found no such additions. |
@@ -57,14 +57,12 @@ Included steps:
 
 - Target Worker: `mapnesia`
 - Target URL: `https://mapnesia.andrew-sebastian91.workers.dev`
-- Deploy status: `BLOCKED - must be performed manually or outside this Codex execution policy`
-- Live verification status: `BLOCKED`
-- Release/tag: not created because required live deployment and live verification are blocked.
+- Deploy status: `PASS - deployed by Cloudflare direct build`
+- Live verification status: `PASS`
+- Release/tag: not created; staging is verified but no production release tag has been requested.
 
 ## Owner blockers
 
-1. Perform Cloudflare deployment for the committed build manually or from an environment where publishing to Cloudflare is allowed.
-2. Rerun `npm run verify:staging` and live Playwright smoke against `https://mapnesia.andrew-sebastian91.workers.dev`.
-3. Approve one public contact destination before marking the no-account data-reporting channel fully complete.
+1. Approve one public contact destination before marking the no-account data-reporting channel fully complete.
 
-Until blockers 1 and 2 are resolved, Batch 1 must remain `BLOCKED` even though local quality gates pass.
+Batch 1 deployment is no longer blocking Batch 2 preflight. The public contact destination remains a documented owner decision for broader public release.

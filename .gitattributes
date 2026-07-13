@@ -13,6 +13,7 @@
 *.jsonc text eol=lf
 *.md text eol=lf
 *.txt text eol=lf
+*.tsv text eol=lf
 *.yml text eol=lf
 
 *.png binary

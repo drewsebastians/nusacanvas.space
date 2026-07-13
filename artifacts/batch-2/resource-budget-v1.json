@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "batch2.resourceBudget.v1",
+  "status": "approved-initial",
+  "rationale": "Conservative browser-side limits for static, local-only spreadsheet import. These are product guardrails, not a perfect security boundary.",
+  "inputLimits": {
+    "maxTextBytes": 1048576,
+    "maxUploadBytes": 2097152,
+    "maxXlsxCompressedBytes": 2097152,
+    "maxXlsxEstimatedUncompressedBytes": 12582912,
+    "maxZipEntries": 256,
+    "maxRows": 5000,
+    "maxColumns": 50,
+    "maxCells": 100000,
+    "maxSingleCellLength": 2000
+  },
+  "responsiveness": {
+    "yieldAfterRows": 500,
+    "yieldAfterMilliseconds": 16,
+    "workerRecommendedAboveCells": 20000,
+    "longTaskWarningMilliseconds": 50,
+    "cancelCheckIntervalRows": 250
+  },
+  "storageLimits": {
+    "maxProjectJsonBytes": 5242880,
+    "maxAutosaveBytes": 2097152,
+    "tableWindowingThresholdRows": 500
+  },
+  "exportLimits": {
+    "maxCanvasPixels": 16000000,
+    "maxExportScale": 3,
+    "inheritBatch1PerformanceBudget": true
+  },
+  "lazyModuleBudgets": {
+    "maxXlsxParserGzipBytes": 250000,
+    "maxPdfModuleGzipBytes": 250000,
+    "maxBatch2InitialJsGzipIncreaseBytes": 75000
+  },
+  "networkPolicy": {
+    "import": "forbidden",
+    "matching": "forbidden",
+    "visualization": "forbidden",
+    "export": "forbidden",
+    "allowedRuntimeOrigins": ["self"]
+  }
+}

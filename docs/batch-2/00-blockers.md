@@ -1,12 +1,14 @@
-# Batch 2 Prompt 1 - Preflight Blockers
+# Batch 2 Prompt 1 - Resolved Preflight Blockers
 
 Date: 2026-07-13
 
-Status: `BLOCKED`
+Status: `RESOLVED`
 
-Batch 2 must not start yet. Prompt 1 in the Batch 2 pack requires Batch 1 to be merged, quality-gated, and deployed/verified before any spreadsheet-to-map contracts, fixtures, runtime features, or UI work are introduced. The local Batch 1 quality gates remain green, but the required live Cloudflare Workers staging verification is still red.
+This file records the initial Batch 2 preflight blocker and its resolution. Batch 2 Prompt 1 originally stopped because live Cloudflare Workers staging had not yet passed noindex/header verification. That blocker was resolved on 2026-07-13 after Cloudflare direct deployment and live verification passed.
 
-Last verified commit: `0bd660512cc2a388df1fdf60e965befad8a34e94`
+Original blocked commit: `0bd660512cc2a388df1fdf60e965befad8a34e94`
+
+Resolved staging commit: `8655c6821f57f47e1029e67cbac3fbad38eacc80`
 
 Branch: `main`
 
@@ -24,9 +26,9 @@ Repository state before this blocker report: `main` was ahead of `origin/main` b
 | Security/privacy audit | PASS | `node scripts/security-audit.js` passed 8 checks. |
 | Batch 1 full local release gate | PASS | `docs/batch-1/06-completion-report.md` records `npm run verify:batch1` passed locally, including browser matrix, accessibility matrix, performance budgets, trust pages, and security/privacy checks. |
 | GitHub Pages shutdown | PASS | `docs/batch-1/02-github-pages-shutdown-evidence.md` and Batch 1 completion report record GitHub Pages API returning HTTP 404/not configured. |
-| Cloudflare deployment | BLOCKED | Batch 1 completion report records that Codex deployment attempts were rejected by execution policy, including after explicit owner approval on 2026-07-13. |
-| Live Cloudflare noindex verification | BLOCKED | `node scripts/verify-staging.js https://mapnesia.andrew-sebastian91.workers.dev` failed on 2026-07-13 because `/` is missing `X-Robots-Tag: noindex, nofollow, noarchive`. |
-| Unknown route live verification | BLOCKED | Live verifier stops at the missing noindex header before completing the full live route matrix. |
+| Cloudflare deployment | PASS | Cloudflare direct build deployed the current branch to Worker `mapnesia`. |
+| Live Cloudflare noindex verification | PASS | `node scripts/verify-staging.js https://mapnesia.andrew-sebastian91.workers.dev` passed on 2026-07-13. |
+| Unknown route live verification | PASS | The same live verifier confirmed unknown routes return 404. |
 
 ## Blockers by type
 
@@ -54,17 +56,10 @@ The no-account data-reporting path is locally implemented as a copy/download tem
 
 Required resolution before a broader public release: approve one public contact/report destination.
 
-## Explicit Batch 2 decision
+## Updated Batch 2 decision
 
-Do not create `docs/batch-2/00-preflight-and-contract.md` yet.
+`docs/batch-2/00-preflight-and-contract.md` may now be created.
 
-Do not create Batch 2 fixtures, importer schemas, spreadsheet validation UI, URL/state behavior, preview mapping, or download/export changes yet.
+Batch 2 Prompt 1 may define contracts, budgets, fixtures, architecture, privacy, and test planning. Runtime spreadsheet-to-map features remain out of scope until Prompt 2.
 
-Batch 2 can begin only after:
-
-1. the current committed build is deployed to Cloudflare Workers staging;
-2. live staging passes noindex/header verification;
-3. live route verification completes successfully;
-4. the repository owner confirms the deployed URL is the intended Batch 1 staging surface.
-
-Until then, this file and `artifacts/batch-2/preflight.json` are the only Batch 2 Prompt 1 outputs.
+The owner still needs to approve a public contact/report destination before broader public release, but that is documented as a release limitation rather than a Batch 2 preflight blocker.

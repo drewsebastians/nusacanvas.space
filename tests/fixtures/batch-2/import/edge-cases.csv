@@ -1,0 +1,10 @@
+region,province,value,category,source
+Kota Surabaya,Jawa Timur,10,A,manual
+Surabaya,Jawa Timur,11,A-duplicate-target,manual
+Serang,,5,ambiguous-name,manual
+Wilayah Tidak Ada,Jawa Barat,7,unmatched,manual
+Kota Bandung,Jawa Barat,=1+1,formula-like,manual
+"Kota, Administratif Jakarta Selatan",DKI Jakarta,"12","quoted delimiter","line one
+line two"
+Kab. Bogor,Jawa Barat,-42,old-alias,manual
+Kota Bogor,Jawa Barat,15%,percentage,manual

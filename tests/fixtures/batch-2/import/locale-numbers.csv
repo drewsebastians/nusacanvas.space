@@ -1,0 +1,4 @@
+region,province,id_number,en_number,ambiguous,accounting
+Kota Surabaya,Jawa Timur,"1.234.567,89","1,234,567.89","1,234","(1234.50)"
+Kota Bandung,Jawa Barat,"0","0","1.234","(1.234,50)"
+Kabupaten Bogor,Jawa Barat,"","","",""

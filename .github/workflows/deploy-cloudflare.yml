@@ -1,9 +1,7 @@
-name: Deploy Cloudflare Workers
+name: Manual Cloudflare Workers Deploy
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -51,4 +49,4 @@ jobs:
           command: deploy
 
       - name: Record staging URL
-        run: echo "Deployed staging URL: https://mapnesia.andrew-sebastian91.workers.dev" >> "$GITHUB_STEP_SUMMARY"
+        run: echo "Manual deploy fallback URL: https://mapnesia.andrew-sebastian91.workers.dev" >> "$GITHUB_STEP_SUMMARY"

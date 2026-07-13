@@ -33,8 +33,8 @@ Prompt 5 adds an offline, deterministic data and license pipeline for the curren
 
 `npm run data:reproduce` passed.
 
-- Run A hash: `a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8`
-- Run B hash: `a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8`
+- Run A hash: `215deb9d81f1ddfe40656dd2191d9ad872646863844971084b756167a4baac61`
+- Run B hash: `215deb9d81f1ddfe40656dd2191d9ad872646863844971084b756167a4baac61`
 - Mismatches: 0
 - Tracked-output mismatches: 0
 
@@ -98,4 +98,4 @@ The Cloudflare deploy workflow also runs `npm run data:test` before the normal q
 - Kemendagri official code fields remain blank until row-level lampiran evidence is committed.
 - `data:refresh` is intentionally not automated; a new upstream artifact must be pinned, reviewed, diffed, and versioned manually.
 - Full topology validation remains a manual/native-GIS review gate for future boundary replacements.
-- Cloudflare live staging still needs a fresh deployment before the active staging URL can prove the noindex header.
+- Cloudflare live staging passed noindex/header verification on 2026-07-13 after direct Cloudflare deployment.

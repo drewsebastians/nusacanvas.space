@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mapnesia.local/schemas/batch2/spreadsheet-to-map-contracts.schema.json",
+  "title": "Mapnesia Batch 2 Spreadsheet-to-Map Contracts",
+  "schemaVersion": "batch2.contracts.v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "importedSource": { "$ref": "#/$defs/importedSource" },
+    "rawRow": { "$ref": "#/$defs/rawRow" },
+    "columnMapping": { "$ref": "#/$defs/columnMapping" },
+    "matchResult": { "$ref": "#/$defs/matchResult" },
+    "visualizationSpec": { "$ref": "#/$defs/visualizationSpec" },
+    "exportMetadata": { "$ref": "#/$defs/exportMetadata" },
+    "projectV2": { "$ref": "#/$defs/projectV2" }
+  },
+  "$defs": {
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["severity", "code", "message"],
+      "properties": {
+        "severity": { "enum": ["info", "warning", "error"] },
+        "code": { "type": "string", "pattern": "^[a-z0-9_.-]+$" },
+        "message": { "type": "string", "minLength": 1, "maxLength": 240 }
+      }
+    },
+    "importedSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contractVersion", "sourceId", "sourceType", "sourceLabel", "detected", "counts", "warnings", "truncated"],
+      "properties": {
+        "contractVersion": { "const": "batch2.importedSource.v1" },
+        "sourceId": { "type": "string", "pattern": "^src_[a-z0-9]{8,32}$" },
+        "sourceType": { "enum": ["paste", "csv", "tsv", "xlsx"] },
+        "sourceLabel": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "sheetName": { "type": ["string", "null"], "maxLength": 80 },
+        "detected": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["encoding", "delimiter", "locale"],
+          "properties": {
+            "encoding": { "enum": ["utf-8", "utf-8-bom", "unknown"] },
+            "delimiter": { "enum": ["comma", "semicolon", "tab", "xlsx-sheet", "unknown"] },
+            "locale": { "enum": ["id-ID", "en-US", "mixed", "unknown"] }
+          }
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rows", "columns", "cells"],
+          "properties": {
+            "rows": { "type": "integer", "minimum": 0 },
+            "columns": { "type": "integer", "minimum": 0 },
+            "cells": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "warnings": { "type": "array", "items": { "$ref": "#/$defs/issue" } },
+        "truncated": { "type": "boolean" }
+      }
+    },
+    "rawRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contractVersion", "rowId", "sourceId", "rowNumber", "cells", "normalized", "issues"],
+      "properties": {
+        "contractVersion": { "const": "batch2.rawRow.v1" },
+        "rowId": { "type": "string", "pattern": "^row_[a-z0-9]{8,32}$" },
+        "sourceId": { "type": "string" },
+        "sheetName": { "type": ["string", "null"], "maxLength": 80 },
+        "rowNumber": { "type": "integer", "minimum": 1 },
+        "cells": { "type": "object", "additionalProperties": { "type": "string", "maxLength": 2000 } },
+        "normalized": { "type": "object", "additionalProperties": { "type": ["string", "number", "boolean", "null"] } },
+        "issues": { "type": "array", "items": { "$ref": "#/$defs/issue" } }
+      }
+    },
+    "columnMapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contractVersion", "roles", "ignoredColumns", "suggestions"],
+      "properties": {
+        "contractVersion": { "const": "batch2.columnMapping.v1" },
+        "roles": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "regionCode": { "type": ["string", "null"] },
+            "regionName": { "type": ["string", "null"] },
+            "province": { "type": ["string", "null"] },
+            "numericValue": { "type": ["string", "null"] },
+            "category": { "type": ["string", "null"] },
+            "source": { "type": ["string", "null"] },
+            "period": { "type": ["string", "null"] }
+          }
+        },
+        "ignoredColumns": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "suggestions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["column", "role", "confidence", "reason"],
+            "properties": {
+              "column": { "type": "string" },
+              "role": { "type": "string" },
+              "confidence": { "enum": ["high", "medium", "low"] },
+              "reason": { "type": "string", "maxLength": 160 }
+            }
+          }
+        }
+      }
+    },
+    "matchResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contractVersion", "rowId", "status", "candidateIds", "evidence"],
+      "properties": {
+        "contractVersion": { "const": "batch2.matchResult.v1" },
+        "rowId": { "type": "string" },
+        "status": {
+          "enum": [
+            "exact_official_code",
+            "exact_canonical_name_province",
+            "exact_alias_province",
+            "normalized_deterministic",
+            "ambiguous",
+            "unmatched",
+            "invalid",
+            "duplicate_target",
+            "user_resolved"
+          ]
+        },
+        "canonicalRegionId": { "type": ["string", "null"] },
+        "candidateIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "evidence": { "type": "array", "items": { "$ref": "#/$defs/issue" } }
+      }
+    },
+    "visualizationSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contractVersion", "mode", "mappedField", "method", "palette", "noDataStyle", "numberFormat", "legend"],
+      "properties": {
+        "contractVersion": { "const": "batch2.visualizationSpec.v1" },
+        "mode": { "enum": ["categorical", "equal_interval", "quantile", "manual_breaks", "diverging"] },
+        "mappedField": { "type": "string" },
+        "method": { "type": "object", "additionalProperties": true },
+        "breaks": { "type": "array", "items": { "type": "number" } },
+        "palette": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["paletteId", "direction"],
+          "properties": {
+            "paletteId": { "type": "string" },
+            "direction": { "enum": ["normal", "reverse"] }
+          }
+        },
+        "noDataStyle": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["fill", "stroke", "label"],
+          "properties": {
+            "fill": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+            "stroke": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+            "label": { "type": "string", "maxLength": 80 }
+          }
+        },
+        "numberFormat": { "type": "object", "additionalProperties": true },
+        "legend": { "type": "object", "additionalProperties": true }
+      }
+    },
+    "exportMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contractVersion", "title", "subtitle", "source", "period", "footnote", "boundaryVersion", "registryVersion", "attribution", "extent", "layout", "format"],
+      "properties": {
+        "contractVersion": { "const": "batch2.exportMetadata.v1" },
+        "title": { "type": "string", "maxLength": 120 },
+        "subtitle": { "type": "string", "maxLength": 160 },
+        "source": { "type": "string", "maxLength": 160 },
+        "period": { "type": "string", "maxLength": 80 },
+        "footnote": { "type": "string", "maxLength": 240 },
+        "boundaryVersion": { "$ref": "#/$defs/version" },
+        "registryVersion": { "$ref": "#/$defs/version" },
+        "attribution": { "type": "string", "minLength": 1, "maxLength": 400 },
+        "extent": { "enum": ["national", "current_view"] },
+        "layout": { "enum": ["16:9", "4:3", "a4-landscape", "a3-landscape"] },
+        "format": { "enum": ["svg", "png", "pdf", "mapping-csv", "project-json"] }
+      }
+    },
+    "projectV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "appVersion", "boundaryVersion", "registryVersion", "importVersion", "matchingVersion", "visualizationVersion", "exportVersion", "storagePolicy"],
+      "properties": {
+        "schemaVersion": { "const": "2.0" },
+        "appVersion": { "$ref": "#/$defs/version" },
+        "boundaryVersion": { "$ref": "#/$defs/version" },
+        "registryVersion": { "$ref": "#/$defs/version" },
+        "importVersion": { "$ref": "#/$defs/version" },
+        "matchingVersion": { "$ref": "#/$defs/version" },
+        "visualizationVersion": { "$ref": "#/$defs/version" },
+        "exportVersion": { "$ref": "#/$defs/version" },
+        "storagePolicy": { "enum": ["embed-normalized-rows", "summary-only-requires-reimport", "indexeddb-local-companion"] },
+        "userCorrections": { "type": "array", "items": { "$ref": "#/$defs/matchResult" } },
+        "limits": { "type": "object", "additionalProperties": true }
+      }
+    }
+  }
+}

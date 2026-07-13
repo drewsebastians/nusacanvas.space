@@ -67,14 +67,14 @@ npm run test:e2e:smoke
 Remove-Item Env:PLAYWRIGHT_BASE_URL
 ```
 
-## GitHub Actions Deploy
+## GitHub Actions Manual Deploy Fallback
 
-`.github/workflows/deploy-cloudflare.yml` deploys only from `main`. It runs the quality gate before deployment and uses the official Cloudflare Wrangler action with:
+`.github/workflows/deploy-cloudflare.yml` is a manual `workflow_dispatch` fallback. The active staging deployment path is Cloudflare direct build. The manual fallback runs the quality gate before deployment and uses the official Cloudflare Wrangler action with:
 
 - `CLOUDFLARE_ACCOUNT_ID`
 - `CLOUDFLARE_API_TOKEN`
 
-The workflow records the staging URL in the job summary. It does not contain credential values.
+The workflow records the staging URL in the job summary. It does not contain credential values. It intentionally does not run on every `main` push so the repository does not double-deploy while Cloudflare direct build is active.
 
 ## Cloudflare Direct Builds
 

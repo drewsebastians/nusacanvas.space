@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "batch2.fixture.largeBenchmark.v1",
+  "generator": "deterministic-region-repeat",
+  "rows": 5000,
+  "columns": ["region", "province", "value", "category", "period"],
+  "valuePattern": "rowIndex % 1000",
+  "categoryPattern": "A/B/C by rowIndex % 3",
+  "expected": {
+    "maxRowsAccepted": 5000,
+    "requiresYieldOrWorker": true,
+    "mustRemainCancelable": true
+  }
+}
