@@ -1,0 +1,59 @@
+{
+  "appVersion": "0.9.0",
+  "schemaVersion": "1.1",
+  "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+  "registryVersion": "IDN-ADM-REGISTRY-v1-2025-06-23",
+  "sourceVersion": "geoBoundaries-IDN-ADM2-22746128 + Kepmendagri-300.2.2-2138/2025 amended 300.2.2-2430/2025",
+  "title": "Quarterly coverage map",
+  "highlights": {
+    "known-id": {
+      "color": "#4472C4",
+      "category": "Priority",
+      "value": "80"
+    }
+  },
+  "manualHighlights": {},
+  "regionRefs": {
+    "known-id": {
+      "canonicalRegionId": "idn-adm2-gb-22746128btest",
+      "legacyRegionId": "known-id",
+      "geometryFeatureId": "known-id",
+      "migrationStatus": "mapped",
+      "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "registryVersion": "IDN-ADM-REGISTRY-v1-2025-06-23"
+    }
+  },
+  "unresolvedHighlights": {},
+  "legend": [
+    {
+      "label": "Priority",
+      "color": "#4472C4"
+    }
+  ],
+  "legendVisible": true,
+  "legendPosition": "bottom-right",
+  "groupNames": {},
+  "groupMeta": {},
+  "importCorrections": {},
+  "workflowStage": "visualize",
+  "uiMode": "basic",
+  "importRows": [],
+  "visualization": null,
+  "exportMeta": {
+    "subtitle": "Quarterly coverage",
+    "source": "Internal planning data",
+    "period": "2026 Q2",
+    "footnote": "",
+    "legendTitle": "Coverage",
+    "filenameSlug": "quarterly-coverage"
+  },
+  "exportSettings": {
+    "ratio": "16:9",
+    "extent": "national",
+    "labels": true,
+    "transparent": false,
+    "highDetail": false,
+    "pngSize": "1920x1080"
+  },
+  "savedAt": "2026-07-01T00:00:00.000Z"
+}

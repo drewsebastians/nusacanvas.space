@@ -21,6 +21,8 @@ const initialCompressedBytes = runtimePaths.reduce((total, file) => total + gzip
 const simplifiedGeometryGzipBytes = gzipBytes("data/indonesia-adm2-simplified.geojson");
 const shellJavaScriptGzipBytes = [
   "assets/vendor/leaflet/leaflet.js",
+  "assets/js/brand-config.js",
+  "assets/js/brand-migration.js",
   "assets/js/product-content.js",
   "assets/js/project-storage.js",
   "assets/js/import-core.js",

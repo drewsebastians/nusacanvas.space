@@ -1,5 +1,7 @@
 (function () {
-  const APP_VERSION = "1.0.0";
+  const brand = window.ProductBrand;
+  if (!brand) throw new Error("Product brand configuration is required.");
+  const APP_VERSION = brand.app.version;
   const BOUNDARY_VERSION = "IDN-ADM2-2020-geoboundaries-22746128";
   const REGISTRY_VERSION = "IDN-ADM-REGISTRY-v1-2025-06-23";
 
@@ -10,7 +12,7 @@
 
   function buildReport() {
     const lines = [
-      "Mapnesia data issue report",
+      `${brand.productName} data issue report`,
       "",
       `App version: ${APP_VERSION}`,
       `Boundary version: ${BOUNDARY_VERSION}`,
@@ -44,7 +46,7 @@
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "mapnesia-data-issue-report.txt";
+    link.download = brand.defaults.issueReportFilename;
     link.click();
     URL.revokeObjectURL(url);
     setStatus("The report template was downloaded.", "downloaded");

@@ -1,7 +1,8 @@
 const { expect, test } = require("@playwright/test");
+const brand = require("../../assets/js/brand-config.js");
 
 const trustPages = [
-  ["/about/", /About Mapnesia/i],
+  ["/about/", new RegExp(`About ${brand.productName}`, "i")],
   ["/contact/", /Contact and data reports/i],
   ["/privacy/", /Privacy notice/i],
   ["/terms/", /Terms of use/i],
@@ -21,7 +22,7 @@ test("trust pages are reachable, lightweight, and noindex", async ({ page }) => 
     await expect(page.locator("h1")).toContainText(heading);
     await expect(page.locator("meta[name='robots']")).toHaveAttribute("content", /noindex/i);
     await expect(page.locator("main")).toBeVisible();
-    await expect(page.locator("a.brand")).toBeVisible();
+    await expect(page.locator("a.brand")).toHaveText(brand.productName);
     const html = await page.content();
     expect(html).not.toContain("assets/js/app.js");
     expect(html).not.toContain("assets/vendor/leaflet/leaflet.js");
@@ -37,6 +38,7 @@ test("report-error template copies only structured public fields", async ({ page
   await page.locator("#canonicalId").fill("idn-adm2-gb-22746128b65593111718524");
   await page.locator("#issueDescription").fill("Please check the comparison code against the official source.");
   await expect(page.locator("#reportOutput")).toContainText("App version: 1.0.0");
+  await expect(page.locator("#reportOutput")).toContainText(`${brand.productName} data issue report`);
   await expect(page.locator("#reportOutput")).toContainText("Boundary version: IDN-ADM2-2020-geoboundaries-22746128");
   await expect(page.locator("#reportOutput")).toContainText("Registry version: IDN-ADM-REGISTRY-v1-2025-06-23");
   await expect(page.locator("form")).toHaveCount(0);
@@ -44,7 +46,7 @@ test("report-error template copies only structured public fields", async ({ page
   await expect(page.locator("#reportStatus")).toHaveAttribute("data-state", /copied|copy-failed/);
   const download = page.waitForEvent("download");
   await page.locator("#downloadReportBtn").click();
-  expect((await download).suggestedFilename()).toBe("mapnesia-data-issue-report.txt");
+  expect((await download).suggestedFilename()).toBe(brand.defaults.issueReportFilename);
   await expect(page.locator("#reportStatus")).toHaveAttribute("data-state", "downloaded");
 });
 

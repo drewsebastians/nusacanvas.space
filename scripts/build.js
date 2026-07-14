@@ -11,6 +11,7 @@ const requiredFiles = [
   "robots.txt",
   "assets/css/app.css",
   "assets/css/content.css",
+  "assets/js/brand-config.js",
   "assets/js/app.js",
   "assets/js/import-core.js",
   "assets/js/xlsx-import.js",
@@ -79,21 +80,45 @@ fs.mkdirSync(dist, { recursive: true });
 
 requiredFiles.forEach(copyFile);
 
-function bundleProductContent() {
-  const contentPath = path.join(root, "assets/js/product-content.js");
-  if (!fs.existsSync(contentPath)) throw new Error("Required product content source is missing: assets/js/product-content.js");
+function bundleRootRuntime() {
+  const earlyRuntimeModules = [
+    "assets/js/brand-config.js",
+    "assets/js/brand-migration.js"
+  ];
+  const appRuntimeModules = ["assets/js/product-content.js"];
+  const runtimeModules = [...earlyRuntimeModules, ...appRuntimeModules];
+  const projectStoragePath = path.join(dist, "assets/js/project-storage.js");
   const appPath = path.join(dist, "assets/js/app.js");
   const indexPath = path.join(dist, "index.html");
-  const productContent = fs.readFileSync(contentPath, "utf8");
+  const readModule = (relativePath) => {
+    const sourcePath = path.join(root, relativePath);
+    if (!fs.existsSync(sourcePath)) throw new Error(`Required root runtime source is missing: ${relativePath}`);
+    return fs.readFileSync(sourcePath, "utf8");
+  };
+  const earlyModules = earlyRuntimeModules.map(readModule);
+  const appModules = appRuntimeModules.map(readModule);
+  const projectStorage = fs.readFileSync(projectStoragePath, "utf8");
   const app = fs.readFileSync(appPath, "utf8");
-  const index = fs.readFileSync(indexPath, "utf8");
-  const productScript = /\s*<script src="\.\/assets\/js\/product-content\.js"><\/script>/;
-  if (!productScript.test(index)) throw new Error("index.html is missing the product-content script marker required by the build.");
-  fs.writeFileSync(appPath, `${productContent}\n${app}`);
-  fs.writeFileSync(indexPath, index.replace(productScript, ""));
+  let index = fs.readFileSync(indexPath, "utf8");
+
+  runtimeModules.forEach((relativePath) => {
+    const filename = path.basename(relativePath).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const scriptMarker = new RegExp(`\\s*<script src="\\.\\/assets\\/js\\/${filename}"><\\/script>`);
+    if (!scriptMarker.test(index)) {
+      throw new Error(`index.html is missing the ${path.basename(relativePath)} script marker required by the build.`);
+    }
+    index = index.replace(scriptMarker, "");
+  });
+
+  // Project storage is the earliest runtime dependency that needs both brand
+  // configuration and migration. Bundling them here keeps the startup request
+  // count unchanged while also making the config available to export.js.
+  fs.writeFileSync(projectStoragePath, `${earlyModules.join("\n")}\n${projectStorage}`);
+  fs.writeFileSync(appPath, `${appModules.join("\n")}\n${app}`);
+  fs.writeFileSync(indexPath, index);
 }
 
-bundleProductContent();
+bundleRootRuntime();
 
 const produced = listFiles(dist).length;
 if (!produced) {

@@ -1,6 +1,6 @@
 # Architecture
 
-Peta Warna Wilayah Indonesia is a static Cloudflare Workers Static Assets application.
+NusaCanvas is a static Cloudflare Workers Static Assets application. Its future canonical production origin is `https://nusacanvas.space`; the custom domain is not attached yet.
 
 ## Runtime
 

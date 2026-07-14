@@ -1,8 +1,12 @@
 (function (root, factory) {
-  const content = factory();
+  const brand = typeof module === "object" && module.exports
+    ? require("./brand-config.js")
+    : root && root.ProductBrand;
+  const content = factory(brand);
   if (typeof module === "object" && module.exports) module.exports = content;
   if (root) root.ProductContent = content;
-})(typeof window !== "undefined" ? window : globalThis, function () {
+})(typeof window !== "undefined" ? window : globalThis, function (brand) {
+  if (!brand) throw new Error("Product brand configuration is required.");
   const strings = Object.freeze({
     ui: {
       actions: {
@@ -60,16 +64,12 @@
         genericSafe: "Your current map is safe. Review this step and try again."
       }
     },
-    brand: {
-      currentName: "Mapnesia",
-      prompt3ReplacementPending: true
-    },
     dataSource: {
       boundaryPlain: "Boundary snapshot: 2020; administrative names reviewed: 2025",
       officialAttribution: "geoBoundaries/HDX COD-AB Indonesia ADM2 snapshot 2020, CC BY 3.0 IGO"
     },
     exportLabels: {
-      defaultTitle: "Indonesia region map",
+      defaultTitle: brand.defaults.projectTitle,
       legend: "Legend",
       noData: "No data",
       matchReport: "Region match table"

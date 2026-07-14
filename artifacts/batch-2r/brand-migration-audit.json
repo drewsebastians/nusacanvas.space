@@ -1,0 +1,574 @@
+{
+  "schemaVersion": "batch2r.brand-migration-audit.v1",
+  "generatedAt": "2026-07-14T08:20:42.377Z",
+  "status": "passed",
+  "expectedIdentity": {
+    "productName": "NusaCanvas",
+    "futureCanonicalOrigin": "https://nusacanvas.space",
+    "currentStagingOrigin": "https://mapnesia.andrew-sebastian91.workers.dev",
+    "currentWorkerName": "mapnesia",
+    "targetRepository": "drewsebastians/nusacanvas.space",
+    "targetReplacementStagingOrigin": "https://nusacanvas-space.andrew-sebastian91.workers.dev",
+    "packageName": "nusacanvas",
+    "neutralStorageKey": "indonesia-region-map-autosave-v2"
+  },
+  "remoteOperationsDeferredUntilPrompt10": true,
+  "customDomainActivated": false,
+  "migrationCompatibility": {
+    "legacyStorageKey": "peta-warna-indonesia-autosave-v1",
+    "allowedStorageCode": [
+      "assets/js/project-storage.js"
+    ],
+    "allowedSyntheticFixtures": [
+      "tests/fixtures/brand-migration/*.json"
+    ],
+    "allowedProjectDefaultCode": [
+      "assets/js/brand-migration.js",
+      "tests/{unit,e2e}/*{brand,migration,project-storage}*.js"
+    ],
+    "sourceDeletionAuthorized": false
+  },
+  "counts": {
+    "scannedFiles": 157,
+    "failures": 0,
+    "warnings": 14,
+    "allowlistedReferences": 143
+  },
+  "failures": [],
+  "warnings": [
+    {
+      "file": ".github/workflows/deploy-cloudflare.yml",
+      "code": "prompt10-operational-identifier",
+      "reason": "current Worker remains unchanged until Prompt 10",
+      "count": 1
+    },
+    {
+      "file": "about/index.html",
+      "code": "prompt10-operational-identifier",
+      "reason": "current repository remains unchanged until Prompt 10",
+      "count": 1
+    },
+    {
+      "file": "assets/js/brand-config.js",
+      "code": "prompt10-operational-identifier",
+      "reason": "current Worker remains unchanged until Prompt 10",
+      "count": 1
+    },
+    {
+      "file": "docs/deployment-guide.md",
+      "code": "prompt10-operational-identifier",
+      "reason": "current Worker remains unchanged until Prompt 10",
+      "count": 4
+    },
+    {
+      "file": "docs/deployment-guide.md",
+      "code": "prompt10-worker-name",
+      "reason": "current Worker service name remains unchanged until Prompt 10",
+      "count": 2
+    },
+    {
+      "file": "MANUAL_UPLOAD_STEPS.md",
+      "code": "prompt10-operational-identifier",
+      "reason": "current Worker remains unchanged until Prompt 10",
+      "count": 1
+    },
+    {
+      "file": "package.json",
+      "code": "prompt10-operational-identifier",
+      "reason": "current Worker remains unchanged until Prompt 10",
+      "count": 1
+    },
+    {
+      "file": "README.md",
+      "code": "prompt10-operational-identifier",
+      "reason": "current Worker remains unchanged until Prompt 10",
+      "count": 1
+    },
+    {
+      "file": "scripts/verify-staging.js",
+      "code": "prompt10-operational-identifier",
+      "reason": "current Worker remains unchanged until Prompt 10",
+      "count": 1
+    },
+    {
+      "file": "wrangler.jsonc",
+      "code": "prompt10-worker-name",
+      "reason": "current Worker service name remains unchanged until Prompt 10",
+      "count": 1
+    }
+  ],
+  "allowlistedReferences": [
+    {
+      "file": "artifacts/batch-2/closure.json",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "artifacts/batch-2/preflight.json",
+      "code": "current-repository-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "artifacts/batch-2/preflight.json",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "artifacts/batch-2r/current-string-inventory.json",
+      "code": "current-repository-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "artifacts/batch-2r/current-string-inventory.json",
+      "code": "old-default-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "artifacts/batch-2r/current-string-inventory.json",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 39
+    },
+    {
+      "file": "artifacts/batch-2r/current-string-inventory.json",
+      "code": "old-product-title",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 3
+    },
+    {
+      "file": "artifacts/batch-2r/preflight.json",
+      "code": "current-repository-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "artifacts/batch-3/preflight.json",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "assets/js/brand-config.js",
+      "code": "neutral-durable-id",
+      "reason": "brand-neutral application identifier, not an export filename",
+      "count": 1
+    },
+    {
+      "file": "assets/js/brand-migration.js",
+      "code": "old-default-name",
+      "reason": "legacy project default recognized only by the local project-field migration",
+      "count": 4
+    },
+    {
+      "file": "assets/js/brand-migration.js",
+      "code": "old-product-title",
+      "reason": "legacy project default recognized only by the local project-field migration",
+      "count": 2
+    },
+    {
+      "file": "assets/js/project-storage.js",
+      "code": "legacy-storage-key",
+      "reason": "exact compatibility token required for local recovery tests or migration",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-1/02-cloudflare-credential-blocker.md",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "docs/batch-1/02-cloudflare-live-verification-blocker.md",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "docs/batch-1/02-github-pages-shutdown-evidence.md",
+      "code": "current-repository-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "docs/batch-1/02-github-pages-shutdown-evidence.md",
+      "code": "old-future-url",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-1/06-completion-report.md",
+      "code": "current-repository-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-1/06-completion-report.md",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "docs/batch-1/06-completion-report.md",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "docs/batch-2/00-blockers.md",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "docs/batch-2/00-blockers.md",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2/00-preflight-and-contract.md",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2/08-batch-2-closure.md",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2/08-batch-2-closure.md",
+      "code": "legacy-reference",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2/08-batch-2-closure.md",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2/contracts/spreadsheet-to-map-contracts.schema.json",
+      "code": "old-future-url",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2/contracts/spreadsheet-to-map-contracts.schema.json",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/00-preflight-and-experience-contract.md",
+      "code": "current-repository-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/00-preflight-and-experience-contract.md",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/01-current-experience-audit.md",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "docs/batch-2r/01-current-experience-audit.md",
+      "code": "old-product-title",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/02-simple-english-content-system.md",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/02-terminology-glossary.md",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/03-brand-and-storage-migration.md",
+      "code": "legacy-storage-key",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/03-legacy-reference-allowlist.md",
+      "code": "current-repository-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/03-legacy-reference-allowlist.md",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/03-legacy-reference-allowlist.md",
+      "code": "legacy-storage-key",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "docs/batch-2r/03-legacy-reference-allowlist.md",
+      "code": "old-default-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 3
+    },
+    {
+      "file": "docs/batch-2r/03-legacy-reference-allowlist.md",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 3
+    },
+    {
+      "file": "docs/batch-2r/03-legacy-reference-allowlist.md",
+      "code": "old-product-title",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "docs/batch-3/00-preflight-and-contract.md",
+      "code": "current-worker-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 2
+    },
+    {
+      "file": "docs/project-progress.md",
+      "code": "old-product-title",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "scripts/build-batch2r-inventory.js",
+      "code": "old-product-name",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "tests/e2e/brand-storage-migration.shared.js",
+      "code": "legacy-storage-key",
+      "reason": "exact compatibility token required for local recovery tests or migration",
+      "count": 1
+    },
+    {
+      "file": "tests/e2e/brand-storage-migration.shared.js",
+      "code": "old-default-name",
+      "reason": "legacy project default recognized only by the local project-field migration",
+      "count": 1
+    },
+    {
+      "file": "tests/e2e/brand-storage-migration.shared.js",
+      "code": "old-product-title",
+      "reason": "legacy project default recognized only by the local project-field migration",
+      "count": 1
+    },
+    {
+      "file": "tests/unit/brand-migration.test.js",
+      "code": "old-default-name",
+      "reason": "legacy project default recognized only by the local project-field migration",
+      "count": 7
+    },
+    {
+      "file": "tests/unit/brand-migration.test.js",
+      "code": "old-product-name",
+      "reason": "legacy project default recognized only by the local project-field migration",
+      "count": 2
+    },
+    {
+      "file": "tests/unit/brand-migration.test.js",
+      "code": "old-product-title",
+      "reason": "legacy project default recognized only by the local project-field migration",
+      "count": 3
+    },
+    {
+      "file": "tests/unit/project-storage.test.js",
+      "code": "legacy-storage-key",
+      "reason": "exact compatibility token required for local recovery tests or migration",
+      "count": 24
+    },
+    {
+      "file": "tests/unit/project-storage.test.js",
+      "code": "old-default-name",
+      "reason": "legacy project default recognized only by the local project-field migration",
+      "count": 1
+    }
+  ],
+  "scannedFiles": [
+    ".github/workflows/ci.yml",
+    ".github/workflows/deploy-cloudflare.yml",
+    "about/index.html",
+    "artifacts/batch-1/a11y-axe-results.json",
+    "artifacts/batch-1/a11y-trust-axe-results.json",
+    "artifacts/batch-1/baseline-measurements.json",
+    "artifacts/batch-1/data-diff-report.json",
+    "artifacts/batch-1/data-diff-report.md",
+    "artifacts/batch-1/data-pipeline-manifest.json",
+    "artifacts/batch-1/data-test-report.json",
+    "artifacts/batch-1/first-user-flow.json",
+    "artifacts/batch-1/first-user-two-column-chromium-desktop.json",
+    "artifacts/batch-1/first-user-two-column-chromium-mobile.json",
+    "artifacts/batch-1/first-user-two-column-firefox-desktop.json",
+    "artifacts/batch-1/first-user-two-column-webkit-desktop.json",
+    "artifacts/batch-1/license-gate-report.json",
+    "artifacts/batch-1/performance-budget-report.json",
+    "artifacts/batch-1/reproducibility-report.json",
+    "artifacts/batch-1/security-audit-report.json",
+    "artifacts/batch-1/simplification-gate-report.json",
+    "artifacts/batch-1/smoke-network.json",
+    "artifacts/batch-2/closure.json",
+    "artifacts/batch-2/import-core-benchmark.json",
+    "artifacts/batch-2/preflight.json",
+    "artifacts/batch-2/resource-budget-v1.json",
+    "artifacts/batch-2r/baseline/manifest.json",
+    "artifacts/batch-2r/current-experience-inventory.json",
+    "artifacts/batch-2r/current-string-inventory.json",
+    "artifacts/batch-2r/preflight.json",
+    "artifacts/batch-2r/terminology-audit.json",
+    "artifacts/batch-3/preflight.json",
+    "assets/js/app.js",
+    "assets/js/brand-config.js",
+    "assets/js/brand-migration.js",
+    "assets/js/csv-import.js",
+    "assets/js/export.js",
+    "assets/js/import-core.js",
+    "assets/js/map.js",
+    "assets/js/matching-engine.js",
+    "assets/js/product-content.js",
+    "assets/js/project-storage.js",
+    "assets/js/report-template.js",
+    "assets/js/visualization-engine.js",
+    "assets/js/xlsx-import.js",
+    "ATTRIBUTION.md",
+    "CHANGELOG.md",
+    "changelog/index.html",
+    "contact/index.html",
+    "content/terminology.json",
+    "data-methodology/index.html",
+    "docs/519-feature-count-explainer.md",
+    "docs/adr/0001-boundary-registry-stable-id.md",
+    "docs/architecture.md",
+    "docs/batch-1/01-baseline-audit.md",
+    "docs/batch-1/02-cloudflare-credential-blocker.md",
+    "docs/batch-1/02-cloudflare-live-verification-blocker.md",
+    "docs/batch-1/02-github-pages-shutdown-evidence.md",
+    "docs/batch-1/03-performance-report.md",
+    "docs/batch-1/04-data-truth-and-migration-report.md",
+    "docs/batch-1/05-reproducibility-and-license-report.md",
+    "docs/batch-1/06-completion-report.md",
+    "docs/batch-2/00-blockers.md",
+    "docs/batch-2/00-preflight-and-contract.md",
+    "docs/batch-2/01-architecture-data-flow.md",
+    "docs/batch-2/02-import-core-report.md",
+    "docs/batch-2/02-import-privacy-threat-model.md",
+    "docs/batch-2/03-test-matrix.md",
+    "docs/batch-2/03-xlsx-security-and-license-report.md",
+    "docs/batch-2/04-matching-and-resolution-report.md",
+    "docs/batch-2/05-ux-table-accessibility-report.md",
+    "docs/batch-2/06-visualization-methodology.md",
+    "docs/batch-2/07-export-and-project-report.md",
+    "docs/batch-2/08-batch-2-closure.md",
+    "docs/batch-2/08-first-user-manual-protocol.md",
+    "docs/batch-2/adr-003-xlsx-parser.md",
+    "docs/batch-2/contracts/spreadsheet-to-map-contracts.schema.json",
+    "docs/batch-2r/00-preflight-and-experience-contract.md",
+    "docs/batch-2r/01-architecture-contract.md",
+    "docs/batch-2r/01-current-experience-audit.md",
+    "docs/batch-2r/01-current-journeys.md",
+    "docs/batch-2r/02-simple-english-content-system.md",
+    "docs/batch-2r/02-terminology-glossary.md",
+    "docs/batch-2r/03-brand-and-storage-migration.md",
+    "docs/batch-2r/03-legacy-reference-allowlist.md",
+    "docs/batch-2r/screenshots/baseline/README.md",
+    "docs/batch-3/00-blockers.md",
+    "docs/batch-3/00-preflight-and-contract.md",
+    "docs/boundary-source-research.md",
+    "docs/boundary-validation-report.md",
+    "docs/data-inspection-report.md",
+    "docs/data-release-policy.md",
+    "docs/deployment-guide.md",
+    "docs/development.md",
+    "docs/known-limitations.md",
+    "docs/project-format.md",
+    "docs/project-progress.md",
+    "docs/release-notes-v0.9.0.md",
+    "docs/testing-report.md",
+    "docs/update-boundary-data.md",
+    "excel-to-map/index.html",
+    "guides/cara-membuat-peta-kabupaten-kota-dari-excel/index.html",
+    "guides/contoh-peta-nilai-kota/index.html",
+    "guides/csv-vs-xlsx-untuk-data-peta/index.html",
+    "guides/ekspor-peta-ke-powerpoint/index.html",
+    "guides/equal-interval-vs-quantile/index.html",
+    "guides/legenda-peta-tidak-menyesatkan/index.html",
+    "guides/memperbaiki-nama-wilayah/index.html",
+    "guides/mengapa-jumlah-wilayah-peta-berbeda/index.html",
+    "index.html",
+    "LICENSE",
+    "limitations/index.html",
+    "MANUAL_UPLOAD_STEPS.md",
+    "package-lock.json",
+    "package.json",
+    "PRIVACY.md",
+    "privacy/index.html",
+    "README.md",
+    "sample/contoh-nilai-kota.csv",
+    "sample/contoh-nilai-kota.tsv",
+    "sample/sample-project.json",
+    "sample/sample-region-colors.csv",
+    "sample/trial-dua-kolom-kode.csv",
+    "sample/trial-pengguna-awam.csv",
+    "scripts/build-batch2r-inventory.js",
+    "scripts/build.js",
+    "scripts/check-performance-budgets.js",
+    "scripts/check-static-content.js",
+    "scripts/check.js",
+    "scripts/data-pipeline.js",
+    "scripts/generate-canonical-registry.js",
+    "scripts/measure.js",
+    "scripts/security-audit.js",
+    "scripts/serve-dist-for-tests.js",
+    "scripts/serve-static.js",
+    "scripts/verify-batch1.js",
+    "scripts/verify-batch2r-preflight.js",
+    "scripts/verify-staging.js",
+    "scripts/wrangler-command.js",
+    "sources-licenses/index.html",
+    "terms/index.html",
+    "tests/e2e/a11y.spec.js",
+    "tests/e2e/batch2r-baseline.spec.js",
+    "tests/e2e/brand-storage-migration.shared.js",
+    "tests/e2e/smoke.spec.js",
+    "tests/e2e/trust.spec.js",
+    "tests/fixtures/batch-2/import/large-benchmark-spec.json",
+    "tests/fixtures/brand-migration/old-autosave-v1.json",
+    "tests/fixtures/brand-migration/old-project-schema-1.0.json",
+    "tests/unit/brand-migration.test.js",
+    "tests/unit/build-runtime-bundle.test.js",
+    "tests/unit/import-core.test.js",
+    "tests/unit/matching-engine.test.js",
+    "tests/unit/product-content.test.js",
+    "tests/unit/project-storage.test.js",
+    "tests/unit/visualization-engine.test.js",
+    "tests/unit/xlsx-import.test.js",
+    "wrangler.jsonc"
+  ],
+  "allowlistPolicyDocument": "docs/batch-2r/03-legacy-reference-allowlist.md"
+}

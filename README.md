@@ -1,54 +1,56 @@
-# Mapnesia — Peta Warna Wilayah Indonesia
+# NusaCanvas
 
-Mapnesia adalah aplikasi statis, local-first, untuk mengubah spreadsheet menjadi visual peta kabupaten/kota Indonesia. Produk ini ditujukan bagi pengguna non-GIS: masukkan data, periksa kecocokan wilayah, pilih visualisasi yang dapat dijelaskan, tinjau tabel/peta/legenda, lalu ekspor.
+NusaCanvas turns spreadsheet data into clear Indonesia regency and city maps. It is a static, local-first app for people who do not use GIS: add data, review region matches, choose an easy-to-explain color method, check the table, map, and legend, then export.
 
-Staging: `https://mapnesia.andrew-sebastian91.workers.dev`. Target workers.dev ini sengaja `noindex`; ini bukan domain produksi atau situs yang diindeks.
+Future production origin: `https://nusacanvas.space`. The custom domain is not attached or indexed yet.
 
-## Fitur Batch 2
+Current staging remains at `https://mapnesia.andrew-sebastian91.workers.dev` and is intentionally `noindex`. The existing GitHub repository and Cloudflare Worker identifiers stay unchanged until the planned remote-platform migration.
 
-- Paste, CSV, TSV, dan XLSX lokal melalui satu pipeline import.
-- Pemetaan kolom, normalisasi angka Indonesia/internasional, dan batas input browser-side.
-- Matching canonical deterministik; nama ambigu, tidak cocok, duplikat, dan baris diabaikan tetap eksplisit.
-- Resolve/ignore lokal untuk baris ambigu tanpa mengunggah data.
-- Workflow Input → Match → Visualize → Export dan tabel data yang terhubung dengan peta.
-- Kategori, interval sama, kuantil, batas manual, dan divergen berpusat; no-data tidak diperlakukan sebagai nol.
-- SVG, PNG, PDF raster A4/A3, serta mapping CSV dengan atribusi wajib.
-- Project JSON dan autosave lokal untuk warna manual, hasil import, visualisasi, koreksi, dan metadata ekspor.
+## Current features
 
-Tidak ada backend, akun, analytics, external map tiles, runtime AI, atau CDN runtime.
+- Local paste, CSV, TSV, and XLSX input through one import workflow.
+- Column matching, Indonesian and international number formats, and browser-side input limits.
+- Deterministic region matching; ambiguous names, unmatched names, duplicates, and ignored rows stay visible.
+- Local review or ignore actions for uncertain rows without uploading data.
+- A four-step flow: Add data, Match regions, Design map, and Export map.
+- Categories, equal ranges, ranked groups, manual ranges, and colors around a midpoint; empty data is never treated as zero.
+- SVG, PNG, raster PDF, and region-match CSV exports with required attribution.
+- Local project files and browser autosave for manual colors, imported rows, match decisions, visualization settings, and export details.
 
-## Cara pakai
+There is no backend, account system, analytics, external map tile service, runtime AI, or runtime CDN.
 
-1. Buka studio dan pilih **Coba contoh lokal**, paste tabel, atau pilih file.
-2. Tekan **Pratinjau Import** dan pastikan pemetaan kolom benar.
-3. Selesaikan nama ambigu atau tambahkan provinsi/kode wilayah.
-4. Terapkan baris valid, pilih visualisasi, dan periksa peta, tabel, serta legenda.
-5. Isi judul, sumber, periode, dan catatan bila perlu.
-6. Ekspor SVG, PNG, PDF, atau mapping CSV.
+## How to use NusaCanvas
 
-Contoh sintetis tersedia sebagai [CSV](./sample/contoh-nilai-kota.csv) dan [TSV](./sample/contoh-nilai-kota.tsv). Lihat juga halaman preview [Excel to Map](./excel-to-map/) dan panduan di `guides/`.
+1. Open the workspace and choose **Try a sample**, paste a table, or select a file.
+2. Preview the input and confirm the suggested columns.
+3. Fix uncertain region names or add a province or region code.
+4. Use the valid rows, choose a visualization, and check the map, table, and legend.
+5. Add a title, source, period, and optional note.
+6. Export SVG, PNG, PDF, or a region-match CSV.
 
-## Format spreadsheet dan keamanan
+Synthetic examples are available as [CSV](./sample/contoh-nilai-kota.csv) and [TSV](./sample/contoh-nilai-kota.tsv). See the [Excel to map](./excel-to-map/) preview and the guides in `guides/`.
 
-Header tidak dikunci. Mapper mengenali kolom wilayah, provinsi, kode, nilai, kategori, sumber, dan periode. Kode resmi diprioritaskan, kemudian nama+provinsi; nama yang ambigu tidak diterapkan otomatis.
+## Spreadsheet formats and safety
 
-XLSX diproses lokal setelah pemeriksaan struktur ZIP. Workbook bermakro, objek tertanam, external link, encryption marker, dan format yang tidak didukung ditolak. Safeguard ini menjaga pemrosesan browser, bukan klaim perlindungan malware atau pemeriksaan forensik dokumen.
+Headers are not fixed. The column mapper recognizes region, province, code, value, category, source, and period columns. Official codes take priority, followed by region name plus province. Ambiguous names are not applied automatically.
 
-## Ekspor dan privasi
+XLSX files are processed locally after a ZIP structure check. The app rejects macro-enabled workbooks, embedded objects, external links, encryption markers, and unsupported formats. These safeguards limit browser processing; they are not malware protection or a forensic document scan.
 
-SVG paling sesuai untuk PowerPoint/editing; PNG untuk gambar siap pakai; PDF A4/A3 memakai raster lokal; mapping CSV memuat status kecocokan dan meng-escape awalan formula. Cakupan **Seluruh Indonesia** dan **Tampilan peta saat ini** dipilih secara eksplisit.
+## Exports and privacy
 
-Data import dan project diproses di browser. Tidak ada unggahan data pengguna atau analytics. Cloudflare dapat memiliki log akses hosting biasa di luar kontrol aplikasi. Baca [PRIVACY.md](./PRIVACY.md) dan [docs arsitektur](./docs/architecture.md).
+SVG works well for PowerPoint and editing, PNG for a ready-to-use image, and PDF for a local A4 or A3 raster document. The region-match CSV records match results and escapes formula prefixes. You explicitly choose either **All of Indonesia** or **Current map view**.
 
-## Data dan keterbatasan
+Imported data and project files are processed in your browser. NusaCanvas does not upload user data or add analytics. Cloudflare may keep standard hosting access logs outside the app's control. Read [PRIVACY.md](./PRIVACY.md) and the [architecture notes](./docs/architecture.md).
 
-Geometri produksi mengikuti lineage geoBoundaries/HDX OCHA COD-AB ADM2 tahun 2020 dengan 519 fitur. Ini adalah referensi visual, bukan penetapan batas hukum atau klaim struktur administrasi terbaru. Atribusi wajib dipertahankan.
+## Data and limitations
 
-Lihat [ATTRIBUTION.md](./ATTRIBUTION.md), `data/license-manifest-v1.json`, dan [known limitations](./docs/known-limitations.md). PDF saat ini raster, agregasi beberapa baris untuk satu wilayah tidak dilakukan otomatis, dan project besar dibatasi penyimpanan browser.
+Production boundaries follow the geoBoundaries/HDX OCHA COD-AB Indonesia ADM2 lineage for a 2020 snapshot with 519 mapped shapes. They are a visual reference, not a legal boundary record or a claim about the latest administrative structure. Required attribution remains in every export.
 
-## Pengembangan dan quality gate
+See [ATTRIBUTION.md](./ATTRIBUTION.md), `data/license-manifest-v1.json`, and [known limitations](./docs/known-limitations.md). PDFs are currently raster images, several source rows are not automatically combined into one region, and large projects are limited by browser storage.
 
-Gunakan Node.js 24.x.
+## Development and quality gates
+
+Use Node.js 24.x.
 
 ```text
 npm ci
@@ -56,8 +58,8 @@ npm run build
 npm run verify:batch1
 ```
 
-`npm run build` hanya menyalin aset produksi yang diizinkan ke `dist/`. Lihat `docs/development.md`, `docs/deployment-guide.md`, dan laporan `docs/batch-2/` untuk detail pengujian dan staging.
+`npm run build` copies only approved production assets to `dist/`. See `docs/development.md`, `docs/deployment-guide.md`, and the historical reports in `docs/batch-2/` for testing and staging details.
 
-## Lisensi
+## License
 
-Kode aplikasi berlisensi MIT. Data batas dan library pihak ketiga tetap tunduk pada lisensi serta atribusi sumber masing-masing.
+Application code uses the MIT License. Boundary data and third-party libraries remain subject to their own source licenses and attribution requirements.

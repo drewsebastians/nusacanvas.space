@@ -15,7 +15,7 @@
     {"preferred":"Save project","alternatives":["persist project"],"definition":"Download a local project file that can be opened later.","firstUse":"Save project to keep a portable copy.","scope":"workspace","tests":["Save project","Open project"]},
     {"preferred":"Open project","alternatives":["load project","restore project"],"definition":"Choose a saved local project file and open it after safety checks pass.","firstUse":"Open project replaces the current project only after the file passes safety checks.","scope":"workspace","tests":["Open project"]},
     {"preferred":"Clear map","alternatives":["reset all"],"definition":"Remove highlights while keeping the page open.","firstUse":"Clear map removes every current highlight.","scope":"workspace","tests":["Clear map","Start over"]},
-    {"preferred":"Start over","alternatives":["clear project","reset project"],"definition":"Remove the current project and its browser backup after confirmation.","firstUse":"Start over when you want a clean workspace.","scope":"workspace","tests":["Start over"]},
+    {"preferred":"Start over","alternatives":["clear project","reset project"],"definition":"Reset the workspace and remove the current browser backup after confirmation. A compatibility recovery copy may remain until you delete it separately.","firstUse":"Start over when you want a clean workspace.","scope":"workspace","tests":["Start over"]},
     {"preferred":"Build sales territories","alternatives":["territory runtime"],"definition":"Future workflow for grouping regions into a sales hierarchy.","firstUse":"Build sales territories from matched regions.","scope":"future Batch 3 entry point","tests":["Build sales territories"]},
     {"preferred":"Analyze coverage","alternatives":["coverage engine"],"definition":"Future workflow for comparing current and target coverage.","firstUse":"Analyze coverage using data you provide.","scope":"future Batch 3 entry point","tests":["Analyze coverage"]}
   ],
@@ -34,5 +34,5 @@
     "contracts": ["HTML IDs", "test IDs", "serialized keys", "schema IDs", "storage keys", "version IDs", "internal status codes"],
     "officialData": ["Indonesian province names", "Indonesian regency and city names", "spreadsheet header aliases", "geoBoundaries", "HDX/OCHA COD-AB", "CC BY 3.0 IGO", "Kepmendagri source names"]
   },
-  "brandPolicy": {"currentOldName":"Mapnesia","prompt2Severity":"warning","failureAfter":"Prompt 3"}
+  "brandPolicy": {"productName":"NusaCanvas","futureCanonicalOrigin":"https://nusacanvas.space","legacyNamesInActiveFiles":"failure","operationalRenamesDeferredTo":"Prompt 10"}
 }

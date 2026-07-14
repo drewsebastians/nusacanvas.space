@@ -1,4 +1,7 @@
 (function () {
+  const brand = window.ProductBrand;
+  if (!brand) throw new Error("Product brand configuration is required.");
+
   function escapeXml(value) {
     return String(value || "").replace(/[&<>"']/g, (char) => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;"
@@ -23,18 +26,18 @@
 
   function slugify(value) {
     const slug = sanitizeText(value, 80).normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
-    return slug || "indonesia-region-map";
+    return slug || brand.defaults.exportFilenamePrefix;
   }
 
   function buildExportSpec(features, state, options = {}) {
     const metadata = Object.assign({
-      title: state.title || "Indonesia region map",
+      title: state.title || brand.defaults.projectTitle,
       subtitle: "",
       source: "",
       period: "",
       footnote: "",
       legendTitle: "Legend",
-      filenameSlug: "indonesia-region-map"
+      filenameSlug: brand.defaults.exportFilenamePrefix
     }, state.exportMeta || {}, options.metadata || {});
     Object.keys(metadata).forEach((key) => { metadata[key] = sanitizeText(metadata[key], key === "title" ? 90 : key === "filenameSlug" ? 80 : 180); });
     const extent = options.extent === "national" ? "national" : "current-view";
@@ -197,7 +200,7 @@
   }
 
   function buildTitle(title, size, subtitle) {
-    const text = String(title || "Indonesia region map").slice(0, 90);
+    const text = String(title || brand.defaults.projectTitle).slice(0, 90);
     const width = Math.min(size.width - 116, Math.max(360, text.length * 18));
     const x = (size.width - width) / 2;
     const sub = sanitizeText(subtitle, 180);
@@ -382,7 +385,7 @@
     const stream = `q\n${pt.width} 0 0 ${pt.height} 0 0 cm\n/Im0 Do\nQ\n`;
     object(4, `<< /Length ${enc.encode(stream).length} >>\nstream\n${stream}endstream`);
     offsets[5] = length; pushText(`5 0 obj\n<< /Type /XObject /Subtype /Image /Width ${px.width} /Height ${px.height} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${imageBytes.length} >>\nstream\n`); pushBytes(imageBytes); pushText("\nendstream\nendobj\n");
-    object(6, `<< /Title (${pdfAscii(rendered.spec.metadata.title)}) /Subject (Mapnesia ${rendered.spec.boundaryVersion}; ${pdfAscii(rendered.spec.attribution)}) >>`);
+    object(6, `<< /Title (${pdfAscii(rendered.spec.metadata.title)}) /Subject (${pdfAscii(brand.productName)} ${rendered.spec.boundaryVersion}; ${pdfAscii(rendered.spec.attribution)}) >>`);
     const xrefOffset = length; pushText("xref\n0 7\n0000000000 65535 f \n");
     for (let index = 1; index <= 6; index += 1) pushText(`${String(offsets[index] || 0).padStart(10, "0")} 00000 n \n`);
     pushText(`trailer\n<< /Size 7 /Root 1 0 R /Info 6 0 R >>\nstartxref\n${xrefOffset}\n%%EOF`);
@@ -398,7 +401,7 @@
       const values = [row.rowId, row.rowNumber, row.record && row.record.regionName, row.record && row.record.province, row.record && row.record.regionCode, row.matchedId || "", row.matchedName || "", row.matchStatus || "", row.matchStatus === "user-resolved" ? "yes" : "no", row.record && row.record.numericValue, row.record && row.record.category, row.classKey || assignment.classKey || "", row.color || assignment.color || "", "IDN-ADM2-2020-geoboundaries-22746128", "IDN-ADM-REGISTRY-v1-2025-06-23"].map((value) => `"${String(value == null ? "" : value).replace(/^[=+@-]/, "'").replace(/"/g, '""')}"`);
       lines.push(values.join(","));
     });
-    const filename = `${slugify((state.exportMeta && state.exportMeta.filenameSlug) || "indonesia-region-map")}-mapping.csv`;
+    const filename = `${slugify((state.exportMeta && state.exportMeta.filenameSlug) || brand.defaults.exportFilenamePrefix)}-mapping.csv`;
     downloadText(filename, lines.join("\n"), "text/csv;charset=utf-8");
     return lines.join("\n");
   }
@@ -409,7 +412,8 @@
         reject(new Error("Simulated canvas failure."));
         return;
       }
-      const svg = buildSvg(features, state, Object.assign({}, options, { pngSize: `${size.width}x${size.height}` }));
+      const spec = buildExportSpec(features, state, Object.assign({}, options, { pngSize: `${size.width}x${size.height}` }));
+      const svg = buildSvg(features, state, Object.assign({}, options, { spec }));
       const image = new Image();
       const blob = new Blob([svg], { type: "image/svg+xml" });
       const url = URL.createObjectURL(blob);
@@ -439,7 +443,7 @@
             const link = document.createElement("a");
             pngUrl = URL.createObjectURL(png);
             link.href = pngUrl;
-            link.download = "indonesia-region-map.png";
+            link.download = `${slugify(spec.metadata.filenameSlug)}.png`;
             link.click();
             cleanup();
             resolve({ fallbackUsed, size });

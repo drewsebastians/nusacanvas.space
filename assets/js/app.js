@@ -7,29 +7,35 @@
     sha256: "146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c"
   };
   const quickColors = ["#4472C4", "#E74C3C", "#70AD47", "#FFC000", "#5B9BD5", "#A64D79", "#00A388", "#7F6000"];
+  const brand = window.ProductBrand;
+  if (!brand) throw new Error("Product brand configuration is required.");
+  const brandMigration = window.ProductBrandMigration;
+  if (!brandMigration) throw new Error("Product brand migration is required.");
+  const defaultLegend = () => [
+    { label: "Above target", color: "#70AD47" },
+    { label: "Needs attention", color: "#FFC000" },
+    { label: "Below target", color: "#E74C3C" }
+  ];
   const productText = (key, values) => window.ProductContent
     ? window.ProductContent.text(key, values)
     : key;
   const state = {
-    title: "Indonesia region map",
+    title: brand.defaults.projectTitle,
     features: [],
     featureById: new Map(),
     highlights: {},
     manualHighlights: {},
-    legend: [
-      { label: "Above target", color: "#70AD47" },
-      { label: "Needs attention", color: "#FFC000" },
-      { label: "Below target", color: "#E74C3C" }
-    ],
+    legend: defaultLegend(),
     legendVisible: true,
     legendPosition: "bottom-right",
     groupNames: {},
     groupMeta: {},
     importCorrections: {},
     exportSettings: {},
-    exportMeta: { subtitle: "", source: "", period: "", footnote: "", legendTitle: "Legend", filenameSlug: "indonesia-region-map" },
+    exportMeta: { subtitle: "", source: "", period: "", footnote: "", legendTitle: "Legend", filenameSlug: brand.defaults.exportFilenamePrefix },
     unresolvedHighlights: {},
     migrationReport: null,
+    storageMigrationReport: null,
     workflowStage: "input",
     uiMode: "basic",
     importRows: [],
@@ -50,6 +56,7 @@
   document.addEventListener("DOMContentLoaded", init);
 
   function init() {
+    brand.apply(document);
     if (window.ProductContent) window.ProductContent.apply(document);
     [
       "projectTitle", "searchInput", "searchResults", "provinceSelect", "regionSelect", "selectedRegion",
@@ -57,7 +64,7 @@
       "undoBtn", "resetBtn", "highlightCount", "highlightList", "showLegend", "legendPosition",
       "groupCount", "groupingList", "legendItems", "addLegendBtn", "importPaste", "csvFile", "xlsxSheet", "importDelimiter",
       "importLocale", "previewCsvBtn", "applyCsvBtn", "cancelImportBtn", "importMapping", "csvPreview",
-      "saveProjectBtn", "openProjectBtn", "projectFile", "clearProjectBtn", "autosaveStatus",
+      "saveProjectBtn", "openProjectBtn", "projectFile", "clearProjectBtn", "recoverLegacyAutosaveBtn", "deleteLegacyAutosaveBtn", "downloadStorageRecoveryBtn", "deleteStorageRecoveryBtn", "downloadUnreadableTargetBtn", "downloadUnreadableLegacyBtn", "autosaveStatus",
       "migrationReportBtn", "dataTruthBadge",
       "exportRatio", "exportExtent", "exportLabels", "transparentBg", "exportHighDetail", "pngSize", "exportSvgBtn", "exportPngBtn", "exportPdfBtn", "exportMappingBtn", "exportSubtitle", "exportSource", "exportPeriod", "exportFootnote", "exportLegendTitle", "exportFilenameSlug",
       "fitIndonesiaBtn", "loadingIndicator", "errorArea", "appShell", "controlPanel", "sidebarToggleBtn", "floatingExportBtn",
@@ -74,7 +81,7 @@
   }
 
   function setupEvents() {
-    el.projectTitle.addEventListener("input", () => { state.title = el.projectTitle.value.trim() || "Indonesia region map"; scheduleSave(); });
+    el.projectTitle.addEventListener("input", () => { state.title = el.projectTitle.value.trim() || brand.defaults.projectTitle; scheduleSave(); });
     ["exportSubtitle", "exportSource", "exportPeriod", "exportFootnote", "exportLegendTitle", "exportFilenameSlug"].forEach((id) => el[id].addEventListener("input", () => { state.exportMeta[id.replace("export", "").replace(/^./, (char) => char.toLowerCase())] = el[id].value.slice(0, id === "exportFilenameSlug" ? 80 : 180); scheduleSave(); }));
     el.basicModeBtn.addEventListener("click", () => setMode("basic"));
     el.advancedModeBtn.addEventListener("click", () => setMode("advanced"));
@@ -91,7 +98,13 @@
     el.resetBtn.addEventListener("click", resetAll);
     el.showLegend.addEventListener("change", () => { state.legendVisible = el.showLegend.checked; refreshMapLegend(); scheduleSave(); });
     el.legendPosition.addEventListener("change", () => { state.legendPosition = el.legendPosition.value; refreshMapLegend(); scheduleSave(); });
-    el.addLegendBtn.addEventListener("click", () => { state.legend.push({ label: "New legend item", color: el.colorPicker.value }); renderLegendEditor(); refreshMapLegend(); scheduleSave(); });
+    el.addLegendBtn.addEventListener("click", () => {
+      if (state.legend.length >= ProjectStorage.MAX_LEGEND_ITEMS) return showError(`A project can contain up to ${ProjectStorage.MAX_LEGEND_ITEMS} legend items. Remove one before adding another.`);
+      state.legend.push({ label: "New legend item", color: el.colorPicker.value });
+      renderLegendEditor();
+      refreshMapLegend();
+      scheduleSave();
+    });
     el.previewCsvBtn.addEventListener("click", previewCsv);
     el.applyCsvBtn.addEventListener("click", applyCsv);
     el.cancelImportBtn.addEventListener("click", cancelImport);
@@ -103,6 +116,12 @@
     el.projectFile.addEventListener("change", openProject);
     el.migrationReportBtn.addEventListener("click", downloadMigrationReport);
     el.clearProjectBtn.addEventListener("click", clearProject);
+    el.recoverLegacyAutosaveBtn.addEventListener("click", recoverLegacyAutosave);
+    el.deleteLegacyAutosaveBtn.addEventListener("click", deleteLegacyAutosave);
+    el.downloadStorageRecoveryBtn.addEventListener("click", downloadStorageRecovery);
+    el.deleteStorageRecoveryBtn.addEventListener("click", deleteStorageRecovery);
+    el.downloadUnreadableTargetBtn.addEventListener("click", () => downloadUnreadableBackup(ProjectStorage.STORAGE_KEY));
+    el.downloadUnreadableLegacyBtn.addEventListener("click", () => downloadUnreadableBackup(ProjectStorage.LEGACY_STORAGE_KEYS[0]));
     el.exportSvgBtn.addEventListener("click", exportSvg);
     el.exportPngBtn.addEventListener("click", exportPng);
     el.exportPdfBtn.addEventListener("click", exportPdf);
@@ -251,7 +270,7 @@
     }
   }
 
-  function setMode(mode) {
+  function setMode(mode, save = true) {
     state.uiMode = mode === "advanced" ? "advanced" : "basic";
     el.appShell.dataset.mode = state.uiMode;
     el.basicModeBtn.classList.toggle("active", state.uiMode === "basic");
@@ -259,7 +278,7 @@
     el.basicModeBtn.setAttribute("aria-pressed", String(state.uiMode === "basic"));
     el.advancedModeBtn.setAttribute("aria-pressed", String(state.uiMode === "advanced"));
     if (el.advancedImportOptions) el.advancedImportOptions.open = state.uiMode === "advanced";
-    scheduleSave();
+    if (save) scheduleSave();
   }
 
   async function useExample() {
@@ -420,12 +439,32 @@
 
   function restoreAutosave() {
     try {
-      const saved = ProjectStorage.loadAutosave(ProjectStorage.createRegionAdapter(state.features));
+      const adapter = ProjectStorage.createRegionAdapter(state.features);
+      const saved = ProjectStorage.loadAutosave(adapter);
+      const storageReport = ProjectStorage.getStorageMigrationReport();
+      state.storageMigrationReport = storageReport;
       if (saved && confirm("A saved copy is available in this browser. Open it?")) {
         applyProject(saved);
+      } else if (saved) {
+        const deferred = ProjectStorage.deferCurrentAutosaveReplacement();
+        state.storageMigrationReport = ProjectStorage.getStorageMigrationReport();
+        el.autosaveStatus.dataset.state = deferred ? "available-not-opened" : "unavailable";
+        el.autosaveStatus.textContent = deferred
+          ? "The saved browser copy was left unchanged. Before your next edit replaces it, a verified safety copy will be kept."
+          : "The saved browser copy was left unchanged, but browser storage could not be prepared for a later edit.";
+        if (!deferred) showError("The saved browser copy could not be protected for a later edit. It was left unchanged; save a project file before editing.");
       }
+      updateStorageMigrationUi(storageReport);
     } catch (error) {
-      ProjectStorage.clearAutosave();
+      state.storageMigrationReport = {
+        status: "failed-runtime",
+        unresolvedEntries: [{ kind: "browser-storage", count: 1 }],
+        droppedEntries: [],
+        backupStatus: "unknown",
+        sourceRetained: false
+      };
+      updateStorageMigrationUi(state.storageMigrationReport);
+      showError("The browser backup could not be opened. No saved work was cleared. You can still open a project file.");
     }
   }
 
@@ -568,7 +607,7 @@
     updateAfterHighlightChange();
   }
 
-  function updateAfterHighlightChange() {
+  function updateAfterHighlightChange(save = true) {
     mapApi.setHighlights(state.highlights);
     renderHighlightList();
     renderGroupingEditor();
@@ -576,7 +615,7 @@
     refreshMapLegend();
     if (Object.keys(state.highlights).length && state.workflowStage === "match") state.workflowStage = "visualize";
     renderWorkflow();
-    scheduleSave();
+    if (save) scheduleSave();
   }
 
   function renderHighlightList() {
@@ -832,10 +871,12 @@
     return matchingEnginePromise;
   }
 
-  function cancelImport() {
+  function clearPendingWorkspaceState() {
     if (pendingImportSignal) pendingImportSignal.canceled = true;
+    pendingImportSignal = null;
     pendingCsv = null;
     pendingXlsx = null;
+    pendingVisualization = null;
     el.csvFile.value = "";
     el.importPaste.value = "";
     el.xlsxSheet.innerHTML = "";
@@ -845,6 +886,12 @@
     el.importMapping.innerHTML = "";
     el.csvPreview.innerHTML = "";
     el.applyCsvBtn.disabled = true;
+    if (el.vizSummary) el.vizSummary.innerHTML = "";
+    if (el.vizLegendPreview) el.vizLegendPreview.innerHTML = "";
+  }
+
+  function cancelImport() {
+    clearPendingWorkspaceState();
     if (!state.importRows.length) setWorkflowStage("input", false);
   }
 
@@ -1104,23 +1151,44 @@
   }
 
   function saveProject() {
-    ProjectStorage.downloadJson("indonesia-region-map-project.json", ProjectStorage.buildProject(state, ProjectStorage.createRegionAdapter(state.features)));
+    try {
+      ProjectStorage.downloadJson(brand.defaults.projectFilename, ProjectStorage.buildProject(state, ProjectStorage.createRegionAdapter(state.features)));
+    } catch (error) {
+      showError(error.message || "The project file could not be saved. Your current map is still safe.");
+    }
   }
 
   async function openProject() {
     const file = el.projectFile.files[0];
     if (!file) return;
-    if (file.size > 1_000_000) return showError("This project file is too large. Your current project has not changed. Choose a project file under 1 MB.");
+    if (file.size > ProjectStorage.PROJECT_FILE_MAX_BYTES) return showError("This project file is too large. Your current project has not changed. Choose a project file under 20 MB.");
     try {
       const data = JSON.parse(await file.text());
-      const project = ProjectStorage.sanitizeProject(data, ProjectStorage.createRegionAdapter(state.features));
+      const brandResult = brandMigration.migrateProject(data);
+      const project = ProjectStorage.attachProjectMigrationReports(
+        data,
+        ProjectStorage.sanitizeProject(brandResult.project, ProjectStorage.createRegionAdapter(state.features)),
+        brandResult.report,
+        { storageKeyMigrated: false }
+      );
       if (project.migrationReport && project.migrationReport.requiresUserReview) {
         const summary = project.migrationReport.summary;
-        const message = `This older project needs review: ${summary.mapped} regions were linked, ${summary.ambiguous} need a choice, and ${summary.missing} were not found. Open it and keep an update report?`;
+        const message = `This older project needs review: ${summary.mapped} regions were linked, ${summary.ambiguous} need a choice, ${summary.missing} were not found, and ${summary.unsupported} unsupported project fields or entries need review. Open it and keep an update report?`;
         if (!confirm(message)) return;
       }
       if (!confirm("Open this project file? Your current project and browser backup will be replaced only after the file opens safely.")) return;
-      applyProject(project);
+      const replacementPreparation = ProjectStorage.prepareCurrentTargetReplacement();
+      if (replacementPreparation === false) {
+        return showError("The current browser backup could not be preserved safely, so the project was not opened. Download the unreadable backup or remove the occupied recovery copy, then try again.");
+      }
+      state.storageMigrationReport = ProjectStorage.getStorageMigrationReport();
+      updateStorageRecoveryButton(state.storageMigrationReport);
+      const browserBackupSaved = applyProject(project, { save: replacementPreparation === true });
+      if (replacementPreparation === null) {
+        showError("The project file opened in this tab, but browser storage could not be checked, so no browser backup was replaced. Save a project file before closing this tab.");
+      } else if (!browserBackupSaved) {
+        showError("The project file opened safely, but its browser backup could not be replaced. Save the project file again before closing this tab.");
+      }
     } catch (error) {
       showError(error.message);
     } finally {
@@ -1128,13 +1196,15 @@
     }
   }
 
-  function applyProject(project) {
+  function applyProject(project, options = {}) {
+    clearPendingWorkspaceState();
+    state.undo = [];
     state.title = project.title;
     state.highlights = project.highlights;
     state.manualHighlights = project.manualHighlights || {};
     state.unresolvedHighlights = project.unresolvedHighlights || {};
     state.migrationReport = project.migrationReport || null;
-    state.legend = project.legend.length ? project.legend : state.legend;
+    state.legend = Array.isArray(project.legend) ? project.legend : defaultLegend();
     state.legendVisible = project.legendVisible;
     state.legendPosition = project.legendPosition;
     state.groupNames = project.groupNames || {};
@@ -1144,15 +1214,16 @@
     state.uiMode = project.uiMode || "basic";
     state.importRows = Array.isArray(project.importRows) ? project.importRows : [];
     state.visualization = project.visualization || null;
-    state.exportMeta = Object.assign({}, state.exportMeta, project.exportMeta || {});
+    state.exportMeta = project.exportMeta || { subtitle: "", source: "", period: "", footnote: "", legendTitle: "Legend", filenameSlug: brand.defaults.exportFilenamePrefix };
     state.selectedDataRow = null;
+    mapApi.select(null, false);
     el.projectTitle.value = state.title;
     el.exportSubtitle.value = state.exportMeta.subtitle || "";
     el.exportSource.value = state.exportMeta.source || "";
     el.exportPeriod.value = state.exportMeta.period || "";
     el.exportFootnote.value = state.exportMeta.footnote || "";
     el.exportLegendTitle.value = state.exportMeta.legendTitle || "Legend";
-    el.exportFilenameSlug.value = state.exportMeta.filenameSlug || "indonesia-region-map";
+    el.exportFilenameSlug.value = state.exportMeta.filenameSlug || brand.defaults.exportFilenamePrefix;
     state.exportSettings = project.exportSettings || {};
     el.exportRatio.value = state.exportSettings.ratio || "16:9";
     el.exportExtent.value = state.exportSettings.extent || "national";
@@ -1160,84 +1231,225 @@
     el.transparentBg.checked = Boolean(state.exportSettings.transparent);
     el.exportHighDetail.checked = Boolean(state.exportSettings.highDetail);
     el.pngSize.value = state.exportSettings.pngSize || "1920x1080";
-    setMode(state.uiMode);
-    updateAfterHighlightChange();
+    setMode(state.uiMode, false);
+    updateAfterHighlightChange(false);
     el.dataTablePanel.hidden = !state.importRows.length;
     renderDataTable();
     renderWorkflow();
     renderLegendEditor(false);
     updateMigrationReportUi();
+    return options.save ? scheduleSave() : true;
   }
 
   function clearProject() {
-    if (!confirm("Start over and remove the browser backup?")) return;
-    pushUndo();
+    if (!confirm("Start over and remove the current browser backup? A compatibility copy from before the upgrade may remain available for recovery.")) return;
+    const cleared = ProjectStorage.clearAutosave();
+    state.storageMigrationReport = ProjectStorage.getStorageMigrationReport();
+    if (!cleared) {
+      el.autosaveStatus.dataset.state = "unavailable";
+      el.autosaveStatus.textContent = "The browser backup could not be removed. Your saved copy is still available.";
+      updateStorageRecoveryButton(state.storageMigrationReport);
+      return;
+    }
+    state.title = brand.defaults.projectTitle;
     state.highlights = {};
     state.manualHighlights = {};
     state.unresolvedHighlights = {};
     state.migrationReport = null;
+    state.legend = defaultLegend();
+    state.legendVisible = true;
+    state.legendPosition = "bottom-right";
     state.groupNames = {};
     state.groupMeta = {};
     state.importCorrections = {};
     state.importRows = [];
     state.visualization = null;
     state.selectedDataRow = null;
+    state.workflowStage = "input";
+    state.undo = [];
     state.exportMeta = {
       subtitle: "",
       source: "",
       period: "",
       footnote: "",
       legendTitle: "Legend",
-      filenameSlug: "indonesia-region-map"
+      filenameSlug: brand.defaults.exportFilenamePrefix
     };
     state.exportSettings = {};
+    el.projectTitle.value = brand.defaults.projectTitle;
     el.exportSubtitle.value = "";
     el.exportSource.value = "";
     el.exportPeriod.value = "";
     el.exportFootnote.value = "";
     el.exportLegendTitle.value = "Legend";
-    el.exportFilenameSlug.value = "indonesia-region-map";
+    el.exportFilenameSlug.value = brand.defaults.exportFilenamePrefix;
     el.exportRatio.value = "16:9";
     el.exportExtent.value = "national";
     el.exportLabels.checked = true;
     el.transparentBg.checked = false;
     el.exportHighDetail.checked = false;
     el.pngSize.value = "1920x1080";
+    el.showLegend.checked = true;
+    el.legendPosition.value = "bottom-right";
+    el.searchInput.value = "";
+    el.provinceSelect.value = "__all";
+    renderRegionOptions();
+    el.regionSelect.value = "";
+    el.selectedRegion.textContent = "No region selected.";
+    el.mapSelectionStatus.textContent = "";
+    el.dataTableFilter.value = "";
     el.dataTablePanel.hidden = true;
-    ProjectStorage.clearAutosave();
-    updateAfterHighlightChange();
-    el.autosaveStatus.dataset.state = "cleared";
-    el.autosaveStatus.textContent = "Browser backup removed.";
+    clearPendingWorkspaceState();
+    mapApi.select(null, false);
+    setMode("basic", false);
+    renderLegendEditor(false);
+    updateAfterHighlightChange(false);
+    el.autosaveStatus.dataset.state = cleared ? "cleared" : "unavailable";
+    el.autosaveStatus.textContent = cleared
+      ? (state.storageMigrationReport && state.storageMigrationReport.sourceRetained
+        ? "Current browser backup removed. A previous compatibility backup is retained for recovery."
+        : "Browser backup removed.")
+      : "The browser backup could not be removed. Your saved copy is still available.";
+    updateStorageRecoveryButton(state.storageMigrationReport);
     updateMigrationReportUi();
   }
 
+  function recoverLegacyAutosave() {
+    if (!confirm("Recover the previous browser backup? This will replace the current map only after both the previous copy and a safety copy of the current backup are verified.")) return;
+    try {
+      const result = ProjectStorage.recoverRetainedAutosave(ProjectStorage.createRegionAdapter(state.features));
+      state.storageMigrationReport = result.report;
+      if (!result.project) {
+        updateStorageMigrationUi(result.report);
+        if (result.report && result.report.status === "failed-backup-slot-occupied") {
+          return showError("A replaced browser backup is already stored. Download it if needed, then delete the stored recovery copy before recovering another backup.");
+        }
+        return showError("The previous browser backup could not be recovered. It was left unchanged.");
+      }
+      applyProject(result.project);
+      updateStorageMigrationUi(result.report);
+    } catch (error) {
+      showError("The previous browser backup could not be recovered. It was left unchanged.");
+    }
+  }
+
+  function downloadStorageRecovery() {
+    if (!ProjectStorage.downloadRetainedTargetBackup()) return showError("No replaced browser backup is available to download.");
+    el.autosaveStatus.dataset.state = "downloaded";
+    el.autosaveStatus.textContent = "The replaced browser backup was downloaded. It remains stored until you delete it.";
+  }
+
+  function downloadUnreadableBackup(key) {
+    if (!ProjectStorage.downloadUnreadableBackup(key)) return showError("That unreadable browser backup is no longer available. No other saved copy was changed.");
+    el.autosaveStatus.dataset.state = "downloaded";
+    el.autosaveStatus.textContent = "The unreadable browser backup was downloaded as raw text. The stored copy remains unchanged.";
+  }
+
+  function deleteLegacyAutosave() {
+    if (!confirm("Delete the previous compatibility backup permanently? This cannot be undone.")) return;
+    const removed = ProjectStorage.clearRetainedLegacyAutosave();
+    if (!removed) return showError("The previous compatibility backup could not be deleted. It remains stored on this device.");
+    if (state.storageMigrationReport) {
+      state.storageMigrationReport.sourceRetained = false;
+      state.storageMigrationReport.recoverySourceKey = null;
+      if (Array.isArray(state.storageMigrationReport.unreadableBackupKeys)) {
+        state.storageMigrationReport.unreadableBackupKeys = state.storageMigrationReport.unreadableBackupKeys.filter((key) => !ProjectStorage.LEGACY_STORAGE_KEYS.includes(key));
+        state.storageMigrationReport.unreadableBackupRetained = state.storageMigrationReport.unreadableBackupKeys.length > 0;
+      }
+      state.storageMigrationReport.backupStatus = state.storageMigrationReport.replacedTargetRetained ? "replaced-target-retained" : "not-required";
+    }
+    updateStorageRecoveryButton(state.storageMigrationReport);
+    el.autosaveStatus.dataset.state = "cleared";
+    el.autosaveStatus.textContent = "The previous compatibility backup was deleted.";
+  }
+
+  function deleteStorageRecovery() {
+    if (!confirm("Delete the replaced browser backup permanently? This cannot be undone.")) return;
+    const removed = ProjectStorage.clearRetainedTargetBackup();
+    if (!removed) return showError("The replaced browser backup could not be deleted. It remains stored on this device.");
+    if (state.storageMigrationReport) {
+      state.storageMigrationReport.replacedTargetRetained = false;
+      state.storageMigrationReport.replacedTargetBackupKey = null;
+      state.storageMigrationReport.backupStatus = state.storageMigrationReport.sourceRetained ? "source-retained" : "not-required";
+    }
+    updateStorageRecoveryButton(state.storageMigrationReport);
+    el.autosaveStatus.dataset.state = "cleared";
+    el.autosaveStatus.textContent = "The replaced browser backup was deleted.";
+  }
+
   function scheduleSave() {
-    if (!state.features.length) return;
+    if (!state.features.length) return false;
     const ok = ProjectStorage.autosave(state);
+    state.storageMigrationReport = ProjectStorage.getStorageMigrationReport();
+    updateStorageRecoveryButton(state.storageMigrationReport);
     el.autosaveStatus.dataset.state = ok ? "saved" : "unavailable";
-    el.autosaveStatus.textContent = ok ? productText("ui.status.projectSaved") : "A browser backup is not available. Save a project file to keep your work.";
+    el.autosaveStatus.textContent = ok
+      ? productText("ui.status.projectSaved")
+      : (ProjectStorage.hasUnreadableBackup(ProjectStorage.STORAGE_KEY)
+        ? "The current browser backup was not replaced because its unreadable copy could not be preserved. Download it before trying again."
+        : (state.storageMigrationReport && state.storageMigrationReport.protectCurrentTargetBeforeWrite
+          ? "The saved browser copy was not replaced because a verified safety copy could not be created. It remains unchanged."
+          : "A browser backup is not available. Save a project file to keep your work."));
+    return ok;
   }
 
   function updateMigrationReportUi() {
     const report = state.migrationReport;
     if (!report) {
       el.migrationReportBtn.hidden = true;
-      el.autosaveStatus.dataset.state = "opened";
-      el.autosaveStatus.textContent = productText("ui.status.projectOpened");
       return;
     }
     const summary = report.summary || {};
-    const unresolved = (summary.ambiguous || 0) + (summary.missing || 0) + (summary.unsupported || 0);
+    const unresolvedRegions = (summary.ambiguous || 0) + (summary.missing || 0);
+    const unsupportedEntries = summary.unsupported || 0;
+    const unresolved = unresolvedRegions + unsupportedEntries;
     el.migrationReportBtn.hidden = false;
     el.autosaveStatus.dataset.state = unresolved ? "migration-review" : "opened";
     el.autosaveStatus.textContent = unresolved
-      ? `Project opened. ${unresolved} regions need review. An update report is available.`
+      ? `Project opened. ${unresolvedRegions} region references and ${unsupportedEntries} unsupported project fields or entries need review. An update report is available.`
       : "Project opened and updated without dropping saved regions.";
+  }
+
+  function updateStorageRecoveryButton(report) {
+    const hasLegacySource = Boolean(report && report.sourceRetained);
+    if (el.recoverLegacyAutosaveBtn) el.recoverLegacyAutosaveBtn.hidden = !hasLegacySource;
+    if (el.deleteLegacyAutosaveBtn) el.deleteLegacyAutosaveBtn.hidden = !hasLegacySource;
+    const hasReplacedTarget = Boolean((report && report.replacedTargetRetained) || ProjectStorage.hasRetainedTargetBackup());
+    if (el.downloadStorageRecoveryBtn) el.downloadStorageRecoveryBtn.hidden = !hasReplacedTarget;
+    if (el.deleteStorageRecoveryBtn) el.deleteStorageRecoveryBtn.hidden = !hasReplacedTarget;
+    if (el.downloadUnreadableTargetBtn) el.downloadUnreadableTargetBtn.hidden = !ProjectStorage.hasUnreadableBackup(ProjectStorage.STORAGE_KEY, report);
+    const unreadableLegacyKey = ProjectStorage.LEGACY_STORAGE_KEYS.find((key) => ProjectStorage.hasUnreadableBackup(key, report));
+    if (el.downloadUnreadableLegacyBtn) el.downloadUnreadableLegacyBtn.hidden = !unreadableLegacyKey;
+  }
+
+  function updateStorageMigrationUi(report) {
+    updateStorageRecoveryButton(report);
+    if (!report) return;
+    const status = String(report.status || "");
+    const dropped = Array.isArray(report.droppedEntries) ? report.droppedEntries.length : 0;
+    const unresolved = Array.isArray(report.unresolvedEntries) ? report.unresolvedEntries.length : 0;
+    if (status.startsWith("failed")) {
+      el.autosaveStatus.dataset.state = "migration-error";
+      el.autosaveStatus.textContent = report.sourceRetained
+        ? "The browser backup could not be moved. The previous copy is still safe and can be recovered."
+        : "The browser backup could not be checked. No saved work was cleared; open a project file to continue.";
+      return;
+    }
+    if (["migrated", "recovered-invalid-target", "recovered-retained-source"].includes(status)) {
+      el.autosaveStatus.dataset.state = dropped || unresolved ? "migration-review" : "saved";
+      el.autosaveStatus.textContent = dropped || unresolved
+        ? "The browser backup was moved, but its update report needs review. The previous copy is still safe."
+        : "The browser backup was moved safely. The previous copy is retained for recovery.";
+      return;
+    }
+    if (status === "cleared") {
+      el.autosaveStatus.dataset.state = "cleared";
+    }
   }
 
   function downloadMigrationReport() {
     if (!state.migrationReport) return;
-    ProjectStorage.downloadJson("project-update-report.json", state.migrationReport);
+    ProjectStorage.downloadJson(brand.defaults.migrationReportFilename || "nusacanvas-project-update-report.json", state.migrationReport);
   }
 
   async function exportSvg() {

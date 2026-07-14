@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const zlib = require("node:zlib");
 const { expect, test } = require("@playwright/test");
+const brand = require("../../assets/js/brand-config.js");
 
 const artifactDir = path.resolve(__dirname, "..", "..", "artifacts", "batch-1");
 const forbiddenStartupPatterns = [
@@ -161,6 +162,10 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
 
   await page.goto("/");
   await waitForAppReady(page);
+  await expect(page).toHaveTitle(new RegExp(brand.productName, "i"));
+  await expect(page.locator("h1")).toContainText(brand.productName);
+  await expect(page.locator("meta[name='description']")).toHaveAttribute("content", brand.app.description);
+  expect(await page.evaluate(() => window.ProductBrand.futureCanonicalOrigin)).toBe(brand.futureCanonicalOrigin);
   await expect(page.locator("#dataTruthBadge")).toHaveAttribute("data-boundary-version", "IDN-ADM2-2020-geoboundaries-22746128");
   await expect(page.locator("#dataTruthBadge")).toHaveAttribute("data-registry-version", "IDN-ADM-REGISTRY-v1-2025-06-23");
   await expect.poll(async () => page.locator(".leaflet-interactive").count()).toBeGreaterThan(500);
@@ -185,12 +190,12 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
 
   const projectDownload = page.waitForEvent("download");
   await page.locator("#saveProjectBtn").click();
-  expect((await projectDownload).suggestedFilename()).toBe("indonesia-region-map-project.json");
+  expect((await projectDownload).suggestedFilename()).toBe(brand.defaults.projectFilename);
 
   const svgDownload = page.waitForEvent("download");
   await page.locator("#exportSvgBtn").click();
   const svg = await svgDownload;
-  expect(svg.suggestedFilename()).toBe("indonesia-region-map.svg");
+  expect(svg.suggestedFilename()).toBe(`${brand.defaults.exportFilenamePrefix}.svg`);
   const svgText = fs.readFileSync(await svg.path(), "utf8");
   expect(svgText).toContain("IDN-ADM2-2020-geoboundaries-22746128");
   expect(svgText).toContain("For visual reference only; not a legal boundary decision.");
@@ -199,7 +204,7 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
   await page.locator("#pngSize").selectOption("1920x1080");
   const pngDownload = page.waitForEvent("download");
   await page.locator("#exportPngBtn").click();
-  expect((await pngDownload).suggestedFilename()).toBe("indonesia-region-map.png");
+  expect((await pngDownload).suggestedFilename()).toBe(`${brand.defaults.exportFilenamePrefix}.png`);
 
   fs.writeFileSync(path.join(artifactDir, "smoke-network.json"), `${JSON.stringify({ requests, failed }, null, 2)}\n`);
   expect(pageErrors).toEqual([]);
@@ -228,7 +233,7 @@ test("startup labels are tiered on mobile and high-detail geometry is explicit",
   const download = page.waitForEvent("download");
   await page.locator("#exportSvgBtn").click();
   await detailedRequest;
-  expect((await download).suggestedFilename()).toBe("indonesia-region-map.svg");
+  expect((await download).suggestedFilename()).toBe(`${brand.defaults.exportFilenamePrefix}.svg`);
 });
 
 test("PNG export supports largest, transparent, and fallback paths", async ({ page }) => {
@@ -255,24 +260,37 @@ test("PNG export supports largest, transparent, and fallback paths", async ({ pa
 
   let download = page.waitForEvent("download");
   const largest = await exportOneFeature({ pngSize: "3840x2160" });
-  expect((await download).suggestedFilename()).toBe("indonesia-region-map.png");
+  expect((await download).suggestedFilename()).toBe(`${brand.defaults.exportFilenamePrefix}.png`);
   expect(largest.fallbackUsed).toBe(false);
 
   download = page.waitForEvent("download");
   const transparent = await exportOneFeature({ pngSize: "1920x1080", transparent: true });
-  expect((await download).suggestedFilename()).toBe("indonesia-region-map.png");
+  expect((await download).suggestedFilename()).toBe(`${brand.defaults.exportFilenamePrefix}.png`);
   expect(transparent.fallbackUsed).toBe(false);
 
   download = page.waitForEvent("download");
   const fallback = await exportOneFeature({ pngSize: "2560x1440", forceCanvasFailure: true });
-  expect((await download).suggestedFilename()).toBe("indonesia-region-map.png");
+  expect((await download).suggestedFilename()).toBe(`${brand.defaults.exportFilenamePrefix}.png`);
   expect(fallback.fallbackUsed).toBe(true);
   expect(fallback.size).toEqual({ width: 1920, height: 1080 });
 });
 
 test("CSV sample, undo, old project migration, and keyboard navigation work", async ({ page }) => {
   const sampleCsv = path.resolve(__dirname, "..", "..", "sample", "sample-region-colors.csv");
-  const sampleProject = path.resolve(__dirname, "..", "..", "sample", "sample-project.json");
+  const replacementProject = {
+    appVersion: "0.8.0",
+    schemaVersion: "1.0",
+    boundaryVersion: "IDN-ADM2-2020-geoboundaries-22746128",
+    title: "Synthetic replacement project",
+    highlights: {
+      "gb-22746128B68603538827891": { color: "#4472C4", category: "Replacement", value: "1" }
+    },
+    legend: [],
+    legendVisible: true,
+    legendPosition: "bottom-right",
+    exportMeta: { filenameSlug: "synthetic-replacement" },
+    customField: "must be reported, not silently retained"
+  };
   page.on("dialog", (dialog) => dialog.accept());
 
   await page.goto("/");
@@ -287,10 +305,32 @@ test("CSV sample, undo, old project migration, and keyboard navigation work", as
   await page.keyboard.press("Enter");
   await expect(page.locator("#highlightCount")).toHaveText("0");
 
-  await page.locator("#projectFile").setInputFiles(sampleProject);
+  // Leave an old-workspace undo snapshot and an actionable import preview in
+  // memory. Opening the project must clear both transient states.
+  await page.locator("#applyCsvBtn").click();
+  await expect(page.locator("#highlightCount")).toHaveText("3");
+
+  await page.locator("#projectFile").setInputFiles({
+    name: "synthetic-replacement.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(replacementProject))
+  });
   await expect(page.locator("#migrationReportBtn")).toBeVisible();
-  await expect(page.locator("#autosaveStatus")).toHaveAttribute("data-state", /opened|migration-review/);
+  await expect(page.locator("#autosaveStatus")).toHaveAttribute("data-state", /saved|opened|migration-review/);
   await expect(page.locator("#highlightCount")).toHaveText("1");
+  await expect(page.locator("#legendItems .legend-item")).toHaveCount(0);
+  await expect(page.locator("#csvPreview")).toBeEmpty();
+  await expect(page.locator("#applyCsvBtn")).toBeDisabled();
+
+  await page.locator("#undoBtn").click();
+  await expect(page.locator("#highlightCount")).toHaveText("1");
+
+  const reportDownloadEvent = page.waitForEvent("download");
+  await page.locator("#migrationReportBtn").click();
+  const reportDownload = await reportDownloadEvent;
+  const report = JSON.parse(fs.readFileSync(await reportDownload.path(), "utf8"));
+  expect(report.projectFields.droppedEntries).toEqual([{ kind: "unsupported-project-field", count: 1 }]);
+  expect(report.brandMigration.droppedEntries).toEqual([{ kind: "unsupported-project-field", count: 1 }]);
 
   for (let index = 0; index < 20; index += 1) {
     await page.keyboard.press("Tab");
@@ -534,3 +574,5 @@ test("two-column official-code flow reaches a mapping export without ambiguity",
   }, null, 2)}\n`);
   expect(errors).toEqual([]);
 });
+
+require("./brand-storage-migration.shared.js");

@@ -1,8 +1,8 @@
 {
-  "name": "indonesian-map-tools",
+  "name": "nusacanvas",
   "version": "0.9.0",
   "private": true,
-  "description": "Static browser app for coloring Indonesia kabupaten/kota regions.",
+  "description": "NusaCanvas creates clear Indonesia regency and city maps from spreadsheet data in the browser.",
   "engines": {
     "node": ">=24 <25"
   },
@@ -34,9 +34,10 @@
     "capture:batch2r:baseline": "playwright test tests/e2e/batch2r-baseline.spec.js --project=chromium-desktop --workers=1",
     "verify:batch2r:preflight": "node scripts/verify-batch2r-preflight.js",
     "audit:terminology": "node scripts/terminology-audit.js",
+    "audit:brand-migration": "node scripts/brand-migration-audit.js",
     "measure": "node scripts/measure.js",
     "check": "node scripts/check.js",
-    "verify:batch1": "node scripts/verify-batch1.js",
+    "verify:batch1": "node scripts/brand-migration-audit.js && node scripts/verify-batch1.js",
     "deploy": "node scripts/wrangler-command.js deploy",
     "deploy:ci": "wrangler deploy",
     "verify:staging": "node scripts/verify-staging.js https://mapnesia.andrew-sebastian91.workers.dev"

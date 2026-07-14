@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>Create an Indonesia region map</title>
+  <title data-brand-title>NusaCanvas — Create an Indonesia region map</title>
+  <meta name="description" data-brand-description content="NusaCanvas turns spreadsheet data into clear Indonesia regency and city maps in your browser.">
   <link rel="stylesheet" href="./assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="./assets/css/app.css">
 </head>
@@ -13,7 +14,8 @@
     <button id="sidebarToggleBtn" class="sidebar-toggle" type="button" aria-controls="controlPanel" aria-expanded="true" title="Show or hide map controls">☰</button>
     <aside id="controlPanel" class="control-panel" aria-label="Map controls">
       <header class="app-header">
-        <h1>Create an Indonesia region map</h1>
+        <h1 data-brand-product>NusaCanvas</h1>
+        <p data-brand-positioning>Create clear Indonesia regency and city maps from spreadsheet data.</p>
         <p>Regions include Indonesia's regencies and cities. Boundaries are for visual reference.</p>
         <p id="dataTruthBadge" class="data-badge">Boundary snapshot: 2020 · Administrative names reviewed: 2025</p>
         <nav class="trust-links" aria-label="Data and trust information">
@@ -40,7 +42,7 @@
 
       <section class="panel-section">
         <label for="projectTitle">Map title</label>
-        <input id="projectTitle" type="text" maxlength="90" value="Indonesia region map">
+        <input id="projectTitle" type="text" maxlength="90" value="NusaCanvas Indonesia region map">
         <label for="exportSubtitle">Subtitle</label>
         <input id="exportSubtitle" type="text" maxlength="180" placeholder="Optional">
         <label for="exportSource">Your data source</label>
@@ -52,7 +54,7 @@
         <label for="exportLegendTitle">Legend title</label>
         <input id="exportLegendTitle" type="text" maxlength="80" value="Legend">
         <label for="exportFilenameSlug">File name</label>
-        <input id="exportFilenameSlug" type="text" maxlength="80" value="indonesia-region-map" inputmode="url">
+        <input id="exportFilenameSlug" type="text" maxlength="80" value="nusacanvas-indonesia-map" inputmode="url">
       </section>
 
       <section class="panel-section" data-workflow-step="visualize">
@@ -198,6 +200,12 @@
           <button id="saveProjectBtn" type="button" data-copy="ui.actions.saveProject">Save project</button>
           <button id="openProjectBtn" type="button" class="secondary" data-copy="ui.actions.openProject">Open project</button>
           <button id="migrationReportBtn" type="button" class="secondary" hidden>Download project update report</button>
+          <button id="recoverLegacyAutosaveBtn" type="button" class="secondary" hidden>Recover previous browser backup</button>
+          <button id="deleteLegacyAutosaveBtn" type="button" class="danger" hidden>Delete previous compatibility backup</button>
+          <button id="downloadStorageRecoveryBtn" type="button" class="secondary" hidden>Download replaced browser backup</button>
+          <button id="deleteStorageRecoveryBtn" type="button" class="danger" hidden>Delete replaced browser backup</button>
+          <button id="downloadUnreadableTargetBtn" type="button" class="secondary" hidden>Download unreadable current backup</button>
+          <button id="downloadUnreadableLegacyBtn" type="button" class="secondary" hidden>Download unreadable compatibility backup</button>
           <button id="clearProjectBtn" type="button" class="danger" data-copy="ui.actions.startOver">Start over</button>
         </div>
       </section>
@@ -292,6 +300,8 @@
   </div>
 
   <script src="./assets/vendor/leaflet/leaflet.js"></script>
+  <script src="./assets/js/brand-config.js"></script>
+  <script src="./assets/js/brand-migration.js"></script>
   <script src="./assets/js/product-content.js"></script>
   <script src="./assets/js/project-storage.js"></script>
   <script src="./assets/js/import-core.js"></script>

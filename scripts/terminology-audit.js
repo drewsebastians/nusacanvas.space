@@ -54,7 +54,7 @@ for (const relative of activeHtml) {
   const mixedSentences = visible.split(/[.!?]/).filter((sentence) => /\b(create|map|match|upload|export|save|open|fix|continue|cancel)\b/i.test(sentence) && /\b(dan|yang|untuk|dari|dengan|tidak|pilih|wilayah|peta|proyek)\b/i.test(sentence));
   for (const sentence of mixedSentences.slice(0, 4)) failures.push(`${relative}: mixed-language sentence '${sentence.trim().slice(0, 140)}'`);
   const brandCount = (html.match(/Mapnesia/gi) || []).length + (html.match(/Peta Warna Wilayah Indonesia/gi) || []).length;
-  if (brandCount) warnings.push({ file: relative, code: "legacy-brand", count: brandCount });
+  if (brandCount) failures.push(`${relative}: ${brandCount} legacy product-name reference(s); Prompt 3 requires NusaCanvas on active pages`);
 }
 
 const basicHtml = read("index.html").replace(/<details[\s\S]*?<\/details>/gi, " ");
@@ -72,8 +72,8 @@ for (const relative of activeJs) {
   for (const phrase of legacyIndonesianUi) {
     if (source.toLocaleLowerCase("id-ID").includes(phrase.toLocaleLowerCase("id-ID"))) failures.push(`${relative}: legacy Indonesian product text '${phrase}'`);
   }
-  const brandCount = (source.match(/Mapnesia/gi) || []).length;
-  if (brandCount) warnings.push({ file: relative, code: "legacy-brand", count: brandCount });
+  const brandCount = (source.match(/Mapnesia/gi) || []).length + (source.match(/Peta Warna Wilayah Indonesia/gi) || []).length;
+  if (brandCount) failures.push(`${relative}: ${brandCount} legacy product-name reference(s); Prompt 3 requires NusaCanvas in active modules`);
 }
 
 for (const required of ["Region", "Match regions", "Unmatched regions", "Color by value", "Color by category", "Design map", "Export map", "Save project", "Open project", "Clear map", "Start over"]) {
@@ -102,4 +102,4 @@ if (failures.length) {
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exit(1);
 }
-console.log(`Terminology audit passed: ${report.filesChecked} active files; ${warnings.length} old-brand warnings deferred to Prompt 3.`);
+console.log(`Terminology audit passed: ${report.filesChecked} active files; legacy product names are blocked.`);

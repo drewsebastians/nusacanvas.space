@@ -4,13 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <title>Privacy notice</title>
+  <title>Privacy notice — NusaCanvas</title>
+  <meta name="description" content="Read how NusaCanvas processes spreadsheets, projects, browser storage, and exports locally on your device.">
   <link rel="stylesheet" href="../assets/css/content.css">
 </head>
 <body>
   <header class="site-header">
     <nav class="site-inner site-nav" aria-label="Main navigation">
-      <a class="brand" href="../">Mapnesia</a>
+      <a class="brand" href="../">NusaCanvas</a>
       <a href="../about/">About</a>
       <a href="../sources-licenses/">Sources and licenses</a>
       <a href="../data-methodology/">Data method</a>
@@ -19,7 +20,7 @@
     </nav>
   </header>
   <main>
-    <p class="eyebrow">Last reviewed: 2026-07-12</p>
+    <p class="eyebrow">Last reviewed: 2026-07-14</p>
     <h1>Privacy notice</h1>
     <p class="lead">This page explains how the staging app handles your data. It is not professional legal advice.</p>
 
@@ -27,7 +28,9 @@
     <p>CSV files, JSON project files, colors, categories, and values are processed in your browser. The app has no backend, accounts, database, analytics, ads, or cloud project storage.</p>
 
     <h2>Browser storage</h2>
-    <p>Autosave uses storage in your browser. The data stays on your device and can be lost if you clear site data.</p>
+    <p>Autosave uses local storage in your browser. When the app upgrades an older autosave, it keeps the original compatibility copy until you explicitly delete it. Before a recovery, edit, project open, or <strong>Start over</strong> action replaces an unreadable current backup, the app keeps that current copy byte-for-byte in one local recovery slot.</p>
+    <p><strong>Start over</strong> resets the workspace and removes the current autosave. Separate controls let you recover or delete the previous compatibility copy, download an unreadable current or compatibility copy as raw text, and download or delete a replaced browser backup. The app does not log or upload backup contents. All copies stay on this device and can be lost if you clear site data.</p>
+    <p>If you decline to open a valid saved copy at startup, that copy stays unchanged until the app can verify a safety copy before your first replacement edit.</p>
 
     <h2>Exports and downloads</h2>
     <p>SVG and PNG files, migration reports, and data-report templates are created in your browser. You decide which files to download or share.</p>

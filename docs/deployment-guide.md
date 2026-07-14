@@ -1,12 +1,20 @@
-# Deployment Guide
+# NusaCanvas Deployment Guide
 
-The staging deployment target is Cloudflare Workers Static Assets:
+The future canonical production origin is:
+
+```text
+https://nusacanvas.space
+```
+
+That custom domain is not attached, routed, or indexable yet. Remote repository and Worker renames are deferred to the planned platform migration.
+
+The current staging deployment target remains the existing Cloudflare Workers Static Assets service:
 
 ```text
 https://mapnesia.andrew-sebastian91.workers.dev
 ```
 
-This staging URL is intentionally non-indexable until a future custom domain is ready.
+This staging URL is intentionally non-indexable. Its legacy token is an infrastructure identifier only; the active product identity is NusaCanvas.
 
 ## Requirements
 
@@ -109,7 +117,7 @@ Staging includes three layers of noindex protection:
 - `index.html` includes a robots meta tag.
 - Trust pages include robots meta tags.
 
-Do not add a canonical URL pointing to workers.dev. The current CSP allows same-origin scripts, styles, images, and fetches only; object/embed/base/form/frame entry points are blocked.
+Do not add a canonical URL pointing to workers.dev, and do not activate the future custom domain in this batch. The current CSP allows same-origin scripts, styles, images, and fetches only; object/embed/base/form/frame entry points are blocked.
 
 ## Cache Behavior
 

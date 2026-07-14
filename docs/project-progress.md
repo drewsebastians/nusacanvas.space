@@ -1,5 +1,7 @@
 # Project Progress: Peta Warna Wilayah Indonesia
 
+> Historical record: this document preserves the product name and environment claims used when the work was recorded. The current product identity is NusaCanvas.
+
 ## Repository inspection
 
 Status: Complete

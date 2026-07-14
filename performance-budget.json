@@ -22,6 +22,8 @@
     "assets/vendor/leaflet/leaflet.css",
     "assets/css/app.css",
     "assets/vendor/leaflet/leaflet.js",
+    "assets/js/brand-config.js",
+    "assets/js/brand-migration.js",
     "assets/js/product-content.js",
     "assets/js/project-storage.js",
     "assets/js/import-core.js",

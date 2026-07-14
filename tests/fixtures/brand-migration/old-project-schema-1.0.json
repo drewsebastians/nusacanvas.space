@@ -1,0 +1,35 @@
+{
+  "appVersion": "0.8.0",
+  "schemaVersion": "1.0",
+  "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+  "title": "Legacy sales territory",
+  "highlights": {
+    "known-id": {
+      "color": "#70AD47",
+      "category": "Covered",
+      "value": "1"
+    },
+    "retired-id": {
+      "color": "#E74C3C",
+      "category": "Review",
+      "value": "0"
+    }
+  },
+  "legend": [
+    {
+      "label": "Covered",
+      "color": "#70AD47"
+    },
+    {
+      "label": "Review",
+      "color": "#E74C3C"
+    }
+  ],
+  "legendVisible": true,
+  "legendPosition": "bottom-right",
+  "groupNames": {},
+  "groupMeta": {},
+  "workflowStage": "visualize",
+  "uiMode": "basic",
+  "savedAt": "2025-12-15T00:00:00.000Z"
+}
