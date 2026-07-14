@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "batch2r.preflight.v1",
+  "status": "pass",
+  "verifiedAt": "2026-07-14",
+  "verifiedCommit": "b88261f",
+  "branch": "main",
+  "remote": "https://github.com/drewsebastians/Indonesian-map-tools.git",
+  "batch3RuntimeStarted": false,
+  "checks": [
+    {"id":"build","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["scripts/build.js","wrangler.jsonc"],"details":"48 allowlisted files"},
+    {"id":"data-source-license-reproducibility","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["data/source-manifest.json","data/license-manifest.json","artifacts/batch-2/closure.json"],"details":"6 sources, 18 license assets, no drift"},
+    {"id":"geometry-stable-ids","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["tests/run_data_tests.py","data/canonical-region-registry.json","data/crosswalk.json"],"details":"519 features, 519 canonical regions, 38 provinces, 53 ambiguous fixtures"},
+    {"id":"unit-migration","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["tests/unit"],"details":"31/31"},
+    {"id":"browser-smoke","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["tests/e2e/smoke.spec.js","artifacts/batch-1/first-user-two-column-chromium-desktop.json","artifacts/batch-1/first-user-two-column-chromium-mobile.json"],"details":"56/56 across four projects"},
+    {"id":"trust-content","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["tests/e2e/trust.spec.js"],"details":"12/12"},
+    {"id":"accessibility","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["tests/e2e/a11y.spec.js"],"details":"8/8"},
+    {"id":"performance","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["artifacts/batch-1/performance-budget-report.json"],"details":"611579/518479/81974 gzip bytes"},
+    {"id":"static-content","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["scripts/check-static-content.js"],"details":"17 pages"},
+    {"id":"security-privacy","classification":"pass","command":"node scripts/verify-batch1.js","evidencePaths":["scripts/security-audit.js"],"details":"8/8"},
+    {"id":"experience-inventory","classification":"pass","command":"npm run inventory:batch2r","evidencePaths":["scripts/build-batch2r-inventory.js","artifacts/batch-2r/current-experience-inventory.json","artifacts/batch-2r/current-string-inventory.json"],"details":"10 routes, 15 journeys"},
+    {"id":"baseline-screenshots","classification":"pass","command":"npm run capture:batch2r:baseline","evidencePaths":["tests/e2e/batch2r-baseline.spec.js","artifacts/batch-2r/baseline/manifest.json","docs/batch-2r/screenshots/baseline/README.md"],"details":"28 screenshots across desktop/laptop/narrow/mobile"},
+    {"id":"batch3-runtime-freeze","classification":"pass","command":"manual repository audit","evidencePaths":["docs/batch-3/00-preflight-and-contract.md","docs/batch-3/00-blockers.md"],"details":"contracts present; no territory/coverage runtime"},
+    {"id":"lint-typecheck","classification":"not-applicable","command":null,"evidencePaths":["package.json"],"details":"no lint/typecheck scripts"}
+  ],
+  "environmentNote":"The restricted shell initially returned browser spawn EPERM. Approved browser execution passed the complete gate; no product test was waived.",
+  "ownerActions":["Human comprehension test remains unverified; use the existing first-user manual protocol before production/domain rollout.","Prompt 4 must pause for owner visual direction before Prompt 5 or later production redesign."],
+  "productionDomainActivated":false,
+  "productionIndexingActivated":false
+}

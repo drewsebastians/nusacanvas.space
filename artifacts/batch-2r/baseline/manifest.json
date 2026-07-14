@@ -1,0 +1,146 @@
+{
+  "schemaVersion": "batch2r.baseline-screenshots.v1",
+  "generatedAt": "2026-07-14T05:18:52.897Z",
+  "screenshots": [
+    {
+      "name": "desktop-1440-empty",
+      "description": "Empty workspace on initial load",
+      "file": "artifacts/batch-2r/baseline/desktop-1440-empty.png"
+    },
+    {
+      "name": "desktop-1440-advanced-mode",
+      "description": "Advanced mode expanded",
+      "file": "artifacts/batch-2r/baseline/desktop-1440-advanced-mode.png"
+    },
+    {
+      "name": "desktop-1440-populated",
+      "description": "Populated spreadsheet map",
+      "file": "artifacts/batch-2r/baseline/desktop-1440-populated.png"
+    },
+    {
+      "name": "desktop-1440-data-table",
+      "description": "Linked data table and map",
+      "file": "artifacts/batch-2r/baseline/desktop-1440-data-table.png"
+    },
+    {
+      "name": "desktop-1440-visualization",
+      "description": "Visualization method and shared legend",
+      "file": "artifacts/batch-2r/baseline/desktop-1440-visualization.png"
+    },
+    {
+      "name": "desktop-1440-export",
+      "description": "Export options and actions",
+      "file": "artifacts/batch-2r/baseline/desktop-1440-export.png"
+    },
+    {
+      "name": "desktop-1440-unmatched",
+      "description": "Unmatched-region warning before apply",
+      "file": "artifacts/batch-2r/baseline/desktop-1440-unmatched.png"
+    },
+    {
+      "name": "laptop-1280-empty",
+      "description": "Empty workspace on initial load",
+      "file": "artifacts/batch-2r/baseline/laptop-1280-empty.png"
+    },
+    {
+      "name": "laptop-1280-advanced-mode",
+      "description": "Advanced mode expanded",
+      "file": "artifacts/batch-2r/baseline/laptop-1280-advanced-mode.png"
+    },
+    {
+      "name": "laptop-1280-populated",
+      "description": "Populated spreadsheet map",
+      "file": "artifacts/batch-2r/baseline/laptop-1280-populated.png"
+    },
+    {
+      "name": "laptop-1280-data-table",
+      "description": "Linked data table and map",
+      "file": "artifacts/batch-2r/baseline/laptop-1280-data-table.png"
+    },
+    {
+      "name": "laptop-1280-visualization",
+      "description": "Visualization method and shared legend",
+      "file": "artifacts/batch-2r/baseline/laptop-1280-visualization.png"
+    },
+    {
+      "name": "laptop-1280-export",
+      "description": "Export options and actions",
+      "file": "artifacts/batch-2r/baseline/laptop-1280-export.png"
+    },
+    {
+      "name": "laptop-1280-unmatched",
+      "description": "Unmatched-region warning before apply",
+      "file": "artifacts/batch-2r/baseline/laptop-1280-unmatched.png"
+    },
+    {
+      "name": "narrow-900-empty",
+      "description": "Empty workspace on initial load",
+      "file": "artifacts/batch-2r/baseline/narrow-900-empty.png"
+    },
+    {
+      "name": "narrow-900-advanced-mode",
+      "description": "Advanced mode expanded",
+      "file": "artifacts/batch-2r/baseline/narrow-900-advanced-mode.png"
+    },
+    {
+      "name": "narrow-900-populated",
+      "description": "Populated spreadsheet map",
+      "file": "artifacts/batch-2r/baseline/narrow-900-populated.png"
+    },
+    {
+      "name": "narrow-900-data-table",
+      "description": "Linked data table and map",
+      "file": "artifacts/batch-2r/baseline/narrow-900-data-table.png"
+    },
+    {
+      "name": "narrow-900-visualization",
+      "description": "Visualization method and shared legend",
+      "file": "artifacts/batch-2r/baseline/narrow-900-visualization.png"
+    },
+    {
+      "name": "narrow-900-export",
+      "description": "Export options and actions",
+      "file": "artifacts/batch-2r/baseline/narrow-900-export.png"
+    },
+    {
+      "name": "narrow-900-unmatched",
+      "description": "Unmatched-region warning before apply",
+      "file": "artifacts/batch-2r/baseline/narrow-900-unmatched.png"
+    },
+    {
+      "name": "mobile-pixel5-empty",
+      "description": "Empty workspace on initial load",
+      "file": "artifacts/batch-2r/baseline/mobile-pixel5-empty.png"
+    },
+    {
+      "name": "mobile-pixel5-advanced-mode",
+      "description": "Advanced mode expanded",
+      "file": "artifacts/batch-2r/baseline/mobile-pixel5-advanced-mode.png"
+    },
+    {
+      "name": "mobile-pixel5-populated",
+      "description": "Populated spreadsheet map",
+      "file": "artifacts/batch-2r/baseline/mobile-pixel5-populated.png"
+    },
+    {
+      "name": "mobile-pixel5-data-table",
+      "description": "Linked data table and map",
+      "file": "artifacts/batch-2r/baseline/mobile-pixel5-data-table.png"
+    },
+    {
+      "name": "mobile-pixel5-visualization",
+      "description": "Visualization method and shared legend",
+      "file": "artifacts/batch-2r/baseline/mobile-pixel5-visualization.png"
+    },
+    {
+      "name": "mobile-pixel5-export",
+      "description": "Export options and actions",
+      "file": "artifacts/batch-2r/baseline/mobile-pixel5-export.png"
+    },
+    {
+      "name": "mobile-pixel5-unmatched",
+      "description": "Unmatched-region warning before apply",
+      "file": "artifacts/batch-2r/baseline/mobile-pixel5-unmatched.png"
+    }
+  ]
+}

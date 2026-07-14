@@ -1,0 +1,292 @@
+{
+  "schemaVersion": "batch2r.current-experience-inventory.v1",
+  "generatedAt": "2026-07-14T05:23:44.177Z",
+  "testedBaseline": "b88261f",
+  "routes": [
+    "/about/",
+    "/changelog/",
+    "/contact/",
+    "/data-methodology/",
+    "/excel-to-map/",
+    "/",
+    "/limitations/",
+    "/privacy/",
+    "/sources-licenses/",
+    "/terms/"
+  ],
+  "publicNavigation": [
+    "Tentang",
+    "Sumber & Lisensi",
+    "Metodologi Data",
+    "Batasan",
+    "Kontak"
+  ],
+  "workflow": [
+    "Input",
+    "Match",
+    "Visualize",
+    "Export"
+  ],
+  "modes": [
+    "Dasar",
+    "Lanjutan"
+  ],
+  "controlIds": [
+    "appShell",
+    "sidebarToggleBtn",
+    "controlPanel",
+    "dataTruthBadge",
+    "workflowSteps",
+    "workflowStatus",
+    "basicModeBtn",
+    "advancedModeBtn",
+    "exampleBtn",
+    "projectTitle",
+    "exportSubtitle",
+    "exportSource",
+    "exportPeriod",
+    "exportFootnote",
+    "exportLegendTitle",
+    "exportFilenameSlug",
+    "searchInput",
+    "searchResults",
+    "provinceSelect",
+    "regionSelect",
+    "selectedRegion",
+    "colorPicker",
+    "quickColors",
+    "categoryInput",
+    "valueInput",
+    "applyColorBtn",
+    "removeColorBtn",
+    "undoBtn",
+    "resetBtn",
+    "highlightCount",
+    "highlightList",
+    "groupCount",
+    "groupingList",
+    "showLegend",
+    "legendPosition",
+    "legendItems",
+    "addLegendBtn",
+    "importPaste",
+    "csvFile",
+    "xlsxSheet",
+    "advancedImportOptions",
+    "importDelimiter",
+    "importLocale",
+    "previewCsvBtn",
+    "applyCsvBtn",
+    "cancelImportBtn",
+    "importMapping",
+    "csvPreview",
+    "vizMode",
+    "vizClasses",
+    "vizPalette",
+    "vizReverse",
+    "vizCenter",
+    "vizBreaks",
+    "vizNumberFormat",
+    "vizPreviewBtn",
+    "vizApplyBtn",
+    "vizSummary",
+    "vizLegendPreview",
+    "autosaveStatus",
+    "projectFile",
+    "saveProjectBtn",
+    "openProjectBtn",
+    "migrationReportBtn",
+    "clearProjectBtn",
+    "exportSection",
+    "exportRatio",
+    "exportExtent",
+    "exportLabels",
+    "transparentBg",
+    "exportHighDetail",
+    "pngSize",
+    "exportSvgBtn",
+    "exportPngBtn",
+    "exportPdfBtn",
+    "exportMappingBtn",
+    "fitIndonesiaBtn",
+    "loadingIndicator",
+    "mapSelectionStatus",
+    "errorArea",
+    "map",
+    "dataTablePanel",
+    "dataTableTitle",
+    "dataTableCount",
+    "dataTableFilter",
+    "dataTableSort",
+    "dataTableAnnouncement",
+    "dataTable",
+    "dataTableEmpty",
+    "floatingExportBtn"
+  ],
+  "journeys": [
+    {
+      "id": "manual-highlight",
+      "start": "workspace",
+      "path": [
+        "Pilih Wilayah",
+        "Pilih Warna",
+        "Terapkan Warna"
+      ],
+      "success": "Wilayah masuk daftar sorotan"
+    },
+    {
+      "id": "paste-two-column",
+      "start": "Impor Data",
+      "path": [
+        "Paste dari Excel/Sheets",
+        "Pratinjau Import",
+        "Terapkan Hasil Valid",
+        "Visualisasi dari data",
+        "Ekspor"
+      ],
+      "success": "Mapping export berhasil"
+    },
+    {
+      "id": "csv-tsv",
+      "start": "Impor Data",
+      "path": [
+        "Pilih file CSV/TSV/XLSX",
+        "Pratinjau Import",
+        "mapping kolom",
+        "Terapkan Hasil Valid"
+      ],
+      "success": "Data tabel dan peta terhubung"
+    },
+    {
+      "id": "xlsx-sheet",
+      "start": "Impor Data",
+      "path": [
+        "Pilih file XLSX",
+        "Pilih sheet",
+        "Pratinjau Import",
+        "Terapkan Hasil Valid"
+      ],
+      "success": "Sheet diproses lokal"
+    },
+    {
+      "id": "resolve-match",
+      "start": "Data Anda",
+      "path": [
+        "lihat status unmatched/ambiguous",
+        "pilih kandidat atau abaikan",
+        "terapkan hasil valid"
+      ],
+      "success": "Tidak ada ambiguity yang diterapkan diam-diam"
+    },
+    {
+      "id": "visualize",
+      "start": "Visualisasi dari data",
+      "path": [
+        "pilih metode",
+        "Pratinjau visualisasi",
+        "Terapkan visualisasi"
+      ],
+      "success": "Legenda bersama diterapkan"
+    },
+    {
+      "id": "linked-table",
+      "start": "Data Anda",
+      "path": [
+        "filter/urutkan tabel",
+        "pilih baris",
+        "lihat sorotan peta"
+      ],
+      "success": "Selection table-map linked"
+    },
+    {
+      "id": "export-svg",
+      "start": "Ekspor",
+      "path": [
+        "pilih cakupan/metadata",
+        "Ekspor SVG"
+      ],
+      "success": "SVG download"
+    },
+    {
+      "id": "export-png",
+      "start": "Ekspor",
+      "path": [
+        "pilih ukuran/background",
+        "Ekspor PNG"
+      ],
+      "success": "PNG download"
+    },
+    {
+      "id": "export-pdf",
+      "start": "Ekspor",
+      "path": [
+        "isi metadata",
+        "Ekspor PDF"
+      ],
+      "success": "PDF download"
+    },
+    {
+      "id": "export-mapping",
+      "start": "Ekspor",
+      "path": [
+        "Ekspor tabel mapping CSV"
+      ],
+      "success": "Mapping CSV download"
+    },
+    {
+      "id": "project",
+      "start": "Proyek",
+      "path": [
+        "Simpan Proyek",
+        "Buka Proyek"
+      ],
+      "success": "Versioned project JSON"
+    },
+    {
+      "id": "autosave",
+      "start": "Proyek",
+      "path": [
+        "wait for autosave",
+        "recover on reload"
+      ],
+      "success": "Local recovery status"
+    },
+    {
+      "id": "future-territory",
+      "start": "no runtime entry point",
+      "path": [
+        "Batch 3 contract only"
+      ],
+      "success": "Must remain frozen in Batch 2R"
+    },
+    {
+      "id": "future-coverage",
+      "start": "no runtime entry point",
+      "path": [
+        "Batch 3 contract only"
+      ],
+      "success": "Must remain frozen in Batch 2R"
+    }
+  ],
+  "stateCoverage": [
+    "empty",
+    "loading",
+    "error",
+    "warning",
+    "recovery",
+    "success",
+    "unsaved",
+    "unmatched",
+    "ambiguous",
+    "mobile",
+    "keyboard"
+  ],
+  "riskFindings": [
+    "A single long sidebar exposes manual coloring, import, visualization, project, and export at once.",
+    "The primary next action changes by workflow stage but is not a persistent single CTA.",
+    "Terms such as Grouping, mapping, diverging, and advanced import require explanation for non-GIS users.",
+    "Export has many options and appears below several competing sections on narrow screens.",
+    "Trust/source links are present but visually compete with the workspace controls.",
+    "Future Sales Territory and Distribution Coverage are contracts only; no current runtime entry point exists."
+  ]
+}

@@ -1,0 +1,2207 @@
+{
+  "schemaVersion": "batch2r.current-string-inventory.v1",
+  "generatedAt": "2026-07-14T05:23:44.131Z",
+  "routeFiles": [
+    "about\\index.html",
+    "changelog\\index.html",
+    "contact\\index.html",
+    "data-methodology\\index.html",
+    "excel-to-map\\index.html",
+    "index.html",
+    "limitations\\index.html",
+    "privacy\\index.html",
+    "sources-licenses\\index.html",
+    "terms\\index.html"
+  ],
+  "routes": [
+    "/about/",
+    "/changelog/",
+    "/contact/",
+    "/data-methodology/",
+    "/excel-to-map/",
+    "/",
+    "/limitations/",
+    "/privacy/",
+    "/sources-licenses/",
+    "/terms/"
+  ],
+  "visibleText": [
+    {
+      "route": "/about/",
+      "value": "Tentang Mapnesia"
+    },
+    {
+      "route": "/about/",
+      "value": "Mapnesia"
+    },
+    {
+      "route": "/about/",
+      "value": "Tentang"
+    },
+    {
+      "route": "/about/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/about/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/about/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/about/",
+      "value": "Kontak"
+    },
+    {
+      "route": "/about/",
+      "value": "Terakhir ditinjau: 2026-07-12"
+    },
+    {
+      "route": "/about/",
+      "value": "Tentang Mapnesia"
+    },
+    {
+      "route": "/about/",
+      "value": "Mapnesia adalah aplikasi statis untuk mewarnai wilayah kabupaten/kota Indonesia sebagai bahan presentasi, laporan, dan catatan perencanaan ringan."
+    },
+    {
+      "route": "/about/",
+      "value": "Buka Map Studio"
+    },
+    {
+      "route": "/about/",
+      "value": "Mengapa jumlah wilayah berbeda?"
+    },
+    {
+      "route": "/about/",
+      "value": "Prinsip produk"
+    },
+    {
+      "route": "/about/",
+      "value": "Statis dan privat"
+    },
+    {
+      "route": "/about/",
+      "value": "CSV dan file proyek diproses di browser. Tidak ada akun, backend, analitik, iklan, atau penyimpanan cloud proyek."
+    },
+    {
+      "route": "/about/",
+      "value": "Untuk referensi visual"
+    },
+    {
+      "route": "/about/",
+      "value": "Ekspor peta ditujukan untuk komunikasi visual, bukan penetapan batas hukum atau analisis GIS presisi."
+    },
+    {
+      "route": "/about/",
+      "value": "Jujur soal data"
+    },
+    {
+      "route": "/about/",
+      "value": "Peta memakai snapshot geometri ADM2 2020 dengan 519 fitur geometri. Metadata administrasi saat ini dipisahkan dalam registry v1."
+    },
+    {
+      "route": "/about/",
+      "value": "Identitas penerbit"
+    },
+    {
+      "route": "/about/",
+      "value": "Repositori ini dikelola sebagai proyek `drewsebastians/Indonesian-map-tools`. Tidak ada alamat email publik yang sudah diverifikasi di konfigurasi repository ini, sehingga halaman kontak hanya menyediakan template laporan yang dapat disalin atau diunduh."
+    },
+    {
+      "route": "/about/",
+      "value": "Yang belum dilakukan"
+    },
+    {
+      "route": "/about/",
+      "value": "Batch 1 belum menambahkan domain khusus, indexing mesin pencari, Google AdSense, analytics, akun pengguna, atau fitur Batch 2 seperti data populasi, pemilu, travel, atau spreadsheet lanjutan."
+    },
+    {
+      "route": "/about/",
+      "value": "Mapnesia staging tetap noindex. Lihat"
+    },
+    {
+      "route": "/about/",
+      "value": "Privasi"
+    },
+    {
+      "route": "/about/",
+      "value": ","
+    },
+    {
+      "route": "/about/",
+      "value": "Ketentuan"
+    },
+    {
+      "route": "/about/",
+      "value": ", dan"
+    },
+    {
+      "route": "/about/",
+      "value": "Changelog"
+    },
+    {
+      "route": "/about/",
+      "value": "."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Changelog"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Mapnesia"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Tentang"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Kontak"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Terakhir ditinjau: 2026-07-12"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Changelog"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Ringkasan perubahan penting untuk staging Batch 1."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Batch 1"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Build statis allowlisted dan workflow CI dasar."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Migrasi staging ke Cloudflare Workers Static Assets dengan aturan noindex."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Startup lebih ringan: geometri detail tidak dimuat otomatis."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Export SVG/PNG, fallback PNG, dan performance budget otomatis."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Registry canonical v1: 38 provinsi, 519 canonical region rows, 53 metadata ambigu eksplisit."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Project schema 1.1 dengan migration report dan perlindungan prototype-pollution."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Pipeline data deterministik, source inventory, license manifest, diff report, dan reproducibility check."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Halaman trust: about, contact, privacy, terms, sources/licenses, methodology, limitations, changelog, dan guide jumlah wilayah."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Yang belum dirilis"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Batch 2 preflight menyiapkan kontrak spreadsheet-to-map, fixture import sintetis, privacy threat model, dan resource budget."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Import core Batch 2 menambahkan preview paste/CSV/TSV lokal, mapping kolom, format angka Indonesia/internasional, dan kompatibilitas CSV lama."
+    },
+    {
+      "route": "/changelog/",
+      "value": "XLSX import Batch 2 ditambahkan secara lazy-loaded: parser lokal berlisensi MIT, sheet chooser, guard ZIP/macro/embedded/external-link, dan handoff ke preview/mapping yang sama."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Matching v2 menambahkan engine deterministic lazy-loaded, status eksplisit per baris, kandidat ambigu lokal, resolve/ignore/reset, dan koreksi project-scoped."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Prompt 5 menambahkan workflow Input → Match → Visualize → Export, contoh lokal, mode Dasar/Lanjutan, tabel data dengan filter/sort, dan keterkaitan tabel-peta dua arah."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Prompt 6 menambahkan visualisasi kategori, interval sama, kuantil, batas manual, dan divergen; semuanya deterministik dengan palet lokal versi, legenda bersama, dan gaya tidak ada data."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Prompt 7 menambahkan spesifikasi ekspor bersama, metadata aman, cakupan nasional/tampilan saat ini, A3, PDF raster lokal, mapping CSV, dan persistensi field visualisasi/ekspor pada project JSON."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Fitur runtime Batch 2 berikutnya: klasifikasi choropleth deterministik, legend engine, export v2, dan project persistence lanjutan masih tahap berikutnya."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Custom domain, indexing, analytics, AdSense, akun pengguna, dan backend belum diaktifkan."
+    },
+    {
+      "route": "/changelog/",
+      "value": "Buka Map Studio"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Baca batasan"
+    },
+    {
+      "route": "/changelog/",
+      "value": "Catatan teknis lengkap tetap ada di `CHANGELOG.md` dan `docs/batch-1/`."
+    },
+    {
+      "route": "/contact/",
+      "value": "Kontak dan Laporan Data"
+    },
+    {
+      "route": "/contact/",
+      "value": "Mapnesia"
+    },
+    {
+      "route": "/contact/",
+      "value": "Tentang"
+    },
+    {
+      "route": "/contact/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/contact/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/contact/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/contact/",
+      "value": "Kontak"
+    },
+    {
+      "route": "/contact/",
+      "value": "Terakhir ditinjau: 2026-07-12"
+    },
+    {
+      "route": "/contact/",
+      "value": "Kontak dan laporan data"
+    },
+    {
+      "route": "/contact/",
+      "value": "Saat ini belum ada alamat email atau kanal publik lain yang terverifikasi di repository. Karena itu, halaman ini menyediakan template laporan yang bisa disalin atau diunduh tanpa mengirim data apa pun otomatis."
+    },
+    {
+      "route": "/contact/",
+      "value": "Status kanal eksternal"
+    },
+    {
+      "route": "/contact/",
+      "value": "Owner perlu menentukan satu tujuan kontak publik sebelum fitur pelaporan dapat disebut lengkap. Sampai saat itu, jangan masukkan isi CSV, isi proyek, nama file, atau informasi pribadi ke laporan kecuali memang ingin dibagikan secara manual."
+    },
+    {
+      "route": "/contact/",
+      "value": "Laporkan kesalahan data"
+    },
+    {
+      "route": "/contact/",
+      "value": "Isi hanya informasi yang relevan. Template otomatis menyertakan versi aplikasi, versi batas, dan versi registry, tetapi tidak membaca file proyek atau spreadsheet dari browser."
+    },
+    {
+      "route": "/contact/",
+      "value": "Kategori isu"
+    },
+    {
+      "route": "/contact/",
+      "value": "Pilih kategori..."
+    },
+    {
+      "route": "/contact/",
+      "value": "Nama wilayah"
+    },
+    {
+      "route": "/contact/",
+      "value": "Kode wilayah"
+    },
+    {
+      "route": "/contact/",
+      "value": "Provinsi/induk administrasi"
+    },
+    {
+      "route": "/contact/",
+      "value": "Bentuk geometri"
+    },
+    {
+      "route": "/contact/",
+      "value": "Wilayah hilang atau ambigu"
+    },
+    {
+      "route": "/contact/",
+      "value": "Sumber atau atribusi"
+    },
+    {
+      "route": "/contact/",
+      "value": "Geometry/legacy region ID"
+    },
+    {
+      "route": "/contact/",
+      "value": "Canonical region ID"
+    },
+    {
+      "route": "/contact/",
+      "value": "Deskripsi"
+    },
+    {
+      "route": "/contact/",
+      "value": "Template laporan"
+    },
+    {
+      "route": "/contact/",
+      "value": "Salin laporan"
+    },
+    {
+      "route": "/contact/",
+      "value": "Unduh laporan"
+    },
+    {
+      "route": "/contact/",
+      "value": "Kembali ke"
+    },
+    {
+      "route": "/contact/",
+      "value": "Map Studio"
+    },
+    {
+      "route": "/contact/",
+      "value": "atau baca"
+    },
+    {
+      "route": "/contact/",
+      "value": "metodologi data"
+    },
+    {
+      "route": "/contact/",
+      "value": "."
+    },
+    {
+      "route": "/contact/",
+      "value": "Tidak ada akun, backend, analytics, atau pengiriman formulir otomatis."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Mapnesia"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Tentang"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Kontak"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Terakhir ditinjau: 2026-07-12"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Metodologi data"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Batch 1 memilih kejelasan dan stabilitas lebih dulu: peta memakai snapshot geometri yang dipin, registry metadata dipisahkan, dan perubahan data harus melewati diff serta review."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "1. Snapshot geometri"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Geometri produksi berasal dari geoBoundaries Indonesia ADM2 boundary ID `IDN-ADM2-22746128`, merepresentasikan snapshot 2020. File sederhana dipakai untuk startup normal; file detail lokal hanya dimuat saat pengguna memilih ekspor detail."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "2. Matching metadata"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "HDX tabular ADM2 dipakai untuk enrichment ketika nama ADM2 yang dinormalisasi cocok secara unik. Hasil Batch 1 mencatat 466 match unik dan 53 baris ambigu. Baris ambigu tetap bisa diwarnai, tetapi tidak diberi kode/nama/provinsi resmi secara paksa."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "3. Registry dan stable ID"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "`canonical-provinces-v1.csv` menyimpan 38 provinsi saat ini. `canonical-regions-v1.csv` menyimpan 519 baris canonical region berbasis geometri. `crosswalk-region-ids-v1.csv` menjaga kompatibilitas proyek lama."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "4. Penyederhanaan peta"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Geometri startup disederhanakan dari file detail dengan Douglas-Peucker per ring pada toleransi `0.018` derajat. Ring kecil dipertahankan sejauh praktis; test mencakup beberapa fixture pulau kecil."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "5. Reproducibility dan lisensi"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Pipeline offline memvalidasi source inventory, license manifest, checksum, diff data, dan reproduksi dua kali. Hasil terakhir: 10 artifact comparable direproduksi identik dengan hash `a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8`."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "6. Data spreadsheet dan matching"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Paste, CSV, TSV, dan XLSX memasuki kontrak tabular yang sama. Kode wilayah yang terverifikasi diprioritaskan, lalu kombinasi nama dan provinsi. Nama ambigu, tidak cocok, duplikat, diabaikan, kosong, dan invalid tetap dicatat sebagai status berbeda; tidak ada kecocokan yang dipilih secara diam-diam."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "7. Visualisasi dan ekspor"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Kategori, interval sama, kuantil, batas manual, dan divergen dihitung deterministik dari baris yang cocok dan valid. Nilai kosong bukan nol. Legenda yang sama dipakai peta dan ekspor. SVG, PNG, PDF raster, serta mapping CSV dibuat lokal di browser dengan atribusi boundary wajib."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Review topology"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Batch 1 tidak mengklaim validasi topology legal-grade untuk overlap/gap. Validasi mendalam dengan native GIS tetap menjadi review gate sebelum penggantian boundary."
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Mengapa jumlah wilayah berbeda?"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Laporkan kesalahan data"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "-"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "-"
+    },
+    {
+      "route": "/data-methodology/",
+      "value": "Map Studio"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Excel to Map Indonesia"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Mapnesia"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Privasi"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Preview konten · Penulis: Tim Mapnesia · Ditinjau: 2026-07-13"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Excel to Map Indonesia"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Ubah tabel kabupaten/kota menjadi peta presentasi tanpa mengunggah spreadsheet ke server."
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "1. Masukkan data"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Paste dari Excel/Sheets, atau pilih CSV, TSV, dan XLSX lokal."
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "2. Cek kecocokan"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Mapnesia menunjukkan nama ambigu, tidak ditemukan, dan duplikat agar tidak ada tebakan tersembunyi."
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "3. Visualkan dan ekspor"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Pilih kategori, interval sama, kuantil, batas manual, atau divergen; lalu ekspor SVG, PNG, PDF, atau tabel mapping CSV."
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Contoh aman untuk dicoba"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Mulai dari"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "contoh CSV sintetis"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": ", atau ikuti"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "worked example dua kota"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": ". Contoh ini bukan data statistik nyata dan dibuat hanya untuk memperlihatkan alur aplikasi."
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Untuk siapa?"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Untuk pengguna non-GIS yang perlu membuat visual peta bagi presentasi, laporan internal, atau catatan perencanaan. Data tetap lokal di browser; aplikasi tidak menyediakan akun, kolaborasi, atau cloud project storage."
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Coba Map Studio"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Baca panduan import"
+    },
+    {
+      "route": "/excel-to-map/",
+      "value": "Ini adalah halaman preview workers.dev yang noindex, bukan halaman produksi atau terindeks."
+    },
+    {
+      "route": "/",
+      "value": "Peta Warna Wilayah Indonesia"
+    },
+    {
+      "route": "/",
+      "value": "☰"
+    },
+    {
+      "route": "/",
+      "value": "Peta Warna Wilayah Indonesia"
+    },
+    {
+      "route": "/",
+      "value": "Batas administrasi bersifat referensi visual."
+    },
+    {
+      "route": "/",
+      "value": "Batas: snapshot ADM2 2020 · 519 fitur geometri · Registry metadata v1 2025"
+    },
+    {
+      "route": "/",
+      "value": "Sumber & lisensi"
+    },
+    {
+      "route": "/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/",
+      "value": "Laporkan kesalahan data"
+    },
+    {
+      "route": "/",
+      "value": "Mulai membuat peta"
+    },
+    {
+      "route": "/",
+      "value": "Masukkan data, periksa kecocokan wilayah, lihat hasilnya di peta, lalu ekspor. Semua data tetap di perangkat Anda."
+    },
+    {
+      "route": "/",
+      "value": "Tahap 1 dari 4: Input data."
+    },
+    {
+      "route": "/",
+      "value": "Mode:"
+    },
+    {
+      "route": "/",
+      "value": "Dasar"
+    },
+    {
+      "route": "/",
+      "value": "Lanjutan"
+    },
+    {
+      "route": "/",
+      "value": "Coba contoh lokal"
+    },
+    {
+      "route": "/",
+      "value": "Judul Peta"
+    },
+    {
+      "route": "/",
+      "value": "Subjudul"
+    },
+    {
+      "route": "/",
+      "value": "Sumber angka/data pengguna"
+    },
+    {
+      "route": "/",
+      "value": "Periode"
+    },
+    {
+      "route": "/",
+      "value": "Catatan kaki"
+    },
+    {
+      "route": "/",
+      "value": "Judul legenda"
+    },
+    {
+      "route": "/",
+      "value": "Nama file"
+    },
+    {
+      "route": "/",
+      "value": "Pilih Wilayah"
+    },
+    {
+      "route": "/",
+      "value": "Cari Wilayah"
+    },
+    {
+      "route": "/",
+      "value": "Pilih Provinsi"
+    },
+    {
+      "route": "/",
+      "value": "Pilih Kabupaten/Kota"
+    },
+    {
+      "route": "/",
+      "value": "Belum ada wilayah dipilih."
+    },
+    {
+      "route": "/",
+      "value": "Pewarnaan manual (alternatif)"
+    },
+    {
+      "route": "/",
+      "value": "Gunakan jalur ini bila Anda ingin memilih wilayah dan warna satu per satu."
+    },
+    {
+      "route": "/",
+      "value": "Pilih Warna"
+    },
+    {
+      "route": "/",
+      "value": "Kategori"
+    },
+    {
+      "route": "/",
+      "value": "Nilai"
+    },
+    {
+      "route": "/",
+      "value": "Terapkan Warna"
+    },
+    {
+      "route": "/",
+      "value": "Hapus Warna"
+    },
+    {
+      "route": "/",
+      "value": "Urungkan"
+    },
+    {
+      "route": "/",
+      "value": "Reset Semua"
+    },
+    {
+      "route": "/",
+      "value": "Wilayah Disorot"
+    },
+    {
+      "route": "/",
+      "value": "0"
+    },
+    {
+      "route": "/",
+      "value": "Grouping"
+    },
+    {
+      "route": "/",
+      "value": "0"
+    },
+    {
+      "route": "/",
+      "value": "Wilayah dengan warna yang sama otomatis masuk ke grup warna yang sama."
+    },
+    {
+      "route": "/",
+      "value": "Legenda"
+    },
+    {
+      "route": "/",
+      "value": "Tampilkan legenda"
+    },
+    {
+      "route": "/",
+      "value": "Posisi legenda"
+    },
+    {
+      "route": "/",
+      "value": "Kanan bawah"
+    },
+    {
+      "route": "/",
+      "value": "Kiri bawah"
+    },
+    {
+      "route": "/",
+      "value": "Kanan atas"
+    },
+    {
+      "route": "/",
+      "value": "Kiri atas"
+    },
+    {
+      "route": "/",
+      "value": "Tambah Legenda"
+    },
+    {
+      "route": "/",
+      "value": "Impor Data"
+    },
+    {
+      "route": "/",
+      "value": "Paste, CSV, TSV, dan XLSX diproses hanya di browser ini dan tidak diunggah ke server."
+    },
+    {
+      "route": "/",
+      "value": "Paste dari Excel/Sheets"
+    },
+    {
+      "route": "/",
+      "value": "Atau pilih file CSV/TSV/XLSX"
+    },
+    {
+      "route": "/",
+      "value": "Sheet XLSX"
+    },
+    {
+      "route": "/",
+      "value": "Opsi lanjutan import"
+    },
+    {
+      "route": "/",
+      "value": "Delimiter"
+    },
+    {
+      "route": "/",
+      "value": "Deteksi otomatis"
+    },
+    {
+      "route": "/",
+      "value": "Koma (,)"
+    },
+    {
+      "route": "/",
+      "value": "Titik koma (;)"
+    },
+    {
+      "route": "/",
+      "value": "Tab"
+    },
+    {
+      "route": "/",
+      "value": "Format angka"
+    },
+    {
+      "route": "/",
+      "value": "Deteksi otomatis"
+    },
+    {
+      "route": "/",
+      "value": "Indonesia: 1.234,56"
+    },
+    {
+      "route": "/",
+      "value": "Internasional: 1,234.56"
+    },
+    {
+      "route": "/",
+      "value": "Pratinjau Import"
+    },
+    {
+      "route": "/",
+      "value": "Terapkan Hasil Valid"
+    },
+    {
+      "route": "/",
+      "value": "Batalkan Import"
+    },
+    {
+      "route": "/",
+      "value": "Visualisasi dari data"
+    },
+    {
+      "route": "/",
+      "value": "Pilih metode yang dapat dijelaskan. Nilai kosong atau tidak valid tetap ditampilkan sebagai tidak ada data."
+    },
+    {
+      "route": "/",
+      "value": "Metode pewarnaan"
+    },
+    {
+      "route": "/",
+      "value": "Kategori"
+    },
+    {
+      "route": "/",
+      "value": "Interval sama"
+    },
+    {
+      "route": "/",
+      "value": "Kuantil"
+    },
+    {
+      "route": "/",
+      "value": "Batas manual"
+    },
+    {
+      "route": "/",
+      "value": "Divergen berpusat"
+    },
+    {
+      "route": "/",
+      "value": "Jumlah kelas"
+    },
+    {
+      "route": "/",
+      "value": "Palet warna"
+    },
+    {
+      "route": "/",
+      "value": "Balik urutan warna"
+    },
+    {
+      "route": "/",
+      "value": "Pusat divergen (opsional)"
+    },
+    {
+      "route": "/",
+      "value": "Batas manual (pisahkan koma)"
+    },
+    {
+      "route": "/",
+      "value": "Format angka legenda"
+    },
+    {
+      "route": "/",
+      "value": "Indonesia"
+    },
+    {
+      "route": "/",
+      "value": "Internasional"
+    },
+    {
+      "route": "/",
+      "value": "Bilangan bulat"
+    },
+    {
+      "route": "/",
+      "value": "2 angka desimal"
+    },
+    {
+      "route": "/",
+      "value": "Pratinjau visualisasi"
+    },
+    {
+      "route": "/",
+      "value": "Terapkan visualisasi"
+    },
+    {
+      "route": "/",
+      "value": "Proyek"
+    },
+    {
+      "route": "/",
+      "value": "Autosave belum aktif."
+    },
+    {
+      "route": "/",
+      "value": "Simpan Proyek"
+    },
+    {
+      "route": "/",
+      "value": "Buka Proyek"
+    },
+    {
+      "route": "/",
+      "value": "Unduh Laporan Migrasi"
+    },
+    {
+      "route": "/",
+      "value": "Bersihkan Proyek"
+    },
+    {
+      "route": "/",
+      "value": "Ekspor"
+    },
+    {
+      "route": "/",
+      "value": "Rasio Kanvas"
+    },
+    {
+      "route": "/",
+      "value": "16:9"
+    },
+    {
+      "route": "/",
+      "value": "4:3"
+    },
+    {
+      "route": "/",
+      "value": "A4 landscape"
+    },
+    {
+      "route": "/",
+      "value": "A3 landscape"
+    },
+    {
+      "route": "/",
+      "value": "Square"
+    },
+    {
+      "route": "/",
+      "value": "Tampilan peta saat ini"
+    },
+    {
+      "route": "/",
+      "value": "Cakupan ekspor"
+    },
+    {
+      "route": "/",
+      "value": "Seluruh Indonesia"
+    },
+    {
+      "route": "/",
+      "value": "Tampilan peta saat ini"
+    },
+    {
+      "route": "/",
+      "value": "Sertakan semua nama wilayah"
+    },
+    {
+      "route": "/",
+      "value": "Latar transparan"
+    },
+    {
+      "route": "/",
+      "value": "Gunakan geometri detail untuk ekspor"
+    },
+    {
+      "route": "/",
+      "value": "Opsi geometri detail mengunduh data lokal sekitar 10,5 MB hanya saat ekspor dan dapat memakai memori lebih besar."
+    },
+    {
+      "route": "/",
+      "value": "Ukuran PNG"
+    },
+    {
+      "route": "/",
+      "value": "1920 x 1080"
+    },
+    {
+      "route": "/",
+      "value": "2560 x 1440"
+    },
+    {
+      "route": "/",
+      "value": "3840 x 2160"
+    },
+    {
+      "route": "/",
+      "value": "Ekspor SVG"
+    },
+    {
+      "route": "/",
+      "value": "Ekspor PNG"
+    },
+    {
+      "route": "/",
+      "value": "Ekspor PDF"
+    },
+    {
+      "route": "/",
+      "value": "Ekspor tabel mapping CSV"
+    },
+    {
+      "route": "/",
+      "value": "Tentang Aplikasi"
+    },
+    {
+      "route": "/",
+      "value": "Aplikasi statis ini membantu pewarnaan wilayah kabupaten/kota Indonesia untuk presentasi dan laporan."
+    },
+    {
+      "route": "/",
+      "value": "Sumber Data"
+    },
+    {
+      "route": "/",
+      "value": "Geometri: geoBoundaries/HDX COD-AB Indonesia ADM2 snapshot 2020, 519 fitur geometri, CC BY 3.0 IGO. Metadata administrasi dipisahkan sebagai registry v1 2025. Angka 519 bukan klaim jumlah kabupaten/kota otonom terkini. Baca"
+    },
+    {
+      "route": "/",
+      "value": "metodologi data"
+    },
+    {
+      "route": "/",
+      "value": "atau"
+    },
+    {
+      "route": "/",
+      "value": "panduan jumlah wilayah"
+    },
+    {
+      "route": "/",
+      "value": "."
+    },
+    {
+      "route": "/",
+      "value": "Privasi"
+    },
+    {
+      "route": "/",
+      "value": "CSV dan proyek diproses di browser. Tidak ada unggahan, analitik, atau akun pengguna. Baca"
+    },
+    {
+      "route": "/",
+      "value": "kebijakan privasi"
+    },
+    {
+      "route": "/",
+      "value": "dan"
+    },
+    {
+      "route": "/",
+      "value": "ketentuan penggunaan"
+    },
+    {
+      "route": "/",
+      "value": "."
+    },
+    {
+      "route": "/",
+      "value": "Lihat Indonesia"
+    },
+    {
+      "route": "/",
+      "value": "Memuat peta..."
+    },
+    {
+      "route": "/",
+      "value": "Data Anda"
+    },
+    {
+      "route": "/",
+      "value": "Pilih baris untuk menyorot wilayah yang cocok di peta."
+    },
+    {
+      "route": "/",
+      "value": "0"
+    },
+    {
+      "route": "/",
+      "value": "Cari di data"
+    },
+    {
+      "route": "/",
+      "value": "Urutkan"
+    },
+    {
+      "route": "/",
+      "value": "Urutan sumber"
+    },
+    {
+      "route": "/",
+      "value": "Wilayah A–Z"
+    },
+    {
+      "route": "/",
+      "value": "Status"
+    },
+    {
+      "route": "/",
+      "value": "Nilai"
+    },
+    {
+      "route": "/",
+      "value": "Data impor dan kecocokan wilayah"
+    },
+    {
+      "route": "/",
+      "value": "Baris"
+    },
+    {
+      "route": "/",
+      "value": "Wilayah sumber"
+    },
+    {
+      "route": "/",
+      "value": "Provinsi"
+    },
+    {
+      "route": "/",
+      "value": "Wilayah cocok"
+    },
+    {
+      "route": "/",
+      "value": "Nilai/kategori"
+    },
+    {
+      "route": "/",
+      "value": "Status"
+    },
+    {
+      "route": "/",
+      "value": "Belum ada data yang diterapkan."
+    },
+    {
+      "route": "/",
+      "value": "Ekspor PNG"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Batasan Data dan Aplikasi"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Mapnesia"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Tentang"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Kontak"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Terakhir ditinjau: 2026-07-12"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Batasan data dan aplikasi"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Mapnesia dibuat untuk peta presentasi dan laporan ringan. Peta ini bukan dokumen hukum, bukan sistem GIS resmi, dan bukan klaim batas administrasi terbaru."
+    },
+    {
+      "route": "/limitations/",
+      "value": "Snapshot 2020"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Geometri memakai snapshot ADM2 2020 dari geoBoundaries/HDX. Struktur provinsi Indonesia saat ini dicatat terpisah dalam registry v1."
+    },
+    {
+      "route": "/limitations/",
+      "value": "519 fitur geometri"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Angka 519 adalah jumlah fitur pada file geometri, bukan klaim jumlah kabupaten/kota otonom terkini."
+    },
+    {
+      "route": "/limitations/",
+      "value": "53 metadata ambigu"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Nama wilayah yang tidak bisa dipasangkan secara aman tidak dipaksa. Warnanya tetap bisa digunakan, tetapi metadata resminya perlu review."
+    },
+    {
+      "route": "/limitations/",
+      "value": "Ekspor visual"
+    },
+    {
+      "route": "/limitations/",
+      "value": "SVG/PNG memakai proyeksi browser untuk visualisasi, bukan pengukuran presisi atau penetapan batas. PDF saat ini adalah raster, bukan PDF vektor dengan teks selectable."
+    },
+    {
+      "route": "/limitations/",
+      "value": "Batasan performa"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Startup normal memakai geometri sederhana agar ringan. Ekspor detail memuat file lokal sekitar 10,5 MB hanya setelah dipilih pengguna dan dapat menggunakan memori lebih besar."
+    },
+    {
+      "route": "/limitations/",
+      "value": "Batasan spreadsheet"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Mapnesia tidak menggabungkan beberapa baris sumber ke satu wilayah secara otomatis. Baris duplikat harus diselesaikan atau diabaikan pengguna. Guard XLSX membantu membatasi parsing browser, tetapi bukan pemindai malware. Project besar dapat melebihi localStorage; penyimpanan IndexedDB belum tersedia."
+    },
+    {
+      "route": "/limitations/",
+      "value": "Batasan hukum dan lisensi"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Atribusi sumber data harus dipertahankan. Teks privacy/terms pada staging adalah draft operasional dan tidak menggantikan nasihat hukum profesional."
+    },
+    {
+      "route": "/limitations/",
+      "value": "Laporkan kesalahan data"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Lihat sumber dan lisensi"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Map Studio"
+    },
+    {
+      "route": "/limitations/",
+      "value": "-"
+    },
+    {
+      "route": "/limitations/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Kebijakan Privasi"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Mapnesia"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Tentang"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Kontak"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Terakhir ditinjau: 2026-07-12"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Kebijakan privasi"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Halaman ini menjelaskan perilaku privasi aplikasi staging. Ini bukan nasihat hukum profesional."
+    },
+    {
+      "route": "/privacy/",
+      "value": "Data pengguna"
+    },
+    {
+      "route": "/privacy/",
+      "value": "File CSV, file proyek JSON, pilihan warna, kategori, dan nilai diproses di browser. Aplikasi tidak memiliki backend, akun, database, analytics, iklan, atau penyimpanan cloud proyek."
+    },
+    {
+      "route": "/privacy/",
+      "value": "Penyimpanan lokal"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Autosave memakai penyimpanan lokal browser. Data tersebut tetap di perangkat/browser pengguna dan dapat hilang jika data situs dibersihkan."
+    },
+    {
+      "route": "/privacy/",
+      "value": "Ekspor dan unduhan"
+    },
+    {
+      "route": "/privacy/",
+      "value": "SVG, PNG, laporan migrasi, dan template laporan data dibuat di browser. Pengguna mengontrol sendiri file yang diunduh atau dibagikan."
+    },
+    {
+      "route": "/privacy/",
+      "value": "Permintaan jaringan"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Startup normal memuat file statis dari domain staging yang sama: HTML, CSS, JavaScript, Leaflet lokal, dan GeoJSON produksi sederhana. Geometri detail lokal hanya dimuat jika pengguna memilih ekspor detail."
+    },
+    {
+      "route": "/privacy/",
+      "value": "Log hosting"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Cloudflare sebagai penyedia hosting dapat memproses log teknis biasa untuk penyediaan layanan. Aplikasi ini sendiri tidak menambahkan pelacakan pihak ketiga."
+    },
+    {
+      "route": "/privacy/",
+      "value": "Kontak"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Belum ada kanal kontak publik yang terverifikasi di repository. Gunakan"
+    },
+    {
+      "route": "/privacy/",
+      "value": "template laporan data"
+    },
+    {
+      "route": "/privacy/",
+      "value": "untuk menyiapkan laporan yang dapat dikirim manual setelah owner menetapkan tujuan kontak publik."
+    },
+    {
+      "route": "/privacy/",
+      "value": "Map Studio"
+    },
+    {
+      "route": "/privacy/",
+      "value": "-"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Ketentuan"
+    },
+    {
+      "route": "/privacy/",
+      "value": "-"
+    },
+    {
+      "route": "/privacy/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Sumber dan Lisensi"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Mapnesia"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Tentang"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Kontak"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Terakhir ditinjau: 2026-07-12"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Sumber dan lisensi"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Halaman ini merangkum sumber yang digunakan aplikasi. Catatan lengkap tersimpan di `ATTRIBUTION.md`, `data/README.md`, `data/sources/source-inventory-v1.json`, dan `data/license-manifest-v1.json`."
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Geometri peta"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Geometri produksi memakai geoBoundaries Indonesia ADM2 dari lineage HDX/OCHA COD-AB Indonesia. Snapshot yang dipakai merepresentasikan tahun 2020 dengan boundary ID `IDN-ADM2-22746128` dan 519 fitur geometri."
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Lisensi yang tercatat di metadata sumber: CC BY 3.0 IGO / CC BY-IGO. Atribusi wajib dipertahankan pada aplikasi dan ekspor."
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Metadata administrasi"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Registry v1 memisahkan metadata saat ini dari geometri 2020. Registry merujuk Kepmendagri 300.2.2-2138/2025 dan perubahan 300.2.2-2430/2025, tetapi tidak mendistribusikan lampiran resmi. Field kode resmi yang belum punya bukti baris tetap dikosongkan."
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Library dan aset"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Leaflet 1.9.4 disertakan lokal untuk rendering peta dan berlisensi BSD 2-Clause. Parser XLSX"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "read-excel-file"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "9.3.1 disertakan lokal, lazy-loaded saat XLSX dipilih, dan berlisensi MIT. PDF dibuat oleh kode browser aplikasi tanpa CDN atau library PDF runtime tambahan. Package pengujian seperti Playwright, axe-core, dan Wrangler tercatat sebagai dependency pengembangan dan tidak ikut dikirim sebagai bundle runtime aplikasi."
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Audit lisensi"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Production source/license gate terakhir mencatat 6 source records dan 18 license assets. Publikasi sebuah file di internet tidak dianggap cukup sebagai izin komersial atau redistribusi."
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Laporkan kesalahan data"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Baca metodologi data"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Map Studio"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "-"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "-"
+    },
+    {
+      "route": "/sources-licenses/",
+      "value": "Privasi"
+    },
+    {
+      "route": "/terms/",
+      "value": "Ketentuan Penggunaan"
+    },
+    {
+      "route": "/terms/",
+      "value": "Mapnesia"
+    },
+    {
+      "route": "/terms/",
+      "value": "Tentang"
+    },
+    {
+      "route": "/terms/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/terms/",
+      "value": "Metodologi Data"
+    },
+    {
+      "route": "/terms/",
+      "value": "Batasan"
+    },
+    {
+      "route": "/terms/",
+      "value": "Kontak"
+    },
+    {
+      "route": "/terms/",
+      "value": "Terakhir ditinjau: 2026-07-12"
+    },
+    {
+      "route": "/terms/",
+      "value": "Ketentuan penggunaan"
+    },
+    {
+      "route": "/terms/",
+      "value": "Ketentuan ini adalah teks operasional staging, bukan nasihat hukum profesional."
+    },
+    {
+      "route": "/terms/",
+      "value": "Lingkup penggunaan"
+    },
+    {
+      "route": "/terms/",
+      "value": "Mapnesia disediakan untuk membuat peta warna wilayah sebagai referensi visual. Hasil ekspor tidak boleh dianggap sebagai penetapan batas hukum, data survei, atau sumber resmi tunggal."
+    },
+    {
+      "route": "/terms/",
+      "value": "Tanggung jawab pengguna"
+    },
+    {
+      "route": "/terms/",
+      "value": "Pengguna bertanggung jawab memeriksa kembali data, atribusi, konteks penggunaan, dan kelayakan hasil ekspor sebelum dipublikasikan atau dipakai dalam keputusan penting."
+    },
+    {
+      "route": "/terms/",
+      "value": "Data dan lisensi pihak ketiga"
+    },
+    {
+      "route": "/terms/",
+      "value": "Kode aplikasi berlisensi MIT, tetapi data batas dan library pihak ketiga tetap mengikuti lisensi sumbernya. Ringkasan lisensi ada di"
+    },
+    {
+      "route": "/terms/",
+      "value": "Sumber & Lisensi"
+    },
+    {
+      "route": "/terms/",
+      "value": "dan `ATTRIBUTION.md`."
+    },
+    {
+      "route": "/terms/",
+      "value": "Batasan layanan"
+    },
+    {
+      "route": "/terms/",
+      "value": "Aplikasi staging ini tidak menyediakan akun, backup cloud, dukungan resmi, analytics, iklan, atau jaminan ketersediaan. Cloudflare workers.dev tetap noindex selama staging."
+    },
+    {
+      "route": "/terms/",
+      "value": "Pelaporan data"
+    },
+    {
+      "route": "/terms/",
+      "value": "Kesalahan data dapat disiapkan melalui"
+    },
+    {
+      "route": "/terms/",
+      "value": "template laporan data"
+    },
+    {
+      "route": "/terms/",
+      "value": ". Karena belum ada kontak publik terverifikasi di repository, pengiriman eksternal masih menunggu keputusan owner."
+    },
+    {
+      "route": "/terms/",
+      "value": "Map Studio"
+    },
+    {
+      "route": "/terms/",
+      "value": "-"
+    },
+    {
+      "route": "/terms/",
+      "value": "Privasi"
+    },
+    {
+      "route": "/terms/",
+      "value": "-"
+    },
+    {
+      "route": "/terms/",
+      "value": "Batasan"
+    }
+  ],
+  "attributes": [
+    {
+      "route": "/about/",
+      "attribute": "aria-label",
+      "value": "Navigasi utama"
+    },
+    {
+      "route": "/changelog/",
+      "attribute": "aria-label",
+      "value": "Navigasi utama"
+    },
+    {
+      "route": "/contact/",
+      "attribute": "aria-label",
+      "value": "Navigasi utama"
+    },
+    {
+      "route": "/contact/",
+      "attribute": "placeholder",
+      "value": "Contoh: gb-22746128B65593111718524"
+    },
+    {
+      "route": "/contact/",
+      "attribute": "placeholder",
+      "value": "Contoh: idn-adm2-gb-22746128b65593111718524"
+    },
+    {
+      "route": "/contact/",
+      "attribute": "placeholder",
+      "value": "Jelaskan data yang menurut Anda perlu diperiksa, serta sumber pembanding bila ada."
+    },
+    {
+      "route": "/data-methodology/",
+      "attribute": "aria-label",
+      "value": "Navigasi utama"
+    },
+    {
+      "route": "/excel-to-map/",
+      "attribute": "aria-label",
+      "value": "Navigasi utama"
+    },
+    {
+      "route": "/",
+      "attribute": "title",
+      "value": "Buka/tutup menu"
+    },
+    {
+      "route": "/",
+      "attribute": "aria-label",
+      "value": "Panel kontrol"
+    },
+    {
+      "route": "/",
+      "attribute": "aria-label",
+      "value": "Informasi data dan kepercayaan"
+    },
+    {
+      "route": "/",
+      "attribute": "aria-label",
+      "value": "Tahapan membuat peta"
+    },
+    {
+      "route": "/",
+      "attribute": "aria-label",
+      "value": "Mode tampilan"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "Peta Sorotan Wilayah Indonesia"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "Opsional"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "Opsional; atribusi batas tetap otomatis"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "Contoh: 2025"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "Opsional"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "Legenda"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "peta-warna-indonesia"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "Contoh: Surabaya"
+    },
+    {
+      "route": "/",
+      "attribute": "aria-label",
+      "value": "Hasil pencarian"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "#4472C4"
+    },
+    {
+      "route": "/",
+      "attribute": "aria-label",
+      "value": "Pilihan warna cepat"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "Opsional"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "Opsional"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "bottom-right"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "bottom-left"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "top-right"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "top-left"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "wilayah&#9;nilai&#10;Kota Surabaya&#9;125"
+    },
+    {
+      "route": "/",
+      "attribute": "aria-label",
+      "value": "Pilih file CSV, TSV, atau XLSX"
+    },
+    {
+      "route": "/",
+      "attribute": "aria-label",
+      "value": "Pilih sheet XLSX"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "auto"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "comma"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "semicolon"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "tab"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "auto"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "id-ID"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "en-US"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "categorical"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "equal-interval"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "quantile"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "manual"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "diverging"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "5"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "0"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "0, 25, 50, 75"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "id-ID"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "en-US"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "integer"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "decimal-2"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "16:9"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "4:3"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "a4"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "a3"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "1:1"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "bounds"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "national"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "current-view"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "1920x1080"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "2560x1440"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "3840x2160"
+    },
+    {
+      "route": "/",
+      "attribute": "aria-label",
+      "value": "Peta Indonesia"
+    },
+    {
+      "route": "/",
+      "attribute": "placeholder",
+      "value": "Wilayah, provinsi, kategori..."
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "row"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "region"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "status"
+    },
+    {
+      "route": "/",
+      "attribute": "value",
+      "value": "value"
+    },
+    {
+      "route": "/limitations/",
+      "attribute": "aria-label",
+      "value": "Navigasi utama"
+    },
+    {
+      "route": "/privacy/",
+      "attribute": "aria-label",
+      "value": "Navigasi utama"
+    },
+    {
+      "route": "/sources-licenses/",
+      "attribute": "aria-label",
+      "value": "Navigasi utama"
+    },
+    {
+      "route": "/terms/",
+      "attribute": "aria-label",
+      "value": "Navigasi utama"
+    }
+  ],
+  "legacyBrandMentions": [
+    "Tentang Mapnesia",
+    "Mapnesia",
+    "Tentang Mapnesia",
+    "Mapnesia adalah aplikasi statis untuk mewarnai wilayah kabupaten/kota Indonesia sebagai bahan presentasi, laporan, dan catatan perencanaan ringan.",
+    "Mapnesia staging tetap noindex. Lihat",
+    "Mapnesia",
+    "Mapnesia",
+    "Mapnesia",
+    "Mapnesia",
+    "Preview konten · Penulis: Tim Mapnesia · Ditinjau: 2026-07-13",
+    "Mapnesia menunjukkan nama ambigu, tidak ditemukan, dan duplikat agar tidak ada tebakan tersembunyi.",
+    "Mapnesia",
+    "Mapnesia dibuat untuk peta presentasi dan laporan ringan. Peta ini bukan dokumen hukum, bukan sistem GIS resmi, dan bukan klaim batas administrasi terbaru.",
+    "Mapnesia tidak menggabungkan beberapa baris sumber ke satu wilayah secara otomatis. Baris duplikat harus diselesaikan atau diabaikan pengguna. Guard XLSX membantu membatasi parsing browser, tetapi bukan pemindai malware. Project besar dapat melebihi localStorage; penyimpanan IndexedDB belum tersedia.",
+    "Mapnesia",
+    "Mapnesia",
+    "Mapnesia",
+    "Mapnesia disediakan untuk membuat peta warna wilayah sebagai referensi visual. Hasil ekspor tidak boleh dianggap sebagai penetapan batas hukum, data survei, atau sumber resmi tunggal."
+  ],
+  "mixedLanguageCandidates": [
+    "Metodologi Data",
+    "CSV dan file proyek diproses di browser. Tidak ada akun, backend, analitik, iklan, atau penyimpanan cloud proyek.",
+    "Jujur soal data",
+    "Batch 1 belum menambahkan domain khusus, indexing mesin pencari, Google AdSense, analytics, akun pengguna, atau fitur Batch 2 seperti data populasi, pemilu, travel, atau spreadsheet lanjutan.",
+    "Metodologi Data",
+    "Export SVG/PNG, fallback PNG, dan performance budget otomatis.",
+    "Pipeline data deterministik, source inventory, license manifest, diff report, dan reproducibility check.",
+    "Batch 2 preflight menyiapkan kontrak spreadsheet-to-map, fixture import sintetis, privacy threat model, dan resource budget.",
+    "Import core Batch 2 menambahkan preview paste/CSV/TSV lokal, mapping kolom, format angka Indonesia/internasional, dan kompatibilitas CSV lama.",
+    "XLSX import Batch 2 ditambahkan secara lazy-loaded: parser lokal berlisensi MIT, sheet chooser, guard ZIP/macro/embedded/external-link, dan handoff ke preview/mapping yang sama.",
+    "Matching v2 menambahkan engine deterministic lazy-loaded, status eksplisit per baris, kandidat ambigu lokal, resolve/ignore/reset, dan koreksi project-scoped.",
+    "Prompt 5 menambahkan workflow Input → Match → Visualize → Export, contoh lokal, mode Dasar/Lanjutan, tabel data dengan filter/sort, dan keterkaitan tabel-peta dua arah.",
+    "Prompt 6 menambahkan visualisasi kategori, interval sama, kuantil, batas manual, dan divergen; semuanya deterministik dengan palet lokal versi, legenda bersama, dan gaya tidak ada data.",
+    "Prompt 7 menambahkan spesifikasi ekspor bersama, metadata aman, cakupan nasional/tampilan saat ini, A3, PDF raster lokal, mapping CSV, dan persistensi field visualisasi/ekspor pada project JSON.",
+    "Fitur runtime Batch 2 berikutnya: klasifikasi choropleth deterministik, legend engine, export v2, dan project persistence lanjutan masih tahap berikutnya.",
+    "Kontak dan Laporan Data",
+    "Metodologi Data",
+    "Kontak dan laporan data",
+    "Saat ini belum ada alamat email atau kanal publik lain yang terverifikasi di repository. Karena itu, halaman ini menyediakan template laporan yang bisa disalin atau diunduh tanpa mengirim data apa pun otomatis.",
+    "Status kanal eksternal",
+    "Owner perlu menentukan satu tujuan kontak publik sebelum fitur pelaporan dapat disebut lengkap. Sampai saat itu, jangan masukkan isi CSV, isi proyek, nama file, atau informasi pribadi ke laporan kecuali memang ingin dibagikan secara manual.",
+    "Laporkan kesalahan data",
+    "metodologi data",
+    "Metodologi Data",
+    "Metodologi Data",
+    "Metodologi data",
+    "Batch 1 memilih kejelasan dan stabilitas lebih dulu: peta memakai snapshot geometri yang dipin, registry metadata dipisahkan, dan perubahan data harus melewati diff serta review.",
+    "`canonical-provinces-v1.csv` menyimpan 38 provinsi saat ini. `canonical-regions-v1.csv` menyimpan 519 baris canonical region berbasis geometri. `crosswalk-region-ids-v1.csv` menjaga kompatibilitas proyek lama.",
+    "Pipeline offline memvalidasi source inventory, license manifest, checksum, diff data, dan reproduksi dua kali. Hasil terakhir: 10 artifact comparable direproduksi identik dengan hash `a9f6c8612e79d6325dd9415d329851313637c4cf998b54d787f6811637cd13e8`.",
+    "6. Data spreadsheet dan matching",
+    "Paste, CSV, TSV, dan XLSX memasuki kontrak tabular yang sama. Kode wilayah yang terverifikasi diprioritaskan, lalu kombinasi nama dan provinsi. Nama ambigu, tidak cocok, duplikat, diabaikan, kosong, dan invalid tetap dicatat sebagai status berbeda; tidak ada kecocokan yang dipilih secara diam-diam.",
+    "Kategori, interval sama, kuantil, batas manual, dan divergen dihitung deterministik dari baris yang cocok dan valid. Nilai kosong bukan nol. Legenda yang sama dipakai peta dan ekspor. SVG, PNG, PDF raster, serta mapping CSV dibuat lokal di browser dengan atribusi boundary wajib.",
+    "Laporkan kesalahan data",
+    "Preview konten · Penulis: Tim Mapnesia · Ditinjau: 2026-07-13",
+    "1. Masukkan data",
+    "Paste dari Excel/Sheets, atau pilih CSV, TSV, dan XLSX lokal.",
+    "Pilih kategori, interval sama, kuantil, batas manual, atau divergen; lalu ekspor SVG, PNG, PDF, atau tabel mapping CSV.",
+    "contoh CSV sintetis",
+    ". Contoh ini bukan data statistik nyata dan dibuat hanya untuk memperlihatkan alur aplikasi.",
+    "Untuk pengguna non-GIS yang perlu membuat visual peta bagi presentasi, laporan internal, atau catatan perencanaan. Data tetap lokal di browser; aplikasi tidak menyediakan akun, kolaborasi, atau cloud project storage.",
+    "Baca panduan import",
+    "Ini adalah halaman preview workers.dev yang noindex, bukan halaman produksi atau terindeks.",
+    "Laporkan kesalahan data",
+    "Masukkan data, periksa kecocokan wilayah, lihat hasilnya di peta, lalu ekspor. Semua data tetap di perangkat Anda.",
+    "Tahap 1 dari 4: Input data.",
+    "Mode:",
+    "Sumber angka/data pengguna",
+    "Grouping",
+    "Impor Data",
+    "Paste, CSV, TSV, dan XLSX diproses hanya di browser ini dan tidak diunggah ke server.",
+    "Atau pilih file CSV/TSV/XLSX",
+    "Sheet XLSX",
+    "Opsi lanjutan import",
+    "Pratinjau Import",
+    "Batalkan Import",
+    "Visualisasi dari data",
+    "Pilih metode yang dapat dijelaskan. Nilai kosong atau tidak valid tetap ditampilkan sebagai tidak ada data.",
+    "Opsi geometri detail mengunduh data lokal sekitar 10,5 MB hanya saat ekspor dan dapat memakai memori lebih besar.",
+    "Ukuran PNG",
+    "Ekspor SVG",
+    "Ekspor PNG",
+    "Ekspor PDF",
+    "Ekspor tabel mapping CSV",
+    "Sumber Data",
+    "metodologi data",
+    "CSV dan proyek diproses di browser. Tidak ada unggahan, analitik, atau akun pengguna. Baca",
+    "Data Anda",
+    "Cari di data",
+    "Status",
+    "Data impor dan kecocokan wilayah",
+    "Status",
+    "Belum ada data yang diterapkan.",
+    "Ekspor PNG",
+    "Batasan Data dan Aplikasi",
+    "Metodologi Data",
+    "Batasan data dan aplikasi",
+    "SVG/PNG memakai proyeksi browser untuk visualisasi, bukan pengukuran presisi atau penetapan batas. PDF saat ini adalah raster, bukan PDF vektor dengan teks selectable.",
+    "Mapnesia tidak menggabungkan beberapa baris sumber ke satu wilayah secara otomatis. Baris duplikat harus diselesaikan atau diabaikan pengguna. Guard XLSX membantu membatasi parsing browser, tetapi bukan pemindai malware. Project besar dapat melebihi localStorage; penyimpanan IndexedDB belum tersedia.",
+    "Atribusi sumber data harus dipertahankan. Teks privacy/terms pada staging adalah draft operasional dan tidak menggantikan nasihat hukum profesional.",
+    "Laporkan kesalahan data",
+    "Metodologi Data",
+    "Metodologi Data",
+    "Data pengguna",
+    "File CSV, file proyek JSON, pilihan warna, kategori, dan nilai diproses di browser. Aplikasi tidak memiliki backend, akun, database, analytics, iklan, atau penyimpanan cloud proyek.",
+    "Autosave memakai penyimpanan lokal browser. Data tersebut tetap di perangkat/browser pengguna dan dapat hilang jika data situs dibersihkan.",
+    "SVG, PNG, laporan migrasi, dan template laporan data dibuat di browser. Pengguna mengontrol sendiri file yang diunduh atau dibagikan.",
+    "template laporan data",
+    "Metodologi Data",
+    "Halaman ini merangkum sumber yang digunakan aplikasi. Catatan lengkap tersimpan di `ATTRIBUTION.md`, `data/README.md`, `data/sources/source-inventory-v1.json`, dan `data/license-manifest-v1.json`.",
+    "Leaflet 1.9.4 disertakan lokal untuk rendering peta dan berlisensi BSD 2-Clause. Parser XLSX",
+    "9.3.1 disertakan lokal, lazy-loaded saat XLSX dipilih, dan berlisensi MIT. PDF dibuat oleh kode browser aplikasi tanpa CDN atau library PDF runtime tambahan. Package pengujian seperti Playwright, axe-core, dan Wrangler tercatat sebagai dependency pengembangan dan tidak ikut dikirim sebagai bundle runtime aplikasi.",
+    "Laporkan kesalahan data",
+    "Baca metodologi data",
+    "Metodologi Data",
+    "Mapnesia disediakan untuk membuat peta warna wilayah sebagai referensi visual. Hasil ekspor tidak boleh dianggap sebagai penetapan batas hukum, data survei, atau sumber resmi tunggal.",
+    "Pengguna bertanggung jawab memeriksa kembali data, atribusi, konteks penggunaan, dan kelayakan hasil ekspor sebelum dipublikasikan atau dipakai dalam keputusan penting.",
+    "Data dan lisensi pihak ketiga",
+    "Kode aplikasi berlisensi MIT, tetapi data batas dan library pihak ketiga tetap mengikuti lisensi sumbernya. Ringkasan lisensi ada di",
+    "Pelaporan data",
+    "Kesalahan data dapat disiapkan melalui",
+    "template laporan data",
+    "Jelaskan data yang menurut Anda perlu diperiksa, serta sumber pembanding bila ada.",
+    "Informasi data dan kepercayaan",
+    "Mode tampilan",
+    "Pilih file CSV, TSV, atau XLSX",
+    "Pilih sheet XLSX",
+    "status"
+  ],
+  "notes": [
+    "This inventory is evidence of the current experience, not a translation decision.",
+    "Dynamic strings rendered by JavaScript are recorded in the human audit and must be added to this inventory when copy is migrated.",
+    "Historical documents are intentionally not rewritten by this generator."
+  ]
+}
