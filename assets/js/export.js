@@ -1,6 +1,8 @@
 (function () {
   const brand = window.ProductBrand;
   if (!brand) throw new Error("Product brand configuration is required.");
+  const boundaryProvider = window.NusaCanvasBoundaryProvider && window.NusaCanvasBoundaryProvider.current;
+  if (!boundaryProvider || typeof boundaryProvider.getManifest !== "function") throw new Error("Boundary provider metadata is required before export.");
 
   function escapeXml(value) {
     return String(value || "").replace(/[&<>"']/g, (char) => ({
@@ -30,6 +32,7 @@
   }
 
   function buildExportSpec(features, state, options = {}) {
+    const boundaryManifest = boundaryProvider.getManifest();
     const metadata = Object.assign({
       title: state.title || brand.defaults.projectTitle,
       subtitle: "",
@@ -52,9 +55,10 @@
       transparent: Boolean(options.transparent),
       labels: options.labels !== false,
       selectedId: options.selectedId || null,
-      attribution: "Data: geoBoundaries/HDX COD-AB ADM2 snapshot 2020; 519 boundary features; registry metadata v1 2025. For visual reference only; not a legal boundary decision.",
-      boundaryVersion: "IDN-ADM2-2020-geoboundaries-22746128",
-      registryVersion: "IDN-ADM-REGISTRY-v1-2025-06-23"
+      attribution: boundaryProvider.getAttribution(),
+      boundaryProviderId: boundaryManifest.providerId,
+      boundaryVersion: boundaryProvider.getVersion(),
+      registryVersion: boundaryManifest.canonicalRegistryVersion
     };
   }
 
@@ -430,11 +434,12 @@
   }
 
   function exportMappingCsv(rows, state) {
-    const lines = [["Source_Row_ID", "Source_Row_Number", "Original_Region", "Original_Province", "Original_Code", "Canonical_Region_ID", "Matched_Display_Name", "Match_Status", "Correction", "Value", "Category", "Visualization_Class", "Visualization_Color", "Boundary_Version", "Registry_Version"].join(",")];
+    const boundaryManifest = boundaryProvider.getManifest();
+    const lines = [["Source_Row_ID", "Source_Row_Number", "Original_Region", "Original_Province", "Original_Code", "Canonical_Region_ID", "Matched_Display_Name", "Match_Status", "Correction", "Value", "Category", "Visualization_Class", "Visualization_Color", "Boundary_Provider_ID", "Boundary_Version", "Registry_Version"].join(",")];
     const assignments = state.visualization && state.visualization.assignments || {};
     (rows || []).slice().sort((a, b) => Number(a.rowNumber) - Number(b.rowNumber) || String(a.rowId).localeCompare(String(b.rowId))).forEach((row) => {
       const assignment = assignments[row.matchedId] || {};
-      const values = [row.rowId, row.rowNumber, row.record && row.record.regionName, row.record && row.record.province, row.record && row.record.regionCode, row.matchedId || "", row.matchedName || "", row.matchStatus || "", row.matchStatus === "user-resolved" ? "yes" : "no", row.record && row.record.numericValue, row.record && row.record.category, row.classKey || assignment.classKey || "", row.color || assignment.color || "", "IDN-ADM2-2020-geoboundaries-22746128", "IDN-ADM-REGISTRY-v1-2025-06-23"].map((value) => `"${String(value == null ? "" : value).replace(/^[=+@-]/, "'").replace(/"/g, '""')}"`);
+      const values = [row.rowId, row.rowNumber, row.record && row.record.regionName, row.record && row.record.province, row.record && row.record.regionCode, row.matchedId || "", row.matchedName || "", row.matchStatus || "", row.matchStatus === "user-resolved" ? "yes" : "no", row.record && row.record.numericValue, row.record && row.record.category, row.classKey || assignment.classKey || "", row.color || assignment.color || "", boundaryManifest.providerId, boundaryProvider.getVersion(), boundaryManifest.canonicalRegistryVersion].map((value) => `"${String(value == null ? "" : value).replace(/^[=+@-]/, "'").replace(/"/g, '""')}"`);
       lines.push(values.join(","));
     });
     const filename = `${slugify((state.exportMeta && state.exportMeta.filenameSlug) || brand.defaults.exportFilenamePrefix)}-mapping.csv`;

@@ -5,8 +5,8 @@
     "height": 720
   },
   "renderer": "Leaflet Canvas (device-pixel-ratio aware)",
-  "renderReadyMs": 1223,
-  "selectionAndZoomMs": 560,
+  "renderReadyMs": 963,
+  "selectionAndZoomMs": 600,
   "inputSegments": 39304,
   "uniqueSegments": 36690,
   "sharedSegments": 2614,

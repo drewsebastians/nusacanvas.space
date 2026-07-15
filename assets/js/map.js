@@ -156,8 +156,10 @@
         pane: "boundaryMeshPane",
         renderer: canvasRenderer || undefined
       })).addTo(map);
+      const boundaryProvider = window.NusaCanvasBoundaryProvider && window.NusaCanvasBoundaryProvider.current;
+      if (!boundaryProvider) throw new Error("Boundary provider metadata is required before map rendering.");
       window.NusaCanvasBoundaryRendering = Object.freeze({
-        boundaryVersion: "IDN-ADM2-2020-geoboundaries-22746128",
+        boundaryVersion: boundaryProvider.getVersion(),
         strategy: "single-pass-exact-segment-mesh",
         renderer: canvasRenderer ? "Leaflet Canvas (device-pixel-ratio aware)" : "Leaflet SVG fallback",
         ...mesh.stats

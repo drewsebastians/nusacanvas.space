@@ -1,8 +1,11 @@
 {
-  "appVersion": "1.0.0",
-  "schemaVersion": "1.0",
-  "boundaryVersion": "IDN-ADM2-2020-CODAB-geoboundaries",
-  "title": "Contoh Peta Sorotan Wilayah",
+  "appVersion": "0.9.0",
+  "schemaVersion": "1.1",
+  "boundaryProviderId": "geoboundaries-hdx-idn-adm2-2020",
+  "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+  "registryVersion": "IDN-ADM-REGISTRY-v1-2025-06-23",
+  "sourceVersion": "geoBoundaries-IDN-ADM2-22746128 + Kepmendagri-300.2.2-2138/2025 amended 300.2.2-2430/2025",
+  "title": "NusaCanvas sample highlighted regions",
   "highlights": {
     "gb-22746128B68603538827891": {
       "color": "#4472C4",

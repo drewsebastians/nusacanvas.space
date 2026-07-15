@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "nusacanvas.boundary-provider-manifest.v1",
+  "providerId": "geoboundaries-hdx-idn-adm2-2020",
+  "providerVersion": "1.0.0",
+  "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+  "administrativeLevel": "ADM2",
+  "featureCount": 519,
+  "canonicalRegistryVersion": "IDN-ADM-REGISTRY-v1-2025-06-23",
+  "sourceVersion": "geoBoundaries-IDN-ADM2-22746128 + Kepmendagri-300.2.2-2138/2025 amended 300.2.2-2430/2025",
+  "createdAt": "2026-07-15",
+  "attribution": "Data: geoBoundaries/HDX COD-AB ADM2 snapshot 2020; 519 boundary features; registry metadata v1 2025. For visual reference only; not a legal boundary decision.",
+  "sourceRecords": [
+    {
+      "id": "geoboundaries-hdx-idn-adm2-2020",
+      "title": "Indonesia ADM2 boundary snapshot",
+      "sourceUrl": "https://www.geoboundaries.org/api/current/gbOpen/IDN/ADM2/",
+      "sourceBoundaryId": "IDN-ADM2-22746128",
+      "representedYear": "2020",
+      "licenseId": "CC-BY-3.0-IGO"
+    },
+    {
+      "id": "kemendagri-registry-metadata-2025",
+      "title": "Administrative registry metadata",
+      "sourceUrl": "https://peraturan.bpk.go.id/Details/322942/keputusan-mendagri-no-nomor-30022-2138-tahun",
+      "representedYear": "2025",
+      "licenseId": "project-curation-with-official-reference-citations"
+    }
+  ],
+  "licenseRecords": [
+    {
+      "id": "CC-BY-3.0-IGO",
+      "name": "Creative Commons Attribution 3.0 Intergovernmental Organisations",
+      "useStatus": "approved_with_attribution",
+      "attributionRequired": true
+    },
+    {
+      "id": "project-curation-with-official-reference-citations",
+      "name": "Project curation with official reference citations",
+      "useStatus": "approved_with_limitations",
+      "attributionRequired": true
+    }
+  ],
+  "detailTiers": {
+    "lite": {
+      "artifact": "data/indonesia-adm2-simplified.geojson",
+      "sha256": "6d735512fb7cab04ac7ca6048aa41437eba4f53595b83d8da4f25c198ba01f91",
+      "featureCount": 519,
+      "startup": true,
+      "purpose": "National overview and normal interactive map"
+    },
+    "standard": {
+      "artifact": "data/indonesia-adm2-simplified.geojson",
+      "sha256": "6d735512fb7cab04ac7ca6048aa41437eba4f53595b83d8da4f25c198ba01f91",
+      "featureCount": 519,
+      "startup": false,
+      "aliasOf": "lite",
+      "purpose": "Current approved normal interactive detail"
+    },
+    "detailed": {
+      "artifact": "data/indonesia-adm2-detailed.geojson",
+      "sha256": "146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c",
+      "featureCount": 519,
+      "startup": false,
+      "requiresExplicitRequest": true,
+      "purpose": "Province zoom and approved high-detail export"
+    }
+  },
+  "crosswalk": {
+    "artifact": "data/boundary-version-crosswalk-v1.json",
+    "fromVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+    "toVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+    "status": "identity-current-snapshot",
+    "requiresReviewForOtherVersions": true
+  },
+  "knownLimitations": [
+    "This provider is a reviewed 2020 ADM2 geometry snapshot; it is not a statement of current legal administrative boundaries.",
+    "Province registry references are reviewed metadata, and not a replacement for official legal attachments.",
+    "A newer source requires explicit stable-ID crosswalk and project compatibility review before it can replace this provider."
+  ]
+}

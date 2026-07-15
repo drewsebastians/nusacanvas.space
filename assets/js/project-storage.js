@@ -1,6 +1,8 @@
 (function () {
   const brand = window.ProductBrand;
   if (!brand || !brand.app || !brand.defaults) throw new Error("Product brand configuration is required before project storage.");
+  const boundaryProvider = window.NusaCanvasBoundaryProvider && window.NusaCanvasBoundaryProvider.current;
+  if (!boundaryProvider || typeof boundaryProvider.getManifest !== "function") throw new Error("Boundary provider metadata is required before project storage.");
   const STORAGE_KEY = "indonesia-region-map-autosave-v2";
   const LEGACY_STORAGE_KEYS = Object.freeze(["peta-warna-indonesia-autosave-v1"]);
   const STORAGE_MIGRATION_VERSION = "1";
@@ -11,9 +13,11 @@
   const PROJECT_FILE_MAX_BYTES = 20_000_000;
   const MAX_IMPORT_ROWS = 5000;
   const LEGACY_SCHEMAS = new Set(["1.0"]);
-  const BOUNDARY_VERSION = "IDN-ADM2-2020-geoboundaries-22746128";
-  const REGISTRY_VERSION = "IDN-ADM-REGISTRY-v1-2025-06-23";
-  const SOURCE_VERSION = "geoBoundaries-IDN-ADM2-22746128 + Kepmendagri-300.2.2-2138/2025 amended 300.2.2-2430/2025";
+  const BOUNDARY_MANIFEST = boundaryProvider.getManifest();
+  const BOUNDARY_PROVIDER_ID = BOUNDARY_MANIFEST.providerId;
+  const BOUNDARY_VERSION = boundaryProvider.getVersion();
+  const REGISTRY_VERSION = BOUNDARY_MANIFEST.canonicalRegistryVersion;
+  const SOURCE_VERSION = BOUNDARY_MANIFEST.sourceVersion;
   const DANGEROUS_KEYS = new Set(["__proto__", "constructor", "prototype"]);
   const MAX_LEGEND_ITEMS = 200;
   let lastStorageMigrationReport = null;
@@ -231,6 +235,7 @@
       createdAt: new Date().toISOString(),
       fromSchemaVersion: String(fromSchema || "unknown"),
       toSchemaVersion: PROJECT_SCHEMA,
+      boundaryProviderId: BOUNDARY_PROVIDER_ID,
       boundaryVersion: BOUNDARY_VERSION,
       registryVersion: REGISTRY_VERSION,
       unchanged: [],
@@ -272,8 +277,20 @@
     const entries = Object.entries(raw.highlights || {});
     if (entries.length > 2000) throw new Error("This project file is too large. Your current project has not changed. Choose a smaller project file.");
     const migrationReport = emptyMigrationReport(schemaVersion);
+    const providerCompatibility = boundaryProvider.validateProjectCompatibility(raw);
+    migrationReport.providerCompatibility = providerCompatibility;
+    const preserveWithoutReinterpretation = providerCompatibility.requiresUserReview;
+    if (preserveWithoutReinterpretation) {
+      migrationReport.unsupported.push({
+        kind: "boundary-provider-review-required",
+        sourceProviderId: providerCompatibility.source.providerId,
+        sourceBoundaryVersion: providerCompatibility.source.boundaryVersion,
+        reason: providerCompatibility.reason,
+        affectedRegionCount: providerCompatibility.affectedStableRegionIds.length
+      });
+    }
     const supportedProjectFields = new Set([
-      "appVersion", "schemaVersion", "boundaryVersion", "registryVersion", "sourceVersion", "title",
+      "appVersion", "schemaVersion", "boundaryProviderId", "boundaryVersion", "registryVersion", "sourceVersion", "title",
       "highlights", "manualHighlights", "regionRefs", "unresolvedHighlights", "legend", "legendVisible",
       "legendPosition", "groupNames", "groupMeta", "importCorrections", "workflowStage", "uiMode",
       "importRows", "visualization", "exportMeta", "exportSettings", "migrationReport",
@@ -286,6 +303,11 @@
       if (seen.has(id)) throw new Error("This project file contains the same region ID more than once. Your current project has not changed. Choose a valid project file.");
       seen.add(id);
       const highlight = sanitizeHighlight(item);
+      if (preserveWithoutReinterpretation) {
+        unresolvedHighlights[id] = highlight;
+        migrationReport.missing.push({ legacyRegionId: id, reason: "This region was retained without reinterpretation until its boundary provider/version can be reviewed." });
+        return;
+      }
       const ref = adapter.get(id);
       if (!ref) {
         unresolvedHighlights[id] = highlight;
@@ -315,6 +337,11 @@
       if (seen.has(id)) return;
       seen.add(id);
       const highlight = sanitizeHighlight(item);
+      if (preserveWithoutReinterpretation) {
+        unresolvedHighlights[id] = highlight;
+        migrationReport.missing.push({ legacyRegionId: id, reason: "This saved unresolved region remains unresolved until its boundary provider/version can be reviewed." });
+        return;
+      }
       const ref = adapter.get(id);
       if (!ref) {
         unresolvedHighlights[id] = highlight;
@@ -341,6 +368,13 @@
     if (manualEntries.length > 2000) throw new Error("This project file is too large. Your current project has not changed. Choose a smaller project file.");
     manualEntries.forEach(([id, item]) => {
       const highlight = sanitizeHighlight(item);
+      if (preserveWithoutReinterpretation) {
+        if (!unresolvedHighlights[id]) unresolvedHighlights[id] = highlight;
+        if (!migrationReport.missing.some((entry) => entry.legacyRegionId === id)) {
+          migrationReport.missing.push({ legacyRegionId: id, reason: "This manual region was retained without reinterpretation until its boundary provider/version can be reviewed." });
+        }
+        return;
+      }
       if (!adapter.has(id)) {
         if (!unresolvedHighlights[id]) unresolvedHighlights[id] = highlight;
         if (!migrationReport.missing.some((entry) => entry.legacyRegionId === id)) {
@@ -399,6 +433,7 @@
     return {
       appVersion: APP_VERSION,
       schemaVersion: PROJECT_SCHEMA,
+      boundaryProviderId: BOUNDARY_PROVIDER_ID,
       boundaryVersion: BOUNDARY_VERSION,
       registryVersion: REGISTRY_VERSION,
       sourceVersion: SOURCE_VERSION,
@@ -445,6 +480,7 @@
     return assertProjectSize({
       appVersion: APP_VERSION,
       schemaVersion: PROJECT_SCHEMA,
+      boundaryProviderId: BOUNDARY_PROVIDER_ID,
       boundaryVersion: BOUNDARY_VERSION,
       registryVersion: REGISTRY_VERSION,
       sourceVersion: SOURCE_VERSION,
@@ -1000,6 +1036,7 @@
     PROJECT_FILE_MAX_BYTES,
     MAX_IMPORT_ROWS,
     BOUNDARY_VERSION,
+    BOUNDARY_PROVIDER_ID,
     REGISTRY_VERSION,
     SOURCE_VERSION,
     MAX_LEGEND_ITEMS,

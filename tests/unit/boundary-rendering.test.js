@@ -3,13 +3,15 @@ const fs = require("node:fs");
 const path = require("node:path");
 const test = require("node:test");
 const vm = require("node:vm");
+const boundaryProvider = require(path.resolve(__dirname, "..", "..", "assets", "js", "boundary-provider.js"));
 
 function loadExport() {
   const window = {
     ProductBrand: {
       productName: "NusaCanvas",
       defaults: { exportFilenamePrefix: "nusacanvas-map", projectTitle: "NusaCanvas map" }
-    }
+    },
+    NusaCanvasBoundaryProvider: boundaryProvider
   };
   const sandbox = { window, Map, Set, Number, String, Object, Array, Math, JSON, TextEncoder, Blob, URL, Image: class {}, navigator: {} };
   vm.createContext(sandbox);
@@ -50,4 +52,12 @@ test("SVG draws exact shared boundaries once while leaving stable feature IDs un
   assert.ok(mesh);
   assert.equal((mesh[1].match(/ L/g) || []).length, 7, "two adjacent squares have seven unique boundary segments");
   assert.deepEqual(features, before);
+});
+
+test("export provenance is supplied by the active boundary provider", () => {
+  const mapExport = loadExport();
+  const spec = mapExport.buildExportSpec([], { title: "Provider test", legend: [] }, { ratio: "1:1" });
+  assert.equal(spec.boundaryProviderId, "geoboundaries-hdx-idn-adm2-2020");
+  assert.equal(spec.boundaryVersion, boundaryProvider.current.getVersion());
+  assert.equal(spec.attribution, boundaryProvider.current.getAttribution());
 });

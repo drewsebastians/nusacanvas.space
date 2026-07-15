@@ -325,6 +325,28 @@
       "productionApproved": true
     },
     {
+      "id": "registry-boundary-provider-manifest-v1",
+      "category": "registry-artifact",
+      "title": "Versioned boundary provider manifest v1",
+      "path": "data/boundary-provider-manifest-v1.json",
+      "publisherOwner": "NusaCanvas project-maintained provider metadata",
+      "exactSource": "Current approved geoBoundaries/HDX ADM2 snapshot, registry manifest v1, and boundary-version crosswalk v1",
+      "sha256": "963bb0cd9f98563088fd8903c5b770955890070a9cca0e7c3bf19bbdf3d8afae",
+      "mediaType": "application/json",
+      "licenseId": "project-curation-with-third-party-data-attribution",
+      "commercialUseStatus": "approved_project_metadata_with_source_attribution",
+      "modificationStatus": "versioned provider metadata generated from reviewed project records",
+      "redistributionStatus": "approved_with_attribution",
+      "attributionRequired": true,
+      "attributionText": "Provider manifest retains geoBoundaries/HDX source attribution and registry reference limitations.",
+      "review": {
+        "status": "approved",
+        "reviewer": "Batch 2R boundary provider review",
+        "date": "2026-07-15"
+      },
+      "productionApproved": true
+    },
+    {
       "id": "registry-stable-id-fixtures-v1",
       "category": "registry-artifact",
       "title": "Stable-ID migration fixtures v1",

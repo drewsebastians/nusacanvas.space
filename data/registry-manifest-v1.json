@@ -35,6 +35,13 @@
     "licenseStatus": "metadata used for citation/versioning; official attachments are not redistributed by this app",
     "limitation": "Province registry is current v1 scaffolding; province official codes stay blank until row-level lampiran audit is committed."
   },
+  "boundaryProvider": {
+    "manifest": "data/boundary-provider-manifest-v1.json",
+    "providerId": "geoboundaries-hdx-idn-adm2-2020",
+    "providerVersion": "1.0.0",
+    "detailTiers": ["lite", "standard", "detailed"],
+    "compatibilityPolicy": "A different provider or boundary version needs a crosswalk and a user-visible project compatibility report before use."
+  },
   "fileHashesSha256": {
     "data/indonesia-adm2-simplified.geojson": "6d735512fb7cab04ac7ca6048aa41437eba4f53595b83d8da4f25c198ba01f91",
     "data/indonesia-adm2-detailed.geojson": "146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c",
@@ -42,6 +49,7 @@
     "data/canonical-provinces-v1.csv": "d0b8c535fb52dd14ab1bce61f2f8d2ff01f955cbd4fe773edf4a134c0fab78f6",
     "data/canonical-regions-v1.csv": "fa96c08734f0eee7a77cb57d5af66271aedcf760db078b7e629c786bcf9156e6",
     "data/crosswalk-region-ids-v1.csv": "5305578b5761640c7f72ffb371aecbd10cf9374bab559f634091e5e2edfe999f",
-    "data/boundary-version-crosswalk-v1.json": "e987e611d85f59430e5a01b0fe5fa2909f785303bc0099d0a4ece22a1dfe2e47"
+    "data/boundary-version-crosswalk-v1.json": "e987e611d85f59430e5a01b0fe5fa2909f785303bc0099d0a4ece22a1dfe2e47",
+    "data/boundary-provider-manifest-v1.json": "963bb0cd9f98563088fd8903c5b770955890070a9cca0e7c3bf19bbdf3d8afae"
   }
 }

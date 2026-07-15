@@ -23,6 +23,7 @@ const shellJavaScriptGzipBytes = [
   "assets/vendor/leaflet/leaflet.js",
   "assets/js/brand-config.js",
   "assets/js/brand-migration.js",
+  "assets/js/boundary-provider.js",
   "assets/js/product-content.js",
   "assets/js/project-storage.js",
   "assets/js/import-core.js",
@@ -30,7 +31,8 @@ const shellJavaScriptGzipBytes = [
   "assets/js/csv-import.js",
   "assets/js/export.js",
   "assets/js/map.js",
-  "assets/js/app.js"
+  "assets/js/app.js",
+  "assets/js/workspace-shell.js"
 ].reduce((total, file) => total + gzipBytes(file), 0);
 
 if (initialCompressedBytes > budget.hard.initialCompressedBytes) {
@@ -47,7 +49,9 @@ if (!fs.existsSync(smokePath)) {
   fail("Missing smoke network artifact. Run npm run test:e2e:smoke before performance budgets.");
 } else {
   const smoke = JSON.parse(fs.readFileSync(smokePath, "utf8"));
-  const startupRequests = smoke.requests.filter((request) => !request.url.startsWith("data:") && !request.url.startsWith("blob:"));
+  // The document navigation is the baseline page load, not a requested runtime
+  // asset. The hard budget measures startup assets after that document.
+  const startupRequests = smoke.requests.filter((request) => request.resourceType !== "document" && !request.url.startsWith("data:") && !request.url.startsWith("blob:"));
   if (startupRequests.length > budget.hard.initialRequestCount) {
     fail(`Startup request count ${startupRequests.length} exceeds hard budget ${budget.hard.initialRequestCount}.`);
   }

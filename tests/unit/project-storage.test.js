@@ -8,6 +8,7 @@ const defaultProductBrand = require(path.resolve(__dirname, "..", "..", "assets"
 globalThis.ProductBrand = defaultProductBrand;
 const defaultBrandMigration = require(path.resolve(__dirname, "..", "..", "assets", "js", "brand-migration.js"));
 delete globalThis.ProductBrand;
+const defaultBoundaryProvider = require(path.resolve(__dirname, "..", "..", "assets", "js", "boundary-provider.js"));
 
 function loadProjectStorage(localStorageOverrides = {}, productBrand = defaultProductBrand) {
   const file = path.resolve(__dirname, "..", "..", "assets", "js", "project-storage.js");
@@ -26,7 +27,7 @@ function loadProjectStorage(localStorageOverrides = {}, productBrand = defaultPr
       setItem: () => {},
       ...localStorageOverrides
     },
-    window: { ProductBrand: productBrand, ProductBrandMigration: defaultBrandMigration }
+    window: { ProductBrand: productBrand, ProductBrandMigration: defaultBrandMigration, NusaCanvasBoundaryProvider: defaultBoundaryProvider }
   };
   vm.createContext(sandbox);
   vm.runInContext(fs.readFileSync(file, "utf8"), sandbox, { filename: file });
@@ -210,6 +211,7 @@ test("buildProject stores schema, boundary, registry, and canonical region refer
 
   assert.equal(project.schemaVersion, "1.1");
   assert.equal(project.boundaryVersion, "IDN-ADM2-2020-geoboundaries-22746128");
+  assert.equal(project.boundaryProviderId, "geoboundaries-hdx-idn-adm2-2020");
   assert.equal(project.registryVersion, "IDN-ADM-REGISTRY-v1-2025-06-23");
   assert.equal(project.regionRefs["known-id"].legacyRegionId, "known-id");
   assert.equal(project.importCorrections.row_1.targetId, "known-id");
@@ -221,6 +223,34 @@ test("buildProject stores schema, boundary, registry, and canonical region refer
   assert.equal(project.manualHighlights["known-id"].color, "#70AD47");
   assert.equal(project.exportSettings.ratio, "a3");
   assert.equal(project.exportSettings.pngSize, "2560x1440");
+});
+
+test("unknown provider versions retain regions without silently reinterpreting stable IDs", () => {
+  const storage = loadProjectStorage();
+  const adapter = storage.createRegionAdapter([sampleFeature()]);
+  const project = storage.sanitizeProject({
+    schemaVersion: "1.1",
+    boundaryProviderId: "future-provider",
+    boundaryVersion: "IDN-ADM2-2030-example",
+    highlights: { "known-id": { color: "#4472C4" } },
+    manualHighlights: { "known-id": { color: "#70AD47" } }
+  }, adapter);
+
+  assert.deepEqual(Object.keys(project.highlights), []);
+  assert.equal(project.unresolvedHighlights["known-id"].color, "#4472C4");
+  assert.equal(project.migrationReport.providerCompatibility.status, "review-required");
+  assert.equal(project.migrationReport.requiresUserReview, true);
+  assert.equal(project.migrationReport.summary.silentLoss, false);
+});
+
+test("active sample project pins the current boundary provider and opens with its highlight", () => {
+  const storage = loadProjectStorage();
+  const raw = JSON.parse(fs.readFileSync(path.resolve(__dirname, "..", "..", "sample", "sample-project.json"), "utf8"));
+  const sampleId = Object.keys(raw.highlights)[0];
+  const project = storage.sanitizeProject(raw, storage.createRegionAdapter([sampleFeature(sampleId)]));
+  assert.equal(project.boundaryProviderId, storage.BOUNDARY_PROVIDER_ID);
+  assert.equal(project.boundaryVersion, storage.BOUNDARY_VERSION);
+  assert.equal(project.highlights[sampleId].color, "#4472C4");
 });
 
 test("project defaults use central brand configuration", () => {

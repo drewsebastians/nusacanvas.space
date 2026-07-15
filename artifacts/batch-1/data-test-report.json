@@ -3,12 +3,12 @@
   "sourceResult": {
     "status": "passed",
     "sourceRecords": 6,
-    "licenseAssets": 18,
+    "licenseAssets": 19,
     "productionThirdPartyFiles": 10,
     "errors": []
   },
   "simplifyResult": "passed",
-  "manifestHash": "88e29d0fd2640a9c58a7d5158487e517bcd3be8883675f1d614f7fbb8f715498",
-  "reproducibilityHash": "215deb9d81f1ddfe40656dd2191d9ad872646863844971084b756167a4baac61",
+  "manifestHash": "ae7d932d4feefe9686f46e4e489f341d98795f73ec77ba9a01fb846ecf869eac",
+  "reproducibilityHash": "baf124ac1dcb039987a1b5fbc1ebd68179221475572eda42c0473df6a386163e",
   "dataDiffStatus": "no_drift"
 }

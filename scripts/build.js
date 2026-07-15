@@ -16,6 +16,7 @@ const requiredFiles = [
   "assets/js/public-shell.js",
   "assets/js/workspace-shell.js",
   "assets/js/brand-config.js",
+  "assets/js/boundary-provider.js",
   "assets/js/app.js",
   "assets/js/import-core.js",
   "assets/js/xlsx-import.js",
@@ -37,6 +38,7 @@ const requiredFiles = [
   "assets/vendor/read-excel-file/LICENSE",
   "data/indonesia-adm2-detailed.geojson",
   "data/indonesia-adm2-simplified.geojson",
+  "data/boundary-provider-manifest-v1.json",
   "about/index.html",
   "contact/index.html",
   "privacy/index.html",
@@ -88,10 +90,12 @@ requiredFiles.forEach(copyFile);
 function bundleWorkspaceRuntime() {
   const earlyRuntimeModules = [
     "assets/js/brand-config.js",
-    "assets/js/brand-migration.js"
+    "assets/js/brand-migration.js",
+    "assets/js/boundary-provider.js"
   ];
   const appRuntimeModules = ["assets/js/product-content.js"];
-  const runtimeModules = [...earlyRuntimeModules, ...appRuntimeModules];
+  const afterAppRuntimeModules = ["assets/js/workspace-shell.js"];
+  const runtimeModules = [...earlyRuntimeModules, ...appRuntimeModules, ...afterAppRuntimeModules];
   const projectStoragePath = path.join(dist, "assets/js/project-storage.js");
   const appPath = path.join(dist, "assets/js/app.js");
   const indexPath = path.join(dist, "workspace", "index.html");
@@ -102,6 +106,7 @@ function bundleWorkspaceRuntime() {
   };
   const earlyModules = earlyRuntimeModules.map(readModule);
   const appModules = appRuntimeModules.map(readModule);
+  const afterAppModules = afterAppRuntimeModules.map(readModule);
   const projectStorage = fs.readFileSync(projectStoragePath, "utf8");
   const app = fs.readFileSync(appPath, "utf8");
   let index = fs.readFileSync(indexPath, "utf8");
@@ -119,7 +124,9 @@ function bundleWorkspaceRuntime() {
   // configuration and migration. Bundling them here keeps the startup request
   // count unchanged while also making the config available to export.js.
   fs.writeFileSync(projectStoragePath, `${earlyModules.join("\n")}\n${projectStorage}`);
-  fs.writeFileSync(appPath, `${appModules.join("\n")}\n${app}`);
+  // Keep workspace-shell after app.js: it observes the rendered workspace,
+  // while bundling it avoids an otherwise separate startup request.
+  fs.writeFileSync(appPath, `${appModules.join("\n")}\n${app}\n${afterAppModules.join("\n")}`);
   fs.writeFileSync(indexPath, index);
 }
 

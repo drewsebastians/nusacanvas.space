@@ -2,9 +2,9 @@
   "schemaVersion": "1.0",
   "status": "passed",
   "tempRoot": "temporary",
-  "comparedOutputCount": 10,
-  "runAHash": "215deb9d81f1ddfe40656dd2191d9ad872646863844971084b756167a4baac61",
-  "runBHash": "215deb9d81f1ddfe40656dd2191d9ad872646863844971084b756167a4baac61",
+  "comparedOutputCount": 11,
+  "runAHash": "baf124ac1dcb039987a1b5fbc1ebd68179221475572eda42c0473df6a386163e",
+  "runBHash": "baf124ac1dcb039987a1b5fbc1ebd68179221475572eda42c0473df6a386163e",
   "mismatches": [],
   "trackedMismatches": []
 }

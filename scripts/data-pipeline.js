@@ -19,6 +19,7 @@ const COMPARABLE_OUTPUTS = [
   "data/canonical-regions-v1.csv",
   "data/crosswalk-region-ids-v1.csv",
   "data/boundary-version-crosswalk-v1.json",
+  "data/boundary-provider-manifest-v1.json",
   "data/stable-id-fixtures.json",
   "data/registry-manifest-v1.json",
   "data/boundary-validation-summary.json"

@@ -9,6 +9,7 @@ const collection = JSON.parse(fs.readFileSync(geometryPath, "utf8"));
 const source = fs.readFileSync(geometryPath, "utf8");
 const mapSource = fs.readFileSync(path.join(root, "assets", "js", "map.js"), "utf8");
 const exportSource = fs.readFileSync(path.join(root, "assets", "js", "export.js"), "utf8");
+const providerSource = fs.readFileSync(path.join(root, "assets", "js", "boundary-provider.js"), "utf8");
 
 const seen = new Set();
 let inputSegments = 0;
@@ -38,6 +39,7 @@ const checks = [
   ["export-single-pass-mesh", /boundary-mesh/.test(exportSource) && /data-region-fill/.test(exportSource), "Export fills are separate from a single boundary mesh."],
   ["round-joins-and-caps", /lineJoin:\s*"round"/.test(mapSource) && /stroke-linejoin/.test(exportSource) && /stroke-linecap/.test(exportSource), "Interactive and exported presentation strokes use round joins and caps."],
   ["no-detailed-startup-fetch", !/indonesia-adm2-detailed\.geojson[^]*createMap/.test(mapSource), "Detailed geometry remains an explicit export-only app path."],
+  ["versioned-local-boundary-provider", /getNationalLayer/.test(providerSource) && /data\/indonesia-adm2-detailed\.geojson/.test(providerSource) && /does not permit a remote runtime source/.test(providerSource), "Provider owns local detail tiers and rejects remote runtime sources."],
   ["no-external-tiles", !/tileLayer|google\.com|maps\.google/i.test(mapSource), "No external basemap or Google-derived boundary path is present."]
 ].map(([name, passed, detail]) => ({ name, passed, detail }));
 

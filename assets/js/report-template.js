@@ -1,9 +1,12 @@
 (function () {
   const brand = window.ProductBrand;
   if (!brand) throw new Error("Product brand configuration is required.");
+  const boundaryProvider = window.NusaCanvasBoundaryProvider && window.NusaCanvasBoundaryProvider.current;
+  if (!boundaryProvider || typeof boundaryProvider.getManifest !== "function") throw new Error("Boundary provider metadata is required before the issue report template.");
   const APP_VERSION = brand.app.version;
-  const BOUNDARY_VERSION = "IDN-ADM2-2020-geoboundaries-22746128";
-  const REGISTRY_VERSION = "IDN-ADM-REGISTRY-v1-2025-06-23";
+  const BOUNDARY_MANIFEST = boundaryProvider.getManifest();
+  const BOUNDARY_VERSION = boundaryProvider.getVersion();
+  const REGISTRY_VERSION = BOUNDARY_MANIFEST.canonicalRegistryVersion;
 
   function value(id) {
     const element = document.getElementById(id);
@@ -15,6 +18,7 @@
       `${brand.productName} data issue report`,
       "",
       `App version: ${APP_VERSION}`,
+      `Boundary provider: ${BOUNDARY_MANIFEST.providerId}`,
       `Boundary version: ${BOUNDARY_VERSION}`,
       `Registry version: ${REGISTRY_VERSION}`,
       `Issue category: ${value("issueCategory") || "(not provided)"}`,

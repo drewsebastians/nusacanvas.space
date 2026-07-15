@@ -57,6 +57,7 @@ function scanRuntimeExternalRequests() {
     "assets/js/matching-engine.js",
     "assets/js/visualization-engine.js",
     "assets/js/app.js",
+    "assets/js/boundary-provider.js",
     "assets/js/map.js",
     "assets/js/export.js",
     "assets/js/csv-import.js",
@@ -66,8 +67,7 @@ function scanRuntimeExternalRequests() {
   ];
   const forbiddenRuntimePatterns = [
     /fetch\(["']https?:\/\//i,
-    /https?:\/\/[^"']*geoboundaries\.org/i,
-    /https?:\/\/[^"']*data\.humdata\.org/i
+    /(?:script\.src|src)\s*=\s*["']https?:\/\//i
   ];
   for (const file of runtimeFiles) {
     const full = path.join(DIST, file);
@@ -96,7 +96,9 @@ function scanSafetyControls() {
   assertContains("assets/js/csv-import.js", "escapeFormula", "CSV formula injection escaping");
   assertContains("assets/js/export.js", "URL.revokeObjectURL", "download object URL cleanup");
   assertContains("assets/js/visualization-engine.js", "IDN-PALETTE-v1", "versioned local palette registry");
-  assertContains("assets/js/app.js", "indonesia-adm2-detailed.geojson", "explicit local detailed geometry path");
+  assertContains("assets/js/boundary-provider.js", "data/indonesia-adm2-detailed.geojson", "explicit local detailed geometry path");
+  assertContains("assets/js/boundary-provider.js", "does not permit a remote runtime source", "local-only boundary provider guard");
+  assertContains("assets/js/app.js", "getNationalLayer(\"ADM2\", \"detailed\")", "provider-routed detailed boundary request");
   assertMatches("assets/js/app.js", /confirm\([^)]*detailed[^)]*boundar/i, "explicit high-detail export confirmation");
 }
 

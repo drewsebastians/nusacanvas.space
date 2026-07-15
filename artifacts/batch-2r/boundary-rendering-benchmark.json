@@ -1,6 +1,6 @@
 {
   "schemaVersion": "batch2r.boundary-rendering-benchmark.v1",
-  "generatedAt": "2026-07-15T04:22:19.987Z",
+  "generatedAt": "2026-07-15T05:01:48.839Z",
   "status": "passed",
   "source": {
     "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
@@ -27,8 +27,8 @@
         "height": 720
       },
       "renderer": "Leaflet Canvas (device-pixel-ratio aware)",
-      "renderReadyMs": 1223,
-      "selectionAndZoomMs": 560,
+      "renderReadyMs": 963,
+      "selectionAndZoomMs": 600,
       "inputSegments": 39304,
       "uniqueSegments": 36690,
       "sharedSegments": 2614,
@@ -134,6 +134,11 @@
       "name": "no-detailed-startup-fetch",
       "passed": true,
       "detail": "Detailed geometry remains an explicit export-only app path."
+    },
+    {
+      "name": "versioned-local-boundary-provider",
+      "passed": true,
+      "detail": "Provider owns local detail tiers and rejects remote runtime sources."
     },
     {
       "name": "no-external-tiles",

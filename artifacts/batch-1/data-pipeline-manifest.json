@@ -8,7 +8,7 @@
   "sourceInventoryVersion": "IDN-DATA-SOURCES-v1-2026-07-12",
   "licenseManifestVersion": "IDN-LICENSE-MANIFEST-v1-2026-07-12",
   "sourceRecordCount": 6,
-  "licenseAssetCount": 18,
+  "licenseAssetCount": 19,
   "productionGeometry": {
     "path": "data/indonesia-adm2-simplified.geojson",
     "featureCount": 519,
@@ -39,8 +39,9 @@
     "data/canonical-regions-v1.csv": "fa96c08734f0eee7a77cb57d5af66271aedcf760db078b7e629c786bcf9156e6",
     "data/crosswalk-region-ids-v1.csv": "5305578b5761640c7f72ffb371aecbd10cf9374bab559f634091e5e2edfe999f",
     "data/boundary-version-crosswalk-v1.json": "e987e611d85f59430e5a01b0fe5fa2909f785303bc0099d0a4ece22a1dfe2e47",
+    "data/boundary-provider-manifest-v1.json": "963bb0cd9f98563088fd8903c5b770955890070a9cca0e7c3bf19bbdf3d8afae",
     "data/stable-id-fixtures.json": "5fac1ae685519a38340410cf8aee618f9a7816dce4b184f122adf934bd6015f8",
-    "data/registry-manifest-v1.json": "5f0ab4aede038c0664a561a02f0eabe5b78a9c98cb1fc6d54ff7f400fa1767c0",
+    "data/registry-manifest-v1.json": "12ec25071e579e2fb789211be5497027bbf308fc2eaff995b1f40382a446071f",
     "data/boundary-validation-summary.json": "f7ade394570db627ae5f93830852437a1f8c5b0256f4c72c2fd0d7d0f6e16e1d"
   }
 }

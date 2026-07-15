@@ -3,13 +3,15 @@
   // intentionally served from /workspace/. Keep data and lazy engines rooted
   // at the static app origin without duplicating either asset tree.
   const RUNTIME_BASE = window.location.pathname.startsWith("/workspace/") ? "../" : "./";
-  const DATA_URL = `${RUNTIME_BASE}data/indonesia-adm2-simplified.geojson`;
-  const BOUNDARY_VERSION = "IDN-ADM2-2020-geoboundaries-22746128";
-  const REGISTRY_VERSION = "IDN-ADM-REGISTRY-v1-2025-06-23";
-  const DETAILED_GEOMETRY = {
-    url: `${RUNTIME_BASE}data/indonesia-adm2-detailed.geojson`,
-    sha256: "146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c"
-  };
+  const boundaryProviderApi = window.NusaCanvasBoundaryProvider;
+  if (!boundaryProviderApi || typeof boundaryProviderApi.createCurrentBoundaryProvider !== "function") {
+    throw new Error("Boundary provider metadata is required before the workspace can start.");
+  }
+  // The provider is the single owner of local geometry paths, checksums,
+  // provenance, and boundary version. Matching continues to use stable IDs.
+  const boundaryProvider = boundaryProviderApi.createCurrentBoundaryProvider({ baseUrl: RUNTIME_BASE });
+  const BOUNDARY_VERSION = boundaryProvider.getVersion();
+  const REGISTRY_VERSION = boundaryProvider.getManifest().canonicalRegistryVersion;
   const quickColors = ["#4472C4", "#E74C3C", "#70AD47", "#FFC000", "#5B9BD5", "#A64D79", "#00A388", "#7F6000"];
   const brand = window.ProductBrand;
   if (!brand) throw new Error("Product brand configuration is required.");
@@ -327,9 +329,7 @@
 
   async function loadData() {
     try {
-      const response = await fetch(DATA_URL, { cache: "force-cache" });
-      if (!response.ok) throw new Error(productText("ui.errors.mapLoad"));
-      const collection = await response.json();
+      const collection = await boundaryProvider.getNationalLayer("ADM2", "lite").load();
       state.features = collection.features || [];
       state.featureById = new Map(state.features.map((feature) => [feature.properties.region_id, feature]));
       mapApi.render(collection);
@@ -355,33 +355,9 @@
     }
   }
 
-  async function fetchGeoJson(url, expectedSha256) {
-    const response = await fetch(url, { cache: "force-cache" });
-    if (!response.ok) throw new Error("Detailed boundaries could not be loaded. Your map is still safe. Try the standard export.");
-    const text = await response.text();
-    if (/^version https:\/\/git-lfs.github.com\/spec\/v1/.test(text.trim())) {
-      throw new Error("Detailed boundaries are unavailable. Your map is still safe. Try the standard export.");
-    }
-    if (expectedSha256) {
-      const actualSha256 = await sha256(text);
-      if (actualSha256 !== expectedSha256) throw new Error("Detailed boundaries did not pass the safety check. Your map is still safe. Try the standard export.");
-    }
-    const collection = JSON.parse(text);
-    if (!collection || collection.type !== "FeatureCollection" || !Array.isArray(collection.features)) {
-      throw new Error("Detailed boundaries are not valid. Your map is still safe. Try the standard export.");
-    }
-    return collection;
-  }
-
-  async function sha256(text) {
-    const data = new TextEncoder().encode(text);
-    const hash = await crypto.subtle.digest("SHA-256", data);
-    return Array.from(new Uint8Array(hash)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
-  }
-
   async function loadHighDetailCollection() {
     if (state.highDetailCollection) return state.highDetailCollection;
-    const detailedCollection = await fetchGeoJson(DETAILED_GEOMETRY.url, DETAILED_GEOMETRY.sha256);
+    const detailedCollection = await boundaryProvider.getNationalLayer("ADM2", "detailed").load();
     const merged = mergeDetailedGeometry({ type: "FeatureCollection", features: state.features }, detailedCollection);
     if (merged.matched <= 450) throw new Error(`Detailed boundaries were available for only ${merged.matched} of ${state.features.length} regions. Your map is still safe. Try the standard export.`);
     state.highDetailCollection = merged.collection;

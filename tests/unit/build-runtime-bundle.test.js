@@ -12,10 +12,11 @@ test("production build bundles brand modules in dependency order without adding 
   const projectStorage = fs.readFileSync(path.join(root, "dist/assets/js/project-storage.js"), "utf8");
   const contact = fs.readFileSync(path.join(root, "dist/contact/index.html"), "utf8");
 
-  assert.doesNotMatch(index, /assets\/js\/(?:brand-config|brand-migration|product-content)\.js/);
+  assert.doesNotMatch(index, /assets\/js\/(?:brand-config|brand-migration|boundary-provider|product-content|workspace-shell)\.js/);
   const earlyMarkers = [
     "root.ProductBrand = config",
     "root.ProductBrandMigration = api",
+    "root.NusaCanvasBoundaryProvider = api",
     "const brand = window.ProductBrand"
   ];
   const earlyPositions = earlyMarkers.map((marker) => projectStorage.indexOf(marker));
@@ -33,5 +34,7 @@ test("production build bundles brand modules in dependency order without adding 
   assert.match(contact, /\.\.\/assets\/js\/brand-config\.js/);
   assert.equal(fs.existsSync(path.join(root, "dist/assets/js/brand-config.js")), true);
   assert.equal(fs.existsSync(path.join(root, "dist/assets/js/brand-migration.js")), false);
+  assert.equal(fs.existsSync(path.join(root, "dist/assets/js/boundary-provider.js")), true);
+  assert.equal(fs.existsSync(path.join(root, "dist/assets/js/workspace-shell.js")), true);
   assert.equal(fs.existsSync(path.join(root, "dist/assets/js/product-content.js")), false);
 });
