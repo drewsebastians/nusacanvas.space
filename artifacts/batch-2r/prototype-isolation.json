@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "batch2r.prototype-isolation.v1",
+  "status": "pass",
+  "checkedAt": "2026-07-14T10:45:13.623Z",
+  "routes": [
+    "/design-preview/batch-2r/option-a/",
+    "/design-preview/batch-2r/option-b/",
+    "/design-preview/batch-2r/option-c/"
+  ],
+  "checks": [
+    {
+      "id": "option-a-route",
+      "status": "pass",
+      "details": "design-preview/batch-2r/option-a/index.html exists"
+    },
+    {
+      "id": "option-a-styles",
+      "status": "pass",
+      "details": "option-a/option.css exists"
+    },
+    {
+      "id": "option-a-behavior",
+      "status": "pass",
+      "details": "option-a/option.js exists"
+    },
+    {
+      "id": "option-a-language",
+      "status": "pass",
+      "details": "root document declares simple English"
+    },
+    {
+      "id": "option-a-noindex",
+      "status": "pass",
+      "details": "robots metadata contains noindex"
+    },
+    {
+      "id": "option-a-no-remote-assets",
+      "status": "pass",
+      "details": "HTML loads no remote script, style, image, or font"
+    },
+    {
+      "id": "option-b-route",
+      "status": "pass",
+      "details": "design-preview/batch-2r/option-b/index.html exists"
+    },
+    {
+      "id": "option-b-styles",
+      "status": "pass",
+      "details": "option-b/option.css exists"
+    },
+    {
+      "id": "option-b-behavior",
+      "status": "pass",
+      "details": "option-b/option.js exists"
+    },
+    {
+      "id": "option-b-language",
+      "status": "pass",
+      "details": "root document declares simple English"
+    },
+    {
+      "id": "option-b-noindex",
+      "status": "pass",
+      "details": "robots metadata contains noindex"
+    },
+    {
+      "id": "option-b-no-remote-assets",
+      "status": "pass",
+      "details": "HTML loads no remote script, style, image, or font"
+    },
+    {
+      "id": "option-c-route",
+      "status": "pass",
+      "details": "design-preview/batch-2r/option-c/index.html exists"
+    },
+    {
+      "id": "option-c-styles",
+      "status": "pass",
+      "details": "option-c/option.css exists"
+    },
+    {
+      "id": "option-c-behavior",
+      "status": "pass",
+      "details": "option-c/option.js exists"
+    },
+    {
+      "id": "option-c-language",
+      "status": "pass",
+      "details": "root document declares simple English"
+    },
+    {
+      "id": "option-c-noindex",
+      "status": "pass",
+      "details": "robots metadata contains noindex"
+    },
+    {
+      "id": "option-c-no-remote-assets",
+      "status": "pass",
+      "details": "HTML loads no remote script, style, image, or font"
+    },
+    {
+      "id": "review-index-route",
+      "status": "pass",
+      "details": "design-preview/batch-2r/index.html exists"
+    },
+    {
+      "id": "review-index-noindex",
+      "status": "pass",
+      "details": "review index robots metadata contains noindex"
+    },
+    {
+      "id": "production-reference-index-html",
+      "status": "pass",
+      "details": "index.html does not reference a prototype route"
+    },
+    {
+      "id": "production-reference-robots-txt",
+      "status": "pass",
+      "details": "robots.txt does not reference a prototype route"
+    },
+    {
+      "id": "production-reference--headers",
+      "status": "pass",
+      "details": "_headers does not reference a prototype route"
+    },
+    {
+      "id": "production-reference-wrangler-jsonc",
+      "status": "pass",
+      "details": "wrangler.jsonc does not reference a prototype route"
+    },
+    {
+      "id": "production-reference-scripts-build-js",
+      "status": "pass",
+      "details": "scripts/build.js does not reference a prototype route"
+    },
+    {
+      "id": "sitemap-exclusion",
+      "status": "pass",
+      "details": "no sitemap is present, so prototype routes cannot be listed"
+    },
+    {
+      "id": "production-build",
+      "status": "pass",
+      "details": "normal allowlisted build completed in-process"
+    },
+    {
+      "id": "production-payload-exclusion",
+      "status": "pass",
+      "details": "dist/design-preview does not exist after the normal production build"
+    }
+  ],
+  "errors": []
+}

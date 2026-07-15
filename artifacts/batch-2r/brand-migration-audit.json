@@ -1,6 +1,6 @@
 {
   "schemaVersion": "batch2r.brand-migration-audit.v1",
-  "generatedAt": "2026-07-14T08:20:42.377Z",
+  "generatedAt": "2026-07-14T10:45:29.547Z",
   "status": "passed",
   "expectedIdentity": {
     "productName": "NusaCanvas",
@@ -29,7 +29,7 @@
     "sourceDeletionAuthorized": false
   },
   "counts": {
-    "scannedFiles": 157,
+    "scannedFiles": 165,
     "failures": 0,
     "warnings": 14,
     "allowlistedReferences": 143
@@ -441,6 +441,8 @@
     "artifacts/batch-2r/current-experience-inventory.json",
     "artifacts/batch-2r/current-string-inventory.json",
     "artifacts/batch-2r/preflight.json",
+    "artifacts/batch-2r/prototype-isolation.json",
+    "artifacts/batch-2r/prototype-review.json",
     "artifacts/batch-2r/terminology-audit.json",
     "artifacts/batch-3/preflight.json",
     "assets/js/app.js",
@@ -496,6 +498,10 @@
     "docs/batch-2r/02-terminology-glossary.md",
     "docs/batch-2r/03-brand-and-storage-migration.md",
     "docs/batch-2r/03-legacy-reference-allowlist.md",
+    "docs/batch-2r/04-design-principles.md",
+    "docs/batch-2r/04-information-architecture.md",
+    "docs/batch-2r/04-pattern-research.md",
+    "docs/batch-2r/04-prototype-comparison.md",
     "docs/batch-2r/screenshots/baseline/README.md",
     "docs/batch-3/00-blockers.md",
     "docs/batch-3/00-preflight-and-contract.md",
@@ -548,12 +554,14 @@
     "scripts/serve-static.js",
     "scripts/verify-batch1.js",
     "scripts/verify-batch2r-preflight.js",
+    "scripts/verify-batch2r-prototype-isolation.js",
     "scripts/verify-staging.js",
     "scripts/wrangler-command.js",
     "sources-licenses/index.html",
     "terms/index.html",
     "tests/e2e/a11y.spec.js",
     "tests/e2e/batch2r-baseline.spec.js",
+    "tests/e2e/batch2r-prototypes.spec.js",
     "tests/e2e/brand-storage-migration.shared.js",
     "tests/e2e/smoke.spec.js",
     "tests/e2e/trust.spec.js",

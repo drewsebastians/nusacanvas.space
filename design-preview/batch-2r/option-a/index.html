@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow, noarchive">
+  <meta name="description" content="Isolated NusaCanvas Guided Rail experience prototype. Synthetic data only.">
+  <title>NusaCanvas — Guided Rail prototype</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./option.css">
+</head>
+<body data-screen="home" data-view="home" data-flow="spreadsheet" data-sheet="medium" data-drawer="closed">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" aria-label="NusaCanvas prototype header">
+    <a class="brand" href="?view=home" data-view-link="home" data-exit-workspace aria-label="NusaCanvas home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>NusaCanvas</span>
+    </a>
+    <nav class="public-nav" id="public-navigation" aria-label="Main navigation">
+      <a href="#goals">Create</a>
+      <a href="#templates">Templates</a>
+      <a href="#examples">Examples</a>
+      <a href="#guides">Guides</a>
+      <a href="#region-data">Region data</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="text-button workspace-back" type="button" data-view-target="home" data-exit-workspace>Back to home</button>
+      <button class="open-workspace" type="button" data-view-target="manual">Open workspace</button>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="public-navigation">Menu</button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="home-screen" aria-labelledby="hero-title">
+      <div class="hero-wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">Indonesia maps, made for everyday data</p>
+          <h1 id="hero-title">Turn Indonesia data into clear, presentation-ready maps.</h1>
+          <p class="hero-lede">Highlight regions, upload a spreadsheet, build sales territories, or analyze coverage — no GIS skills required.</p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#goals">Create a map</a>
+            <button class="secondary-action" type="button" data-view-target="add" data-sample="true">Try a sample</button>
+          </div>
+          <ul class="trust-strip" aria-label="NusaCanvas trust points">
+            <li><span aria-hidden="true">✓</span> Works in your browser</li>
+            <li><span aria-hidden="true">✓</span> No account required</li>
+            <li><span aria-hidden="true">✓</span> Your spreadsheet stays on your device</li>
+          </ul>
+        </div>
+        <div class="hero-preview" aria-label="Example sales map of Indonesia">
+          <div class="preview-bar">
+            <span class="preview-dot"></span>
+            <span>Quarterly performance</span>
+            <span class="preview-badge">Ready</span>
+          </div>
+          <svg class="hero-map" viewBox="0 0 720 330" role="img" aria-labelledby="hero-map-title hero-map-desc">
+            <title id="hero-map-title">Synthetic color-coded map of Indonesia</title>
+            <desc id="hero-map-desc">A presentation preview with several Indonesian island groups shaded in teal, blue, amber, and light gray.</desc>
+            <g class="map-grid" aria-hidden="true">
+              <path d="M20 60H700M20 130H700M20 200H700M20 270H700M110 20V310M250 20V310M390 20V310M530 20V310M670 20V310" />
+            </g>
+            <g class="archipelago demo-map-shapes" aria-hidden="true">
+              <path class="fill-blue" d="M58 143l28-29 41-8 44 20 38 29 30 43-12 27-47-8-33-30-48-11-32-16z" />
+              <path class="fill-teal" d="M241 197l62 3 50 9 65-2 55 10-9 15-58 3-47-6-52 6-61-12z" />
+              <path class="fill-amber" d="M311 105l37-18 43 12 15 29-24 18 8 33-37-8-20-27-28 14-16-22z" />
+              <path class="fill-dark" d="M421 109l25-26 19 12 16-14 24 19-9 24 26 12-15 28-27-10-16 17-26-18 14-20z" />
+              <path class="fill-soft" d="M526 171l47-23 78 10 42 26-18 34-49 1-31-20-55 7-29-16z" />
+              <path class="fill-teal" d="M471 246l19 1 11 12-14 13-21-8zM510 256l17-2 8 13-16 8zM549 255l19 5-3 13-18-3z" />
+            </g>
+          </svg>
+          <div class="preview-legend" aria-hidden="true">
+            <span><i class="legend-dot teal"></i> Above target</span>
+            <span><i class="legend-dot blue"></i> On target</span>
+            <span><i class="legend-dot amber"></i> Review</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="goal-section" id="goals" aria-labelledby="goal-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Start with your outcome</p>
+            <h2 id="goal-title">What do you want to map?</h2>
+          </div>
+          <p>Choose a task. NusaCanvas shows only the steps you need.</p>
+        </div>
+        <div class="goal-grid">
+          <article class="goal-card active-goal">
+            <div class="goal-number" aria-hidden="true">01</div>
+            <div>
+              <h3>Highlight regions</h3>
+              <p>Pick provinces or regencies and give each group a clear color.</p>
+            </div>
+            <button type="button" class="card-action" data-view-target="manual">Highlight regions <span aria-hidden="true">→</span></button>
+          </article>
+          <article class="goal-card active-goal">
+            <div class="goal-number" aria-hidden="true">02</div>
+            <div>
+              <h3>Map spreadsheet data</h3>
+              <p>Paste or upload a table, match place names, and style the result.</p>
+            </div>
+            <button type="button" class="card-action" data-view-target="add">Map spreadsheet data <span aria-hidden="true">→</span></button>
+          </article>
+          <article class="goal-card future-goal">
+            <div class="goal-number" aria-hidden="true">03</div>
+            <div>
+              <div class="goal-title-row"><h3>Build sales territories</h3><span class="coming-badge">Coming later</span></div>
+              <p>Create balanced groups of regions for teams and account planning.</p>
+            </div>
+            <button type="button" class="card-action muted-action" data-future="territories">Preview what is planned</button>
+          </article>
+          <article class="goal-card future-goal">
+            <div class="goal-number" aria-hidden="true">04</div>
+            <div>
+              <div class="goal-title-row"><h3>Analyze coverage</h3><span class="coming-badge">Coming later</span></div>
+              <p>Compare coverage, spot gaps, and review regional performance.</p>
+            </div>
+            <button type="button" class="card-action muted-action" data-future="coverage">Preview what is planned</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="proof-section" id="region-data" aria-labelledby="proof-title">
+        <div>
+          <p class="eyebrow">Know what you are using</p>
+          <h2 id="proof-title">Indonesia region data with a clear source and version.</h2>
+        </div>
+        <dl class="proof-list">
+          <div><dt>Processing</dt><dd>Local to this browser</dd></div>
+          <div><dt>Region level</dt><dd>Provinces and regencies</dd></div>
+          <div><dt>Data details</dt><dd>Source, date, and limits shown</dd></div>
+        </dl>
+      </section>
+    </section>
+
+    <section class="workspace-screen" aria-label="Guided map workspace">
+      <div class="workspace-shell">
+        <aside class="workflow-rail" aria-label="Workflow steps">
+          <div class="sheet-grabber" aria-hidden="true"></div>
+          <div class="rail-topline">
+            <div>
+              <span class="project-label">Project</span>
+              <button class="project-name" type="button" aria-label="Rename project">Quarterly coverage <span aria-hidden="true">✎</span></button>
+            </div>
+            <span class="save-state" data-save-status role="status"><span aria-hidden="true">•</span> Prototype · no changes</span>
+          </div>
+
+          <ol class="step-indicator spreadsheet-steps" aria-label="Spreadsheet map progress">
+            <li data-step="add"><button type="button" data-view-target="add"><span>1</span>Add data</button></li>
+            <li data-step="match"><button type="button" data-view-target="match"><span>2</span>Match regions</button></li>
+            <li data-step="design"><button type="button" data-view-target="design"><span>3</span>Design map</button></li>
+            <li data-step="export"><button type="button" data-view-target="export"><span>4</span>Export</button></li>
+          </ol>
+
+          <div class="manual-flow" data-panel="manual" data-current-task="manual">
+            <div class="panel-heading">
+              <button type="button" class="back-link" data-view-target="home" data-exit-workspace><span aria-hidden="true">←</span> Change goal</button>
+              <p class="step-kicker">Highlight regions</p>
+              <h1>Choose regions to highlight</h1>
+              <p>Search or pick from the list. Selected regions appear on the map right away.</p>
+            </div>
+            <label class="field-label" for="region-search">Find a province or regency</label>
+            <div class="search-field">
+              <span aria-hidden="true">⌕</span>
+              <input id="region-search" type="search" placeholder="Try Jawa Barat">
+            </div>
+            <fieldset class="region-choice-list">
+              <legend class="sr-only">Suggested regions</legend>
+              <label><input type="checkbox" checked data-region="Jawa Barat"><span class="choice-swatch teal"></span><span><strong>Jawa Barat</strong><small>Province</small></span></label>
+              <label><input type="checkbox" checked data-region="DKI Jakarta"><span class="choice-swatch blue"></span><span><strong>DKI Jakarta</strong><small>Province</small></span></label>
+              <label><input type="checkbox" data-region="Banten"><span class="choice-swatch amber"></span><span><strong>Banten</strong><small>Province</small></span></label>
+              <label><input type="checkbox" data-region="Jawa Tengah"><span class="choice-swatch violet"></span><span><strong>Jawa Tengah</strong><small>Province</small></span></label>
+            </fieldset>
+            <div class="selection-summary" aria-live="polite"><strong id="selection-count">2 regions</strong> selected</div>
+            <button class="primary-action full-action" type="button" data-view-target="design" data-flow-target="manual">Style highlighted regions</button>
+          </div>
+
+          <div class="step-panel" data-panel="add" data-current-task="add">
+            <div class="panel-heading">
+              <p class="step-kicker">Step 1 of 4</p>
+              <h1>Add your data</h1>
+              <p>Use a spreadsheet with one region column and one or more value columns.</p>
+            </div>
+            <div class="input-tabs" role="tablist" aria-label="Ways to add data">
+              <button role="tab" type="button" aria-selected="true" data-input-tab="paste">Paste</button>
+              <button role="tab" type="button" aria-selected="false" data-input-tab="upload">Upload file</button>
+            </div>
+            <div class="input-tab-panel" data-input-panel="paste">
+              <label class="field-label" for="paste-data">Paste rows from your spreadsheet</label>
+              <textarea id="paste-data" rows="8" spellcheck="false">Region\tSales
+Jawa Barat\t284
+DKI Jakarta\t361
+Kab. Bandung\t128
+Kota Semrang\t94</textarea>
+              <p class="field-help">The first row should contain column names.</p>
+            </div>
+            <div class="input-tab-panel" data-input-panel="upload" hidden>
+              <label class="upload-zone" for="spreadsheet-file">
+                <span class="upload-icon" aria-hidden="true">↑</span>
+                <strong>Choose a CSV or XLSX file</strong>
+                <span>or drop it here · up to 10 MB</span>
+              </label>
+              <input class="sr-only" id="spreadsheet-file" type="file" accept=".csv,.xlsx,.xls">
+            </div>
+            <div class="basic-options" data-basic-options>
+              <section class="column-confirmation" data-column-confirmation aria-labelledby="column-confirmation-title">
+                <div class="column-confirmation-heading">
+                  <span class="confirmation-mark" aria-hidden="true">✓</span>
+                  <div><strong id="column-confirmation-title">Columns detected</strong><small>Confirm what NusaCanvas should use.</small></div>
+                  <button type="button" data-column-edit aria-expanded="false" aria-controls="column-mapping-editor">Change</button>
+                </div>
+                <dl class="column-summary">
+                  <div><dt>Region names</dt><dd>Region</dd></div>
+                  <div><dt>Map values</dt><dd>Sales</dd></div>
+                </dl>
+                <div class="column-mapping-editor" id="column-mapping-editor" hidden>
+                  <label for="region-column">Region names column
+                    <select id="region-column"><option selected>Region</option><option>Sales</option><option>Do not use</option></select>
+                  </label>
+                  <label for="value-column">Map values column
+                    <select id="value-column"><option>Region</option><option selected>Sales</option><option>Do not use</option></select>
+                  </label>
+                </div>
+              </section>
+            </div>
+            <details class="advanced-options" data-advanced-options>
+              <summary><span>Advanced import options</span><small>Optional</small></summary>
+              <div class="advanced-options-body">
+                <label><input type="checkbox" checked> First row contains column names</label>
+                <label for="empty-values">Rows without values
+                  <select id="empty-values"><option>Keep as no data</option><option>Set to zero</option><option>Skip the row</option></select>
+                </label>
+              </div>
+            </details>
+            <div class="privacy-note">
+              <span class="privacy-icon" aria-hidden="true">▣</span>
+              <p><strong>Your data stays on this device.</strong><br>NusaCanvas reads it in your browser. Nothing is uploaded.</p>
+            </div>
+            <button class="primary-action full-action" type="button" data-view-target="match">Match 4 rows</button>
+          </div>
+
+          <div class="step-panel" data-panel="match" data-current-task="match">
+            <div class="panel-heading">
+              <p class="step-kicker">Step 2 of 4</p>
+              <h1>Match region names</h1>
+              <p>We matched 2 of 4 rows. Review the two names that need attention.</p>
+            </div>
+            <div class="status-summary warning-summary" role="status">
+              <span class="summary-number" id="unmatched-count">2</span>
+              <span><strong>rows need a match</strong><small>Your original data will not be changed.</small></span>
+            </div>
+            <div class="match-list" aria-label="Rows needing a region match">
+              <article class="match-item" data-match-row>
+                <div><span class="row-label">Your value</span><strong>Kab. Bandung</strong></div>
+                <label>Match to
+                  <select data-match-select>
+                    <option value="">Choose a region</option>
+                    <option value="3204">Kabupaten Bandung</option>
+                    <option value="3273">Kota Bandung</option>
+                  </select>
+                </label>
+                <button class="suggestion-button" type="button" data-match-suggestion="3204">Use suggested: Kabupaten Bandung</button>
+              </article>
+              <article class="match-item" data-match-row>
+                <div><span class="row-label">Your value</span><strong>Kota Semrang</strong></div>
+                <label>Match to
+                  <select data-match-select>
+                    <option value="">Choose a region</option>
+                    <option value="3374">Kota Semarang</option>
+                    <option value="3322">Kabupaten Semarang</option>
+                  </select>
+                </label>
+                <button class="suggestion-button" type="button" data-match-suggestion="3374">Use suggested: Kota Semarang</button>
+              </article>
+            </div>
+            <button class="primary-action full-action" id="continue-design" type="button" data-view-target="design" disabled>Review map design</button>
+          </div>
+
+          <div class="step-panel" data-panel="design" data-current-task="design">
+            <div class="panel-heading">
+              <p class="step-kicker design-step-label"><span class="spreadsheet-flow-copy">Step 3 of 4</span><span class="manual-flow-copy">Highlight regions · Style</span></p>
+              <h1>Design your map</h1>
+              <p>Choose how values look. Select a region on the map for local changes.</p>
+            </div>
+            <fieldset class="control-group">
+              <legend>Color scale</legend>
+              <div class="palette-list">
+                <label><input type="radio" name="palette" checked><span class="palette-preview teal-palette"><i></i><i></i><i></i><i></i></span><span>Ocean</span></label>
+                <label><input type="radio" name="palette"><span class="palette-preview blue-palette"><i></i><i></i><i></i><i></i></span><span>Blue</span></label>
+                <label><input type="radio" name="palette"><span class="palette-preview warm-palette"><i></i><i></i><i></i><i></i></span><span>Warm</span></label>
+              </div>
+            </fieldset>
+            <label class="select-label">Labels
+              <select><option>Region name and value</option><option>Region name only</option><option>Hide labels</option></select>
+            </label>
+            <label class="range-label" for="boundary-weight"><span>Boundary weight</span><output>1.5 px</output></label>
+            <input id="boundary-weight" type="range" min="1" max="4" step=".5" value="1.5">
+            <button class="secondary-action full-action inspector-trigger" type="button" aria-expanded="false" aria-controls="map-inspector">Edit selected region</button>
+            <button class="primary-action full-action" type="button" data-view-target="export">Continue to export</button>
+          </div>
+
+          <div class="step-panel export-panel" data-panel="export" data-current-task="export">
+            <div class="success-mark" aria-hidden="true">✓</div>
+            <p class="step-kicker"><span class="spreadsheet-flow-copy">Step 4 of 4</span><span class="manual-flow-copy">Highlight regions · Export</span></p>
+            <h1>Your map is ready</h1>
+            <p>Export a clean image for a report, slide, or document.</p>
+            <div class="export-card">
+              <div class="export-thumb" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div><strong>Quarterly coverage</strong><small>1600 × 900 · PNG</small></div>
+            </div>
+            <fieldset class="export-size">
+              <legend>Image size</legend>
+              <label><input type="radio" name="size" checked> Presentation (16:9)</label>
+              <label><input type="radio" name="size"> Document (4:3)</label>
+            </fieldset>
+            <button class="primary-action full-action" type="button" data-download>Download PNG</button>
+            <div class="next-suggestion spreadsheet-next">
+              <span class="next-label">Continue exploring</span>
+              <h2>Try highlighting a custom set of regions</h2>
+              <p>Create a simple focus map without a spreadsheet.</p>
+              <button type="button" class="text-link" data-view-target="manual">Highlight regions <span aria-hidden="true">→</span></button>
+            </div>
+            <div class="next-suggestion manual-next">
+              <span class="next-label">Continue exploring</span>
+              <h2>Map values from a spreadsheet</h2>
+              <p>Turn a region-and-value table into a presentation-ready map.</p>
+              <button type="button" class="text-link" data-view-target="add" data-flow-target="spreadsheet">Map spreadsheet data <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+
+          <div class="step-panel system-panel" data-panel="loading" data-current-task="loading" aria-live="polite">
+            <div class="loading-ring" aria-hidden="true"></div>
+            <p class="step-kicker">Preparing preview</p>
+            <h1>Reading your spreadsheet</h1>
+            <p>Checking column names and finding Indonesia regions. This usually takes a few seconds.</p>
+            <div class="skeleton-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+            <button class="secondary-action full-action" type="button" data-view-target="add">Cancel and return</button>
+          </div>
+
+          <div class="step-panel system-panel" data-panel="error" data-current-task="error">
+            <div class="error-mark" aria-hidden="true">!</div>
+            <p class="step-kicker error-kicker">File not opened</p>
+            <h1>We could not read that file</h1>
+            <p>The file may be password-protected or use an unsupported format. Your original file was not changed.</p>
+            <div class="error-help" role="alert"><strong>Try this</strong><ul><li>Save it as CSV or XLSX.</li><li>Remove spreadsheet passwords.</li><li>Keep the file under 10 MB.</li></ul></div>
+            <button class="primary-action full-action" type="button" data-view-target="add">Choose another file</button>
+            <button class="text-link" type="button" data-view-target="add">Paste data instead</button>
+          </div>
+
+          <div class="mobile-sheet-controls" aria-label="Panel size">
+            <button type="button" data-sheet-target="collapsed">Map</button>
+            <button type="button" data-sheet-target="medium">Steps</button>
+            <button type="button" data-sheet-target="expanded">Full</button>
+          </div>
+        </aside>
+
+        <section class="map-stage" aria-labelledby="map-title">
+          <div class="map-toolbar">
+            <div><span class="map-context">Preview</span><h2 id="map-title">Quarterly coverage</h2></div>
+            <div class="map-toolbar-actions">
+              <button type="button" data-drawer-toggle data-drawer-trigger aria-expanded="false" aria-controls="data-drawer">Data &amp; issues <span class="issue-count">2</span></button>
+              <button type="button" class="preview-menu-button" aria-label="Open preview state menu" aria-expanded="false">Preview states</button>
+            </div>
+          </div>
+          <div class="preview-state-menu" hidden>
+            <span>Prototype state</span>
+            <button type="button" data-view-target="loading">Loading example</button>
+            <button type="button" data-view-target="error">Error example</button>
+          </div>
+
+          <div class="map-canvas" data-map-canvas tabindex="-1">
+            <svg class="workspace-map" viewBox="0 0 1100 650" role="group" aria-labelledby="workspace-map-title workspace-map-desc">
+              <title id="workspace-map-title">Synthetic Indonesia data map</title>
+              <desc id="workspace-map-desc">An illustrative, non-geographic stand-in map with colored island groups and linked data labels.</desc>
+              <g class="workspace-grid" aria-hidden="true">
+                <path d="M0 80H1100M0 180H1100M0 280H1100M0 380H1100M0 480H1100M0 580H1100M100 0V650M250 0V650M400 0V650M550 0V650M700 0V650M850 0V650M1000 0V650" />
+              </g>
+              <g class="demo-map-shapes workspace-shapes">
+                <path tabindex="0" role="button" aria-label="Sumatra, value 162" data-region-path="Sumatra" data-map-region="Sumatra" class="fill-blue" d="M86 264l32-52 54-35 65 11 72 58 35 74-16 54-52-14-47-52-58-17-64 10-39-22z" />
+                <path tabindex="0" role="button" aria-label="Jawa Barat, value 284" data-region-path="Jawa Barat" data-map-region="Jawa Barat" class="fill-teal selected-region" d="M338 384l84-8 86 12 89-8 105 22-15 35-104 5-78-18-77 17-84-17-35-17z" />
+                <path tabindex="0" role="button" aria-label="DKI Jakarta, value 361" data-region-path="DKI Jakarta" data-map-region="DKI Jakarta" class="fill-dark" d="M527 387l18 2 8 13-17 11-18-10z" />
+                <path tabindex="0" role="button" aria-label="Kalimantan, value 218" data-region-path="Kalimantan" data-map-region="Kalimantan" class="fill-teal-mid" d="M399 170l73-44 86 25 29 64-40 50 14 58-78-11-36-50-69 25-31-64z" />
+                <path tabindex="0" role="button" aria-label="Sulawesi, value 128" data-region-path="Sulawesi" data-map-region="Sulawesi" class="fill-amber" d="M627 180l42-63 41 27 38-25 38 42-25 53 59 29-27 61-55-21-35 43-52-35 35-61z" />
+                <path tabindex="0" role="button" aria-label="Papua, value 94" data-region-path="Papua" data-map-region="Papua" class="fill-soft" d="M820 296l80-55 113 11 69 48-22 75-89 13-69-42-88 17-55-39z" />
+                <path tabindex="0" role="button" aria-label="Bali and Nusa Tenggara, value 137" data-region-path="Nusa Tenggara" data-map-region="Nusa Tenggara" class="fill-blue" d="M697 464l31 2 21 24-28 25-37-17zM759 480l37-3 18 23-26 20-38-14zM829 480l36 12-9 29-36-9z" />
+              </g>
+              <g class="map-labels" aria-hidden="true">
+                <g transform="translate(197 277)"><rect x="-47" y="-20" width="94" height="42" rx="5"></rect><text y="-3">SUMATRA</text><text y="14" class="value-label">162</text></g>
+                <g transform="translate(508 405)"><rect x="-43" y="-20" width="86" height="42" rx="5"></rect><text y="-3">JAVA</text><text y="14" class="value-label">284</text></g>
+                <g transform="translate(480 221)"><rect x="-58" y="-20" width="116" height="42" rx="5"></rect><text y="-3">KALIMANTAN</text><text y="14" class="value-label">218</text></g>
+                <g transform="translate(685 224)"><rect x="-48" y="-20" width="96" height="42" rx="5"></rect><text y="-3">SULAWESI</text><text y="14" class="value-label">128</text></g>
+                <g transform="translate(939 310)"><rect x="-41" y="-20" width="82" height="42" rx="5"></rect><text y="-3">PAPUA</text><text y="14" class="value-label">94</text></g>
+              </g>
+            </svg>
+            <div class="map-legend" aria-label="Map legend">
+              <strong>Sales</strong>
+              <span><i style="--legend-color:#d7efeb"></i> 0–99</span>
+              <span><i style="--legend-color:#77c7ba"></i> 100–199</span>
+              <span><i style="--legend-color:#087f73"></i> 200–299</span>
+              <span><i style="--legend-color:#07564f"></i> 300+</span>
+            </div>
+            <div class="map-controls" aria-label="Map controls">
+              <button type="button" aria-label="Zoom in">+</button>
+              <button type="button" aria-label="Zoom out">−</button>
+              <button type="button" aria-label="Fit map">Fit</button>
+            </div>
+            <p class="synthetic-note">Synthetic preview · not for geographic reference</p>
+          </div>
+
+          <aside class="map-inspector" id="map-inspector" aria-label="Selected region settings" hidden>
+            <div class="inspector-heading"><div><span>Selected region</span><h3 tabindex="-1">Jawa Barat</h3></div><button type="button" class="inspector-close" aria-label="Close region settings">×</button></div>
+            <label>Fill color <span class="color-input"><input type="color" value="#087f73"><code>#087F73</code></span></label>
+            <label>Display label <select><option>Jawa Barat · 284</option><option>Jawa Barat</option><option>284</option></select></label>
+            <button type="button" class="text-link">Reset to scale color</button>
+          </aside>
+
+          <section class="data-drawer" id="data-drawer" data-drawer-panel aria-label="Linked data and issues">
+            <div class="drawer-heading">
+              <div><span class="drawer-handle" aria-hidden="true"></span><strong>Data &amp; issues</strong><span class="drawer-meta">4 rows · 2 need attention</span></div>
+              <button type="button" data-drawer-toggle data-drawer-close aria-expanded="false"><span class="drawer-open-label">Open table</span><span class="drawer-close-label">Close table</span></button>
+            </div>
+            <div class="drawer-body">
+              <div class="drawer-tabs" role="tablist" aria-label="Data drawer view">
+                <button role="tab" type="button" aria-selected="true">All data <span>4</span></button>
+                <button role="tab" type="button" aria-selected="false">Needs attention <span>2</span></button>
+              </div>
+              <div class="table-scroll" tabindex="0" aria-label="Spreadsheet preview, scrollable">
+                <table>
+                  <thead><tr><th scope="col">Row</th><th scope="col">Region</th><th scope="col">Sales</th><th scope="col">Match</th></tr></thead>
+                  <tbody>
+                    <tr data-table-region="Jawa Barat"><td>1</td><th scope="row"><button type="button" class="region-row-link" data-region-row="Jawa Barat" data-map-target="Jawa Barat">Jawa Barat</button></th><td>284</td><td><span class="status-pill matched">Matched</span></td></tr>
+                    <tr data-table-region="DKI Jakarta"><td>2</td><th scope="row"><button type="button" class="region-row-link" data-region-row="DKI Jakarta" data-map-target="DKI Jakarta">DKI Jakarta</button></th><td>361</td><td><span class="status-pill matched">Matched</span></td></tr>
+                    <tr class="issue-row"><td>3</td><th scope="row">Kab. Bandung</th><td>128</td><td><button type="button" data-view-target="match">Fix match</button></td></tr>
+                    <tr class="issue-row"><td>4</td><th scope="row">Kota Semrang</th><td>94</td><td><button type="button" data-view-target="match">Fix match</button></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="future-dialog" id="future-dialog" aria-labelledby="future-title">
+    <button class="dialog-close" type="button" aria-label="Close">×</button>
+    <span class="coming-badge">Coming later</span>
+    <h2 id="future-title">Sales territories are planned, not available yet.</h2>
+    <p id="future-description">This prototype shows where the future workflow could be discovered. It does not run a territory or coverage engine.</p>
+    <button class="primary-action" type="button" data-view-target="add">Map spreadsheet data now</button>
+  </dialog>
+
+  <dialog class="unsaved-dialog" id="unsaved-dialog" data-unsaved-dialog aria-labelledby="unsaved-title">
+    <h2 id="unsaved-title">Leave this map?</h2>
+    <p>Your recent prototype changes have not been exported. A local draft would normally protect this work.</p>
+    <div class="dialog-actions">
+      <button class="secondary-action" type="button" data-stay>Stay here</button>
+      <button class="danger-action" type="button" data-leave>Leave without exporting</button>
+    </div>
+  </dialog>
+
+  <div class="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+  <script src="./option.js"></script>
+</body>
+</html>

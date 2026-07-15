@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" role="img" aria-labelledby="title desc">
+  <title id="title">Synthetic colored map of Indonesia</title>
+  <desc id="desc">An abstract, non-authoritative archipelago graphic using purple, amber, and gray data colors.</desc>
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#dbe1e9" stroke-width="1"/></pattern>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#26334d" flood-opacity=".08"/></filter>
+  </defs>
+  <rect width="960" height="500" rx="28" fill="#eef2f5"/>
+  <rect width="960" height="500" rx="28" fill="url(#grid)" opacity=".7"/>
+  <g stroke="#fff" stroke-width="4" stroke-linejoin="round" filter="url(#soft)">
+    <path d="M115 110c28-20 56-15 70 9 20 34 25 70 45 105 16 28 25 55 14 78-12 25-37 12-49-6-21-31-37-69-61-99-18-23-47-67-19-87Z" fill="#8073cf"/>
+    <path d="M195 287c31-5 62 4 93 8 50 7 99 7 144 17 13 3 15 16 5 23-26 17-81 11-116 7-45-5-93-11-129-33-9-6-7-20 3-22Z" fill="#5146a5"/>
+    <path d="M297 116c36-23 101-31 134-4 23 19 22 53 12 80-9 25-31 49-59 56-35 9-80-1-103-29-26-32-17-82 16-103Z" fill="#d99a2b"/>
+    <path d="M424 105c15-12 36-3 41 14 3 11-4 25-17 25-20 1-38-25-24-39Z" fill="#8073cf"/>
+    <path d="M486 125c18-23 48-15 54 11 4 17-7 32-8 48-2 19 13 29 24 42 10 12 4 31-11 36-20 7-38-12-42-31-3-16 4-34-5-49-10-16-26-38-12-57Z" fill="#5146a5"/>
+    <path d="M533 174c18-6 45 1 50 21 4 16-12 24-25 19-18-6-41-33-25-40Z" fill="#8073cf"/>
+    <path d="M492 263c13-12 38-9 45 8 7 18-12 35-29 29-16-5-29-25-16-37Z" fill="#d99a2b"/>
+    <path d="M454 342c17-12 39-6 55-1 12 4 22 13 12 24-13 14-48 11-65 2-11-6-12-17-2-25Z" fill="#8073cf"/>
+    <path d="M536 353c10-8 25-4 30 7 4 10-5 20-15 19-14-1-27-16-15-26Z" fill="#5146a5"/>
+    <path d="M579 357c10-8 25-3 29 8 4 10-6 18-15 17-13-1-25-15-14-25Z" fill="#d99a2b"/>
+    <path d="M621 354c13-9 32-3 37 10 5 13-8 23-20 22-17-1-30-21-17-32Z" fill="#8073cf"/>
+    <path d="M666 350c13-8 31-2 34 12 3 13-12 19-23 15-13-4-24-19-11-27Z" fill="#d8dde8"/>
+    <path d="M708 152c20-9 48 1 51 23 2 17-17 27-32 20-17-7-38-34-19-43Z" fill="#d99a2b"/>
+    <path d="M753 229c15-12 41-7 46 12 4 16-12 29-27 25-18-4-34-24-19-37Z" fill="#8073cf"/>
+    <path d="M801 115c39-15 89-1 103 38 13 36-9 70-1 104 6 24 21 50 8 73-13 22-44 18-62 4-27-22-37-57-45-90-11-44-45-110-3-129Z" fill="#5146a5"/>
+    <path d="M864 341c18-9 40 1 40 18 0 15-17 23-31 17-14-6-25-27-9-35Z" fill="#d8dde8"/>
+  </g>
+  <g fill="#37415a" font-family="system-ui,sans-serif" font-size="14" font-weight="650" opacity=".72">
+    <text x="125" y="93">SUMATRA</text><text x="282" y="371">JAVA</text><text x="337" y="95">KALIMANTAN</text><text x="480" y="107">SULAWESI</text><text x="822" y="99">PAPUA</text>
+  </g>
+</svg>

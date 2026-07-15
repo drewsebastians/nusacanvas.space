@@ -1,0 +1,1109 @@
+{
+  "schemaVersion": "batch2r.prototype-review.v1",
+  "status": "pass",
+  "generatedAt": "2026-07-14T10:41:52.711Z",
+  "prerequisiteCommit": "1628498",
+  "scope": "Isolated coded design prototypes; production workspace and Batch 3 runtime unchanged.",
+  "routes": [
+    "/design-preview/batch-2r/option-a/",
+    "/design-preview/batch-2r/option-b/",
+    "/design-preview/batch-2r/option-c/"
+  ],
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile": {
+      "width": 393,
+      "height": 851
+    },
+    "reflow": {
+      "width": 320,
+      "height": 800
+    }
+  },
+  "isolation": {
+    "schemaVersion": "batch2r.prototype-isolation.v1",
+    "status": "pass",
+    "checkedAt": "2026-07-14T10:41:52.688Z",
+    "routes": [
+      "/design-preview/batch-2r/option-a/",
+      "/design-preview/batch-2r/option-b/",
+      "/design-preview/batch-2r/option-c/"
+    ],
+    "checks": [
+      {
+        "id": "option-a-route",
+        "status": "pass",
+        "details": "design-preview/batch-2r/option-a/index.html exists"
+      },
+      {
+        "id": "option-a-styles",
+        "status": "pass",
+        "details": "option-a/option.css exists"
+      },
+      {
+        "id": "option-a-behavior",
+        "status": "pass",
+        "details": "option-a/option.js exists"
+      },
+      {
+        "id": "option-a-language",
+        "status": "pass",
+        "details": "root document declares simple English"
+      },
+      {
+        "id": "option-a-noindex",
+        "status": "pass",
+        "details": "robots metadata contains noindex"
+      },
+      {
+        "id": "option-a-no-remote-assets",
+        "status": "pass",
+        "details": "HTML loads no remote script, style, image, or font"
+      },
+      {
+        "id": "option-b-route",
+        "status": "pass",
+        "details": "design-preview/batch-2r/option-b/index.html exists"
+      },
+      {
+        "id": "option-b-styles",
+        "status": "pass",
+        "details": "option-b/option.css exists"
+      },
+      {
+        "id": "option-b-behavior",
+        "status": "pass",
+        "details": "option-b/option.js exists"
+      },
+      {
+        "id": "option-b-language",
+        "status": "pass",
+        "details": "root document declares simple English"
+      },
+      {
+        "id": "option-b-noindex",
+        "status": "pass",
+        "details": "robots metadata contains noindex"
+      },
+      {
+        "id": "option-b-no-remote-assets",
+        "status": "pass",
+        "details": "HTML loads no remote script, style, image, or font"
+      },
+      {
+        "id": "option-c-route",
+        "status": "pass",
+        "details": "design-preview/batch-2r/option-c/index.html exists"
+      },
+      {
+        "id": "option-c-styles",
+        "status": "pass",
+        "details": "option-c/option.css exists"
+      },
+      {
+        "id": "option-c-behavior",
+        "status": "pass",
+        "details": "option-c/option.js exists"
+      },
+      {
+        "id": "option-c-language",
+        "status": "pass",
+        "details": "root document declares simple English"
+      },
+      {
+        "id": "option-c-noindex",
+        "status": "pass",
+        "details": "robots metadata contains noindex"
+      },
+      {
+        "id": "option-c-no-remote-assets",
+        "status": "pass",
+        "details": "HTML loads no remote script, style, image, or font"
+      },
+      {
+        "id": "review-index-route",
+        "status": "pass",
+        "details": "design-preview/batch-2r/index.html exists"
+      },
+      {
+        "id": "review-index-noindex",
+        "status": "pass",
+        "details": "review index robots metadata contains noindex"
+      },
+      {
+        "id": "production-reference-index-html",
+        "status": "pass",
+        "details": "index.html does not reference a prototype route"
+      },
+      {
+        "id": "production-reference-robots-txt",
+        "status": "pass",
+        "details": "robots.txt does not reference a prototype route"
+      },
+      {
+        "id": "production-reference--headers",
+        "status": "pass",
+        "details": "_headers does not reference a prototype route"
+      },
+      {
+        "id": "production-reference-wrangler-jsonc",
+        "status": "pass",
+        "details": "wrangler.jsonc does not reference a prototype route"
+      },
+      {
+        "id": "production-reference-scripts-build-js",
+        "status": "pass",
+        "details": "scripts/build.js does not reference a prototype route"
+      },
+      {
+        "id": "sitemap-exclusion",
+        "status": "pass",
+        "details": "no sitemap is present, so prototype routes cannot be listed"
+      },
+      {
+        "id": "production-build",
+        "status": "pass",
+        "details": "normal allowlisted build completed in-process"
+      },
+      {
+        "id": "production-payload-exclusion",
+        "status": "pass",
+        "details": "dist/design-preview does not exist after the normal production build"
+      }
+    ],
+    "errors": []
+  },
+  "options": [
+    {
+      "id": "option-a",
+      "name": "Guided Rail",
+      "route": "/design-preview/batch-2r/option-a/",
+      "checkedStates": [
+        "home",
+        "manual",
+        "add",
+        "match",
+        "design",
+        "export",
+        "loading",
+        "error"
+      ],
+      "screenshots": [
+        {
+          "state": "home",
+          "viewport": "desktop",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-a/home-desktop-1440.png"
+        },
+        {
+          "state": "match",
+          "viewport": "desktop",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-a/workspace-match-desktop-1440.png"
+        },
+        {
+          "state": "visible-focus",
+          "viewport": "desktop",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-a/visible-focus-desktop-1440.png"
+        },
+        {
+          "state": "home",
+          "viewport": "mobile",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-a/home-mobile-393.png"
+        },
+        {
+          "state": "match-medium",
+          "viewport": "mobile",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-a/workspace-match-mobile-393.png"
+        },
+        {
+          "state": "data-view",
+          "viewport": "mobile",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-a/workspace-data-mobile-393.png"
+        }
+      ],
+      "axe": [
+        {
+          "viewport": "desktop",
+          "state": "home",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "manual",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "add",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "match",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "design",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "export",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "loading",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "error",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "home",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-collapsed",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-medium",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-expanded",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "data-view",
+          "violations": []
+        }
+      ],
+      "overflow": [
+        {
+          "viewport": "desktop",
+          "state": "home",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "manual",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "add",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "match",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "design",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "export",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "loading",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "error",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "home",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-collapsed",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-medium",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-expanded",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "data-view",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "reflow-320",
+          "state": "home",
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "bodyScrollWidth": 320,
+          "pass": true
+        },
+        {
+          "viewport": "reflow-320",
+          "state": "match",
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "bodyScrollWidth": 320,
+          "pass": true
+        }
+      ],
+      "keyboard": {
+        "workspaceDomOrder": {
+          "taskFound": true,
+          "mapFound": true,
+          "drawerFound": true,
+          "taskBeforeMap": true,
+          "mapBeforeDrawer": true
+        },
+        "drawerEscapeRestoredFocus": true,
+        "mapTableLinkedBothWays": "Jawa Barat",
+        "manualContextPreserved": true,
+        "firstTab": {
+          "text": "Skip to main content",
+          "label": ""
+        },
+        "sampleActivated": true
+      },
+      "mobile": {
+        "safeAreaHandling": true,
+        "sheetStates": [
+          {
+            "state": "collapsed",
+            "overflow": true,
+            "mapControlReachable": true,
+            "fullStepSheetOwnsViewport": false
+          },
+          {
+            "state": "medium",
+            "overflow": true,
+            "mapControlReachable": true,
+            "fullStepSheetOwnsViewport": false
+          },
+          {
+            "state": "expanded",
+            "overflow": true,
+            "mapControlReachable": false,
+            "fullStepSheetOwnsViewport": true
+          }
+        ],
+        "drawerBackPrecedence": true,
+        "browserBackRestoresPriorStep": true,
+        "unsavedGuard": true
+      },
+      "contrast": [
+        {
+          "pair": "primary-action-text",
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(6, 118, 108)",
+          "ratio": 5.5,
+          "threshold": 4.5,
+          "status": "pass"
+        },
+        {
+          "pair": "visible-focus-indicator",
+          "colors": [
+            "rgb(7, 93, 204)"
+          ],
+          "adjacentBackground": "rgb(255, 255, 255)",
+          "bestRatio": 6.09,
+          "thickness": "3px",
+          "threshold": 3,
+          "status": "pass"
+        }
+      ],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "status": "pass"
+    },
+    {
+      "id": "option-b",
+      "name": "Canvas Command",
+      "route": "/design-preview/batch-2r/option-b/",
+      "checkedStates": [
+        "home",
+        "manual",
+        "add",
+        "match",
+        "design",
+        "export",
+        "loading",
+        "error"
+      ],
+      "screenshots": [
+        {
+          "state": "home",
+          "viewport": "desktop",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-b/home-desktop-1440.png"
+        },
+        {
+          "state": "match",
+          "viewport": "desktop",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-b/workspace-match-desktop-1440.png"
+        },
+        {
+          "state": "visible-focus",
+          "viewport": "desktop",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-b/visible-focus-desktop-1440.png"
+        },
+        {
+          "state": "home",
+          "viewport": "mobile",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-b/home-mobile-393.png"
+        },
+        {
+          "state": "match-medium",
+          "viewport": "mobile",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-b/workspace-match-mobile-393.png"
+        },
+        {
+          "state": "data-view",
+          "viewport": "mobile",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-b/workspace-data-mobile-393.png"
+        }
+      ],
+      "axe": [
+        {
+          "viewport": "desktop",
+          "state": "home",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "manual",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "add",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "match",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "design",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "export",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "loading",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "error",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "home",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-collapsed",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-medium",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-expanded",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "data-view",
+          "violations": []
+        }
+      ],
+      "overflow": [
+        {
+          "viewport": "desktop",
+          "state": "home",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "manual",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "add",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "match",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "design",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "export",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "loading",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "error",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "home",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-collapsed",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-medium",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-expanded",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "data-view",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "reflow-320",
+          "state": "home",
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "bodyScrollWidth": 320,
+          "pass": true
+        },
+        {
+          "viewport": "reflow-320",
+          "state": "match",
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "bodyScrollWidth": 320,
+          "pass": true
+        }
+      ],
+      "keyboard": {
+        "workspaceDomOrder": {
+          "taskFound": true,
+          "mapFound": true,
+          "drawerFound": true,
+          "taskBeforeMap": true,
+          "mapBeforeDrawer": true
+        },
+        "drawerEscapeRestoredFocus": true,
+        "mapTableLinkedBothWays": "sumatra",
+        "firstTab": {
+          "text": "Skip to main content",
+          "label": ""
+        },
+        "sampleActivated": true
+      },
+      "mobile": {
+        "safeAreaHandling": true,
+        "sheetStates": [
+          {
+            "state": "collapsed",
+            "overflow": true,
+            "mapControlReachable": true,
+            "fullStepSheetOwnsViewport": false
+          },
+          {
+            "state": "medium",
+            "overflow": true,
+            "mapControlReachable": true,
+            "fullStepSheetOwnsViewport": false
+          },
+          {
+            "state": "expanded",
+            "overflow": true,
+            "mapControlReachable": false,
+            "fullStepSheetOwnsViewport": true
+          }
+        ],
+        "drawerBackPrecedence": true,
+        "browserBackRestoresPriorStep": true,
+        "unsavedGuard": true
+      },
+      "contrast": [
+        {
+          "pair": "primary-action-text",
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(8, 115, 110)",
+          "ratio": 5.69,
+          "threshold": 4.5,
+          "status": "pass"
+        },
+        {
+          "pair": "visible-focus-indicator",
+          "colors": [
+            "rgb(243, 188, 46)",
+            "rgb(20, 43, 58)"
+          ],
+          "adjacentBackground": "rgb(255, 255, 255)",
+          "bestRatio": 14.62,
+          "thickness": "3px",
+          "threshold": 3,
+          "status": "pass"
+        }
+      ],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "status": "pass"
+    },
+    {
+      "id": "option-c",
+      "name": "Map Studio Sheets",
+      "route": "/design-preview/batch-2r/option-c/",
+      "checkedStates": [
+        "home",
+        "manual",
+        "add",
+        "match",
+        "design",
+        "export",
+        "loading",
+        "error"
+      ],
+      "screenshots": [
+        {
+          "state": "home",
+          "viewport": "desktop",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-c/home-desktop-1440.png"
+        },
+        {
+          "state": "match",
+          "viewport": "desktop",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-c/workspace-match-desktop-1440.png"
+        },
+        {
+          "state": "visible-focus",
+          "viewport": "desktop",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-c/visible-focus-desktop-1440.png"
+        },
+        {
+          "state": "home",
+          "viewport": "mobile",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-c/home-mobile-393.png"
+        },
+        {
+          "state": "match-medium",
+          "viewport": "mobile",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-c/workspace-match-mobile-393.png"
+        },
+        {
+          "state": "data-view",
+          "viewport": "mobile",
+          "path": "artifacts/batch-2r/prototype-screenshots/option-c/workspace-data-mobile-393.png"
+        }
+      ],
+      "axe": [
+        {
+          "viewport": "desktop",
+          "state": "home",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "manual",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "add",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "match",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "design",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "export",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "loading",
+          "violations": []
+        },
+        {
+          "viewport": "desktop",
+          "state": "error",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "home",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-collapsed",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-medium",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-expanded",
+          "violations": []
+        },
+        {
+          "viewport": "mobile",
+          "state": "data-view",
+          "violations": []
+        }
+      ],
+      "overflow": [
+        {
+          "viewport": "desktop",
+          "state": "home",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "manual",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "add",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "match",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "design",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "export",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "loading",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "desktop",
+          "state": "error",
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "bodyScrollWidth": 1440,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "home",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-collapsed",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-medium",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "match-expanded",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "mobile",
+          "state": "data-view",
+          "scrollWidth": 393,
+          "clientWidth": 393,
+          "bodyScrollWidth": 393,
+          "pass": true
+        },
+        {
+          "viewport": "reflow-320",
+          "state": "home",
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "bodyScrollWidth": 320,
+          "pass": true
+        },
+        {
+          "viewport": "reflow-320",
+          "state": "match",
+          "scrollWidth": 320,
+          "clientWidth": 320,
+          "bodyScrollWidth": 320,
+          "pass": true
+        }
+      ],
+      "keyboard": {
+        "workspaceDomOrder": {
+          "taskFound": true,
+          "mapFound": true,
+          "drawerFound": true,
+          "taskBeforeMap": true,
+          "mapBeforeDrawer": true
+        },
+        "drawerEscapeRestoredFocus": true,
+        "mapTableLinkedBothWays": "jabar",
+        "firstTab": {
+          "text": "Skip to main content",
+          "label": ""
+        },
+        "sampleActivated": true
+      },
+      "mobile": {
+        "safeAreaHandling": true,
+        "sheetStates": [
+          {
+            "state": "collapsed",
+            "overflow": true,
+            "mapControlReachable": true,
+            "fullStepSheetOwnsViewport": false
+          },
+          {
+            "state": "medium",
+            "overflow": true,
+            "mapControlReachable": true,
+            "fullStepSheetOwnsViewport": false
+          },
+          {
+            "state": "expanded",
+            "overflow": true,
+            "mapControlReachable": false,
+            "fullStepSheetOwnsViewport": true
+          }
+        ],
+        "drawerBackPrecedence": true,
+        "browserBackRestoresPriorStep": true,
+        "unsavedGuard": true
+      },
+      "contrast": [
+        {
+          "pair": "primary-action-text",
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(0, 108, 103)",
+          "ratio": 6.29,
+          "threshold": 4.5,
+          "status": "pass"
+        },
+        {
+          "pair": "visible-focus-indicator",
+          "colors": [
+            "rgb(0, 95, 204)"
+          ],
+          "adjacentBackground": "rgb(247, 248, 250)",
+          "bestRatio": 5.63,
+          "thickness": "3px",
+          "threshold": 3,
+          "status": "pass"
+        }
+      ],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "status": "pass"
+    }
+  ],
+  "advisorRecommendation": {
+    "option": "option-a",
+    "status": "recommendation-only",
+    "rationale": "Guided Rail gives first-time, non-GIS users the clearest next action while preserving a dominant map and collapsing data into a drawer. Owner review is still required."
+  },
+  "ownerDecision": {
+    "status": "required",
+    "selectedOption": null,
+    "approvalArtifactCreated": false
+  },
+  "summary": {
+    "optionCount": 3,
+    "stateChecks": 24,
+    "axeRuns": 39,
+    "screenshots": 18,
+    "overflowChecks": 45,
+    "seriousOrCriticalAxeViolations": 0,
+    "ownerApprovalRecorded": false,
+    "productionPrototypePayload": false
+  }
+}
