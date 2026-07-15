@@ -38,6 +38,8 @@
     "verify:batch2r:prototypes": "playwright test --config=playwright.prototypes.config.js",
     "test:batch2r:public-shell": "playwright test tests/e2e/batch2r-public-shell.spec.js --project=chromium-desktop --workers=1",
     "verify:batch2r:public-shell": "node scripts/verify-batch2r-public-shell.js && npm run test:batch2r:public-shell",
+    "test:batch2r:workspace": "playwright test tests/e2e/batch2r-workspace.spec.js --project=chromium-desktop --workers=1",
+    "verify:batch2r:workspace": "npm run test:batch2r:workspace && node scripts/verify-batch2r-workspace.js",
     "audit:terminology": "node scripts/terminology-audit.js",
     "audit:brand-migration": "node scripts/brand-migration-audit.js",
     "measure": "node scripts/measure.js",

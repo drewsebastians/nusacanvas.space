@@ -298,6 +298,12 @@
   }
 
   function setSidebarCollapsed(collapsed) {
+    if (window.innerWidth <= 860 && el.appShell && el.appShell.dataset.workspaceShell === "ready") {
+      const states = ["collapsed", "medium", "expanded"];
+      const current = el.appShell.dataset.workspaceSheet || "medium";
+      el.appShell.dataset.workspaceSheet = states[(states.indexOf(current) + 1) % states.length];
+      return;
+    }
     el.appShell.classList.toggle("sidebar-collapsed", collapsed);
     el.sidebarToggleBtn.setAttribute("aria-expanded", String(!collapsed));
     el.controlPanel.setAttribute("aria-hidden", String(collapsed));

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "batch2r.brand-migration-audit.v1",
-  "generatedAt": "2026-07-15T02:15:20.264Z",
+  "generatedAt": "2026-07-15T03:07:01.791Z",
   "status": "passed",
   "expectedIdentity": {
     "productName": "NusaCanvas",
@@ -29,7 +29,7 @@
     "sourceDeletionAuthorized": false
   },
   "counts": {
-    "scannedFiles": 174,
+    "scannedFiles": 180,
     "failures": 0,
     "warnings": 14,
     "allowlistedReferences": 143
@@ -446,6 +446,7 @@
     "artifacts/batch-2r/prototype-review.json",
     "artifacts/batch-2r/public-shell-verification.json",
     "artifacts/batch-2r/terminology-audit.json",
+    "artifacts/batch-2r/workspace-regression.json",
     "artifacts/batch-3/preflight.json",
     "assets/js/app.js",
     "assets/js/brand-config.js",
@@ -460,6 +461,7 @@
     "assets/js/public-shell.js",
     "assets/js/report-template.js",
     "assets/js/visualization-engine.js",
+    "assets/js/workspace-shell.js",
     "assets/js/xlsx-import.js",
     "ATTRIBUTION.md",
     "CHANGELOG.md",
@@ -509,6 +511,8 @@
     "docs/batch-2r/05-component-contracts.md",
     "docs/batch-2r/05-design-system.md",
     "docs/batch-2r/05-public-shell.md",
+    "docs/batch-2r/06-workflow-state-contract.md",
+    "docs/batch-2r/06-workspace-architecture.md",
     "docs/batch-2r/screenshots/baseline/README.md",
     "docs/batch-3/00-blockers.md",
     "docs/batch-3/00-preflight-and-contract.md",
@@ -563,6 +567,7 @@
     "scripts/verify-batch2r-preflight.js",
     "scripts/verify-batch2r-prototype-isolation.js",
     "scripts/verify-batch2r-public-shell.js",
+    "scripts/verify-batch2r-workspace.js",
     "scripts/verify-staging.js",
     "scripts/wrangler-command.js",
     "sources-licenses/index.html",
@@ -571,6 +576,7 @@
     "tests/e2e/batch2r-baseline.spec.js",
     "tests/e2e/batch2r-prototypes.spec.js",
     "tests/e2e/batch2r-public-shell.spec.js",
+    "tests/e2e/batch2r-workspace.spec.js",
     "tests/e2e/brand-storage-migration.shared.js",
     "tests/e2e/smoke.spec.js",
     "tests/e2e/trust.spec.js",

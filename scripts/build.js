@@ -14,6 +14,7 @@ const requiredFiles = [
   "assets/css/content.css",
   "assets/css/design-system.css",
   "assets/js/public-shell.js",
+  "assets/js/workspace-shell.js",
   "assets/js/brand-config.js",
   "assets/js/app.js",
   "assets/js/import-core.js",

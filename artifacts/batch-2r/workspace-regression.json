@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "batch2r.workspace-regression.v1",
+  "generatedAt": "2026-07-15T03:06:59.054Z",
+  "status": "passed",
+  "decision": {
+    "selectedOption": "option-a",
+    "desktop": "option-a-guided-rail",
+    "mobile": "option-c-map-first-sheets"
+  },
+  "screenshotFiles": [
+    "goal-selection-desktop.png",
+    "manual-desktop.png",
+    "manual-inspector-desktop.png",
+    "spreadsheet-add-data-desktop.png",
+    "spreadsheet-design-desktop.png",
+    "spreadsheet-drawer-desktop.png",
+    "spreadsheet-export-success-desktop.png",
+    "spreadsheet-match-desktop.png",
+    "spreadsheet-mobile-collapsed.png",
+    "workspace-error-narrow.png",
+    "workspace-loading-laptop.png"
+  ],
+  "checks": [
+    {
+      "name": "exists:workspace/index.html",
+      "passed": true,
+      "detail": "Required Prompt 6 deliverable exists."
+    },
+    {
+      "name": "exists:assets/js/workspace-shell.js",
+      "passed": true,
+      "detail": "Required Prompt 6 deliverable exists."
+    },
+    {
+      "name": "exists:assets/css/app.css",
+      "passed": true,
+      "detail": "Required Prompt 6 deliverable exists."
+    },
+    {
+      "name": "exists:tests/e2e/batch2r-workspace.spec.js",
+      "passed": true,
+      "detail": "Required Prompt 6 deliverable exists."
+    },
+    {
+      "name": "exists:docs/batch-2r/06-workspace-architecture.md",
+      "passed": true,
+      "detail": "Required Prompt 6 deliverable exists."
+    },
+    {
+      "name": "exists:docs/batch-2r/06-workflow-state-contract.md",
+      "passed": true,
+      "detail": "Required Prompt 6 deliverable exists."
+    },
+    {
+      "name": "approved-design-decision",
+      "passed": true,
+      "detail": "Option A desktop direction remains the approved baseline."
+    },
+    {
+      "name": "workspace-goal-orchestration",
+      "passed": true,
+      "detail": "Goal entry and explicit temporary workspace state are present."
+    },
+    {
+      "name": "mobile-sheet-contract",
+      "passed": true,
+      "detail": "Collapsed, medium, and expanded mobile sheet states are present."
+    },
+    {
+      "name": "drawer-contract",
+      "passed": true,
+      "detail": "The data/issues drawer has an explicit state and accessible toggle."
+    },
+    {
+      "name": "no-batch-3-runtime",
+      "passed": true,
+      "detail": "Future Batch 3 workflows are not implemented in workspace runtime."
+    },
+    {
+      "name": "visual-regression-screenshots",
+      "passed": true,
+      "detail": "11 current workspace screenshots captured."
+    }
+  ]
+}
