@@ -1470,6 +1470,7 @@
         extent: el.exportExtent.value,
         labels: el.exportLabels.checked,
         transparent: el.transparentBg.checked,
+        selectedId: mapApi.selectedId,
         viewBounds: payload.viewBounds,
         legendFeatures: state.features
       });
@@ -1495,6 +1496,7 @@
         extent: el.exportExtent.value,
         labels: el.exportLabels.checked,
         transparent: el.transparentBg.checked,
+        selectedId: mapApi.selectedId,
         viewBounds: payload.viewBounds,
         legendFeatures: state.features
       });
@@ -1519,6 +1521,7 @@
         extent: el.exportExtent.value,
         labels: el.exportLabels.checked,
         transparent: false,
+        selectedId: mapApi.selectedId,
         viewBounds: payload.viewBounds,
         legendFeatures: state.features
       });

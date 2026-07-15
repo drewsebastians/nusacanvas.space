@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "batch2r.boundary-rendering-visual-review.v1",
+  "generatedAt": "2026-07-15T04:22:19.987Z",
+  "status": "passed",
+  "fixtures": [
+    {
+      "id": "national-chromium",
+      "region": "National",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/national-chromium-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "national-firefox",
+      "region": "National",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/national-firefox-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "national-webkit",
+      "region": "National",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/national-webkit-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "national-mobile",
+      "region": "National",
+      "viewport": "mobile 393x851",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/national-chromium-mobile.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "greater-jakarta",
+      "region": "Kota Jakarta Pusat",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/greater-jakarta-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "java",
+      "region": "Kota Surabaya",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/java-single-pass-mesh.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "bali",
+      "region": "Kota Denpasar",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/bali-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "nusa-tenggara",
+      "region": "Kota Mataram",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/nusa-tenggara-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "sulawesi",
+      "region": "Kota Makassar",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/sulawesi-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "maluku",
+      "region": "Kota Ambon",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/maluku-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "papua",
+      "region": "Kota Jayapura",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/papua-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "small-islands",
+      "region": "Kota Ternate",
+      "viewport": "desktop 1280x720",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/small-islands-desktop.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "high-dpr-desktop",
+      "region": "Kota Denpasar",
+      "viewport": "desktop DPR 2",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/chromium-desktop-high-dpr.png",
+      "approvalState": "pending-owner-visual-review"
+    },
+    {
+      "id": "high-dpr-mobile",
+      "region": "Kota Denpasar",
+      "viewport": "mobile DPR 2",
+      "renderer": "single-pass boundary mesh with selected-region presentation outline",
+      "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+      "expectedStrokeBehavior": "Neutral boundary appears once; fills have no stroke; selected region has a rounded dark outline.",
+      "screenshot": "artifacts/batch-2r/boundary-rendering/after/chromium-mobile-high-dpr.png",
+      "approvalState": "pending-owner-visual-review"
+    }
+  ]
+}

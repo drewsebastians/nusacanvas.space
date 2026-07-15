@@ -1,6 +1,6 @@
 {
   "schemaVersion": "batch2r.brand-migration-audit.v1",
-  "generatedAt": "2026-07-15T03:29:43.690Z",
+  "generatedAt": "2026-07-15T04:21:12.370Z",
   "status": "passed",
   "expectedIdentity": {
     "productName": "NusaCanvas",
@@ -29,7 +29,7 @@
     "sourceDeletionAuthorized": false
   },
   "counts": {
-    "scannedFiles": 185,
+    "scannedFiles": 196,
     "failures": 0,
     "warnings": 14,
     "allowlistedReferences": 143
@@ -438,6 +438,12 @@
     "artifacts/batch-2/preflight.json",
     "artifacts/batch-2/resource-budget-v1.json",
     "artifacts/batch-2r/baseline/manifest.json",
+    "artifacts/batch-2r/boundary-rendering-benchmark.json",
+    "artifacts/batch-2r/boundary-rendering-visual-review.json",
+    "artifacts/batch-2r/boundary-rendering/runtime-chromium-desktop.json",
+    "artifacts/batch-2r/boundary-rendering/runtime-chromium-mobile.json",
+    "artifacts/batch-2r/boundary-rendering/runtime-firefox-desktop.json",
+    "artifacts/batch-2r/boundary-rendering/runtime-webkit-desktop.json",
     "artifacts/batch-2r/current-experience-inventory.json",
     "artifacts/batch-2r/current-string-inventory.json",
     "artifacts/batch-2r/design-decision.json",
@@ -517,6 +523,8 @@
     "docs/batch-2r/07-feature-discovery-contract.md",
     "docs/batch-2r/07-future-workflow-handoff.md",
     "docs/batch-2r/07-owner-manual-protocol.md",
+    "docs/batch-2r/08-boundary-rendering-decision.md",
+    "docs/batch-2r/08-boundary-rendering-diagnosis.md",
     "docs/batch-2r/screenshots/baseline/README.md",
     "docs/batch-3/00-blockers.md",
     "docs/batch-3/00-preflight-and-contract.md",
@@ -568,6 +576,7 @@
     "scripts/serve-dist-for-tests.js",
     "scripts/serve-static.js",
     "scripts/verify-batch1.js",
+    "scripts/verify-batch2r-boundary-rendering.js",
     "scripts/verify-batch2r-preflight.js",
     "scripts/verify-batch2r-prototype-isolation.js",
     "scripts/verify-batch2r-public-shell.js",
@@ -578,6 +587,7 @@
     "terms/index.html",
     "tests/e2e/a11y.spec.js",
     "tests/e2e/batch2r-baseline.spec.js",
+    "tests/e2e/batch2r-boundary-rendering.spec.js",
     "tests/e2e/batch2r-guidance.spec.js",
     "tests/e2e/batch2r-prototypes.spec.js",
     "tests/e2e/batch2r-public-shell.spec.js",
@@ -588,6 +598,7 @@
     "tests/fixtures/batch-2/import/large-benchmark-spec.json",
     "tests/fixtures/brand-migration/old-autosave-v1.json",
     "tests/fixtures/brand-migration/old-project-schema-1.0.json",
+    "tests/unit/boundary-rendering.test.js",
     "tests/unit/brand-migration.test.js",
     "tests/unit/build-runtime-bundle.test.js",
     "tests/unit/import-core.test.js",

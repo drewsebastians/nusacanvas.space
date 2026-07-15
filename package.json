@@ -41,6 +41,8 @@
     "test:batch2r:workspace": "playwright test tests/e2e/batch2r-workspace.spec.js --project=chromium-desktop --workers=1",
     "verify:batch2r:workspace": "npm run test:batch2r:workspace && node scripts/verify-batch2r-workspace.js",
     "test:batch2r:guidance": "playwright test tests/e2e/batch2r-guidance.spec.js --project=chromium-desktop --workers=1",
+    "test:batch2r:boundary-rendering": "playwright test tests/e2e/batch2r-boundary-rendering.spec.js --workers=1",
+    "verify:batch2r:boundary-rendering": "node scripts/verify-batch2r-boundary-rendering.js",
     "audit:terminology": "node scripts/terminology-audit.js",
     "audit:brand-migration": "node scripts/brand-migration-audit.js",
     "measure": "node scripts/measure.js",

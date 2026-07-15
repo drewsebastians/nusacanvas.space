@@ -1,0 +1,15 @@
+{
+  "browser": "firefox-desktop",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "renderer": "Leaflet Canvas (device-pixel-ratio aware)",
+  "renderReadyMs": 1400,
+  "selectionAndZoomMs": 951,
+  "inputSegments": 39304,
+  "uniqueSegments": 36690,
+  "sharedSegments": 2614,
+  "detailedGeometryRequests": 0,
+  "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128"
+}

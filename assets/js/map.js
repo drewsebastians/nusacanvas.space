@@ -1,9 +1,15 @@
 (function () {
   const defaultStyle = {
-    color: "#aeb8c2",
-    weight: 0.8,
     fillColor: "#e7ebef",
     fillOpacity: 0.88
+  };
+  const boundaryStyle = {
+    color: "#8d9aa6",
+    weight: 0.8,
+    lineCap: "round",
+    lineJoin: "round",
+    interactive: false,
+    smoothFactor: 0
   };
 
   function createMap(elementId, callbacks) {
@@ -17,8 +23,18 @@
       wheelPxPerZoomLevel: 240
     });
     L.control.zoom({ position: "topleft" }).addTo(map);
+    map.createPane("boundaryMeshPane");
+    map.getPane("boundaryMeshPane").style.zIndex = "410";
+    map.getPane("boundaryMeshPane").style.pointerEvents = "none";
+    map.getPane("boundaryMeshPane").dataset.boundaryMesh = "single-pass";
+    map.createPane("boundarySelectionPane");
+    map.getPane("boundarySelectionPane").style.zIndex = "420";
+    map.getPane("boundarySelectionPane").style.pointerEvents = "none";
     const layersById = new Map();
     let geoLayer = null;
+    let boundaryMesh = null;
+    let selectedOutline = null;
+    let hoverOutline = null;
     let legendControl = null;
     let legendContainer = null;
     let selectedId = null;
@@ -31,18 +47,85 @@
     function styleFeature(feature) {
       const id = feature.properties.region_id;
       const item = highlights[id];
-      const selected = id === selectedId;
       return {
-        color: selected ? "#111827" : (item ? "#49535d" : defaultStyle.color),
-        weight: selected ? 2.2 : (item ? 1.2 : defaultStyle.weight),
         fillColor: item ? item.color : defaultStyle.fillColor,
-        fillOpacity: item ? 0.82 : defaultStyle.fillOpacity
+        fillOpacity: item ? 0.82 : defaultStyle.fillOpacity,
+        stroke: false
       };
+    }
+
+    function coordinateKey(point) {
+      return `${Number(point[0])},${Number(point[1])}`;
+    }
+
+    function addRingSegments(ring, seen, segments, stats) {
+      for (let index = 1; index < ring.length; index += 1) {
+        const start = ring[index - 1];
+        const end = ring[index];
+        if (!Array.isArray(start) || !Array.isArray(end)) continue;
+        const startKey = coordinateKey(start);
+        const endKey = coordinateKey(end);
+        if (startKey === endKey) continue;
+        stats.inputSegments += 1;
+        const key = startKey < endKey ? `${startKey}|${endKey}` : `${endKey}|${startKey}`;
+        if (seen.has(key)) {
+          stats.sharedSegments += 1;
+          continue;
+        }
+        seen.add(key);
+        segments.push([[start[1], start[0]], [end[1], end[0]]]);
+      }
+    }
+
+    // The source has no topology object. Exact segment de-duplication keeps
+    // every coordinate untouched and only draws a shared edge once.
+    function buildBoundaryMesh(collection) {
+      const seen = new Set();
+      const segments = [];
+      const stats = { inputSegments: 0, uniqueSegments: 0, sharedSegments: 0 };
+      (collection.features || []).forEach((feature) => {
+        const geometry = feature.geometry || {};
+        if (geometry.type === "Polygon") geometry.coordinates.forEach((ring) => addRingSegments(ring, seen, segments, stats));
+        if (geometry.type === "MultiPolygon") geometry.coordinates.forEach((polygon) => polygon.forEach((ring) => addRingSegments(ring, seen, segments, stats)));
+      });
+      stats.uniqueSegments = segments.length;
+      return { segments, stats };
+    }
+
+    function removePresentationOutline(kind) {
+      const existing = kind === "selected" ? selectedOutline : hoverOutline;
+      if (existing) existing.remove();
+      if (kind === "selected") selectedOutline = null;
+      else hoverOutline = null;
+    }
+
+    function showPresentationOutline(feature, kind) {
+      removePresentationOutline(kind);
+      if (!feature) return;
+      const selected = kind === "selected";
+      const outline = L.geoJSON(feature, {
+        interactive: false,
+        pane: "boundarySelectionPane",
+        style: {
+          color: selected ? "#172a3a" : "#596673",
+          weight: selected ? 2.2 : 1.35,
+          opacity: 1,
+          fill: false,
+          lineCap: "round",
+          lineJoin: "round",
+          smoothFactor: 0
+        }
+      }).addTo(map);
+      if (selected) selectedOutline = outline;
+      else hoverOutline = outline;
     }
 
     function render(collection) {
       features = collection.features;
       if (geoLayer) geoLayer.remove();
+      if (boundaryMesh) boundaryMesh.remove();
+      removePresentationOutline("selected");
+      removePresentationOutline("hover");
       layersById.clear();
       geoLayer = L.geoJSON(collection, {
         style: styleFeature,
@@ -56,14 +139,29 @@
               select(id, true);
             },
             mouseover() {
-              if (id !== selectedId) layer.setStyle({ weight: 1.8, color: "#596673" });
+              if (id !== selectedId) showPresentationOutline(feature, "hover");
             },
             mouseout() {
-              layer.setStyle(styleFeature(feature));
+              removePresentationOutline("hover");
             }
           });
         }
       }).addTo(map);
+      const mesh = buildBoundaryMesh(collection);
+      // Leaflet's Canvas renderer uses the device pixel ratio internally. This
+      // keeps the single mesh sharp on high-DPI displays without a second SVG
+      // stroke for every administrative polygon.
+      const canvasRenderer = L.canvas({ padding: 0.5, pane: "boundaryMeshPane" });
+      boundaryMesh = L.polyline(mesh.segments, Object.assign({}, boundaryStyle, {
+        pane: "boundaryMeshPane",
+        renderer: canvasRenderer || undefined
+      })).addTo(map);
+      window.NusaCanvasBoundaryRendering = Object.freeze({
+        boundaryVersion: "IDN-ADM2-2020-geoboundaries-22746128",
+        strategy: "single-pass-exact-segment-mesh",
+        renderer: canvasRenderer ? "Leaflet Canvas (device-pixel-ratio aware)" : "Leaflet SVG fallback",
+        ...mesh.stats
+      });
       map.on("zoomend moveend resize", scheduleLabelCollisionUpdate);
       fitIndonesia();
       refreshTooltipLabels();
@@ -167,10 +265,12 @@
       const previous = selectedId;
       selectedId = id;
       if (previous && layersById.has(previous)) layersById.get(previous).setStyle(styleFeature(layersById.get(previous).feature));
+      removePresentationOutline("hover");
+      removePresentationOutline("selected");
       if (id && layersById.has(id)) {
         const layer = layersById.get(id);
         layer.setStyle(styleFeature(layer.feature));
-        layer.bringToFront();
+        showPresentationOutline(layer.feature, "selected");
         if (notify && callbacks && callbacks.onSelect) callbacks.onSelect(layer.feature);
       }
       scheduleLabelCollisionUpdate();

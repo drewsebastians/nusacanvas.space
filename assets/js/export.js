@@ -51,6 +51,7 @@
       size: getSize(options),
       transparent: Boolean(options.transparent),
       labels: options.labels !== false,
+      selectedId: options.selectedId || null,
       attribution: "Data: geoBoundaries/HDX COD-AB ADM2 snapshot 2020; 519 boundary features; registry metadata v1 2025. For visual reference only; not a legal boundary decision.",
       boundaryVersion: "IDN-ADM2-2020-geoboundaries-22746128",
       registryVersion: "IDN-ADM-REGISTRY-v1-2025-06-23"
@@ -102,6 +103,37 @@
     if (geometry.type === "Polygon") geometry.coordinates.forEach(addRing);
     if (geometry.type === "MultiPolygon") geometry.coordinates.forEach((polygon) => polygon.forEach(addRing));
     return rings.join(" ");
+  }
+
+  function coordinateKey(point) {
+    return `${Number(point[0])},${Number(point[1])}`;
+  }
+
+  function boundaryMeshPath(features, project) {
+    const seen = new Set();
+    const commands = [];
+    const addRing = (ring) => {
+      for (let index = 1; index < ring.length; index += 1) {
+        const start = ring[index - 1];
+        const end = ring[index];
+        if (!Array.isArray(start) || !Array.isArray(end)) continue;
+        const startKey = coordinateKey(start);
+        const endKey = coordinateKey(end);
+        if (startKey === endKey) continue;
+        const key = startKey < endKey ? `${startKey}|${endKey}` : `${endKey}|${startKey}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        const a = project(start[0], start[1]);
+        const b = project(end[0], end[1]);
+        commands.push(`M${a.x.toFixed(2)} ${a.y.toFixed(2)} L${b.x.toFixed(2)} ${b.y.toFixed(2)}`);
+      }
+    };
+    (features || []).forEach((feature) => {
+      const geometry = feature.geometry || {};
+      if (geometry.type === "Polygon") geometry.coordinates.forEach(addRing);
+      if (geometry.type === "MultiPolygon") geometry.coordinates.forEach((polygon) => polygon.forEach(addRing));
+    });
+    return { path: commands.join(" "), uniqueSegments: seen.size };
   }
 
   function centroid(feature) {
@@ -182,13 +214,17 @@
     const offsetY = 92 + ((size.height - 88 - legendAreaHeight - mapHeight) / 2);
     const project = (x, y) => ({ x: offsetX + (x - bounds.minX) * scale, y: offsetY + (bounds.maxY - y) * scale });
     const background = spec.transparent ? "" : `<rect width="100%" height="100%" fill="#97d2e2"/>`;
-    const paths = features.map((feature) => {
+    const fills = features.map((feature) => {
       const id = feature.properties.region_id;
       const item = state.highlights[id];
       const fill = item ? item.color : "#e7ebef";
-      const stroke = item ? "#49535d" : "#aeb8c2";
-      return `<path d="${pathForGeometry(feature.geometry, project)}" fill="${fill}" stroke="${stroke}" stroke-width="0.75" vector-effect="non-scaling-stroke"><title>${escapeXml(feature.properties.display_name)}</title></path>`;
+      return `<path data-region-fill="${escapeXml(id)}" d="${pathForGeometry(feature.geometry, project)}" fill="${fill}" stroke="none"><title>${escapeXml(feature.properties.display_name)}</title></path>`;
     }).join("\n");
+    const mesh = boundaryMeshPath(features, project);
+    const selectedFeature = spec.selectedId && features.find((feature) => feature.properties && feature.properties.region_id === spec.selectedId);
+    const selectedOutline = selectedFeature
+      ? `<path data-selected-outline="${escapeXml(spec.selectedId)}" d="${pathForGeometry(selectedFeature.geometry, project)}" fill="none" stroke="#172a3a" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>`
+      : "";
     const labelPlacements = spec.labels ? placeLabels(features, state, project, size, labelSize) : [];
     const labels = labelPlacements.map((item) => {
       return `<text x="${item.x.toFixed(1)}" y="${item.y.toFixed(1)}" text-anchor="middle" font-size="${item.fontSize}" paint-order="stroke" stroke="#ffffff" stroke-width="${(item.fontSize / 4).toFixed(1)}" stroke-linejoin="round" fill="#1e2933">${escapeXml(labelText(item.feature, state))}</text>`;
@@ -196,7 +232,7 @@
     const legend = state.legendVisible ? buildLegend(state, size, spec.legendFeatures || features, spec.metadata.legendTitle) : "";
     const title = buildTitle(spec.metadata.title, size, spec.metadata.subtitle);
     const metadata = Object.assign({}, spec, { features: undefined });
-    return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}" role="img" aria-label="${escapeXml(spec.metadata.title)}">\n${background}\n<metadata>${escapeXml(JSON.stringify(metadata))}</metadata>\n<g font-family="Arial, Helvetica, sans-serif">${paths}\n${labels}\n${legend}</g>\n${title}\n<text x="${margin}" y="${size.height - 58}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">${escapeXml(spec.metadata.source || spec.attribution)}</text>\n<text x="${margin}" y="${size.height - 40}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">${escapeXml(spec.metadata.period || "")}</text>\n<text x="${margin}" y="${size.height - 22}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">${escapeXml(spec.metadata.footnote || spec.attribution)} Keep the source credit with this map.</text>\n</svg>`;
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<svg xmlns="http://www.w3.org/2000/svg" width="${size.width}" height="${size.height}" viewBox="0 0 ${size.width} ${size.height}" role="img" aria-label="${escapeXml(spec.metadata.title)}">\n${background}\n<metadata>${escapeXml(JSON.stringify(metadata))}</metadata>\n<g font-family="Arial, Helvetica, sans-serif">${fills}\n<path id="boundary-mesh" data-boundary-mesh="single-pass" d="${mesh.path}" fill="none" stroke="#8d9aa6" stroke-width="0.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke" shape-rendering="geometricPrecision"/>\n${selectedOutline}\n${labels}\n${legend}</g>\n${title}\n<text x="${margin}" y="${size.height - 58}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">${escapeXml(spec.metadata.source || spec.attribution)}</text>\n<text x="${margin}" y="${size.height - 40}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">${escapeXml(spec.metadata.period || "")}</text>\n<text x="${margin}" y="${size.height - 22}" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#5c6975">${escapeXml(spec.metadata.footnote || spec.attribution)} Keep the source credit with this map.</text>\n</svg>`;
   }
 
   function buildTitle(title, size, subtitle) {
