@@ -1,7 +1,7 @@
 {
   "schemaVersion": "batch2r.final-remote-test-matrix.v1",
   "generatedAt": "2026-07-16T00:00:00Z",
-  "status": "local-cross-browser-passed-remote-not-run",
+  "status": "local-cross-browser-passed-staging-http-verified",
   "projects": ["chromium-desktop", "firefox-desktop", "webkit-desktop", "chromium-mobile"],
   "runs": [
     { "name": "full browser matrix initial", "total": 96, "passed": 93, "failed": 3, "failureClass": "Chromium mobile success overlay and sheet interaction" },
@@ -11,7 +11,13 @@
   ],
   "cleanInstall": { "status": "environment-limited", "detail": "npm ci unavailable because npm is absent from the supplied Node runtime" },
   "remoteRepository": { "status": "verified", "repository": "drewsebastians/nusacanvas.space", "head": "339cab8" },
-  "remoteStaging": { "status": "not-run", "reason": "Wrangler is not authenticated" },
+  "remoteStaging": {
+    "status": "http-verified-browser-smoke-pending",
+    "url": "https://nusacanvas-space.andrew-sebastian91.workers.dev",
+    "versionId": "f3627cdc-c39f-4208-ab2b-b485476dbccd",
+    "verified": ["required assets", "CSP", "nosniff", "noindex", "robots.txt", "404"],
+    "browserSmoke": "operator-run pending because the Codex sandbox cannot spawn Playwright workers"
+  },
   "noExternalMapRequests": true,
   "noAnalytics": true
 }

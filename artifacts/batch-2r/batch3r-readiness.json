@@ -6,14 +6,14 @@
   "localValidationPassed": true,
   "ownerVisualApproval": false,
   "remoteRepositoryReachable": true,
-  "stagingVerified": false,
+  "stagingVerified": true,
   "batch3RuntimeImplemented": false,
   "p0": 0,
   "p1": 0,
   "reasons": [
     "Owner visual approval has not been recorded.",
-    "Wrangler is not authenticated; target staging cannot be deployed or verified.",
+    "Live browser smoke still needs operator execution because the Codex sandbox cannot spawn Playwright workers.",
     "A fresh Batch 3R preflight is required; historical Batch 3 Prompt 2 onward is superseded."
   ],
-  "nextAction": "Record owner approval, authenticate Wrangler and verify staging, then run a fresh Batch 3R preflight."
+  "nextAction": "Run the live browser smoke, record owner approval, then run a fresh Batch 3R preflight."
 }
