@@ -393,6 +393,7 @@ test("XLSX import lazy-loads parser and uses the shared preview pipeline", async
 
   await page.goto("/workspace/");
   await waitForAppReady(page);
+  const workspaceOrigin = new URL(page.url()).origin;
   expect(requests.some((url) => url.includes("read-excel-file.min.js"))).toBe(false);
 
   await page.locator("#importPaste").fill("wilayah\tnilai\nKota Surabaya\t125\n");
@@ -412,7 +413,7 @@ test("XLSX import lazy-loads parser and uses the shared preview pipeline", async
   await expect(page.locator("#xlsxSheet")).toBeVisible();
   await expect(page.locator("#csvPreview")).toContainText("2");
   expect(requests.some((url) => url.includes("read-excel-file.min.js"))).toBe(true);
-  expect(requests.filter((url) => /^https?:\/\//.test(url) && !url.startsWith("http://127.0.0.1:4173/"))).toEqual([]);
+  expect(requests.filter((url) => /^https?:\/\//.test(url) && new URL(url).origin !== workspaceOrigin)).toEqual([]);
 
   await page.locator("#xlsxSheet").selectOption("Cadangan");
   await expect(page.locator("#importMapping")).toContainText("Worksheet: Cadangan.");
