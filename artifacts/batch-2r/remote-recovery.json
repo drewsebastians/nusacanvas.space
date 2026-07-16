@@ -28,8 +28,10 @@
     "authenticatedAs": "drewsebastians",
     "oldRepositoryAdmin": true,
     "targetRepositoryExistsAtCheck": false,
-    "rename": "pending",
-    "push": "pending"
+    "rename": "completed",
+    "push": "completed",
+    "repositoryId": 1297315717,
+    "remoteHead": "e659222da93eded1836a5afa4755c6a85ab093c"
   },
   "cloudflare": {
     "wranglerAuthentication": "not-authenticated",
@@ -41,5 +43,5 @@
   },
   "ownerVisualApproval": { "recorded": false, "protocol": "docs/batch-2r/11-owner-validation-protocol.md" },
   "batch3RuntimeImplemented": false,
-  "status": "blocked-pending-remote-and-owner-gates"
+  "status": "platform-blocked-pending-cloudflare-and-owner-gates"
 }
