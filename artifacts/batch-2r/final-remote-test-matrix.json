@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "batch2r.final-remote-test-matrix.v1",
+  "generatedAt": "2026-07-16T00:00:00Z",
+  "status": "local-cross-browser-passed-remote-not-run",
+  "projects": ["chromium-desktop", "firefox-desktop", "webkit-desktop", "chromium-mobile"],
+  "runs": [
+    { "name": "full browser matrix initial", "total": 96, "passed": 93, "failed": 3, "failureClass": "Chromium mobile success overlay and sheet interaction" },
+    { "name": "Chromium mobile smoke after test-state fix", "total": 19, "passed": 19, "failed": 0 },
+    { "name": "boundary rendering cross-browser", "passed": 8, "skipped": 8, "failed": 0, "skipReason": "project-scoped duplicate scenarios" },
+    { "name": "Batch 2R public/workspace/guidance/closure", "passed": 22, "skipped": 3, "failed": 0, "note": "one Chrome launch infrastructure flake passed on isolated retry" }
+  ],
+  "cleanInstall": { "status": "environment-limited", "detail": "npm ci unavailable because npm is absent from the supplied Node runtime" },
+  "remoteStaging": { "status": "not-run", "reason": "Wrangler is not authenticated" },
+  "noExternalMapRequests": true,
+  "noAnalytics": true
+}

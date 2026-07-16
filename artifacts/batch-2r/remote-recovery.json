@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "batch2r.remote-recovery.v1",
+  "generatedAt": "2026-07-16T00:00:00Z",
+  "localStartingHead": "9d7217372861863bf441865d50c8bba096ac1832",
+  "originalRemote": "https://github.com/drewsebastians/Indonesian-map-tools.git",
+  "originalRemoteHead": "390c9de",
+  "prompt9": {
+    "commit": "19e75f8",
+    "message": "batch2r: add versioned boundary provider architecture",
+    "ancestorOfLocalHead": true,
+    "scopeValidated": true
+  },
+  "history": {
+    "linear": true,
+    "worktreeCount": 1,
+    "discoveredCommits": ["53cba42", "c288e65", "c0f1d95", "19e75f8", "e256d21", "9d72173"]
+  },
+  "validation": {
+    "localGates": "passed",
+    "browserInitial": { "total": 96, "passed": 93, "failed": 3, "failureClass": "Chromium mobile test-state interaction" },
+    "chromiumMobileSmokeAfterFix": { "total": 19, "passed": 19, "failed": 0 },
+    "boundaryRendering": { "passed": 8, "skipped": 8, "skipReason": "project-scoped duplicate captures" },
+    "p0": 0,
+    "p1": 0,
+    "cleanInstall": "environment-limited: npm executable unavailable"
+  },
+  "github": {
+    "authenticatedAs": "drewsebastians",
+    "oldRepositoryAdmin": true,
+    "targetRepositoryExistsAtCheck": false,
+    "rename": "pending",
+    "push": "pending"
+  },
+  "cloudflare": {
+    "wranglerAuthentication": "not-authenticated",
+    "targetWorker": "nusacanvas-space",
+    "deploy": "blocked-pending-wrangler-login",
+    "oldWorkerRetainedForRollback": true,
+    "customDomainActivated": false,
+    "stagingNoindex": true
+  },
+  "ownerVisualApproval": { "recorded": false, "protocol": "docs/batch-2r/11-owner-validation-protocol.md" },
+  "batch3RuntimeImplemented": false,
+  "status": "blocked-pending-remote-and-owner-gates"
+}

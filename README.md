@@ -54,7 +54,7 @@ See [ATTRIBUTION.md](./ATTRIBUTION.md), `data/license-manifest-v1.json`, and [kn
 
 **BATCH 2R CODE COMPLETE — OWNER VISUAL APPROVAL REQUIRED.** The approved NusaCanvas experience reset is implemented and its local quality gates pass. Before Batch 3 resumes, the owner must run and record the short desktop/mobile validation in `docs/batch-2r/11-owner-validation-protocol.md`.
 
-The intended GitHub repository and Cloudflare Worker migration are prepared but not remotely verified because authenticated GitHub and Wrangler access is unavailable. The future custom domain remains unattached and noindex. See `docs/batch-2r/11-closure.md` and `docs/batch-2r/10-platform-rename.md` for the active closure and platform state.
+GitHub administration is available, but the repository rename/push is still pending the recovery commit. Wrangler is not authenticated, so the replacement staging Worker cannot yet be deployed or live-verified. The future custom domain remains unattached and staging remains noindex. Historical Batch 3 Prompt 2 onward is superseded; a fresh Batch 3R preflight is required. See `docs/batch-2r/12-owner-and-batch3r-gates.md`.
 
 ## Development and quality gates
 
@@ -74,3 +74,7 @@ npm run verify:batch2r:closure
 ## License
 
 Application code uses the MIT License. Boundary data and third-party libraries remain subject to their own source licenses and attribution requirements.
+
+## Recovery status (2026-07-16)
+
+**REMOTE PREPARATION IN PROGRESS — OWNER VISUAL APPROVAL REQUIRED.** Local recovery evidence is in `docs/batch-2r/12-remote-recovery-and-validation.md` and `artifacts/batch-2r/batch3r-readiness.json`. Historical Batch 3 Prompt 2 onward is superseded; run a fresh Batch 3R preflight only after owner approval and authenticated remote verification.

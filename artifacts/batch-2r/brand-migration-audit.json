@@ -1,6 +1,6 @@
 {
   "schemaVersion": "batch2r.brand-migration-audit.v1",
-  "generatedAt": "2026-07-15T07:02:28.319Z",
+  "generatedAt": "2026-07-16T08:23:04.474Z",
   "status": "passed",
   "expectedIdentity": {
     "productName": "NusaCanvas",
@@ -30,10 +30,10 @@
     "sourceDeletionAuthorized": false
   },
   "counts": {
-    "scannedFiles": 217,
+    "scannedFiles": 223,
     "failures": 0,
     "warnings": 0,
-    "allowlistedReferences": 152
+    "allowlistedReferences": 153
   },
   "failures": [],
   "warnings": [],
@@ -100,6 +100,12 @@
     },
     {
       "file": "artifacts/batch-2r/preflight.json",
+      "code": "retired-repository-origin",
+      "reason": "truthful historical evidence or an explicit migration note",
+      "count": 1
+    },
+    {
+      "file": "artifacts/batch-2r/remote-recovery.json",
       "code": "retired-repository-origin",
       "reason": "truthful historical evidence or an explicit migration note",
       "count": 1
@@ -420,6 +426,7 @@
     "artifacts/batch-2/preflight.json",
     "artifacts/batch-2/resource-budget-v1.json",
     "artifacts/batch-2r/baseline/manifest.json",
+    "artifacts/batch-2r/batch3r-readiness.json",
     "artifacts/batch-2r/boundary-rendering-benchmark.json",
     "artifacts/batch-2r/boundary-rendering-visual-review.json",
     "artifacts/batch-2r/boundary-rendering/runtime-chromium-desktop.json",
@@ -432,6 +439,7 @@
     "artifacts/batch-2r/design-decision.json",
     "artifacts/batch-2r/final-journey-evidence.json",
     "artifacts/batch-2r/final-performance.json",
+    "artifacts/batch-2r/final-remote-test-matrix.json",
     "artifacts/batch-2r/final-test-matrix.json",
     "artifacts/batch-2r/final-visual-review.json",
     "artifacts/batch-2r/platform-migration.json",
@@ -439,6 +447,7 @@
     "artifacts/batch-2r/prototype-isolation.json",
     "artifacts/batch-2r/prototype-review.json",
     "artifacts/batch-2r/public-shell-verification.json",
+    "artifacts/batch-2r/remote-recovery.json",
     "artifacts/batch-2r/staging-verification.json",
     "artifacts/batch-2r/terminology-audit.json",
     "artifacts/batch-2r/workspace-regression.json",
@@ -525,6 +534,9 @@
     "docs/batch-2r/11-batch-3-resumption-checklist.md",
     "docs/batch-2r/11-closure.md",
     "docs/batch-2r/11-owner-validation-protocol.md",
+    "docs/batch-2r/12-cross-browser-completion.md",
+    "docs/batch-2r/12-owner-and-batch3r-gates.md",
+    "docs/batch-2r/12-remote-recovery-and-validation.md",
     "docs/batch-2r/screenshots/baseline/README.md",
     "docs/batch-3/00-blockers.md",
     "docs/batch-3/00-preflight-and-contract.md",

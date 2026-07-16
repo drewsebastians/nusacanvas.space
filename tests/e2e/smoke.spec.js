@@ -200,6 +200,10 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
   expect(svgText).toContain("IDN-ADM2-2020-geoboundaries-22746128");
   expect(svgText).toContain("For visual reference only; not a legal boundary decision.");
 
+  // Batch 2R intentionally places a success panel above the workspace after
+  // an export. Dismiss it before exercising the next export control so the
+  // smoke test follows the real, accessible recovery path on mobile too.
+  await page.locator("#workspaceSuccessDismiss").click();
   await page.locator("#exportLabels").uncheck();
   await page.locator("#pngSize").selectOption("1920x1080");
   const pngDownload = page.waitForEvent("download");
@@ -415,7 +419,7 @@ test("XLSX import lazy-loads parser and uses the shared preview pipeline", async
   await expect(page.locator("#csvPreview")).toContainText("1");
 });
 
-test("beginner workflow example keeps table and map selection linked", async ({ page }) => {
+test("beginner workflow example keeps table and map selection linked", async ({ page }, testInfo) => {
   await page.goto("/workspace/");
   await waitForAppReady(page);
   await expect(page.locator("#workflowSteps")).toContainText("Add data");
@@ -430,12 +434,23 @@ test("beginner workflow example keeps table and map selection linked", async ({ 
   await expect(page.locator("#mapSelectionStatus")).toHaveAttribute("data-state", "selected");
   await expect(page.locator("#dataTable tbody tr").first()).toHaveClass(/selected/);
 
+  if (testInfo.project.name === "chromium-mobile") {
+    // The approved mobile composition keeps the data sheet above the map.
+    // Cycle medium -> expanded -> collapsed before using the map itself.
+    await page.locator("#sidebarToggleBtn").click();
+    await page.locator("#sidebarToggleBtn").click();
+    await expect(page.locator("#appShell")).toHaveAttribute("data-workspace-sheet", "collapsed");
+  }
   const surabayaPath = page.locator('.leaflet-interactive[aria-label*="Surabaya"]').first();
   await surabayaPath.click();
   await expect(page.locator("#dataTable tbody tr").filter({ hasText: "Surabaya" }).first()).toHaveClass(/selected/);
 
   await page.locator("#dataTableFilter").fill("Denpasar");
   await expect(page.locator("#dataTable tbody tr")).toHaveCount(1);
+  if (testInfo.project.name === "chromium-mobile") {
+    await page.locator("#sidebarToggleBtn").click();
+    await expect(page.locator("#appShell")).toHaveAttribute("data-workspace-sheet", "medium");
+  }
   await page.locator("#advancedModeBtn").click();
   await expect(page.locator("#dataTableCount")).toHaveText("1");
   await page.locator("#basicModeBtn").click();
@@ -505,6 +520,7 @@ test("professional export writes PDF and mapping CSV with safe metadata", async 
   expect(mapping.suggestedFilename()).toBe("safe-metadata-test-mapping.csv");
   expect(fs.readFileSync(await mapping.path(), "utf8")).toContain("Canonical_Region_ID");
 
+  await page.locator("#workspaceSuccessDismiss").click();
   const pdfDownload = page.waitForEvent("download");
   await page.locator("#exportPdfBtn").click();
   const pdf = await pdfDownload;

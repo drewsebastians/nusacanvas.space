@@ -1,6 +1,6 @@
 {
   "schemaVersion": "batch2r.final-journey.v1",
-  "generatedAt": "2026-07-15T06:43:53.827Z",
+  "generatedAt": "2026-07-15T11:26:59.289Z",
   "status": "passed",
   "desktop": {
     "homepageGoalSelection": true,
@@ -22,10 +22,10 @@
     "futureWorkflowHonesty": true,
     "noExternalUserDataRequest": true,
     "timing": {
-      "startedAt": 1784097807089,
-      "firstValidPreviewMs": 7099,
-      "firstValidMapMs": 8196,
-      "firstExportMs": 14631
+      "startedAt": 1784114802034,
+      "firstValidPreviewMs": 6402,
+      "firstValidMapMs": 7109,
+      "firstExportMs": 11705
     }
   },
   "externalRequests": []
