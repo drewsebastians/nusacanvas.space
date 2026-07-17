@@ -56,7 +56,7 @@ Builds `dist/`, serves it locally, and verifies load, search/select, color, undo
 npm run test:e2e:trust
 ```
 
-Verifies trust page navigation, report-error template copy/download behavior, source/version links, noindex metadata, and unknown-route handling.
+Verifies trust page navigation, report-error template copy/download behavior, source/version links, production indexing metadata, and unknown-route handling.
 
 ```text
 npm run test:a11y

@@ -161,7 +161,7 @@
   }
 
   function normalizeColor(color) {
-    return String(color || "#4472C4").toUpperCase();
+    return String(color || "#087F73").toUpperCase();
   }
 
   function defaultGroupName(color) {
@@ -173,7 +173,14 @@
       "#FFC000": "Yellow group",
       "#A64D79": "Purple group",
       "#00A388": "Teal group",
-      "#7F6000": "Brown group"
+      "#7F6000": "Brown group",
+      "#087F73": "Teal group",
+      "#2D79B7": "Blue group",
+      "#194F68": "Deep blue group",
+      "#D58A16": "Amber group",
+      "#6E55A5": "Violet group",
+      "#45A99B": "Sea green group",
+      "#B8CBD5": "Light slate group"
     };
     return names[color] || `Color group ${color}`;
   }

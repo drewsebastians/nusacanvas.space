@@ -227,24 +227,26 @@ test("an invalid current backup without a legacy source remains downloadable bef
   await expect(page.locator("#downloadStorageRecoveryBtn")).toBeVisible();
 });
 
-test("declining a valid startup restore preserves its exact bytes before the first replacement edit", async ({ page }) => {
+test("a valid saved copy restores silently without a startup dialog", async ({ page }) => {
   const currentProject = syntheticLegacyAutosave();
   currentProject.title = "Existing current browser project";
   currentProject.exportMeta.filenameSlug = "existing-current-browser-project";
   const currentRaw = JSON.stringify(currentProject);
   await seedLegacyAutosave(page, "", { targetRaw: currentRaw, omitLegacy: true });
-  page.on("dialog", (dialog) => dialog.dismiss());
+  let dialogCount = 0;
+  page.on("dialog", (dialog) => { dialogCount += 1; dialog.dismiss(); });
 
   await page.goto("/workspace/");
   await waitForAppReady(page);
 
-  await expect(page.locator("#projectTitle")).toHaveValue(brand.defaults.projectTitle);
-  await expect(page.locator("#autosaveStatus")).toHaveAttribute("data-state", "available-not-opened");
+  await expect(page.locator("#projectTitle")).toHaveValue("Existing current browser project");
+  await expect(page.locator("#autosaveStatus")).toHaveAttribute("data-state", "opened");
+  expect(dialogCount).toBe(0);
   expect(await page.evaluate((key) => localStorage.getItem(key), TARGET_KEY)).toBe(currentRaw);
 
-  await page.locator("#projectTitle").fill("New workspace after declined restore");
+  await page.locator("#projectTitle").fill("Updated restored project");
   await expect(page.locator("#autosaveStatus")).toHaveAttribute("data-state", "saved");
-  expect(await page.evaluate((key) => localStorage.getItem(key), "indonesia-region-map-autosave-recovery-v1")).toBe(currentRaw);
-  expect(JSON.parse(await page.evaluate((key) => localStorage.getItem(key), TARGET_KEY)).title).toBe("New workspace after declined restore");
-  await expect(page.locator("#downloadStorageRecoveryBtn")).toBeVisible();
+  expect(await page.evaluate((key) => localStorage.getItem(key), "indonesia-region-map-autosave-recovery-v1")).toBeNull();
+  expect(JSON.parse(await page.evaluate((key) => localStorage.getItem(key), TARGET_KEY)).title).toBe("Updated restored project");
+  await expect(page.locator("#downloadStorageRecoveryBtn")).toBeHidden();
 });

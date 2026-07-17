@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="../">
-  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="robots" content="noindex,follow">
   <title data-brand-title>NusaCanvas - Create an Indonesia region map</title>
   <meta name="description" data-brand-description content="NusaCanvas turns spreadsheet data into clear Indonesia regency and city maps in your browser.">
   <link rel="stylesheet" href="../assets/css/design-system.css">
@@ -60,9 +60,10 @@
       </section>
 
       <section class="panel-section" data-workflow-step="visualize">
-        <h2>Select a region</h2>
+        <p class="workspace-section-kicker">01 &middot; Region</p>
+        <h2>Find a region</h2>
         <label for="searchInput">Search regions</label>
-        <input id="searchInput" type="search" autocomplete="off" placeholder="Example: Surabaya">
+        <input id="searchInput" type="search" autocomplete="off" placeholder="Search by region name">
         <div id="searchResults" class="search-results" role="listbox" aria-label="Search results"></div>
 
         <label for="provinceSelect">Province</label>
@@ -71,32 +72,50 @@
         <label for="regionSelect">Regency or city</label>
         <select id="regionSelect"></select>
 
-        <div class="selected-region" id="selectedRegion">No region selected.</div>
+        <div class="selected-region" id="selectedRegion" aria-live="polite">No region selected.</div>
       </section>
 
       <section class="panel-section" data-workflow-step="visualize">
-        <h2>Highlight regions manually</h2>
-        <p class="notice">Use this option to select and color one region at a time.</p>
+        <p class="workspace-section-kicker">02 &middot; Style</p>
+        <h2>Style selected region</h2>
+        <p class="notice">Choose a map color, then add optional label details.</p>
         <label for="colorPicker">Highlight color</label>
-        <div class="color-row">
-          <input id="colorPicker" type="color" value="#4472C4">
-          <div id="quickColors" class="quick-colors" aria-label="Quick color choices"></div>
+        <div class="color-input">
+          <input id="colorPicker" type="color" value="#087F73">
+          <output id="colorValue" for="colorPicker">#087F73</output>
         </div>
-        <label for="categoryInput">Category</label>
-        <input id="categoryInput" type="text" maxlength="60" placeholder="Optional">
-        <label for="valueInput">Value</label>
-        <input id="valueInput" type="text" maxlength="60" placeholder="Optional">
-        <div class="button-grid">
+        <label for="manualPalette">Color palette</label>
+        <select id="manualPalette">
+          <option value="nusacanvas">NusaCanvas</option>
+          <option value="office">Office classic</option>
+          <option value="coastal">Coastal calm</option>
+          <option value="earth">Earth and terrain</option>
+        </select>
+        <div id="colorPalette" class="color-palette" role="group" aria-label="Colors in selected palette"></div>
+        <div class="optional-fields">
+          <div>
+            <label for="categoryInput">Category <span>Optional</span></label>
+            <input id="categoryInput" type="text" maxlength="60" placeholder="e.g. Priority">
+          </div>
+          <div>
+            <label for="valueInput">Value <span>Optional</span></label>
+            <input id="valueInput" type="text" maxlength="60" placeholder="e.g. 120">
+          </div>
+        </div>
+        <div class="button-grid manual-actions">
           <button id="applyColorBtn" type="button" data-copy="ui.actions.highlightRegion">Highlight region</button>
           <button id="removeColorBtn" type="button" class="secondary" data-copy="ui.actions.removeHighlight">Remove highlight</button>
-          <button id="undoBtn" type="button" class="secondary" data-copy="ui.actions.undo">Undo</button>
+          <button id="undoBtn" type="button" class="secondary" disabled data-copy="ui.actions.undo">Undo</button>
           <button id="resetBtn" type="button" class="danger" data-copy="ui.actions.clearMap">Clear map</button>
         </div>
       </section>
 
       <section class="panel-section" data-workflow-step="visualize">
         <div class="section-heading">
-          <h2>Highlighted regions</h2>
+          <div>
+            <p class="workspace-section-kicker">Current map</p>
+            <h2>Highlighted regions</h2>
+          </div>
           <span id="highlightCount" class="count-pill">0</span>
         </div>
         <div id="highlightList" class="highlight-list" aria-live="polite"></div>
@@ -213,6 +232,7 @@
       </section>
 
       <section id="exportSection" class="panel-section" data-workflow-step="export">
+        <p class="workspace-section-kicker">03 &middot; Export</p>
         <h2>Export map</h2>
         <label for="exportRatio">Canvas ratio</label>
         <select id="exportRatio">

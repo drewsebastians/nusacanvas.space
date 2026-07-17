@@ -13,14 +13,15 @@ const trustPages = [
   ["/guides/mengapa-jumlah-wilayah-peta-berbeda/", /Why map region counts can differ/i]
 ];
 
-test("trust pages are reachable, lightweight, and noindex", async ({ page }) => {
+test("trust pages are reachable, lightweight, and indexable", async ({ page }) => {
   const requests = [];
   page.on("request", (request) => requests.push(request.url()));
   for (const [url, heading] of trustPages) {
     const response = await page.goto(url);
     expect(response.status()).toBe(200);
     await expect(page.locator("h1")).toContainText(heading);
-    await expect(page.locator("meta[name='robots']")).toHaveAttribute("content", /noindex/i);
+    await expect(page.locator("meta[name='robots']")).toHaveCount(0);
+    await expect(page.locator("link[rel='canonical']")).toHaveAttribute("href", /https:\/\/nusacanvas\.space\//);
     await expect(page.locator("main")).toBeVisible();
     await expect(page.locator("a.brand")).toHaveText(brand.productName);
     const html = await page.content();

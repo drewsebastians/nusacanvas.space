@@ -1,6 +1,6 @@
 # Architecture
 
-NusaCanvas is a static Cloudflare Workers Static Assets application. Its future canonical production origin is `https://nusacanvas.space`; the custom domain is not attached yet.
+NusaCanvas is a static Cloudflare Workers Static Assets application. Its canonical production origin is `https://nusacanvas.space`.
 
 ## Runtime
 
@@ -49,7 +49,7 @@ This avoids destructive geometry renaming while giving saved projects a forward 
 7. SVG/PNG/PDF/mapping CSV export is generated in-browser; PDF is currently raster.
 7. If the user explicitly selects high-detail export, the browser fetches the pinned local `data/indonesia-adm2-detailed.geojson` file, verifies its checksum, and uses it only for that export. The on-screen map remains on the simplified snapshot.
 
-All paths are relative so the app works from the Cloudflare Workers staging host and future custom domain.
+All runtime paths are relative so the app works consistently on the production domain.
 
 ## Experience and boundary presentation
 
@@ -78,9 +78,7 @@ Trust/content pages do not load Leaflet, map JavaScript, GeoJSON, external fonts
 
 ## Security headers
 
-Cloudflare staging uses `_headers` to keep the workers.dev site non-indexable and locked down:
-
-- `X-Robots-Tag: noindex, nofollow, noarchive`
+Cloudflare production uses `_headers` for a locked-down browser security policy:
 - `Content-Security-Policy` with same-origin scripts/connects, `object-src 'none'`, `base-uri 'none'`, `form-action 'none'`, and `frame-ancestors 'none'`
 - `X-Content-Type-Options: nosniff`
 - `Referrer-Policy: strict-origin-when-cross-origin`

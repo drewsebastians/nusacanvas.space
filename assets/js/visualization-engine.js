@@ -3,13 +3,22 @@
   const PALETTE_VERSION = "IDN-PALETTE-v1";
   const palettes = {
     qualitative: {
-      "safe-default": ["#0072B2", "#E69F00", "#009E73", "#CC79A7", "#56B4E9", "#D55E00", "#F0E442", "#332288", "#88CCEE", "#44AA99", "#DDCC77", "#AA4499"]
+      "safe-default": ["#0072B2", "#E69F00", "#009E73", "#CC79A7", "#56B4E9", "#D55E00", "#F0E442", "#332288", "#88CCEE", "#44AA99", "#DDCC77", "#AA4499"],
+      "office": ["#4472C4", "#ED7D31", "#A5A5A5", "#FFC000", "#5B9BD5", "#70AD47", "#264478", "#9E480E", "#636363", "#997300", "#255E91", "#43682B"],
+      "coastal": ["#174A5B", "#2B7A78", "#4CA6A8", "#8BC6C5", "#E1B44B", "#D97A43", "#35627A", "#6D9F9C", "#B5D8D1", "#F0D58A", "#A8533D", "#6C7C86"],
+      "earth": ["#486B42", "#7D8C3E", "#C39B3A", "#B8643B", "#7B4D37", "#D8C59D", "#315F54", "#89926A", "#D7B56D", "#925448", "#59483D", "#B0A88E"]
     },
     sequential: {
-      "blue": ["#F0F7FF", "#C6DBEF", "#9ECAE1", "#6BAED6", "#3182BD", "#08519C", "#08306B"]
+      "blue": ["#F0F7FF", "#C6DBEF", "#9ECAE1", "#6BAED6", "#3182BD", "#08519C", "#08306B"],
+      "teal": ["#E8F5F3", "#C4E6E1", "#95D2CA", "#5CB8AE", "#259A90", "#087F73", "#045A53"],
+      "green": ["#EFF7EC", "#D5EBCB", "#AED99F", "#7FC56F", "#55AD4B", "#318A32", "#1C6423"],
+      "purple": ["#F4F0F8", "#DED3EB", "#C2AED9", "#A183C2", "#805EAA", "#66428E", "#472B68"],
+      "amber": ["#FFF7E6", "#FDE7B1", "#F5CF75", "#EAB348", "#D99525", "#B97612", "#8A5409"]
     },
     diverging: {
-      "blue-orange": ["#2166AC", "#67A9CF", "#D1E5F0", "#F7F7F7", "#FDDBC7", "#EF8A62", "#B2182B"]
+      "blue-orange": ["#2166AC", "#67A9CF", "#D1E5F0", "#F7F7F7", "#FDDBC7", "#EF8A62", "#B2182B"],
+      "teal-rose": ["#006D77", "#5BA8A8", "#B9D8D5", "#F7F7F4", "#E8BBC7", "#CF7290", "#9B2F5D"],
+      "purple-green": ["#5B2A86", "#9575B5", "#CEC0DC", "#F7F7F4", "#C6D8B6", "#82AD67", "#3F7D3A"]
     }
   };
 

@@ -103,14 +103,18 @@ a:hover { color: var(--accent-dark); }
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-4);
-  min-height: 4.5rem;
+  min-height: 7.25rem;
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  width: 9.5rem;
+  min-height: 7rem;
+  background: url("../images/nusacanvas-logo.png") center / contain no-repeat;
   color: var(--ink);
-  font-weight: var(--weight-bold);
+  font-size: 0;
   text-decoration: none;
-  letter-spacing: -.02em;
 }
 
 .site-nav > .brand { margin-right: auto; }
@@ -199,6 +203,11 @@ p, li {
   background: var(--panel);
   padding: 14px 16px;
 }
+
+a.card { color: var(--ink); text-decoration: none; transition: border-color var(--motion-fast) var(--ease-standard), box-shadow var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard); }
+a.card:hover { border-color: var(--accent); color: var(--ink); box-shadow: var(--elevation-1); transform: translateY(-1px); }
+a.card h2 { margin: 0 0 var(--space-2); font-size: var(--text-lg); }
+a.card p { margin: 0; color: var(--muted); font-size: var(--text-sm); }
 
 .button-row {
   display: flex;
@@ -337,7 +346,8 @@ a:focus {
 .starting-point { display: grid; gap: var(--space-1); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--surface); color: var(--ink); padding: var(--space-4); text-decoration: none; transition: border-color var(--motion-fast) var(--ease-standard), box-shadow var(--motion-fast) var(--ease-standard); }
 .starting-point:hover { border-color: var(--accent); box-shadow: var(--elevation-1); color: var(--ink); }
 .starting-point span { color: var(--muted); font-size: var(--text-sm); }
-.example-band { border-top: 1px solid var(--border-subtle); }
+.process-band { border: 1px solid #c7e2df; border-radius: var(--radius-lg); background: var(--accent-soft); padding-inline: var(--space-5); }
+.template-section { margin-top: var(--space-7); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); background: var(--surface-muted); padding-inline: var(--space-6); }
 .process-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); list-style: none; margin: var(--space-5) 0 0; padding: 0; }
 .process-list li { border-left: 2px solid var(--accent); padding-left: var(--space-3); }
 .process-list strong, .process-list span { display: block; }
@@ -348,6 +358,14 @@ a:focus {
 .footer-grid nav { display: flex; flex-wrap: wrap; gap: var(--space-3) var(--space-4); }
 .footer-grid nav a { font-size: var(--text-sm); }
 
+.faq-section { margin-top: var(--space-7); border-top: 1px solid var(--border-subtle); padding-top: var(--space-7); }
+.faq-section > h2 { margin-top: 0; }
+.faq-list { display: grid; gap: var(--space-3); margin-top: var(--space-5); }
+.faq-item { border: 1px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--surface); padding: 0 var(--space-4); box-shadow: var(--elevation-1); }
+.faq-item summary { cursor: pointer; padding: var(--space-4) 2rem var(--space-4) 0; color: var(--ink); font-weight: var(--weight-bold); }
+.faq-item[open] summary { color: var(--accent-dark); }
+.faq-item p { margin: 0; padding: 0 0 var(--space-4); color: var(--muted); }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
@@ -355,7 +373,10 @@ a:focus {
 @media (max-width: 680px) {
   .site-nav {
     position: relative;
+    min-height: 6rem;
   }
+
+  .brand { width: 8rem; min-height: 5.75rem; }
 
   .nav-toggle { display: inline-flex; min-height: 44px; align-items: center; border: 1px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); padding: .5rem .75rem; }
   .nav-links { display: none; width: 100%; align-items: stretch; border-top: 1px solid var(--border-subtle); padding: var(--space-3) 0; }
@@ -373,6 +394,7 @@ a:focus {
   .goal-card { min-height: auto; }
   .goal-card .text-action, .goal-card .status-tag { margin-top: var(--space-4); }
   .trust-strip { padding-bottom: calc(var(--space-5) + var(--safe-bottom)); }
+  .process-band, .template-section { padding-inline: var(--space-4); }
   .final-cta { padding: var(--space-5); }
   .footer-grid { display: grid; }
 }

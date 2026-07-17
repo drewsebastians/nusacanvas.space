@@ -21,7 +21,11 @@ test("public homepage is lightweight, accessible, and points to the workspace", 
   await expect(page.locator(".goal-card").filter({ hasText: "Analyze coverage" })).toContainText("Upcoming");
   await expect(page.locator(".button:not(.secondary)")).toHaveCount(1);
   await expect(page.locator("text=Useful starting points")).toBeVisible();
-  await expect(page.locator("meta[name='robots']")).toHaveAttribute("content", /noindex/i);
+  const sectionOrder = await page.locator("main > section").evaluateAll((sections) => sections.map((section) => section.id || section.className));
+  expect(sectionOrder.indexOf("trust-strip")).toBeLessThan(sectionOrder.indexOf("create"));
+  expect(sectionOrder.indexOf("examples")).toBeLessThan(sectionOrder.indexOf("templates"));
+  await expect(page.locator("meta[name='robots']")).toHaveCount(0);
+  await expect(page.locator("link[rel='canonical']")).toHaveAttribute("href", "https://nusacanvas.space/");
   await expect(page.locator("script[src]")).toHaveCount(1);
   expect(requests.some((url) => /leaflet|xlsx|read-excel|geojson|map\.js|app\.js/i.test(url))).toBe(false);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);

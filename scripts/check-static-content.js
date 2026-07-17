@@ -69,7 +69,6 @@ function extractAttributes(html, attribute) {
 function checkHeaders() {
   const headers = fs.readFileSync(path.join(ROOT, "_headers"), "utf8");
   const required = [
-    "X-Robots-Tag: noindex, nofollow, noarchive",
     "Content-Security-Policy:",
     "default-src 'self'",
     "script-src 'self'",
@@ -84,9 +83,10 @@ function checkHeaders() {
   for (const item of required) {
     if (!headers.includes(item)) fail(`_headers missing ${item}`);
   }
+  if (/X-Robots-Tag:\s*noindex/i.test(headers)) fail("_headers must not block production indexing");
   const robots = fs.readFileSync(path.join(ROOT, "robots.txt"), "utf8");
-  if (!/User-agent:\s*\*/i.test(robots) || !/Disallow:\s*\//i.test(robots)) {
-    fail("robots.txt must block staging crawling");
+  if (!/User-agent:\s*\*/i.test(robots) || !/Allow:\s*\//i.test(robots) || !/Sitemap:\s*https:\/\/nusacanvas\.space\/sitemap\.xml/i.test(robots)) {
+    fail("robots.txt must expose the production sitemap and allow crawling");
   }
 }
 
@@ -94,7 +94,8 @@ function checkPage(relativePath) {
   const html = read(relativePath);
   if (!/<html lang="en">/i.test(html)) fail(`${relativePath} missing lang=en`);
   if (!/<main[\s>]/i.test(html)) fail(`${relativePath} missing semantic main`);
-  if (!/noindex,nofollow,noarchive/i.test(html)) fail(`${relativePath} missing robots meta`);
+  if (/<meta name="robots"[^>]*noindex/i.test(html)) fail(`${relativePath} must not contain production noindex metadata`);
+  if (!/<link rel="canonical" href="https:\/\/nusacanvas\.space\//i.test(html)) fail(`${relativePath} missing production canonical URL`);
   if (!html.includes("assets/css/content.css") && !relativePath.startsWith("guides/")) {
     fail(`${relativePath} missing content stylesheet`);
   }
@@ -103,6 +104,7 @@ function checkPage(relativePath) {
     if (html.includes(forbidden)) fail(`${relativePath} loads map/runtime asset ${forbidden}`);
   }
   for (const href of extractAttributes(html, "href")) {
+    if (href.startsWith("https://nusacanvas.space/")) continue;
     if (!targetExists(href, relativePath)) fail(`${relativePath} has broken href: ${href}`);
   }
   for (const src of extractAttributes(html, "src")) {

@@ -48,5 +48,5 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
 
-      - name: Record staging URL
-        run: echo "Manual deploy fallback URL: https://nusacanvas-space.andrew-sebastian91.workers.dev" >> "$GITHUB_STEP_SUMMARY"
+      - name: Verify production domain
+        run: npm run verify:production

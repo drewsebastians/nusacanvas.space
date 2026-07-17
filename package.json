@@ -52,7 +52,7 @@
     "verify:batch1": "node scripts/brand-migration-audit.js && node scripts/verify-batch1.js",
     "deploy": "node scripts/wrangler-command.js deploy",
     "deploy:ci": "wrangler deploy",
-    "verify:staging": "node scripts/verify-staging.js https://nusacanvas-space.andrew-sebastian91.workers.dev"
+    "verify:production": "node scripts/verify-production.js https://nusacanvas.space"
   },
   "devDependencies": {
     "@playwright/test": "1.61.1",

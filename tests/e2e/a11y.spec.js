@@ -32,6 +32,20 @@ test("home page has no serious or critical automated accessibility violations", 
   expect(blocking).toEqual([]);
 });
 
+test("manual workspace controls have no serious or critical automated accessibility violations", async ({ page }) => {
+  await page.goto("/workspace/");
+  await waitForAppReady(page);
+  await page.locator('[data-workspace-goal="manual"]').click();
+  await injectAxe(page);
+  const results = await page.evaluate(async () => window.axe.run(document, {
+    resultTypes: ["violations"],
+    runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "best-practice"] }
+  }));
+  fs.writeFileSync(path.join(artifactDir, "a11y-workspace-manual-results.json"), `${JSON.stringify(results, null, 2)}\n`);
+  const blocking = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact));
+  expect(blocking).toEqual([]);
+});
+
 test("trust pages have no serious or critical automated accessibility violations", async ({ page }) => {
   fs.mkdirSync(artifactDir, { recursive: true });
   const pages = ["/about/", "/contact/", "/privacy/", "/terms/", "/sources-licenses/", "/data-methodology/", "/limitations/", "/changelog/", "/guides/mengapa-jumlah-wilayah-peta-berbeda/"];

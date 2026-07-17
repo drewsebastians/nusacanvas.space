@@ -12,16 +12,38 @@
   const boundaryProvider = boundaryProviderApi.createCurrentBoundaryProvider({ baseUrl: RUNTIME_BASE });
   const BOUNDARY_VERSION = boundaryProvider.getVersion();
   const REGISTRY_VERSION = boundaryProvider.getManifest().canonicalRegistryVersion;
-  const quickColors = ["#4472C4", "#E74C3C", "#70AD47", "#FFC000", "#5B9BD5", "#A64D79", "#00A388", "#7F6000"];
   const brand = window.ProductBrand;
   if (!brand) throw new Error("Product brand configuration is required.");
   const brandMigration = window.ProductBrandMigration;
   if (!brandMigration) throw new Error("Product brand migration is required.");
   const defaultLegend = () => [
-    { label: "Above target", color: "#70AD47" },
-    { label: "Needs attention", color: "#FFC000" },
-    { label: "Below target", color: "#E74C3C" }
+    { label: "Above target", color: "#087F73" },
+    { label: "Needs attention", color: "#D58A16" },
+    { label: "Below target", color: "#2D79B7" }
   ];
+  const manualPalettes = {
+    nusacanvas: {
+      label: "NusaCanvas",
+      colors: [["#087F73", "Teal"], ["#2D79B7", "Blue"], ["#194F68", "Deep blue"], ["#D58A16", "Amber"], ["#6E55A5", "Violet"], ["#45A99B", "Sea green"]]
+    },
+    office: {
+      label: "Office classic",
+      colors: [["#4472C4", "Office blue"], ["#ED7D31", "Office orange"], ["#A5A5A5", "Office gray"], ["#FFC000", "Office gold"], ["#5B9BD5", "Office light blue"], ["#70AD47", "Office green"]]
+    },
+    coastal: {
+      label: "Coastal calm",
+      colors: [["#174A5B", "Deep ocean"], ["#2B7A78", "Lagoon"], ["#4CA6A8", "Aqua"], ["#8BC6C5", "Sea glass"], ["#E1B44B", "Sand"], ["#D97A43", "Coral"]]
+    },
+    earth: {
+      label: "Earth and terrain",
+      colors: [["#486B42", "Forest"], ["#7D8C3E", "Olive"], ["#C39B3A", "Ochre"], ["#B8643B", "Terracotta"], ["#7B4D37", "Earth"], ["#D8C59D", "Limestone"]]
+    }
+  };
+  const visualizationPalettes = {
+    qualitative: [["safe-default", "Accessible colors"], ["office", "Office classic"], ["coastal", "Coastal calm"], ["earth", "Earth and terrain"]],
+    sequential: [["blue", "Blue"], ["teal", "Teal"], ["green", "Green"], ["purple", "Purple"], ["amber", "Amber"]],
+    diverging: [["blue-orange", "Blue to orange"], ["teal-rose", "Teal to rose"], ["purple-green", "Purple to green"]]
+  };
   const productText = (key, values) => window.ProductContent
     ? window.ProductContent.text(key, values)
     : key;
@@ -66,7 +88,7 @@
     if (window.ProductContent) window.ProductContent.apply(document);
     [
       "projectTitle", "searchInput", "searchResults", "provinceSelect", "regionSelect", "selectedRegion",
-      "colorPicker", "quickColors", "categoryInput", "valueInput", "applyColorBtn", "removeColorBtn",
+      "colorPicker", "colorValue", "manualPalette", "colorPalette", "categoryInput", "valueInput", "applyColorBtn", "removeColorBtn",
       "undoBtn", "resetBtn", "highlightCount", "highlightList", "showLegend", "legendPosition",
       "groupCount", "groupingList", "legendItems", "addLegendBtn", "importPaste", "csvFile", "xlsxSheet", "importDelimiter",
       "importLocale", "previewCsvBtn", "applyCsvBtn", "cancelImportBtn", "importMapping", "csvPreview",
@@ -79,7 +101,7 @@
     ].forEach((id) => { el[id] = document.getElementById(id); });
     mapApi = IndonesiaMap.createMap("map", { onSelect: handleFeatureSelected });
     setupEvents();
-    setupColors();
+    setupColorPalette();
     setupVisualizationControls();
     renderWorkflow();
     setMode("basic");
@@ -98,6 +120,7 @@
     el.searchInput.addEventListener("input", renderSearch);
     el.provinceSelect.addEventListener("change", handleProvinceChange);
     el.regionSelect.addEventListener("change", () => selectRegion(el.regionSelect.value, true));
+    el.colorPicker.addEventListener("input", updateColorValue);
     el.applyColorBtn.addEventListener("click", applySelectedColor);
     el.removeColorBtn.addEventListener("click", removeSelectedColor);
     el.undoBtn.addEventListener("click", undo);
@@ -149,12 +172,23 @@
 
   function setupVisualizationControls() {
     if (!el.vizPalette) return;
-    el.vizPalette.innerHTML = `<option value="safe-default">Accessible colors</option><option value="blue">Light to dark blue</option><option value="blue-orange">Blue to orange around a midpoint</option>`;
     updateVisualizationControlVisibility();
+  }
+
+  function updateVisualizationPaletteOptions(method) {
+    const family = method === "categorical" ? "qualitative" : method === "diverging" ? "diverging" : "sequential";
+    if (el.vizPalette.dataset.family === family) return;
+    const previous = el.vizPalette.value;
+    el.vizPalette.innerHTML = visualizationPalettes[family]
+      .map(([value, label]) => `<option value="${value}">${label}</option>`)
+      .join("");
+    if (visualizationPalettes[family].some(([value]) => value === previous)) el.vizPalette.value = previous;
+    el.vizPalette.dataset.family = family;
   }
 
   function updateVisualizationControlVisibility() {
     const method = el.vizMode && el.vizMode.value;
+    updateVisualizationPaletteOptions(method);
     const centerLabel = document.querySelector("label[for='vizCenter']");
     const center = el.vizCenter;
     const breaksLabel = document.querySelector("label[for='vizBreaks']");
@@ -314,17 +348,34 @@
     setTimeout(() => mapApi.invalidate(), 220);
   }
 
-  function setupColors() {
-    quickColors.forEach((color) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "swatch";
-      button.style.background = color;
-      button.title = color;
-      button.setAttribute("aria-label", "Choose color " + color);
-      button.addEventListener("click", () => { el.colorPicker.value = color; });
-      el.quickColors.appendChild(button);
+  function updateColorValue() {
+    const color = el.colorPicker.value.toUpperCase();
+    el.colorValue.value = color;
+    el.colorPalette.querySelectorAll("[data-color]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.color === color));
     });
+  }
+
+  function setupColorPalette() {
+    const renderPalette = (selectFirst = false) => {
+      const palette = manualPalettes[el.manualPalette.value] || manualPalettes.nusacanvas;
+      el.colorPalette.innerHTML = palette.colors.map(([color, name]) =>
+        `<button type="button" class="color-swatch" style="--swatch-color:${color}" data-color="${color}" aria-label="${name}" aria-pressed="false"></button>`
+      ).join("");
+      const current = el.colorPicker.value.toUpperCase();
+      if (selectFirst || !palette.colors.some(([color]) => color === current)) {
+        el.colorPicker.value = palette.colors[0][0].toLowerCase();
+      }
+      updateColorValue();
+    };
+    el.manualPalette.addEventListener("change", () => renderPalette(true));
+    el.colorPalette.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-color]");
+      if (!button) return;
+      el.colorPicker.value = button.dataset.color.toLowerCase();
+      updateColorValue();
+    });
+    renderPalette();
   }
 
   async function loadData() {
@@ -429,16 +480,10 @@
       const saved = ProjectStorage.loadAutosave(adapter);
       const storageReport = ProjectStorage.getStorageMigrationReport();
       state.storageMigrationReport = storageReport;
-      if (saved && confirm("A saved copy is available in this browser. Open it?")) {
+      if (saved) {
         applyProject(saved);
-      } else if (saved) {
-        const deferred = ProjectStorage.deferCurrentAutosaveReplacement();
-        state.storageMigrationReport = ProjectStorage.getStorageMigrationReport();
-        el.autosaveStatus.dataset.state = deferred ? "available-not-opened" : "unavailable";
-        el.autosaveStatus.textContent = deferred
-          ? "The saved browser copy was left unchanged. Before your next edit replaces it, a verified safety copy will be kept."
-          : "The saved browser copy was left unchanged, but browser storage could not be prepared for a later edit.";
-        if (!deferred) showError("The saved browser copy could not be protected for a later edit. It was left unchanged; save a project file before editing.");
+        el.autosaveStatus.dataset.state = "opened";
+        el.autosaveStatus.textContent = "Saved browser copy restored.";
       }
       updateStorageMigrationUi(storageReport);
     } catch (error) {
@@ -523,10 +568,14 @@
 
   function handleFeatureSelected(feature) {
     const p = feature.properties;
+    el.appShell.dataset.workspaceRegionSelected = "true";
     el.selectedRegion.innerHTML = `<strong>${escapeHtml(p.display_name)}</strong><br>${escapeHtml(p.province_name || "Province not linked")}<br><span class="tag">${escapeHtml(p.official_code || "Official code not available")}</span>`;
     el.categoryInput.value = state.highlights[p.region_id]?.category || "";
     el.valueInput.value = state.highlights[p.region_id]?.value || "";
-    if (state.highlights[p.region_id]) el.colorPicker.value = state.highlights[p.region_id].color;
+    if (state.highlights[p.region_id]) {
+      el.colorPicker.value = state.highlights[p.region_id].color;
+      updateColorValue();
+    }
     selectDataRowForFeature(p.region_id);
   }
 
@@ -606,6 +655,8 @@
 
   function renderHighlightList() {
     const ids = Object.keys(state.highlights);
+    el.appShell.dataset.workspaceHasHighlights = String(ids.length > 0);
+    el.undoBtn.disabled = !state.undo.length;
     el.highlightCount.textContent = ids.length;
     if (!ids.length) {
       el.highlightList.innerHTML = `<p class="status-line">No regions are highlighted.</p>`;
@@ -684,13 +735,20 @@
       "#FFC000": "Yellow group",
       "#A64D79": "Purple group",
       "#00A388": "Teal group",
-      "#7F6000": "Brown group"
+      "#7F6000": "Brown group",
+      "#087F73": "Teal group",
+      "#2D79B7": "Blue group",
+      "#194F68": "Deep blue group",
+      "#D58A16": "Amber group",
+      "#6E55A5": "Violet group",
+      "#45A99B": "Sea green group",
+      "#B8CBD5": "Light slate group"
     };
     return names[color] || `Color group ${color}`;
   }
 
   function normalizeColor(color) {
-    return String(color || "#4472C4").toUpperCase();
+    return String(color || "#087F73").toUpperCase();
   }
 
   function renderGroupingEditor() {
@@ -747,7 +805,7 @@
         label: getGroupLabel(group)
       };
     }).sort((a, b) => a.label.localeCompare(b.label, "id"));
-    return grouped.length ? grouped : state.legend;
+    return grouped;
   }
 
   function refreshMapLegend() {

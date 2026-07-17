@@ -10,9 +10,12 @@ const requiredFiles = [
   "index.html",
   "workspace/index.html",
   "robots.txt",
+  "sitemap.xml",
   "assets/css/app.css",
   "assets/css/content.css",
   "assets/css/design-system.css",
+  "assets/images/nusacanvas-logo.png",
+  "assets/images/nusacanvas-favicon.png",
   "assets/js/public-shell.js",
   "assets/js/workspace-shell.js",
   "assets/js/brand-config.js",
@@ -86,6 +89,26 @@ fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 
 requiredFiles.forEach(copyFile);
+
+function addBrandAssets(relativePath) {
+  if (!relativePath.endsWith(".html")) return;
+  const filePath = path.join(dist, relativePath);
+  let html = fs.readFileSync(filePath, "utf8");
+  if (html.includes("data-nusacanvas-assets")) return;
+  const directory = path.dirname(relativePath);
+  const depth = directory === "." ? 0 : directory.split(/[\\/]/).filter(Boolean).length;
+  const prefix = "../".repeat(depth);
+  const canonicalPath = relativePath === "index.html" ? "/" : `/${relativePath.replace(/index\.html$/, "")}`;
+  const links = [
+    `  <link rel="canonical" href="https://nusacanvas.space${canonicalPath}">`,
+    `  <link rel="icon" type="image/png" sizes="512x512" href="${prefix}assets/images/nusacanvas-favicon.png" data-nusacanvas-assets>`,
+    `  <link rel="apple-touch-icon" href="${prefix}assets/images/nusacanvas-favicon.png">`
+  ].join("\n");
+  html = html.replace("</head>", `${links}\n</head>`);
+  fs.writeFileSync(filePath, html);
+}
+
+requiredFiles.forEach(addBrandAssets);
 
 function bundleWorkspaceRuntime() {
   const earlyRuntimeModules = [

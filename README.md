@@ -2,9 +2,7 @@
 
 NusaCanvas turns spreadsheet data into clear Indonesia regency and city maps. It is a static, local-first app for people who do not use GIS: add data, review region matches, choose an easy-to-explain color method, check the table, map, and legend, then export.
 
-Future production origin: `https://nusacanvas.space`. The custom domain is not attached or indexed yet.
-
-The prepared staging identity is `https://nusacanvas-space.andrew-sebastian91.workers.dev` and remains intentionally `noindex`. Publishing to it requires the authenticated platform migration recorded in `docs/batch-2r/10-platform-rename.md`; the future custom domain is still not attached.
+Production origin: `https://nusacanvas.space`.
 
 ## Current features
 
@@ -52,9 +50,7 @@ See [ATTRIBUTION.md](./ATTRIBUTION.md), `data/license-manifest-v1.json`, and [kn
 
 ## Batch 2R status
 
-**BATCH 2R CODE COMPLETE — OWNER VISUAL APPROVAL REQUIRED.** The approved NusaCanvas experience reset is implemented and its local quality gates pass. Before Batch 3 resumes, the owner must run and record the short desktop/mobile validation in `docs/batch-2r/11-owner-validation-protocol.md`.
-
-GitHub administration is available, but the repository rename/push is still pending the recovery commit. Wrangler is not authenticated, so the replacement staging Worker cannot yet be deployed or live-verified. The future custom domain remains unattached and staging remains noindex. Historical Batch 3 Prompt 2 onward is superseded; a fresh Batch 3R preflight is required. See `docs/batch-2r/12-owner-and-batch3r-gates.md`.
+**BATCH 2R CODE COMPLETE.** The approved NusaCanvas experience reset is implemented, its local quality gates pass, and production is served from the custom Cloudflare domain above.
 
 ## Development and quality gates
 
@@ -69,7 +65,7 @@ npm run test:batch2r:closure
 npm run verify:batch2r:closure
 ```
 
-`npm run build` copies only approved production assets to `dist/`. See `docs/development.md`, `docs/deployment-guide.md`, and the historical reports in `docs/batch-2/` for testing and staging details.
+`npm run build` copies only approved production assets to `dist/`. See `docs/development.md`, `docs/deployment-guide.md`, and the historical reports in `docs/batch-2/` for testing and deployment details.
 
 ## License
 

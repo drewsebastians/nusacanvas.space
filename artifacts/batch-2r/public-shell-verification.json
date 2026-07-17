@@ -1,15 +1,15 @@
 {
   "schemaVersion": "batch2r.public-shell.v1",
-  "generatedAt": "2026-07-15T02:15:17.846Z",
+  "generatedAt": "2026-07-17T06:47:39.898Z",
   "limits": {
     "publicCssGzipBytes": 18000,
     "publicJavaScriptGzipBytes": 4000,
     "homepageHtmlGzipBytes": 6000
   },
   "measured": {
-    "publicCssGzipBytes": 3758,
+    "publicCssGzipBytes": 4026,
     "publicJavaScriptGzipBytes": 379,
-    "homepageHtmlGzipBytes": 2168
+    "homepageHtmlGzipBytes": 2136
   },
   "checks": [
     {
@@ -25,7 +25,7 @@
     {
       "name": "publicCssGzipBytes",
       "passed": true,
-      "detail": "3758 <= 18000"
+      "detail": "4026 <= 18000"
     },
     {
       "name": "publicJavaScriptGzipBytes",
@@ -35,7 +35,7 @@
     {
       "name": "homepageHtmlGzipBytes",
       "passed": true,
-      "detail": "2168 <= 6000"
+      "detail": "2136 <= 6000"
     }
   ]
 }
