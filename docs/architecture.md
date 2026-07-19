@@ -47,7 +47,7 @@ This avoids destructive geometry renaming while giving saved projects a forward 
 5. Paste/CSV/TSV/XLSX and project files are processed locally by File APIs.
 6. Matching decisions, visualization specification, and export metadata stay in browser state/project JSON.
 7. SVG/PNG/PDF/mapping CSV export is generated in-browser; PDF is currently raster.
-8. Close province/urban views and high-resolution exports lazily fetch the pinned local `data/indonesia-adm2-detailed.geojson`, verify its checksum, and merge geometry onto the same stable IDs. National overview returns to the lite snapshot.
+8. The national lite layer remains mounted and interactive. After a 300 ms settled move, close desktop views add at most three checksum-verified province detail overlays from `data/detailed-provinces/`; mobile waits for an explicit selection. Full `data/indonesia-adm2-detailed.geojson` is loaded only for detailed exports.
 
 All runtime paths are relative so the app works consistently on the production domain.
 
@@ -72,7 +72,7 @@ Normal startup must not request:
 - geoBoundaries `/current/`
 - HDX or other unpinned external boundary data
 
-The detailed GeoJSON is allowed only after a close-view adaptive request or a high-resolution export request. It remains same-origin, lazy, checksum-verified, and provider-routed.
+Province chunks are generated from the approved detailed GeoJSON at build time with exact shared-boundary meshes and the same stable IDs. They are same-origin, lazy, checksum-verified, provider-routed, and cached three at a time. The complete detailed GeoJSON is reserved for exports.
 
 Trust/content pages do not load Leaflet, map JavaScript, GeoJSON, external fonts, analytics, ads, or third-party scripts.
 

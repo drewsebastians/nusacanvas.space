@@ -1,7 +1,7 @@
 # Batch 1 Baseline Audit
 
-Generated: 2026-07-12T15:48:46.009Z
-Repository commit: `cbb517dd9f14f6fee4b7dfa6d9df3786b3b2bc2f`
+Generated: 2026-07-19T14:04:15.378Z
+Repository commit: `20cb6102ab226aa48064e58b84db95d1667c2db5`
 Branch: `main`
 
 ## Runtime entry points
@@ -15,22 +15,28 @@ Branch: `main`
 
 | File | Raw bytes | Gzip bytes | SHA-256 |
 |---|---:|---:|---|
-| `_headers` | 676 | 363 | `06374fb74831906e2911c6dc1d6965ec063e08baa219535e9b6fa5545b7f82df` |
+| `_headers` | 918 | 448 | `c0dc03be1680e4d94ad7c29d25cc5f69d83c7cf60d0e528dda13b88c81445d4c` |
 | `.nojekyll` | 2 | 22 | `7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6` |
-| `index.html` | 8054 | 2344 | `64e6a644f119828c9f40d59edea131b9504f1ab9f13d19d62ab3c922104ede65` |
-| `robots.txt` | 27 | 47 | `32403248dc764535c87140955fc9451f9ebc9702f3e298d1c24fe84e558a53a9` |
-| `assets/css/app.css` | 8424 | 2171 | `50099a53fc3ed912337bfad50bf9a5650ad67bdf241cb31a6acaa8a5699e4454` |
-| `assets/js/project-storage.js` | 4247 | 1378 | `561ca805bb12d5f571cd71571fd960472160832c2d1b8702919ef6d104d05039` |
-| `assets/js/csv-import.js` | 4562 | 1505 | `faab595b42460b0ad7335f6dfae15515fb862244b56d9c41ede1200d920243c8` |
-| `assets/js/export.js` | 16990 | 5120 | `1adca20529411b3ae56ddd413ddb0c321db83bdc7ba2e00e015c4738ec483fcf` |
-| `assets/js/map.js` | 10124 | 2867 | `dc6c4daafb55c1958af3b2ed78dc04ead80c2e8a016575c1774e018e2a6cd214` |
-| `assets/js/app.js` | 31597 | 8123 | `13d11aeaa1c01abe701814cb93847097045324c47ebbab73ce240a2cca6a3f96` |
+| `index.html` | 7020 | 2136 | `574cba2232dd4e6e8db8c6e8de88d8ff2de673d3df333d6aa215dadefa9cf180` |
+| `robots.txt` | 70 | 86 | `0c0051d8ae07363825c1f456610ebf7bfc14877cc1754563e45e103311ca91a1` |
+| `assets/css/app.css` | 39927 | 7600 | `87b94fbf174bba8e9504faabfe6e5e64245f5c3aff67d2d4b20a9799098ca6a0` |
+| `assets/js/project-storage.js` | 51363 | 9483 | `f5cacf86f4c8e2eb67b0f7e487159d453a449b9b0bf85dd9b8ead4c0fdbb1f54` |
+| `assets/js/import-core.js` | 16128 | 4566 | `f57d2b6e5a5e78ac07029ca65afbf003b887b11646622fee7028754c3f57d2c2` |
+| `assets/js/xlsx-import.js` | 12785 | 3549 | `a8169a08d9db291c017d78bdc47254c802f6115b9ae20c4081b1f444d93fd0a6` |
+| `assets/js/csv-import.js` | 6759 | 2004 | `9dec8aad1cce5f7f2f46bf8fc5bb490c8e90492d7ab778a82ccf4a4ba0c78360` |
+| `assets/js/export.js` | 31376 | 8801 | `dc2254b2f683e1f6d36975074bce40d0d61b2d5141eaae67602735a28533224a` |
+| `assets/js/map.js` | 19767 | 5046 | `c48d07a6bf7d5faf4650b54362fa4894b80cef706d922dcad50b780c329344a3` |
+| `assets/js/app.js` | 86549 | 20129 | `1f2d027b8600d800f22d8ea24b26810b1fa9dd318fd3498c6290a06088219500` |
 | `assets/vendor/leaflet/leaflet.css` | 14806 | 3524 | `a7837102824184820dfa198d1ebcd109ff6d0ff9a2672a074b9a1b4d147d04c6` |
-| `assets/vendor/leaflet/leaflet.js` | 147557 | 42503 | `3104b526504d0d61fd3099a4521e87f732ccc3174dec54e08de6ba8bde3e15ff` |
+| `assets/vendor/leaflet/leaflet.js` | 147552 | 42494 | `db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a` |
 | `data/indonesia-adm2-simplified.geojson` | 2014724 | 518479 | `6d735512fb7cab04ac7ca6048aa41437eba4f53595b83d8da4f25c198ba01f91` |
-| `sample/sample-project.json` | 755 | 381 | `dd22b0645b4de6255aab7db4cd66429522a763122b9cd84f3ca7855ecd02a546` |
+| `sample/sample-project.json` | 990 | 478 | `acc3aea829f3654f97041dffade65aa7a7ae7ae3cbc1361166782e85e6974c83` |
 | `sample/sample-region-colors.csv` | 227 | 197 | `10de9761ce0e394a3fb1084a8c157116aba4a2a05e6357dfe4ce56f63b7acd2d` |
-| `data/indonesia-adm2-detailed.geojson` | 11003421 | 2999956 | `5a5cc09736dea030b30536cec6958c8f9aaad4b61f71b1c45500db95bcc360e8` |
+| `data/indonesia-adm2-detailed.geojson` | 11002896 | 2999713 | `146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c` |
+| `data/indonesia-adm2-detailed-provinces-index.json` | 8763 | 2137 | `1f21757fb607d37340441c56dc95d7b6d231efa45d87489bb33474262bdff68e` |
+| `assets/vendor/read-excel-file/read-excel-file.min.js` | 37686 | 11957 | `9f2c26e44c7fdb69d8ea70f05e44eb64de152c084e15d245b114d0f8cf77db73` |
+| `assets/js/matching-engine.js` | 10941 | 2861 | `7c86eb494320db5e25c78462744dcb0e9fe8d01cdbd045a27ca2fbf1c634a891` |
+| `assets/js/visualization-engine.js` | 14064 | 4162 | `c3ab92d5f23ef7825b1ca1ace976f59e2f93cb135ea612c64e741d61a1b252d2` |
 | `assets/vendor/leaflet/images/layers-2x.png` | 1259 | 1282 | `066daca850d8ffbef007af00b06eac0015728dee279c51f3cb6c716df7c42edf` |
 | `assets/vendor/leaflet/images/layers.png` | 696 | 719 | `1dbbe9d028e292f36fcba8f8b3a28d5e8932754fc2215b9ac69e4cdecf5107c6` |
 | `assets/vendor/leaflet/images/marker-icon-2x.png` | 2464 | 2487 | `00179c4c1ee830d3a108412ae0d294f55776cfeb085c60129a39aa6fc4ae2528` |
@@ -42,16 +48,17 @@ Branch: `main`
 
 - Simplified geometry: 519 features.
 - Detailed geometry: 519 features.
+- Detailed province chunks: 35; largest three cached chunks: 4767764 bytes.
 - Simplified SHA-256: `6d735512fb7cab04ac7ca6048aa41437eba4f53595b83d8da4f25c198ba01f91`.
-- Detailed SHA-256: `5a5cc09736dea030b30536cec6958c8f9aaad4b61f71b1c45500db95bcc360e8`.
+- Detailed SHA-256: `146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c`.
 - Geometry types: {"Polygon":287,"MultiPolygon":232}.
 
 ## Current schema versions
 
-- App version: `1.0.0`.
-- Project schema: `1.0`.
-- Sample project schema: `1.0`.
-- Boundary version: `IDN-ADM2-2020-CODAB-geoboundaries`.
+- App version: `null`.
+- Project schema: `1.1`.
+- Sample project schema: `1.1`.
+- Boundary version: `IDN-ADM2-2020-geoboundaries-22746128`.
 - Data registry schema: No explicit version field found in data/indonesia-adm2-registry.csv.
 
 ## Network and deployment baseline
@@ -78,7 +85,7 @@ Branch: `main`
 
 ## Baseline load, color, save, and export behavior
 
-- Load: fetch local simplified geometry only; detailed geometry is loaded only after explicit high-detail export selection.
+- Load: fetch local simplified geometry at startup; close views add only visible province detail overlays while the full local detail file remains export-only.
 - Color: users select a region, choose a color, and apply it to the in-browser highlight state.
 - Save: project JSON is built in the browser and downloaded locally; autosave uses browser localStorage.
 - Export: SVG and PNG are generated in-browser without uploading project contents.

@@ -13,6 +13,7 @@
   },
   "forbiddenStartupUrlPatterns": [
     "indonesia-adm2-detailed.geojson",
+    "detailed-provinces/",
     "geoboundaries.org",
     "data.humdata.org",
     "hdx"

@@ -38,8 +38,8 @@ const checks = [
   ["interactive-single-pass-mesh", /single-pass-exact-segment-mesh/.test(mapSource) && /L\.canvas\(/.test(mapSource), "Interactive mesh is one pass; Canvas is DPR-aware when the browser provides it, otherwise Leaflet uses SVG."],
   ["export-single-pass-mesh", /boundary-mesh/.test(exportSource) && /data-region-fill/.test(exportSource), "Export fills are separate from a single boundary mesh."],
   ["round-joins-and-caps", /lineJoin:\s*"round"/.test(mapSource) && /stroke-linejoin/.test(exportSource) && /stroke-linecap/.test(exportSource), "Interactive and exported presentation strokes use round joins and caps."],
-  ["no-detailed-startup-fetch", !/indonesia-adm2-detailed\.geojson[^]*createMap/.test(mapSource), "Startup remains lite; adaptive detail is requested later through the local provider."],
-  ["versioned-local-boundary-provider", /getNationalLayer/.test(providerSource) && /data\/indonesia-adm2-detailed\.geojson/.test(providerSource) && /does not permit a remote runtime source/.test(providerSource), "Provider owns local detail tiers and rejects remote runtime sources."],
+  ["lite-base-with-province-overlays", /detailGeometryPane/.test(mapSource) && /onDetailViewportRequest/.test(mapSource) && !/getNationalLayer\("ADM2", "detailed"\)/.test(mapSource), "The national lite layer stays interactive while close views receive local province overlays."],
+  ["versioned-local-boundary-provider", /getProvinceLayer/.test(providerSource) && /detailed-provinces-index/.test(providerSource) && /does not permit a remote runtime source/.test(providerSource), "Provider owns local detail tiers and rejects remote runtime sources."],
   ["no-external-tiles", !/tileLayer|google\.com|maps\.google/i.test(mapSource), "No external basemap or Google-derived boundary path is present."]
 ].map(([name, passed, detail]) => ({ name, passed, detail }));
 

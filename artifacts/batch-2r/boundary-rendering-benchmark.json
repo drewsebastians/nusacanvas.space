@@ -1,6 +1,6 @@
 {
   "schemaVersion": "batch2r.boundary-rendering-benchmark.v1",
-  "generatedAt": "2026-07-15T11:24:14.217Z",
+  "generatedAt": "2026-07-19T14:18:15.170Z",
   "status": "passed",
   "source": {
     "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
@@ -27,12 +27,13 @@
         "height": 720
       },
       "renderer": "Leaflet Canvas (device-pixel-ratio aware)",
-      "renderReadyMs": 878,
-      "selectionAndZoomMs": 598,
+      "renderReadyMs": 1203,
+      "selectionAndZoomMs": 868,
       "inputSegments": 39304,
       "uniqueSegments": 36690,
       "sharedSegments": 2614,
       "detailedGeometryRequests": 0,
+      "provinceChunkRequests": 1,
       "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128"
     },
     {
@@ -42,8 +43,8 @@
         "height": 851
       },
       "renderer": "Leaflet Canvas (device-pixel-ratio aware)",
-      "renderReadyMs": 585,
-      "selectionAndZoomMs": 443,
+      "renderReadyMs": 775,
+      "selectionAndZoomMs": 694,
       "inputSegments": 39304,
       "uniqueSegments": 36690,
       "sharedSegments": 2614,
@@ -57,8 +58,8 @@
         "height": 720
       },
       "renderer": "Leaflet Canvas (device-pixel-ratio aware)",
-      "renderReadyMs": 2138,
-      "selectionAndZoomMs": 974,
+      "renderReadyMs": 1965,
+      "selectionAndZoomMs": 1734,
       "inputSegments": 39304,
       "uniqueSegments": 36690,
       "sharedSegments": 2614,
@@ -72,8 +73,8 @@
         "height": 720
       },
       "renderer": "Leaflet Canvas (device-pixel-ratio aware)",
-      "renderReadyMs": 847,
-      "selectionAndZoomMs": 1914,
+      "renderReadyMs": 1179,
+      "selectionAndZoomMs": 2118,
       "inputSegments": 39304,
       "uniqueSegments": 36690,
       "sharedSegments": 2614,
@@ -131,9 +132,9 @@
       "detail": "Interactive and exported presentation strokes use round joins and caps."
     },
     {
-      "name": "no-detailed-startup-fetch",
+      "name": "lite-base-with-province-overlays",
       "passed": true,
-      "detail": "Detailed geometry remains an explicit export-only app path."
+      "detail": "The national lite layer stays interactive while close views receive local province overlays."
     },
     {
       "name": "versioned-local-boundary-provider",

@@ -49,9 +49,10 @@ if (!fs.existsSync(smokePath)) {
   fail("Missing smoke network artifact. Run npm run test:e2e:smoke before performance budgets.");
 } else {
   const smoke = JSON.parse(fs.readFileSync(smokePath, "utf8"));
-  // The document navigation is the baseline page load, not a requested runtime
-  // asset. The hard budget measures startup assets after that document.
-  const startupRequests = smoke.requests.filter((request) => request.resourceType !== "document" && !request.url.startsWith("data:") && !request.url.startsWith("blob:"));
+  // The document navigation and decorative icons are outside the interactive
+  // runtime budget. Measure code, styles, and data that can delay the map.
+  const capturedStartup = Array.isArray(smoke.startupRequests) ? smoke.startupRequests : smoke.requests;
+  const startupRequests = capturedStartup.filter((request) => ["stylesheet", "script", "fetch"].includes(request.resourceType) && !request.url.startsWith("data:") && !request.url.startsWith("blob:"));
   if (startupRequests.length > budget.hard.initialRequestCount) {
     fail(`Startup request count ${startupRequests.length} exceeds hard budget ${budget.hard.initialRequestCount}.`);
   }

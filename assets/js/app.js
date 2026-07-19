@@ -78,6 +78,8 @@
   let pendingCsv = null;
   let pendingXlsx = null;
   let pendingImportSignal = null;
+  let provinceDetailRequest = null;
+  let provinceDetailRequestId = 0;
   let matchingEnginePromise = null;
   let visualizationEnginePromise = null;
 
@@ -100,7 +102,7 @@
       "workflowSteps", "workflowStatus", "basicModeBtn", "advancedModeBtn", "exampleBtn", "advancedImportOptions", "dataTablePanel", "dataTable", "dataTableFilter", "dataTableSort", "dataTableCount", "dataTableEmpty", "dataTableAnnouncement", "mapSelectionStatus",
       "vizMode", "vizClasses", "vizPalette", "vizReverse", "vizCenter", "vizBreaks", "vizNumberFormat", "vizPreviewBtn", "vizApplyBtn", "vizSummary", "vizLegendPreview"
     ].forEach((id) => { el[id] = document.getElementById(id); });
-    mapApi = IndonesiaMap.createMap("map", { onSelect: handleFeatureSelected, onGeometryDetailRequest: handleGeometryDetailRequest });
+    mapApi = IndonesiaMap.createMap("map", { onSelect: handleFeatureSelected, onDetailViewportRequest: handleDetailViewportRequest });
     setupEvents();
     setupColorPalette();
     setupVisualizationControls();
@@ -419,34 +421,37 @@
     return state.highDetailCollection;
   }
 
-  async function handleGeometryDetailRequest(request) {
-    const detail = request && request.detail === "detailed" ? "detailed" : "lite";
-    if (!mapApi || mapApi.geometryDetail === detail) return;
+  async function handleDetailViewportRequest(request) {
+    const provinceCodes = Array.from(new Set(request && request.provinceCodes || [])).slice(0, 3);
+    const requestId = ++provinceDetailRequestId;
+    if (provinceDetailRequest) provinceDetailRequest.abort();
+    if (!provinceCodes.length) {
+      mapApi.setDetailOverlays([]);
+      el.loadingIndicator.dataset.geometryState = "lite";
+      el.loadingIndicator.textContent = productText("ui.status.ready", { count: state.features.length });
+      return;
+    }
+    const controller = new AbortController();
+    provinceDetailRequest = controller;
     try {
-      if (detail === "detailed") {
-        el.loadingIndicator.dataset.geometryState = "loading-detail";
-        el.loadingIndicator.textContent = "Loading detailed local boundaries for this view...";
-        const collection = await loadHighDetailCollection();
-        if (mapApi.requestedGeometryDetail !== "detailed") {
-          el.loadingIndicator.dataset.geometryState = mapApi.geometryDetail;
-          el.loadingIndicator.textContent = productText("ui.status.ready", { count: state.features.length });
-          return;
-        }
-        mapApi.render(collection, { detail: "detailed", fit: false });
-      } else {
-        mapApi.render({ type: "FeatureCollection", features: state.features }, { detail: "lite", fit: false });
-      }
-      mapApi.setHighlights(state.highlights);
-      mapApi.setPresentationView(state.presentationView);
-      el.loadingIndicator.dataset.geometryState = detail;
-      el.loadingIndicator.textContent = detail === "detailed"
-        ? "Detailed local boundaries are active for this close view."
-        : productText("ui.status.ready", { count: state.features.length });
+      el.loadingIndicator.dataset.geometryState = "loading-detail";
+      el.loadingIndicator.textContent = "Loading detailed local boundaries for this view...";
+      const chunks = await Promise.all(provinceCodes.map(async (provinceCode) => {
+        const collection = await boundaryProvider.getProvinceLayer(provinceCode, "ADM2", "detailed").load({ signal: controller.signal });
+        return Object.assign({ provinceCode }, collection);
+      }));
+      if (requestId !== provinceDetailRequestId) return;
+      mapApi.setDetailOverlays(chunks);
+      el.loadingIndicator.dataset.geometryState = "province-overlay";
+      el.loadingIndicator.textContent = `Detailed local boundaries are active for ${chunks.length} province${chunks.length === 1 ? "" : "s"}.`;
     } catch (error) {
+      if (error && error.name === "AbortError") return;
       el.loadingIndicator.dataset.geometryState = "lite-fallback";
       el.loadingIndicator.textContent = "The map is using the lite boundaries. Your project is still safe.";
       showError(error.message);
       throw error;
+    } finally {
+      if (requestId === provinceDetailRequestId) provinceDetailRequest = null;
     }
   }
 

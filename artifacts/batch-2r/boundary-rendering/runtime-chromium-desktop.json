@@ -5,11 +5,12 @@
     "height": 720
   },
   "renderer": "Leaflet Canvas (device-pixel-ratio aware)",
-  "renderReadyMs": 1326,
-  "selectionAndZoomMs": 891,
+  "renderReadyMs": 1203,
+  "selectionAndZoomMs": 868,
   "inputSegments": 39304,
   "uniqueSegments": 36690,
   "sharedSegments": 2614,
   "detailedGeometryRequests": 0,
+  "provinceChunkRequests": 1,
   "sourceBoundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128"
 }

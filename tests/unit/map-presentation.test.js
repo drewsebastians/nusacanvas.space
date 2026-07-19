@@ -12,13 +12,16 @@ function loadMapPolicy() {
   return window.IndonesiaMap;
 }
 
-test("adaptive geometry keeps overview lite and switches close views without oscillating", () => {
+test("adaptive geometry keeps overview lite and limits desktop detail to three province overlays", () => {
   const map = loadMapPolicy();
   assert.equal(map.geometryDetailForZoom(4.5, "detailed"), "lite");
   assert.equal(map.geometryDetailForZoom(7, "lite"), "detailed");
   assert.equal(map.geometryDetailForZoom(6.25, "detailed"), "detailed");
   assert.equal(map.geometryDetailForZoom(6.25, "lite"), "lite");
   assert.equal(map.geometryDetailForZoom(5.75, "detailed"), "lite");
+  assert.deepEqual(Array.from(map.detailProvinceCodesForViewport({ zoom: 7, mobile: false, visibleProvinceCodes: ["31", "32", "36", "51"] })), ["31", "32", "36"]);
+  assert.deepEqual(Array.from(map.detailProvinceCodesForViewport({ zoom: 8, mobile: true, visibleProvinceCodes: ["31"] })), []);
+  assert.deepEqual(Array.from(map.detailProvinceCodesForViewport({ zoom: 5, mobile: true, selectedProvinceCode: "31", visibleProvinceCodes: ["31"] })), ["31"]);
 });
 
 test("labels are limited to selected, highlighted, or contextual regions", () => {

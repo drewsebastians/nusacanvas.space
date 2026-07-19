@@ -1,20 +1,20 @@
 {
-  "generatedAt": "2026-07-12T15:48:46.009Z",
+  "generatedAt": "2026-07-19T14:04:15.378Z",
   "environment": {
     "node": "v24.14.0",
     "platform": "win32"
   },
   "git": {
-    "commit": "cbb517dd9f14f6fee4b7dfa6d9df3786b3b2bc2f",
+    "commit": "20cb6102ab226aa48064e58b84db95d1667c2db5",
     "branch": "main",
     "status": "Use `git status --short` for working tree state; this script avoids spawning git."
   },
   "files": [
     {
       "path": "_headers",
-      "bytes": 676,
-      "gzipBytes": 363,
-      "sha256": "06374fb74831906e2911c6dc1d6965ec063e08baa219535e9b6fa5545b7f82df"
+      "bytes": 918,
+      "gzipBytes": 448,
+      "sha256": "c0dc03be1680e4d94ad7c29d25cc5f69d83c7cf60d0e528dda13b88c81445d4c"
     },
     {
       "path": ".nojekyll",
@@ -24,51 +24,63 @@
     },
     {
       "path": "index.html",
-      "bytes": 8054,
-      "gzipBytes": 2344,
-      "sha256": "64e6a644f119828c9f40d59edea131b9504f1ab9f13d19d62ab3c922104ede65"
+      "bytes": 7020,
+      "gzipBytes": 2136,
+      "sha256": "574cba2232dd4e6e8db8c6e8de88d8ff2de673d3df333d6aa215dadefa9cf180"
     },
     {
       "path": "robots.txt",
-      "bytes": 27,
-      "gzipBytes": 47,
-      "sha256": "32403248dc764535c87140955fc9451f9ebc9702f3e298d1c24fe84e558a53a9"
+      "bytes": 70,
+      "gzipBytes": 86,
+      "sha256": "0c0051d8ae07363825c1f456610ebf7bfc14877cc1754563e45e103311ca91a1"
     },
     {
       "path": "assets/css/app.css",
-      "bytes": 8424,
-      "gzipBytes": 2171,
-      "sha256": "50099a53fc3ed912337bfad50bf9a5650ad67bdf241cb31a6acaa8a5699e4454"
+      "bytes": 39927,
+      "gzipBytes": 7600,
+      "sha256": "87b94fbf174bba8e9504faabfe6e5e64245f5c3aff67d2d4b20a9799098ca6a0"
     },
     {
       "path": "assets/js/project-storage.js",
-      "bytes": 4247,
-      "gzipBytes": 1378,
-      "sha256": "561ca805bb12d5f571cd71571fd960472160832c2d1b8702919ef6d104d05039"
+      "bytes": 51363,
+      "gzipBytes": 9483,
+      "sha256": "f5cacf86f4c8e2eb67b0f7e487159d453a449b9b0bf85dd9b8ead4c0fdbb1f54"
+    },
+    {
+      "path": "assets/js/import-core.js",
+      "bytes": 16128,
+      "gzipBytes": 4566,
+      "sha256": "f57d2b6e5a5e78ac07029ca65afbf003b887b11646622fee7028754c3f57d2c2"
+    },
+    {
+      "path": "assets/js/xlsx-import.js",
+      "bytes": 12785,
+      "gzipBytes": 3549,
+      "sha256": "a8169a08d9db291c017d78bdc47254c802f6115b9ae20c4081b1f444d93fd0a6"
     },
     {
       "path": "assets/js/csv-import.js",
-      "bytes": 4562,
-      "gzipBytes": 1505,
-      "sha256": "faab595b42460b0ad7335f6dfae15515fb862244b56d9c41ede1200d920243c8"
+      "bytes": 6759,
+      "gzipBytes": 2004,
+      "sha256": "9dec8aad1cce5f7f2f46bf8fc5bb490c8e90492d7ab778a82ccf4a4ba0c78360"
     },
     {
       "path": "assets/js/export.js",
-      "bytes": 16990,
-      "gzipBytes": 5120,
-      "sha256": "1adca20529411b3ae56ddd413ddb0c321db83bdc7ba2e00e015c4738ec483fcf"
+      "bytes": 31376,
+      "gzipBytes": 8801,
+      "sha256": "dc2254b2f683e1f6d36975074bce40d0d61b2d5141eaae67602735a28533224a"
     },
     {
       "path": "assets/js/map.js",
-      "bytes": 10124,
-      "gzipBytes": 2867,
-      "sha256": "dc6c4daafb55c1958af3b2ed78dc04ead80c2e8a016575c1774e018e2a6cd214"
+      "bytes": 19767,
+      "gzipBytes": 5046,
+      "sha256": "c48d07a6bf7d5faf4650b54362fa4894b80cef706d922dcad50b780c329344a3"
     },
     {
       "path": "assets/js/app.js",
-      "bytes": 31597,
-      "gzipBytes": 8123,
-      "sha256": "13d11aeaa1c01abe701814cb93847097045324c47ebbab73ce240a2cca6a3f96"
+      "bytes": 86549,
+      "gzipBytes": 20129,
+      "sha256": "1f2d027b8600d800f22d8ea24b26810b1fa9dd318fd3498c6290a06088219500"
     },
     {
       "path": "assets/vendor/leaflet/leaflet.css",
@@ -78,9 +90,9 @@
     },
     {
       "path": "assets/vendor/leaflet/leaflet.js",
-      "bytes": 147557,
-      "gzipBytes": 42503,
-      "sha256": "3104b526504d0d61fd3099a4521e87f732ccc3174dec54e08de6ba8bde3e15ff"
+      "bytes": 147552,
+      "gzipBytes": 42494,
+      "sha256": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
     },
     {
       "path": "data/indonesia-adm2-simplified.geojson",
@@ -90,9 +102,9 @@
     },
     {
       "path": "sample/sample-project.json",
-      "bytes": 755,
-      "gzipBytes": 381,
-      "sha256": "dd22b0645b4de6255aab7db4cd66429522a763122b9cd84f3ca7855ecd02a546"
+      "bytes": 990,
+      "gzipBytes": 478,
+      "sha256": "acc3aea829f3654f97041dffade65aa7a7ae7ae3cbc1361166782e85e6974c83"
     },
     {
       "path": "sample/sample-region-colors.csv",
@@ -102,9 +114,33 @@
     },
     {
       "path": "data/indonesia-adm2-detailed.geojson",
-      "bytes": 11003421,
-      "gzipBytes": 2999956,
-      "sha256": "5a5cc09736dea030b30536cec6958c8f9aaad4b61f71b1c45500db95bcc360e8"
+      "bytes": 11002896,
+      "gzipBytes": 2999713,
+      "sha256": "146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c"
+    },
+    {
+      "path": "data/indonesia-adm2-detailed-provinces-index.json",
+      "bytes": 8763,
+      "gzipBytes": 2137,
+      "sha256": "1f21757fb607d37340441c56dc95d7b6d231efa45d87489bb33474262bdff68e"
+    },
+    {
+      "path": "assets/vendor/read-excel-file/read-excel-file.min.js",
+      "bytes": 37686,
+      "gzipBytes": 11957,
+      "sha256": "9f2c26e44c7fdb69d8ea70f05e44eb64de152c084e15d245b114d0f8cf77db73"
+    },
+    {
+      "path": "assets/js/matching-engine.js",
+      "bytes": 10941,
+      "gzipBytes": 2861,
+      "sha256": "7c86eb494320db5e25c78462744dcb0e9fe8d01cdbd045a27ca2fbf1c634a891"
+    },
+    {
+      "path": "assets/js/visualization-engine.js",
+      "bytes": 14064,
+      "gzipBytes": 4162,
+      "sha256": "c3ab92d5f23ef7825b1ca1ace976f59e2f93cb135ea612c64e741d61a1b252d2"
     },
     {
       "path": "assets/vendor/leaflet/images/layers-2x.png",
@@ -146,51 +182,63 @@
   "runtimeInitialAssets": [
     {
       "path": "index.html",
-      "bytes": 8054,
-      "gzipBytes": 2344,
-      "sha256": "64e6a644f119828c9f40d59edea131b9504f1ab9f13d19d62ab3c922104ede65"
+      "bytes": 7020,
+      "gzipBytes": 2136,
+      "sha256": "574cba2232dd4e6e8db8c6e8de88d8ff2de673d3df333d6aa215dadefa9cf180"
     },
     {
       "path": "robots.txt",
-      "bytes": 27,
-      "gzipBytes": 47,
-      "sha256": "32403248dc764535c87140955fc9451f9ebc9702f3e298d1c24fe84e558a53a9"
+      "bytes": 70,
+      "gzipBytes": 86,
+      "sha256": "0c0051d8ae07363825c1f456610ebf7bfc14877cc1754563e45e103311ca91a1"
     },
     {
       "path": "assets/css/app.css",
-      "bytes": 8424,
-      "gzipBytes": 2171,
-      "sha256": "50099a53fc3ed912337bfad50bf9a5650ad67bdf241cb31a6acaa8a5699e4454"
+      "bytes": 39927,
+      "gzipBytes": 7600,
+      "sha256": "87b94fbf174bba8e9504faabfe6e5e64245f5c3aff67d2d4b20a9799098ca6a0"
     },
     {
       "path": "assets/js/project-storage.js",
-      "bytes": 4247,
-      "gzipBytes": 1378,
-      "sha256": "561ca805bb12d5f571cd71571fd960472160832c2d1b8702919ef6d104d05039"
+      "bytes": 51363,
+      "gzipBytes": 9483,
+      "sha256": "f5cacf86f4c8e2eb67b0f7e487159d453a449b9b0bf85dd9b8ead4c0fdbb1f54"
+    },
+    {
+      "path": "assets/js/import-core.js",
+      "bytes": 16128,
+      "gzipBytes": 4566,
+      "sha256": "f57d2b6e5a5e78ac07029ca65afbf003b887b11646622fee7028754c3f57d2c2"
+    },
+    {
+      "path": "assets/js/xlsx-import.js",
+      "bytes": 12785,
+      "gzipBytes": 3549,
+      "sha256": "a8169a08d9db291c017d78bdc47254c802f6115b9ae20c4081b1f444d93fd0a6"
     },
     {
       "path": "assets/js/csv-import.js",
-      "bytes": 4562,
-      "gzipBytes": 1505,
-      "sha256": "faab595b42460b0ad7335f6dfae15515fb862244b56d9c41ede1200d920243c8"
+      "bytes": 6759,
+      "gzipBytes": 2004,
+      "sha256": "9dec8aad1cce5f7f2f46bf8fc5bb490c8e90492d7ab778a82ccf4a4ba0c78360"
     },
     {
       "path": "assets/js/export.js",
-      "bytes": 16990,
-      "gzipBytes": 5120,
-      "sha256": "1adca20529411b3ae56ddd413ddb0c321db83bdc7ba2e00e015c4738ec483fcf"
+      "bytes": 31376,
+      "gzipBytes": 8801,
+      "sha256": "dc2254b2f683e1f6d36975074bce40d0d61b2d5141eaae67602735a28533224a"
     },
     {
       "path": "assets/js/map.js",
-      "bytes": 10124,
-      "gzipBytes": 2867,
-      "sha256": "dc6c4daafb55c1958af3b2ed78dc04ead80c2e8a016575c1774e018e2a6cd214"
+      "bytes": 19767,
+      "gzipBytes": 5046,
+      "sha256": "c48d07a6bf7d5faf4650b54362fa4894b80cef706d922dcad50b780c329344a3"
     },
     {
       "path": "assets/js/app.js",
-      "bytes": 31597,
-      "gzipBytes": 8123,
-      "sha256": "13d11aeaa1c01abe701814cb93847097045324c47ebbab73ce240a2cca6a3f96"
+      "bytes": 86549,
+      "gzipBytes": 20129,
+      "sha256": "1f2d027b8600d800f22d8ea24b26810b1fa9dd318fd3498c6290a06088219500"
     },
     {
       "path": "assets/vendor/leaflet/leaflet.css",
@@ -200,9 +248,9 @@
     },
     {
       "path": "assets/vendor/leaflet/leaflet.js",
-      "bytes": 147557,
-      "gzipBytes": 42503,
-      "sha256": "3104b526504d0d61fd3099a4521e87f732ccc3174dec54e08de6ba8bde3e15ff"
+      "bytes": 147552,
+      "gzipBytes": 42494,
+      "sha256": "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
     },
     {
       "path": "data/indonesia-adm2-simplified.geojson",
@@ -212,9 +260,9 @@
     },
     {
       "path": "sample/sample-project.json",
-      "bytes": 755,
-      "gzipBytes": 381,
-      "sha256": "dd22b0645b4de6255aab7db4cd66429522a763122b9cd84f3ca7855ecd02a546"
+      "bytes": 990,
+      "gzipBytes": 478,
+      "sha256": "acc3aea829f3654f97041dffade65aa7a7ae7ae3cbc1361166782e85e6974c83"
     },
     {
       "path": "sample/sample-region-colors.csv",
@@ -226,9 +274,33 @@
   "runtimeOnDemandAssets": [
     {
       "path": "data/indonesia-adm2-detailed.geojson",
-      "bytes": 11003421,
-      "gzipBytes": 2999956,
-      "sha256": "5a5cc09736dea030b30536cec6958c8f9aaad4b61f71b1c45500db95bcc360e8"
+      "bytes": 11002896,
+      "gzipBytes": 2999713,
+      "sha256": "146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c"
+    },
+    {
+      "path": "data/indonesia-adm2-detailed-provinces-index.json",
+      "bytes": 8763,
+      "gzipBytes": 2137,
+      "sha256": "1f21757fb607d37340441c56dc95d7b6d231efa45d87489bb33474262bdff68e"
+    },
+    {
+      "path": "assets/vendor/read-excel-file/read-excel-file.min.js",
+      "bytes": 37686,
+      "gzipBytes": 11957,
+      "sha256": "9f2c26e44c7fdb69d8ea70f05e44eb64de152c084e15d245b114d0f8cf77db73"
+    },
+    {
+      "path": "assets/js/matching-engine.js",
+      "bytes": 10941,
+      "gzipBytes": 2861,
+      "sha256": "7c86eb494320db5e25c78462744dcb0e9fe8d01cdbd045a27ca2fbf1c634a891"
+    },
+    {
+      "path": "assets/js/visualization-engine.js",
+      "bytes": 14064,
+      "gzipBytes": 4162,
+      "sha256": "c3ab92d5f23ef7825b1ca1ace976f59e2f93cb135ea612c64e741d61a1b252d2"
     }
   ],
   "geometryFiles": {
@@ -240,9 +312,15 @@
     },
     "detailed": {
       "path": "data/indonesia-adm2-detailed.geojson",
-      "bytes": 11003421,
-      "gzipBytes": 2999956,
-      "sha256": "5a5cc09736dea030b30536cec6958c8f9aaad4b61f71b1c45500db95bcc360e8"
+      "bytes": 11002896,
+      "gzipBytes": 2999713,
+      "sha256": "146653d488331086ddc43d159a261b01ea6dd08c7ed422e34a9886c3c690430c"
+    },
+    "provinceIndex": {
+      "path": "data/indonesia-adm2-detailed-provinces-index.json",
+      "bytes": 8763,
+      "gzipBytes": 2137,
+      "sha256": "1f21757fb607d37340441c56dc95d7b6d231efa45d87489bb33474262bdff68e"
     }
   },
   "geometry": {
@@ -286,13 +364,20 @@
         "shapeName",
         "shapeType"
       ]
+    },
+    "provinceChunks": {
+      "chunkCount": 35,
+      "featureCount": 519,
+      "largestChunkBytes": 1785767,
+      "largestThreeChunkBytes": 4767764,
+      "totalChunkBytes": 25820607
     }
   },
   "schema": {
-    "appVersion": "1.0.0",
-    "projectSchema": "1.0",
-    "sampleProjectSchema": "1.0",
-    "boundaryVersion": "IDN-ADM2-2020-CODAB-geoboundaries",
+    "appVersion": null,
+    "projectSchema": "1.1",
+    "sampleProjectSchema": "1.1",
+    "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
     "dataRegistrySchema": "No explicit version field found in data/indonesia-adm2-registry.csv"
   },
   "network": {
@@ -302,6 +387,8 @@
       "robots.txt",
       "assets/css/app.css",
       "assets/js/project-storage.js",
+      "assets/js/import-core.js",
+      "assets/js/xlsx-import.js",
       "assets/js/csv-import.js",
       "assets/js/export.js",
       "assets/js/map.js",

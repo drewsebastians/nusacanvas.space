@@ -20,13 +20,16 @@ test("current boundary provider manifest is complete and matches reviewed local 
   assert.equal(manifestFile.boundaryVersion, providerApi.CURRENT_MANIFEST.boundaryVersion);
   assert.equal(manifestFile.detailTiers.lite.sha256, digest("data/indonesia-adm2-simplified.geojson"));
   assert.equal(manifestFile.detailTiers.detailed.sha256, digest("data/indonesia-adm2-detailed.geojson"));
+  assert.equal(manifestFile.detailTiers.provinceChunks.sha256, digest("data/indonesia-adm2-detailed-provinces-index.json"));
   assert.equal(manifestFile.featureCount, 519);
+  const chunkIndex = JSON.parse(fs.readFileSync(path.join(root, "data/indonesia-adm2-detailed-provinces-index.json"), "utf8"));
+  assert.equal(chunkIndex.chunkCount, 35);
+  assert.equal(chunkIndex.chunks.reduce((total, chunk) => total + chunk.featureCount, 0), 519);
 });
 
 test("provider defers detailed geometry and never builds an external runtime request", async () => {
   const requests = [];
-  const simplified = fs.readFileSync(path.join(root, "data/indonesia-adm2-simplified.geojson"), "utf8");
-  const detailedGeometry = fs.readFileSync(path.join(root, "data/indonesia-adm2-detailed.geojson"), "utf8");
+  const readLocalArtifact = (url) => fs.readFileSync(path.join(root, url.replace(/^\.\.\//, "")), "utf8");
   const provider = providerApi.createCurrentBoundaryProvider({
     baseUrl: "../",
     verifyChecksums: false,
@@ -34,7 +37,7 @@ test("provider defers detailed geometry and never builds an external runtime req
       requests.push(url);
       assert.match(url, /^\.\.\/data\//);
       assert.doesNotMatch(url, /^https?:/i);
-      return { ok: true, text: async () => url.includes("detailed") ? detailedGeometry : simplified };
+      return { ok: true, text: async () => readLocalArtifact(url) };
     }
   });
   const lite = provider.getNationalLayer("ADM2", "lite");
@@ -50,6 +53,12 @@ test("provider defers detailed geometry and never builds an external runtime req
   const detailCollection = await detailed.load();
   assert.equal(detailCollection.features.length, 519);
   assert.equal(detailCollection.features[0].properties.region_id, collection.features[0].properties.region_id);
+  const jakarta = await provider.getProvinceLayer("31").load();
+  assert.equal(jakarta.features.length, 6);
+  assert.ok(jakarta.mesh.segments.length);
+  assert.ok(jakarta.features.every((feature) => feature.properties.province_code === "31"));
+  assert.equal(requests.filter((url) => url.includes("indonesia-adm2-detailed.geojson")).length, 1, "full detail remains an export-only request");
+  assert.ok(requests.some((url) => url.includes("detailed-provinces/31.geojson")));
   await assert.rejects(async () => providerApi.createCurrentBoundaryProvider({ baseUrl: "https://example.test/" }).getNationalLayer("ADM2", "lite"), /remote runtime source/i);
 });
 

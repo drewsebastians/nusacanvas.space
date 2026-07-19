@@ -1,0 +1,253 @@
+{
+  "schemaVersion": "nusacanvas.detailed-province-index.v1",
+  "boundaryVersion": "IDN-ADM2-2020-geoboundaries-22746128",
+  "featureCount": 519,
+  "chunkCount": 35,
+  "chunks": [
+    {
+      "provinceCode": "__unresolved",
+      "provinceName": "Province not linked",
+      "featureCount": 53,
+      "artifact": "data/detailed-provinces/__unresolved.geojson",
+      "sha256": "a869c5de9a740ae59a5ef14a6d4e1c370e19e937cd9cf67e643db58a3c874673"
+    },
+    {
+      "provinceCode": "11",
+      "provinceName": "Aceh",
+      "featureCount": 23,
+      "artifact": "data/detailed-provinces/11.geojson",
+      "sha256": "cd536b3d93e34fc4743bfaf7cdd1ab0025af3413798aaa673f8a7ea1c7d0250b"
+    },
+    {
+      "provinceCode": "12",
+      "provinceName": "Sumatera Utara",
+      "featureCount": 34,
+      "artifact": "data/detailed-provinces/12.geojson",
+      "sha256": "c036a3f652d4f35bd86a4c44bfa660e1f5e7380778929f064b3b7af0a005b83b"
+    },
+    {
+      "provinceCode": "13",
+      "provinceName": "Sumatera Barat",
+      "featureCount": 17,
+      "artifact": "data/detailed-provinces/13.geojson",
+      "sha256": "0c530a8af68476bb41501cbefbd01c52d77b8ececd2ccd2d0f590feece4d106b"
+    },
+    {
+      "provinceCode": "14",
+      "provinceName": "Riau",
+      "featureCount": 12,
+      "artifact": "data/detailed-provinces/14.geojson",
+      "sha256": "78a40faad3e39d78b9e0b2718d98806459e9bc46c6f2ac8267ce907cbcd3c1ed"
+    },
+    {
+      "provinceCode": "15",
+      "provinceName": "Jambi",
+      "featureCount": 11,
+      "artifact": "data/detailed-provinces/15.geojson",
+      "sha256": "34c77670116a19da125b0636cc8a8da41d1a243243286a9ac4f560339bab885f"
+    },
+    {
+      "provinceCode": "16",
+      "provinceName": "Sumatera Selatan",
+      "featureCount": 17,
+      "artifact": "data/detailed-provinces/16.geojson",
+      "sha256": "d9b7dbcb9563a6de441399a6427f6f4c103ffb677b5a61aff107300af9f3d95b"
+    },
+    {
+      "provinceCode": "17",
+      "provinceName": "Bengkulu",
+      "featureCount": 10,
+      "artifact": "data/detailed-provinces/17.geojson",
+      "sha256": "2303868dbab256add457cd3e72db4fdcdb9407f19c2a715b8749df75be6b31e1"
+    },
+    {
+      "provinceCode": "18",
+      "provinceName": "Lampung",
+      "featureCount": 15,
+      "artifact": "data/detailed-provinces/18.geojson",
+      "sha256": "88f4942c47c2c788c76d2d5ca74be7cc5402ed32800dbd0a491d5b0e4e0a47c0"
+    },
+    {
+      "provinceCode": "19",
+      "provinceName": "Kepulauan Bangka Belitung",
+      "featureCount": 7,
+      "artifact": "data/detailed-provinces/19.geojson",
+      "sha256": "1200213c0a98b00d46a92cd432f04cbaa4624ce6edc421b106e551aa861c7223"
+    },
+    {
+      "provinceCode": "21",
+      "provinceName": "Kepulauan Riau",
+      "featureCount": 7,
+      "artifact": "data/detailed-provinces/21.geojson",
+      "sha256": "47e16d5aee8f2deb7980b1d94ce4ef6fdc00295974be31ae4912a6176e35c58f"
+    },
+    {
+      "provinceCode": "31",
+      "provinceName": "Dki Jakarta",
+      "featureCount": 6,
+      "artifact": "data/detailed-provinces/31.geojson",
+      "sha256": "cf45306247b8900f08949ddf3583c883ba0c52af3005bb1e0e6046f8a76f150f"
+    },
+    {
+      "provinceCode": "32",
+      "provinceName": "Jawa Barat",
+      "featureCount": 15,
+      "artifact": "data/detailed-provinces/32.geojson",
+      "sha256": "7e1c4ac8522bac7a3e6696083ce8a312afbcaef1a4db3f65ef745a8e3a82cd3f"
+    },
+    {
+      "provinceCode": "33",
+      "provinceName": "Jawa Tengah",
+      "featureCount": 29,
+      "artifact": "data/detailed-provinces/33.geojson",
+      "sha256": "9f7c5c5756a7eb651149d81ea89a072e36b38b6f20c18e678257fef327648531"
+    },
+    {
+      "provinceCode": "34",
+      "provinceName": "Daerah Istimewa Yogyakarta",
+      "featureCount": 5,
+      "artifact": "data/detailed-provinces/34.geojson",
+      "sha256": "fd31666012da5627359a7dccbb46bca7fcd122cab079a9df9580addd1b4a1ec1"
+    },
+    {
+      "provinceCode": "35",
+      "provinceName": "Jawa Timur",
+      "featureCount": 24,
+      "artifact": "data/detailed-provinces/35.geojson",
+      "sha256": "c3c171ec45d7587eb854d33ac0ca5b2e6228a212c0483c998c10de3225cf6871"
+    },
+    {
+      "provinceCode": "36",
+      "provinceName": "Banten",
+      "featureCount": 4,
+      "artifact": "data/detailed-provinces/36.geojson",
+      "sha256": "b507413cccfe26be5449ef7b4d097d8cb32e8adc0599f206eab3a7e5f0350e5d"
+    },
+    {
+      "provinceCode": "51",
+      "provinceName": "Bali",
+      "featureCount": 9,
+      "artifact": "data/detailed-provinces/51.geojson",
+      "sha256": "13bc63cf24829fd8e39e220684751c10401490249186e875b3185bd5e876dbfb"
+    },
+    {
+      "provinceCode": "52",
+      "provinceName": "Nusa Tenggara Barat",
+      "featureCount": 8,
+      "artifact": "data/detailed-provinces/52.geojson",
+      "sha256": "82f95291cfe3344429322d9fad10b0ce012299dd8724abab228b01c99195307f"
+    },
+    {
+      "provinceCode": "53",
+      "provinceName": "Nusa Tenggara Timur",
+      "featureCount": 20,
+      "artifact": "data/detailed-provinces/53.geojson",
+      "sha256": "1399d1b8aafa2d0399c11aba46d8c04eebec3992cad6ea3cee92c72937a4e490"
+    },
+    {
+      "provinceCode": "61",
+      "provinceName": "Kalimantan Barat",
+      "featureCount": 14,
+      "artifact": "data/detailed-provinces/61.geojson",
+      "sha256": "292e1bcb7696d12f82953c043ca602bcbe4619f74b126186d7b39e31803f50ee"
+    },
+    {
+      "provinceCode": "62",
+      "provinceName": "Kalimantan Tengah",
+      "featureCount": 14,
+      "artifact": "data/detailed-provinces/62.geojson",
+      "sha256": "bb03e7a60db072023bf6605af3ff5d4c5bc0f27995ec7409814060c5b7b2329f"
+    },
+    {
+      "provinceCode": "63",
+      "provinceName": "Kalimantan Selatan",
+      "featureCount": 12,
+      "artifact": "data/detailed-provinces/63.geojson",
+      "sha256": "b72999d5a0c4ee2f82a2f34d9333d96f81b06877b47f2967ab12419b48b07a84"
+    },
+    {
+      "provinceCode": "64",
+      "provinceName": "Kalimantan Timur",
+      "featureCount": 10,
+      "artifact": "data/detailed-provinces/64.geojson",
+      "sha256": "e79e693630cff5b05bcbe57b2a84ef7dbdddff6eab76de9061f291ac30c9f1f0"
+    },
+    {
+      "provinceCode": "65",
+      "provinceName": "Kalimantan Utara",
+      "featureCount": 5,
+      "artifact": "data/detailed-provinces/65.geojson",
+      "sha256": "533bd97c991f97d1931c941064c82a29eb84b56aa065dec4131d1a30b2ad3f29"
+    },
+    {
+      "provinceCode": "71",
+      "provinceName": "Sulawesi Utara",
+      "featureCount": 15,
+      "artifact": "data/detailed-provinces/71.geojson",
+      "sha256": "bb174a6f3b32fa8bf9bf3eb86dc4005eb6d6985bccff2ba361e78d45ca8022f5"
+    },
+    {
+      "provinceCode": "72",
+      "provinceName": "Sulawesi Tengah",
+      "featureCount": 13,
+      "artifact": "data/detailed-provinces/72.geojson",
+      "sha256": "555dd5b11df5634095c3aaa500e34b8835049d4760f9c41a622432aa5837ada9"
+    },
+    {
+      "provinceCode": "73",
+      "provinceName": "Sulawesi Selatan",
+      "featureCount": 24,
+      "artifact": "data/detailed-provinces/73.geojson",
+      "sha256": "5f2c644baff87563908051b1f819b9bd8fad289104070171ae3d99d86c85b54b"
+    },
+    {
+      "provinceCode": "74",
+      "provinceName": "Sulawesi Tenggara",
+      "featureCount": 17,
+      "artifact": "data/detailed-provinces/74.geojson",
+      "sha256": "8e2a3b397b1b40e1d67279847ffc346a3752d0b8c40641156f57ea9a8c2fc54f"
+    },
+    {
+      "provinceCode": "75",
+      "provinceName": "Gorontalo",
+      "featureCount": 4,
+      "artifact": "data/detailed-provinces/75.geojson",
+      "sha256": "5b9caa92f1792473208e26c7ec93548cef4077886c0b37bfb0d5cc4da975f506"
+    },
+    {
+      "provinceCode": "76",
+      "provinceName": "Sulawesi Barat",
+      "featureCount": 6,
+      "artifact": "data/detailed-provinces/76.geojson",
+      "sha256": "692223d0ad19e5935900f65b4e29a07f64e0d57f5783886f71122417303cc0de"
+    },
+    {
+      "provinceCode": "81",
+      "provinceName": "Maluku",
+      "featureCount": 11,
+      "artifact": "data/detailed-provinces/81.geojson",
+      "sha256": "41362db04dff6396f36d5ce54a7e2be62baa838498e710e41bb8908176cb5949"
+    },
+    {
+      "provinceCode": "82",
+      "provinceName": "Maluku Utara",
+      "featureCount": 10,
+      "artifact": "data/detailed-provinces/82.geojson",
+      "sha256": "bb883a5eee1e06bd4404c488e1d51af400015f6c05748bfa93ce6db77ba8bf15"
+    },
+    {
+      "provinceCode": "91",
+      "provinceName": "Papua Barat",
+      "featureCount": 11,
+      "artifact": "data/detailed-provinces/91.geojson",
+      "sha256": "98ccc6ccef6e5951f7405564b25731b8b360f1312b1452ad9f133ccfdd649b1e"
+    },
+    {
+      "provinceCode": "94",
+      "provinceName": "Papua",
+      "featureCount": 27,
+      "artifact": "data/detailed-provinces/94.geojson",
+      "sha256": "fa74e88835f0ffd64373b0d845e06db785336c79efa0bda72c50fcefd456eed7"
+    }
+  ]
+}

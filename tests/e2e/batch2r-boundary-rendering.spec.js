@@ -15,6 +15,9 @@ async function ready(page) {
 }
 
 async function selectNamedRegion(page, text) {
+  const manualGoal = page.locator("[data-workspace-goal='manual']");
+  if (await manualGoal.isVisible()) await manualGoal.click();
+  await expect(page.locator("#regionSelect")).toBeVisible();
   const value = await page.locator("#regionSelect option").evaluateAll((options, name) => {
     const option = options.find((item) => item.textContent && item.textContent.includes(name));
     return option && option.value;
@@ -55,7 +58,7 @@ test("single-pass boundary mesh preserves startup policy and produces cross-brow
   await page.locator("#map").screenshot({ path: path.join(afterDir, `national-${testInfo.project.name}.png`) });
   const selectStartedAt = Date.now();
   await selectNamedRegion(page, "Kota Jakarta Pusat");
-  await expect(page.locator("#map")).toHaveAttribute("data-geometry-detail", "detailed", { timeout: 60000 });
+  await expect(page.locator("#map")).toHaveAttribute("data-geometry-detail", "province-overlay", { timeout: 60000 });
   const selectionAndZoomMs = Date.now() - selectStartedAt;
   await page.locator("#map").screenshot({ path: path.join(afterDir, `jakarta-${testInfo.project.name}.png`) });
   writeMetric(testInfo.project.name, {
@@ -68,6 +71,7 @@ test("single-pass boundary mesh preserves startup policy and produces cross-brow
     uniqueSegments: diagnostics.uniqueSegments,
     sharedSegments: diagnostics.sharedSegments,
     detailedGeometryRequests: requests.filter((url) => /indonesia-adm2-detailed\.geojson/i.test(url)).length,
+    provinceChunkRequests: requests.filter((url) => /detailed-provinces\/[^/]+\.geojson/i.test(url)).length,
     sourceBoundaryVersion: boundaryVersion
   });
 });

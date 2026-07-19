@@ -7,6 +7,7 @@ const brand = require("../../assets/js/brand-config.js");
 const artifactDir = path.resolve(__dirname, "..", "..", "artifacts", "batch-1");
 const forbiddenStartupPatterns = [
   "indonesia-adm2-detailed.geojson",
+  "detailed-provinces",
   "geoboundaries.org",
   "data.humdata.org",
   "hdx"
@@ -15,6 +16,17 @@ const encoder = new TextEncoder();
 
 async function waitForAppReady(page) {
   await expect(page.locator("#loadingIndicator")).toHaveAttribute("data-state", "ready", { timeout: 60000 });
+}
+
+async function openManualRegionControls(page) {
+  const manualGoal = page.locator("[data-workspace-goal='manual']");
+  if (await manualGoal.isVisible()) await manualGoal.click();
+  const selector = page.locator("#regionSelect");
+  if (!(await selector.isVisible())) {
+    const sheetToggle = page.locator("#sidebarToggleBtn");
+    if (await sheetToggle.isVisible() && ((await sheetToggle.textContent()) || "").includes("Expand")) await sheetToggle.click();
+  }
+  await expect(selector).toBeVisible();
 }
 
 function crc32(bytes) {
@@ -171,6 +183,9 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
   await expect.poll(async () => page.locator(".leaflet-interactive").count()).toBeGreaterThan(500);
   const forbiddenStartup = requests.filter((request) => forbiddenStartupPatterns.some((pattern) => request.url.toLowerCase().includes(pattern)));
   expect(forbiddenStartup).toEqual([]);
+  const startupRequests = requests.slice();
+
+  await openManualRegionControls(page);
 
   const regionValue = await page.locator("#regionSelect option").evaluateAll((options) => {
     const option = options.find((item) => item.textContent && item.textContent.includes("Surabaya"));
@@ -189,7 +204,8 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
   await expect(page.locator(".region-name-label").filter({ hasText: "Surabaya" }).first()).toBeVisible();
 
   const projectDownload = page.waitForEvent("download");
-  await page.locator("#saveProjectBtn").click();
+  await page.locator("#workspaceProjectToggle").click();
+  await page.locator("#workspaceSaveProject").click();
   expect((await projectDownload).suggestedFilename()).toBe(brand.defaults.projectFilename);
 
   const svgDownload = page.waitForEvent("download");
@@ -210,12 +226,12 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
   await page.locator("#exportPngBtn").click();
   expect((await pngDownload).suggestedFilename()).toBe(`${brand.defaults.exportFilenamePrefix}.png`);
 
-  fs.writeFileSync(path.join(artifactDir, "smoke-network.json"), `${JSON.stringify({ requests, failed }, null, 2)}\n`);
+  fs.writeFileSync(path.join(artifactDir, "smoke-network.json"), `${JSON.stringify({ startupRequests, requests, failed }, null, 2)}\n`);
   expect(pageErrors).toEqual([]);
   expect(failed).toEqual([]);
 });
 
-test("startup stays lite while close zoom loads detailed geometry with selective labels", async ({ page }) => {
+test("startup stays lite while an explicit mobile selection loads one province overlay", async ({ page }) => {
   const requests = [];
   page.on("request", (request) => requests.push({ url: request.url(), method: request.method(), resourceType: request.resourceType() }));
   await page.setViewportSize({ width: 390, height: 760 });
@@ -224,20 +240,20 @@ test("startup stays lite while close zoom loads detailed geometry with selective
   await expect.poll(async () => page.locator(".region-name-label").count()).toBeLessThan(80);
   expect(requests.some((request) => request.url.includes("indonesia-adm2-detailed.geojson"))).toBe(false);
 
+  await openManualRegionControls(page);
+
   const regionValue = await page.locator("#regionSelect option").evaluateAll((options) => {
     const option = options.find((item) => item.textContent && item.textContent.includes("Surabaya"));
     return option && option.value;
   });
-  const detailedRequest = page.waitForRequest((request) => request.url().includes("indonesia-adm2-detailed.geojson"));
+  const detailedRequest = page.waitForRequest((request) => request.url().includes("detailed-provinces/35.geojson"));
   await page.locator("#regionSelect").selectOption(regionValue);
   await detailedRequest;
-  await expect(page.locator("#map")).toHaveAttribute("data-geometry-detail", "detailed", { timeout: 60000 });
+  await expect(page.locator("#map")).toHaveAttribute("data-geometry-detail", "province-overlay", { timeout: 60000 });
+  expect(requests.some((request) => request.url.includes("indonesia-adm2-detailed.geojson"))).toBe(false);
+  await expect(page.locator("#map")).toHaveAttribute("data-detail-overlay-count", "1");
   await expect(page.locator(".region-name-label").filter({ hasText: "Surabaya" }).first()).toBeVisible();
   await expect(page.locator(".region-name-label")).toHaveCount(1);
-
-  const download = page.waitForEvent("download");
-  await page.locator("#exportSvgBtn").click();
-  expect((await download).suggestedFilename()).toBe(`${brand.defaults.exportFilenamePrefix}.svg`);
 });
 
 test("PNG export supports largest, transparent, and fallback paths", async ({ page }) => {

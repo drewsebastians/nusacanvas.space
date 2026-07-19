@@ -1,8 +1,10 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const { buildProvinceChunks } = require("./build-detailed-province-chunks.js");
 
 const root = path.resolve(__dirname, "..");
 const dist = path.join(root, "dist");
+buildProvinceChunks();
 
 const requiredFiles = [
   "_headers",
@@ -40,6 +42,7 @@ const requiredFiles = [
   "assets/vendor/read-excel-file/read-excel-file.min.js",
   "assets/vendor/read-excel-file/LICENSE",
   "data/indonesia-adm2-detailed.geojson",
+  "data/indonesia-adm2-detailed-provinces-index.json",
   "data/indonesia-adm2-simplified.geojson",
   "data/boundary-provider-manifest-v1.json",
   "about/index.html",
@@ -89,6 +92,14 @@ fs.rmSync(dist, { recursive: true, force: true });
 fs.mkdirSync(dist, { recursive: true });
 
 requiredFiles.forEach(copyFile);
+
+function copyTree(relativeDirectory) {
+  const sourceDirectory = path.join(root, relativeDirectory);
+  if (!fs.existsSync(sourceDirectory)) throw new Error(`Required production directory is missing: ${relativeDirectory}`);
+  listFiles(sourceDirectory).forEach((file) => copyFile(path.join(relativeDirectory, file)));
+}
+
+copyTree("data/detailed-provinces");
 
 function addBrandAssets(relativePath) {
   if (!relativePath.endsWith(".html")) return;

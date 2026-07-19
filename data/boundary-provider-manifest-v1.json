@@ -62,7 +62,16 @@
       "featureCount": 519,
       "startup": false,
       "requiresExplicitRequest": true,
-      "purpose": "Province zoom and approved high-detail export"
+      "purpose": "Approved full-detail export only"
+    },
+    "provinceChunks": {
+      "indexArtifact": "data/indonesia-adm2-detailed-provinces-index.json",
+      "sha256": "1f21757fb607d37340441c56dc95d7b6d231efa45d87489bb33474262bdff68e",
+      "featureCount": 519,
+      "chunkCount": 35,
+      "startup": false,
+      "maxRuntimeCache": 3,
+      "purpose": "Visible or selected province detail overlays"
     }
   },
   "crosswalk": {

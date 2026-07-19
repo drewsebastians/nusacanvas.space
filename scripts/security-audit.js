@@ -97,9 +97,10 @@ function scanSafetyControls() {
   assertContains("assets/js/export.js", "URL.revokeObjectURL", "download object URL cleanup");
   assertContains("assets/js/visualization-engine.js", "IDN-PALETTE-v1", "versioned local palette registry");
   assertContains("assets/js/boundary-provider.js", "data/indonesia-adm2-detailed.geojson", "explicit local detailed geometry path");
+  assertContains("assets/js/boundary-provider.js", "detailed-provinces-index", "local province detail index");
   assertContains("assets/js/boundary-provider.js", "does not permit a remote runtime source", "local-only boundary provider guard");
   assertContains("assets/js/app.js", "getNationalLayer(\"ADM2\", \"detailed\")", "provider-routed detailed boundary request");
-  assertContains("assets/js/app.js", "handleGeometryDetailRequest", "adaptive local geometry switching");
+  assertContains("assets/js/app.js", "handleDetailViewportRequest", "adaptive local geometry switching");
   assertContains("assets/js/export.js", "requiresDetailedGeometry", "high-resolution export detail policy");
 }
 

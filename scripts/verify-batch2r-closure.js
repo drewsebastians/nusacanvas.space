@@ -110,7 +110,7 @@ const finalPerformance = {
     deltaBytes: performanceBudget.simplifiedGeometryGzipBytes - baseline.geometryFiles.simplified.gzipBytes,
     featureCount: boundary.source.featureCount,
     detailedGeometryStartupRequests: boundary.source.detailedGeometryStartupRequests,
-    result: "Unchanged simplified source size and feature count; detailed geometry remains lazy and local for close views and high-resolution exports."
+    result: "Unchanged simplified source size and feature count; interactive detail is limited to local province overlays, while full detail remains export-only."
   },
   shellJavaScript: {
     gzipBytes: performanceBudget.shellJavaScriptGzipBytes,

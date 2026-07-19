@@ -66,7 +66,16 @@
         featureCount: 519,
         startup: false,
         requiresExplicitRequest: true,
-        purpose: "Province zoom and approved high-detail export"
+        purpose: "Approved full-detail export only"
+      },
+      provinceChunks: {
+        indexArtifact: "data/indonesia-adm2-detailed-provinces-index.json",
+        sha256: "1f21757fb607d37340441c56dc95d7b6d231efa45d87489bb33474262bdff68e",
+        featureCount: 519,
+        chunkCount: 35,
+        startup: false,
+        maxRuntimeCache: 3,
+        purpose: "Visible or selected province detail overlays"
       }
     },
     crosswalk: {
@@ -119,6 +128,11 @@
       }
       assertLocalArtifact(tier.artifact);
     });
+    const chunks = value.detailTiers && value.detailTiers.provinceChunks;
+    if (!chunks || !chunks.indexArtifact || !/^[a-f0-9]{64}$/i.test(chunks.sha256 || "") || Number(chunks.featureCount) !== 519 || Number(chunks.chunkCount) < 1) {
+      throw new Error("Boundary provider metadata is missing verified province detail chunks.");
+    }
+    assertLocalArtifact(chunks.indexArtifact);
     if (!value.crosswalk || !value.crosswalk.artifact || !value.crosswalk.fromVersion || !value.crosswalk.toVersion) {
       throw new Error("Boundary provider metadata is missing its compatibility crosswalk.");
     }
@@ -177,6 +191,18 @@
     return Object.assign({}, collection, { features });
   }
 
+  function normalizeProvinceCollection(collection) {
+    const features = collection.features.map(normalizeFeature);
+    if (!features.length || new Set(features.map((feature) => feature.properties.region_id)).size !== features.length) {
+      throw new Error("The local province boundary artifact does not contain unique stable region IDs.");
+    }
+    const mesh = collection.mesh;
+    if (!mesh || !Array.isArray(mesh.segments) || !mesh.stats) {
+      throw new Error("The local province boundary artifact is missing its precomputed boundary mesh.");
+    }
+    return Object.assign({}, collection, { features });
+  }
+
   async function sha256(text, cryptoImplementation) {
     if (!cryptoImplementation || !cryptoImplementation.subtle || typeof TextEncoder === "undefined") {
       throw new Error("Boundary integrity verification is not available in this browser.");
@@ -201,6 +227,8 @@
     const baseUrl = options.baseUrl == null ? runtimeBase() : options.baseUrl;
     const verifyChecksums = options.verifyChecksums !== false;
     const collections = new Map();
+    const provinceCollections = new Map();
+    let provinceIndexPromise = null;
 
     function tierFor(detail) {
       const key = detail || "lite";
@@ -217,12 +245,12 @@
       const selected = tierFor(detail);
       const artifact = selected.tier.artifact;
       const url = artifactUrl(baseUrl, artifact);
-      async function load() {
+      async function load(loadOptions = {}) {
         const cacheKey = `${selected.key}:${url}`;
         if (!collections.has(cacheKey)) {
           if (typeof fetchImplementation !== "function") throw new Error("Boundary provider cannot load local boundaries because fetch is unavailable.");
           collections.set(cacheKey, (async () => {
-            const response = await fetchImplementation(url, { cache: "force-cache" });
+            const response = await fetchImplementation(url, { cache: "force-cache", signal: loadOptions.signal });
             if (!response || !response.ok) throw new Error(`The ${selected.key} boundary artifact could not be loaded. No spreadsheet data was sent.`);
             const text = await response.text();
             if (/^version https:\/\/git-lfs.github.com\/spec\/v1/.test(text.trim())) throw new Error("The local boundary artifact is unavailable. No spreadsheet data was sent.");
@@ -252,6 +280,83 @@
         artifact,
         url,
         lazy: !selected.tier.startup,
+        load
+      });
+    }
+
+    async function loadProvinceIndex(loadOptions = {}) {
+      if (!provinceIndexPromise) {
+        const tier = CURRENT_MANIFEST.detailTiers.provinceChunks;
+        const url = artifactUrl(baseUrl, tier.indexArtifact);
+        provinceIndexPromise = (async () => {
+          if (typeof fetchImplementation !== "function") throw new Error("Boundary provider cannot load local province boundaries because fetch is unavailable.");
+          const response = await fetchImplementation(url, { cache: "force-cache", signal: loadOptions.signal });
+          if (!response || !response.ok) throw new Error("The province boundary index could not be loaded. No spreadsheet data was sent.");
+          const text = await response.text();
+          if (verifyChecksums && await sha256(text, cryptoImplementation) !== tier.sha256) throw new Error("The province boundary index did not pass integrity verification. No spreadsheet data was sent.");
+          const index = JSON.parse(text);
+          if (!index || Number(index.featureCount) !== 519 || Number(index.chunkCount) !== tier.chunkCount || !Array.isArray(index.chunks)) {
+            throw new Error("The province boundary index is not a valid approved artifact.");
+          }
+          index.chunks.forEach((entry) => {
+            if (!entry || !entry.provinceCode || !entry.artifact || !/^[a-f0-9]{64}$/i.test(entry.sha256 || "")) throw new Error("The province boundary index contains an invalid chunk.");
+            assertLocalArtifact(entry.artifact);
+          });
+          return index;
+        })().catch((error) => {
+          provinceIndexPromise = null;
+          throw error;
+        });
+      }
+      return provinceIndexPromise;
+    }
+
+    async function loadProvinceChunk(entry, loadOptions = {}) {
+      const cached = provinceCollections.get(entry.artifact);
+      if (cached) {
+        provinceCollections.delete(entry.artifact);
+        provinceCollections.set(entry.artifact, cached);
+        return cached;
+      }
+      const url = artifactUrl(baseUrl, entry.artifact);
+      const promise = (async () => {
+        const response = await fetchImplementation(url, { cache: "force-cache", signal: loadOptions.signal });
+        if (!response || !response.ok) throw new Error("The selected province boundary artifact could not be loaded. No spreadsheet data was sent.");
+        const text = await response.text();
+        if (verifyChecksums && await sha256(text, cryptoImplementation) !== entry.sha256) throw new Error("The selected province boundary artifact did not pass integrity verification. No spreadsheet data was sent.");
+        const collection = JSON.parse(text);
+        if (!collectionIsValid(collection) || Number(entry.featureCount) !== collection.features.length) throw new Error("The selected province boundary artifact is not valid.");
+        return normalizeProvinceCollection(collection);
+      })();
+      provinceCollections.set(entry.artifact, promise);
+      while (provinceCollections.size > CURRENT_MANIFEST.detailTiers.provinceChunks.maxRuntimeCache) provinceCollections.delete(provinceCollections.keys().next().value);
+      try {
+        return await promise;
+      } catch (error) {
+        if (provinceCollections.get(entry.artifact) === promise) provinceCollections.delete(entry.artifact);
+        throw error;
+      }
+    }
+
+    function provinceLayerFor(provinceId, level, detail) {
+      if (level && level !== CURRENT_MANIFEST.administrativeLevel) throw new Error(`Boundary provider supports ${CURRENT_MANIFEST.administrativeLevel}, not ${String(level)}.`);
+      if (detail && detail !== "detailed") throw new Error("Province boundary layers are available only from the approved detailed tier.");
+      if (provinceId == null || provinceId === "") throw new Error("A province ID is required to request a province boundary layer.");
+      async function load(loadOptions = {}) {
+        const index = await loadProvinceIndex(loadOptions);
+        const expected = String(provinceId);
+        const entry = index.chunks.find((chunk) => String(chunk.provinceCode) === expected || String(chunk.provinceName) === expected);
+        if (!entry) throw new Error("The requested province boundary chunk is not available from the approved provider.");
+        return loadProvinceChunk(entry, loadOptions);
+      }
+      return Object.freeze({
+        providerId: CURRENT_MANIFEST.providerId,
+        boundaryVersion: CURRENT_MANIFEST.boundaryVersion,
+        level: CURRENT_MANIFEST.administrativeLevel,
+        detail: "detailed",
+        artifact: CURRENT_MANIFEST.detailTiers.provinceChunks.indexArtifact,
+        url: artifactUrl(baseUrl, CURRENT_MANIFEST.detailTiers.provinceChunks.indexArtifact),
+        lazy: true,
         load
       });
     }
@@ -289,10 +394,7 @@
     return Object.freeze({
       getManifest: () => clone(CURRENT_MANIFEST),
       getNationalLayer: (level = "ADM2", detail = "lite") => layerFor(level, detail),
-      getProvinceLayer: (provinceId, level = "ADM2", detail = "standard") => {
-        if (provinceId == null || provinceId === "") throw new Error("A province ID is required to request a province boundary layer.");
-        return layerFor(level, detail, provinceId);
-      },
+      getProvinceLayer: (provinceId, level = "ADM2", detail = "detailed") => provinceLayerFor(provinceId, level, detail),
       getFeatureByStableId: async (stableId, detail = "standard") => {
         const collection = await layerFor("ADM2", detail).load();
         return collection.features.find((feature) => String(feature && feature.properties && feature.properties.region_id || "") === String(stableId)) || null;

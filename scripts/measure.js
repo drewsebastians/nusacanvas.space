@@ -27,6 +27,7 @@ const runtimeFiles = [
 
 const onDemandFiles = [
   "data/indonesia-adm2-detailed.geojson",
+  "data/indonesia-adm2-detailed-provinces-index.json",
   "assets/vendor/read-excel-file/read-excel-file.min.js",
   "assets/js/matching-engine.js",
   "assets/js/visualization-engine.js"
@@ -129,6 +130,18 @@ function geoSummary(relativePath) {
   };
 }
 
+function provinceChunkSummary() {
+  const index = JSON.parse(read("data/indonesia-adm2-detailed-provinces-index.json").toString("utf8"));
+  const bytes = index.chunks.map((chunk) => fs.statSync(path.join(root, chunk.artifact)).size).sort((a, b) => b - a);
+  return {
+    chunkCount: index.chunkCount,
+    featureCount: index.featureCount,
+    largestChunkBytes: bytes[0],
+    largestThreeChunkBytes: bytes.slice(0, 3).reduce((total, value) => total + value, 0),
+    totalChunkBytes: bytes.reduce((total, value) => total + value, 0)
+  };
+}
+
 function projectSchemaVersions() {
   const storage = read("assets/js/project-storage.js").toString("utf8");
   const sample = JSON.parse(read("sample/sample-project.json").toString("utf8"));
@@ -174,6 +187,7 @@ function writeMarkdown(measurements) {
     "",
     `- Simplified geometry: ${measurements.geometry.simplified.featureCount} features.`,
     `- Detailed geometry: ${measurements.geometry.detailed.featureCount} features.`,
+    `- Detailed province chunks: ${measurements.geometry.provinceChunks.chunkCount}; largest three cached chunks: ${measurements.geometry.provinceChunks.largestThreeChunkBytes} bytes.`,
     `- Simplified SHA-256: \`${measurements.geometryFiles.simplified.sha256}\`.`,
     `- Detailed SHA-256: \`${measurements.geometryFiles.detailed.sha256}\`.`,
     `- Geometry types: ${JSON.stringify(measurements.geometry.simplified.geometryTypes)}.`,
@@ -210,7 +224,7 @@ function writeMarkdown(measurements) {
     "",
     "## Baseline load, color, save, and export behavior",
     "",
-    "- Load: fetch local simplified geometry at startup; detailed local geometry is loaded lazily for close views and high-resolution exports.",
+    "- Load: fetch local simplified geometry at startup; close views add only visible province detail overlays while the full local detail file remains export-only.",
     "- Color: users select a region, choose a color, and apply it to the in-browser highlight state.",
     "- Save: project JSON is built in the browser and downloaded locally; autosave uses browser localStorage.",
     "- Export: SVG and PNG are generated in-browser without uploading project contents.",
@@ -240,11 +254,13 @@ const measurements = {
   runtimeOnDemandAssets: onDemandFiles.map(fileMetric),
   geometryFiles: {
     simplified: fileMetric("data/indonesia-adm2-simplified.geojson"),
-    detailed: fileMetric("data/indonesia-adm2-detailed.geojson")
+    detailed: fileMetric("data/indonesia-adm2-detailed.geojson"),
+    provinceIndex: fileMetric("data/indonesia-adm2-detailed-provinces-index.json")
   },
   geometry: {
     simplified: geoSummary("data/indonesia-adm2-simplified.geojson"),
-    detailed: geoSummary("data/indonesia-adm2-detailed.geojson")
+    detailed: geoSummary("data/indonesia-adm2-detailed.geojson"),
+    provinceChunks: provinceChunkSummary()
   },
   schema: projectSchemaVersions(),
   network: {

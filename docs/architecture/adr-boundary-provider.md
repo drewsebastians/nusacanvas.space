@@ -9,7 +9,7 @@ NusaCanvas separates the administrative registry from the geometry provider. Wor
 
 The active adapter is `geoboundaries-hdx-idn-adm2-2020`, a local approved ADM2 snapshot. It exposes `getManifest`, national/province layers, lookup by stable ID, version, attribution, license information, crosswalk access, and project compatibility validation. It has no remote source URL at runtime: artifact requests are restricted to local `data/` paths.
 
-The provider manifest is checked into `data/boundary-provider-manifest-v1.json` and duplicated as a frozen runtime manifest so the application does not add a manifest request at startup. The build/data checks verify the artifact checksums. Lite geometry is used at startup; detailed geometry remains lazy and is requested only for close interactive views or high-resolution exports.
+The provider manifest is checked into `data/boundary-provider-manifest-v1.json` and duplicated as a frozen runtime manifest so the application does not add a manifest request at startup. The build/data checks verify artifact checksums. Lite geometry stays mounted at startup; close interactive views load only generated province chunks with precomputed meshes, while the complete detailed geometry is reserved for exports.
 
 ## Project and migration rule
 
