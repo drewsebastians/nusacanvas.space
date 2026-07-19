@@ -43,6 +43,7 @@ const requiredFiles = [
   "assets/vendor/read-excel-file/LICENSE",
   "data/indonesia-adm2-detailed.geojson",
   "data/indonesia-adm2-detailed-provinces-index.json",
+  "data/indonesia-adm2-label-anchors.json",
   "data/indonesia-adm2-simplified.geojson",
   "data/boundary-provider-manifest-v1.json",
   "about/index.html",

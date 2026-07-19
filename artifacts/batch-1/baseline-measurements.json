@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-19T14:04:15.378Z",
+  "generatedAt": "2026-07-19T16:41:39.167Z",
   "environment": {
     "node": "v24.14.0",
     "platform": "win32"
   },
   "git": {
-    "commit": "20cb6102ab226aa48064e58b84db95d1667c2db5",
+    "commit": "33519336c3718bdd3024461f594e04f28655829a",
     "branch": "main",
     "status": "Use `git status --short` for working tree state; this script avoids spawning git."
   },
@@ -36,9 +36,9 @@
     },
     {
       "path": "assets/css/app.css",
-      "bytes": 39927,
-      "gzipBytes": 7600,
-      "sha256": "87b94fbf174bba8e9504faabfe6e5e64245f5c3aff67d2d4b20a9799098ca6a0"
+      "bytes": 39521,
+      "gzipBytes": 7513,
+      "sha256": "cefaf61bc1cb938761f57d253162b7f66e48a8135ae5d9dbcc77fd04e4d16739"
     },
     {
       "path": "assets/js/project-storage.js",
@@ -72,15 +72,15 @@
     },
     {
       "path": "assets/js/map.js",
-      "bytes": 19767,
-      "gzipBytes": 5046,
-      "sha256": "c48d07a6bf7d5faf4650b54362fa4894b80cef706d922dcad50b780c329344a3"
+      "bytes": 24595,
+      "gzipBytes": 6487,
+      "sha256": "14b01de5d84cf19034f33e6ae075d29b4682df68ff1653a4ce7744f4ce44f1a2"
     },
     {
       "path": "assets/js/app.js",
-      "bytes": 86549,
-      "gzipBytes": 20129,
-      "sha256": "1f2d027b8600d800f22d8ea24b26810b1fa9dd318fd3498c6290a06088219500"
+      "bytes": 86719,
+      "gzipBytes": 20162,
+      "sha256": "f3ab152831f44fe6a58b4b8baed780fd15746951c895921048aaa09e4b90a60f"
     },
     {
       "path": "assets/vendor/leaflet/leaflet.css",
@@ -123,6 +123,12 @@
       "bytes": 8763,
       "gzipBytes": 2137,
       "sha256": "1f21757fb607d37340441c56dc95d7b6d231efa45d87489bb33474262bdff68e"
+    },
+    {
+      "path": "data/indonesia-adm2-label-anchors.json",
+      "bytes": 52007,
+      "gzipBytes": 14601,
+      "sha256": "3dac2e7efd959362eec873ffd3af2a47b0ab00eab9c959c33ac49419a9be8b51"
     },
     {
       "path": "assets/vendor/read-excel-file/read-excel-file.min.js",
@@ -194,9 +200,9 @@
     },
     {
       "path": "assets/css/app.css",
-      "bytes": 39927,
-      "gzipBytes": 7600,
-      "sha256": "87b94fbf174bba8e9504faabfe6e5e64245f5c3aff67d2d4b20a9799098ca6a0"
+      "bytes": 39521,
+      "gzipBytes": 7513,
+      "sha256": "cefaf61bc1cb938761f57d253162b7f66e48a8135ae5d9dbcc77fd04e4d16739"
     },
     {
       "path": "assets/js/project-storage.js",
@@ -230,15 +236,15 @@
     },
     {
       "path": "assets/js/map.js",
-      "bytes": 19767,
-      "gzipBytes": 5046,
-      "sha256": "c48d07a6bf7d5faf4650b54362fa4894b80cef706d922dcad50b780c329344a3"
+      "bytes": 24595,
+      "gzipBytes": 6487,
+      "sha256": "14b01de5d84cf19034f33e6ae075d29b4682df68ff1653a4ce7744f4ce44f1a2"
     },
     {
       "path": "assets/js/app.js",
-      "bytes": 86549,
-      "gzipBytes": 20129,
-      "sha256": "1f2d027b8600d800f22d8ea24b26810b1fa9dd318fd3498c6290a06088219500"
+      "bytes": 86719,
+      "gzipBytes": 20162,
+      "sha256": "f3ab152831f44fe6a58b4b8baed780fd15746951c895921048aaa09e4b90a60f"
     },
     {
       "path": "assets/vendor/leaflet/leaflet.css",
@@ -285,6 +291,12 @@
       "sha256": "1f21757fb607d37340441c56dc95d7b6d231efa45d87489bb33474262bdff68e"
     },
     {
+      "path": "data/indonesia-adm2-label-anchors.json",
+      "bytes": 52007,
+      "gzipBytes": 14601,
+      "sha256": "3dac2e7efd959362eec873ffd3af2a47b0ab00eab9c959c33ac49419a9be8b51"
+    },
+    {
       "path": "assets/vendor/read-excel-file/read-excel-file.min.js",
       "bytes": 37686,
       "gzipBytes": 11957,
@@ -321,6 +333,12 @@
       "bytes": 8763,
       "gzipBytes": 2137,
       "sha256": "1f21757fb607d37340441c56dc95d7b6d231efa45d87489bb33474262bdff68e"
+    },
+    "labelAnchors": {
+      "path": "data/indonesia-adm2-label-anchors.json",
+      "bytes": 52007,
+      "gzipBytes": 14601,
+      "sha256": "3dac2e7efd959362eec873ffd3af2a47b0ab00eab9c959c33ac49419a9be8b51"
     }
   },
   "geometry": {

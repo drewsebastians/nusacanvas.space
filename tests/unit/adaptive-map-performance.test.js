@@ -44,3 +44,12 @@ test("build chunks retain every stable ID and exact approved detailed topology",
   });
   assert.equal(ids.size, 519);
 });
+
+test("label anchors cover all ADM2 regions while staying smaller than lite geometry", () => {
+  const anchors = JSON.parse(fs.readFileSync(path.join(root, "data", "indonesia-adm2-label-anchors.json"), "utf8"));
+  const liteBytes = fs.statSync(path.join(root, "data", "indonesia-adm2-simplified.geojson")).size;
+  const anchorBytes = fs.statSync(path.join(root, "data", "indonesia-adm2-label-anchors.json")).size;
+  assert.equal(anchors.labels.length, 519);
+  assert.equal(new Set(anchors.labels.map((row) => row[0])).size, 519);
+  assert.ok(anchorBytes < liteBytes / 8, "label anchors stay compact relative to interactive geometry");
+});

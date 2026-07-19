@@ -42,7 +42,7 @@ This avoids destructive geometry renaming while giving saved projects a forward 
 
 1. Browser loads `data/indonesia-adm2-simplified.geojson`.
 2. Leaflet renders polygons without a basemap.
-3. Runtime labels are selective: selected, highlighted, searched, or explicitly contextual regions are eligible, and collision handling suppresses overlaps.
+3. A deferred compact ADM2 anchor file feeds one Canvas label layer. It considers only the viewport after debounced map movement, uses a spatial grid for collision culling, and supports Minimal, Balanced, and Detailed density modes without per-region DOM markers.
 4. User selections are stored by stable `region_id`.
 5. Paste/CSV/TSV/XLSX and project files are processed locally by File APIs.
 6. Matching decisions, visualization specification, and export metadata stay in browser state/project JSON.

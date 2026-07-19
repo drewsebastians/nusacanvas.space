@@ -5,6 +5,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const dataDir = path.join(root, "data");
 const outputDir = path.join(dataDir, "detailed-provinces");
+const labelArtifact = "data/indonesia-adm2-label-anchors.json";
 
 function digest(text) {
   return crypto.createHash("sha256").update(text).digest("hex");
@@ -70,6 +71,47 @@ function createChunks() {
   }));
 }
 
+function largestRing(geometry = {}) {
+  const rings = geometry.type === "Polygon" ? geometry.coordinates : geometry.type === "MultiPolygon" ? geometry.coordinates.map((polygon) => polygon[0]) : [];
+  return rings.filter((ring) => Array.isArray(ring) && ring.length > 2).sort((a, b) => Math.abs(ringArea(b)) - Math.abs(ringArea(a)))[0] || [];
+}
+
+function ringArea(ring) {
+  return ring.reduce((area, point, index) => {
+    const next = ring[(index + 1) % ring.length] || point;
+    return area + Number(point[0]) * Number(next[1]) - Number(next[0]) * Number(point[1]);
+  }, 0) / 2;
+}
+
+function ringAnchor(ring) {
+  const area = ringArea(ring);
+  if (!area) return ring[0] || [0, 0];
+  const centroid = ring.reduce((sum, point, index) => {
+    const next = ring[(index + 1) % ring.length] || point;
+    const cross = Number(point[0]) * Number(next[1]) - Number(next[0]) * Number(point[1]);
+    sum[0] += (Number(point[0]) + Number(next[0])) * cross;
+    sum[1] += (Number(point[1]) + Number(next[1])) * cross;
+    return sum;
+  }, [0, 0]);
+  return [Number((centroid[0] / (6 * area)).toFixed(6)), Number((centroid[1] / (6 * area)).toFixed(6))];
+}
+
+function buildLabelAnchors({ write = true } = {}) {
+  const collection = JSON.parse(fs.readFileSync(path.join(dataDir, "indonesia-adm2-simplified.geojson"), "utf8"));
+  const labels = collection.features.map((feature) => {
+    const p = feature.properties || {};
+    const type = p.region_type === "Kota" ? "Kota" : p.region_type === "Kabupaten" ? "Kabupaten" : "Unresolved";
+    const area = Number(p.area_sqkm || 0);
+    const priority = type === "Kota" ? 3 : type === "Kabupaten" && area > 0 && area <= 1500 ? 2 : type === "Kabupaten" ? 1 : 0;
+    const anchor = ringAnchor(largestRing(feature.geometry));
+    return [String(p.region_id), String(p.display_name || p.region_name || "Region"), type, String(p.province_name || ""), priority, anchor[0], anchor[1]];
+  });
+  if (new Set(labels.map((label) => label[0])).size !== 519) throw new Error("Label anchors do not preserve all stable region IDs.");
+  const text = `${JSON.stringify({ schemaVersion: "nusacanvas.adm2-label-anchors.v1", labels })}\n`;
+  if (write) fs.writeFileSync(path.join(root, labelArtifact), text);
+  return { featureCount: labels.length, artifact: labelArtifact, sha256: digest(text) };
+}
+
 function buildProvinceChunks({ write = true } = {}) {
   const chunks = createChunks();
   const entries = chunks.map(({ provinceCode, provinceName, features }) => {
@@ -96,7 +138,7 @@ function buildProvinceChunks({ write = true } = {}) {
   const indexText = `${JSON.stringify(index, null, 2)}\n`;
   const indexArtifact = "data/indonesia-adm2-detailed-provinces-index.json";
   if (write) fs.writeFileSync(path.join(root, indexArtifact), indexText);
-  return { index, indexArtifact, indexSha256: digest(indexText) };
+  return { index, indexArtifact, indexSha256: digest(indexText), labelAnchors: buildLabelAnchors({ write }) };
 }
 
 if (require.main === module) {
@@ -105,4 +147,4 @@ if (require.main === module) {
   console.log(`${result.indexArtifact} sha256 ${result.indexSha256}`);
 }
 
-module.exports = { buildProvinceChunks, buildMesh };
+module.exports = { buildProvinceChunks, buildMesh, buildLabelAnchors };

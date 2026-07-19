@@ -92,7 +92,7 @@
     [
       "projectTitle", "searchInput", "searchResults", "provinceSelect", "regionSelect", "selectedRegion",
       "colorPicker", "colorValue", "manualPalette", "colorPalette", "categoryInput", "valueInput", "applyColorBtn", "removeColorBtn",
-      "undoBtn", "resetBtn", "highlightCount", "highlightList", "presentationView", "showLegend", "legendPosition",
+      "undoBtn", "resetBtn", "highlightCount", "highlightList", "labelDensity", "presentationView", "showLegend", "legendPosition",
       "groupCount", "groupingList", "legendItems", "addLegendBtn", "importPaste", "csvFile", "xlsxSheet", "importDelimiter",
       "importLocale", "previewCsvBtn", "applyCsvBtn", "cancelImportBtn", "importMapping", "csvPreview",
       "saveProjectBtn", "openProjectBtn", "projectFile", "clearProjectBtn", "recoverLegacyAutosaveBtn", "deleteLegacyAutosaveBtn", "downloadStorageRecoveryBtn", "deleteStorageRecoveryBtn", "downloadUnreadableTargetBtn", "downloadUnreadableLegacyBtn", "autosaveStatus",
@@ -128,6 +128,7 @@
     el.removeColorBtn.addEventListener("click", removeSelectedColor);
     el.undoBtn.addEventListener("click", undo);
     el.resetBtn.addEventListener("click", resetAll);
+    el.labelDensity.addEventListener("change", () => mapApi.setLabelDensity(el.labelDensity.value));
     el.presentationView.addEventListener("change", () => setPresentationView(el.presentationView.checked));
     el.showLegend.addEventListener("change", () => { state.legendVisible = el.showLegend.checked; refreshMapLegend(); scheduleSave(); });
     el.legendPosition.addEventListener("change", () => { state.legendPosition = el.legendPosition.value; refreshMapLegend(); scheduleSave(); });
@@ -389,6 +390,7 @@
       state.featureById = new Map(state.features.map((feature) => [feature.properties.region_id, feature]));
       mapApi.render(collection, { detail: "lite" });
       mapApi.setHighlights(state.highlights);
+      mapApi.setLabelDensity(el.labelDensity.value);
       mapApi.setPresentationView(state.presentationView);
       populateFilters();
       renderLegendEditor(false);

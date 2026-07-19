@@ -28,6 +28,7 @@ const runtimeFiles = [
 const onDemandFiles = [
   "data/indonesia-adm2-detailed.geojson",
   "data/indonesia-adm2-detailed-provinces-index.json",
+  "data/indonesia-adm2-label-anchors.json",
   "assets/vendor/read-excel-file/read-excel-file.min.js",
   "assets/js/matching-engine.js",
   "assets/js/visualization-engine.js"
@@ -218,13 +219,13 @@ function writeMarkdown(measurements) {
     "## Accessibility and mobile risks visible in implementation",
     "",
     "- The sidebar contains many controls and can be dense on small screens.",
-    "- Permanent map labels can collide or become visually busy even with collision hiding.",
+    "- Canvas labels are viewport-scoped and collision-culled; hidden regions remain searchable and selectable.",
     "- Several icon-like buttons use text or symbols inherited from the current UI.",
     "- Batch 1 records serious/critical axe failures as a blocking gate and lower-severity findings as artifacts.",
     "",
     "## Baseline load, color, save, and export behavior",
     "",
-    "- Load: fetch local simplified geometry at startup; close views add only visible province detail overlays while the full local detail file remains export-only.",
+    "- Load: fetch local simplified geometry at startup; deferred label anchors feed one Canvas layer, close views add only visible province detail overlays, and the full local detail file remains export-only.",
     "- Color: users select a region, choose a color, and apply it to the in-browser highlight state.",
     "- Save: project JSON is built in the browser and downloaded locally; autosave uses browser localStorage.",
     "- Export: SVG and PNG are generated in-browser without uploading project contents.",
@@ -255,7 +256,8 @@ const measurements = {
   geometryFiles: {
     simplified: fileMetric("data/indonesia-adm2-simplified.geojson"),
     detailed: fileMetric("data/indonesia-adm2-detailed.geojson"),
-    provinceIndex: fileMetric("data/indonesia-adm2-detailed-provinces-index.json")
+    provinceIndex: fileMetric("data/indonesia-adm2-detailed-provinces-index.json"),
+    labelAnchors: fileMetric("data/indonesia-adm2-label-anchors.json")
   },
   geometry: {
     simplified: geoSummary("data/indonesia-adm2-simplified.geojson"),

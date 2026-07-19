@@ -201,7 +201,8 @@ test("load, color, save, SVG export, and smallest PNG export", async ({ page }) 
   });
   await page.locator("#applyColorBtn").click();
   await expect(page.locator("#highlightCount")).toHaveText("1");
-  await expect(page.locator(".region-name-label").filter({ hasText: "Surabaya" }).first()).toBeVisible();
+  await expect(page.locator(".adm2-label-canvas")).toHaveCount(1);
+  await expect(page.locator(".leaflet-tooltip")).toHaveCount(0);
 
   const projectDownload = page.waitForEvent("download");
   await page.locator("#workspaceProjectToggle").click();
@@ -237,7 +238,7 @@ test("startup stays lite while an explicit mobile selection loads one province o
   await page.setViewportSize({ width: 390, height: 760 });
   await page.goto("/workspace/");
   await waitForAppReady(page);
-  await expect.poll(async () => page.locator(".region-name-label").count()).toBeLessThan(80);
+  await expect(page.locator(".leaflet-tooltip")).toHaveCount(0);
   expect(requests.some((request) => request.url.includes("indonesia-adm2-detailed.geojson"))).toBe(false);
 
   await openManualRegionControls(page);
@@ -252,8 +253,8 @@ test("startup stays lite while an explicit mobile selection loads one province o
   await expect(page.locator("#map")).toHaveAttribute("data-geometry-detail", "province-overlay", { timeout: 60000 });
   expect(requests.some((request) => request.url.includes("indonesia-adm2-detailed.geojson"))).toBe(false);
   await expect(page.locator("#map")).toHaveAttribute("data-detail-overlay-count", "1");
-  await expect(page.locator(".region-name-label").filter({ hasText: "Surabaya" }).first()).toBeVisible();
-  await expect(page.locator(".region-name-label")).toHaveCount(1);
+  await expect(page.locator(".adm2-label-canvas")).toHaveCount(1);
+  await expect(page.locator("#map")).toHaveAttribute("data-label-density", "balanced", { timeout: 60000 });
 });
 
 test("PNG export supports largest, transparent, and fallback paths", async ({ page }) => {

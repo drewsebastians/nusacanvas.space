@@ -17,6 +17,54 @@
     return 0;
   }
 
+  function normalizeLabelAnchor(row) {
+    if (!Array.isArray(row) || row.length < 7) return null;
+    const [id, name, type, province, priority, lng, lat] = row;
+    if (!id || !Number.isFinite(Number(lat)) || !Number.isFinite(Number(lng))) return null;
+    return { id: String(id), name: String(name || "Region"), type: String(type || "Unresolved"), province: String(province || ""), priority: Number(priority) || 0, lng: Number(lng), lat: Number(lat) };
+  }
+
+  function labelFontSize(zoom) {
+    if (Number(zoom) < 5.75) return 11;
+    if (Number(zoom) < 7.5) return 11;
+    return Math.max(11, Math.min(14, Math.round(11 + (Number(zoom) - 7.5) * 1.2)));
+  }
+
+  function labelCandidates(anchors, bounds, { zoom, density, selectedId, highlights, presentationView }) {
+    const visible = anchors.filter((anchor) => anchor.lng >= bounds.minX && anchor.lng <= bounds.maxX && anchor.lat >= bounds.minY && anchor.lat <= bounds.maxY);
+    const rank = (anchor) => anchor.id === selectedId ? 100 : highlights && highlights[anchor.id] ? 90 : anchor.type === "Kota" ? 80 : anchor.priority > 1 ? 70 : 10;
+    if (Number(zoom) < 5.75) {
+      const provinces = new Map();
+      visible.forEach((anchor) => {
+        const existing = provinces.get(anchor.province);
+        if (!existing || rank(anchor) > rank(existing)) provinces.set(anchor.province, anchor);
+      });
+      return Array.from(provinces.values()).map((anchor) => Object.assign({}, anchor, { text: anchor.province || anchor.name, rank: rank(anchor) }));
+    }
+    const mode = presentationView ? "minimal" : density;
+    return visible.filter((anchor) => mode === "detailed" || anchor.id === selectedId || (highlights && highlights[anchor.id]) || (mode === "balanced" && (anchor.type === "Kota" || anchor.priority > 1)))
+      .map((anchor) => Object.assign({}, anchor, { text: anchor.name, rank: rank(anchor) }))
+      .sort((a, b) => b.rank - a.rank || a.name.localeCompare(b.name, "id"));
+  }
+
+  function placeLabelsInGrid(labels, cellSize = 64) {
+    const grid = new Map();
+    const placed = [];
+    const key = (x, y) => `${x}:${y}`;
+    labels.forEach((label) => {
+      const width = Math.max(label.fontSize * 3, label.text.length * label.fontSize * 0.56);
+      const height = label.fontSize * 1.25;
+      const box = { left: label.x - width / 2 - 3, right: label.x + width / 2 + 3, top: label.y - height / 2 - 3, bottom: label.y + height / 2 + 3 };
+      const minX = Math.floor(box.left / cellSize), maxX = Math.floor(box.right / cellSize), minY = Math.floor(box.top / cellSize), maxY = Math.floor(box.bottom / cellSize);
+      let overlaps = false;
+      for (let x = minX; x <= maxX && !overlaps; x += 1) for (let y = minY; y <= maxY && !overlaps; y += 1) (grid.get(key(x, y)) || []).forEach((other) => { if (!(box.right < other.left || box.left > other.right || box.bottom < other.top || box.top > other.bottom)) overlaps = true; });
+      if (overlaps) return;
+      placed.push(Object.assign({}, label, { box }));
+      for (let x = minX; x <= maxX; x += 1) for (let y = minY; y <= maxY; y += 1) { const bucket = grid.get(key(x, y)) || []; bucket.push(box); grid.set(key(x, y), bucket); }
+    });
+    return placed;
+  }
+
   function detailProvinceCodesForViewport({ zoom, mobile, selectedProvinceCode, focusedProvinceCodes, visibleProvinceCodes }) {
     if (selectedProvinceCode) return [String(selectedProvinceCode)];
     if (mobile) return [];
@@ -27,7 +75,7 @@
   function createMap(elementId, callbacks) {
     const map = L.map(elementId, { zoomControl: false, attributionControl: false, minZoom: 4, maxZoom: 12, zoomSnap: 0.25, zoomDelta: 0.25, wheelPxPerZoomLevel: 240 });
     L.control.zoom({ position: "topleft" }).addTo(map);
-    [["boundaryMeshPane", "410"], ["detailGeometryPane", "415"], ["detailMeshPane", "420"], ["boundaryHighlightPane", "425"], ["boundarySelectionPane", "430"]].forEach(([name, zIndex]) => {
+    [["boundaryMeshPane", "410"], ["detailGeometryPane", "415"], ["detailMeshPane", "420"], ["boundaryHighlightPane", "425"], ["boundarySelectionPane", "430"], ["labelCanvasPane", "440"]].forEach(([name, zIndex]) => {
       map.createPane(name);
       map.getPane(name).style.zIndex = zIndex;
       map.getPane(name).style.pointerEvents = "none";
@@ -51,10 +99,12 @@
     let focusedProvinceCodes = [];
     let geometryDetail = "lite";
     let detailChunkData = [];
-    let collisionFrame = null;
+    let labelCanvas = null;
+    let labelAnchors = [];
+    let labelDensity = "balanced";
+    let labelTimer = null;
     let detailTimer = null;
     let lastDetailKey = "";
-    let lastLabelUpdate = 0;
 
     function visual() {
       return presentationView ? presentationStyles.presentation : presentationStyles.normal;
@@ -125,12 +175,6 @@
       return [p.display_name || p.geometry_source_name || p.region_name || "Region", item && item.category, item && item.value].filter(Boolean).join(" - ");
     }
 
-    function bindRegionTooltip(layer, permanent) {
-      layer.unbindTooltip();
-      layer.bindTooltip(labelText(layer.feature), { permanent, direction: "center", className: "region-name-label" });
-      layer._labelPermanent = permanent;
-    }
-
     function setLayerAccessibility() {
       baseLayersById.forEach((layer) => {
         if (!layer._path) return;
@@ -141,44 +185,68 @@
 
     function isVisible(layer) { return map.getBounds().intersects(layer.getBounds()); }
 
-    function updatePermanentLabelCandidates() {
-      baseLayersById.forEach((layer, id) => {
-        const permanent = labelPriority(id, selectedId, highlights, contextLabelIds, presentationView) > 0 && isVisible(layer);
-        if (layer._labelPermanent !== permanent) bindRegionTooltip(layer, permanent);
+    function createLabelCanvas() {
+      const CanvasLayer = L.Layer.extend({
+        onAdd(targetMap) {
+          this._map = targetMap;
+          this._canvas = L.DomUtil.create("canvas", "adm2-label-canvas", targetMap.getPane("labelCanvasPane"));
+          this._canvas.setAttribute("aria-hidden", "true");
+          this._reset();
+        },
+        onRemove() { if (this._canvas) this._canvas.remove(); this._canvas = null; },
+        _reset() {
+          const size = this._map.getSize();
+          const ratio = window.devicePixelRatio || 1;
+          this._canvas.width = Math.round(size.x * ratio); this._canvas.height = Math.round(size.y * ratio);
+          this._canvas.style.width = `${size.x}px`; this._canvas.style.height = `${size.y}px`;
+          L.DomUtil.setPosition(this._canvas, this._map.containerPointToLayerPoint([0, 0]));
+        },
+        draw(labels) {
+          this._reset();
+          const context = this._canvas.getContext("2d");
+          const ratio = window.devicePixelRatio || 1;
+          context.scale(ratio, ratio);
+          context.textAlign = "center"; context.textBaseline = "middle"; context.lineJoin = "round";
+          labels.forEach((label) => {
+            context.font = `${label.rank >= 90 ? "700 " : "600 "}${label.fontSize}px system-ui, sans-serif`;
+            context.strokeStyle = "rgba(255,255,255,.9)"; context.lineWidth = Math.max(2, label.fontSize / 3); context.strokeText(label.text, label.x, label.y);
+            context.fillStyle = label.rank >= 90 ? "#102a43" : "#334e5c"; context.fillText(label.text, label.x, label.y);
+          });
+        }
       });
+      return new CanvasLayer();
     }
 
-    function updateLabelCollisions() {
-      collisionFrame = null;
-      lastLabelUpdate = performance.now();
-      updatePermanentLabelCandidates();
-      const labels = [];
-      baseLayersById.forEach((layer, id) => {
-        if (!layer._labelPermanent || !isVisible(layer)) return;
-        const tooltip = layer.getTooltip && layer.getTooltip();
-        const element = tooltip && tooltip.getElement && tooltip.getElement();
-        if (!element) return;
-        element.classList.remove("label-hidden");
-        const bounds = element.getBoundingClientRect();
-        if (!bounds.width || !bounds.height) return;
-        labels.push({ element, bounds, priority: labelPriority(id, selectedId, highlights, contextLabelIds, presentationView) });
-      });
-      labels.sort((a, b) => b.priority - a.priority);
-      const visible = [];
-      labels.forEach((label) => {
-        if (visible.some((item) => boxesOverlap(label.bounds, item.bounds, 4))) label.element.classList.add("label-hidden");
-        else visible.push(label);
-      });
+    function updateCanvasLabels() {
+      if (!labelCanvas || !labelAnchors.length) return;
+      const bounds = map.getBounds();
+      const activeDensity = isMobile() && !selectedId ? "minimal" : labelDensity;
+      const candidates = labelCandidates(labelAnchors, { minX: bounds.getWest(), minY: bounds.getSouth(), maxX: bounds.getEast(), maxY: bounds.getNorth() }, {
+        zoom: map.getZoom(), density: activeDensity, selectedId, highlights, presentationView
+      }).map((label) => {
+        const point = map.latLngToContainerPoint([label.lat, label.lng]);
+        return Object.assign(label, { x: point.x, y: point.y, fontSize: labelFontSize(map.getZoom()) });
+      }).filter((label) => label.x >= -80 && label.y >= -24 && label.x <= map.getSize().x + 80 && label.y <= map.getSize().y + 24);
+      const labels = placeLabelsInGrid(candidates);
+      labelCanvas.draw(labels);
+      map.getContainer().dataset.labelCount = String(labels.length);
+      map.getContainer().dataset.labelDensity = presentationView || (isMobile() && !selectedId) ? "minimal" : labelDensity;
     }
 
-    function scheduleLabelCollisionUpdate() {
-      if (collisionFrame) cancelAnimationFrame(collisionFrame);
-      const delay = performance.now() - lastLabelUpdate < 80 ? 80 : 0;
-      collisionFrame = requestAnimationFrame(() => delay ? window.setTimeout(updateLabelCollisions, delay) : updateLabelCollisions());
+    function scheduleLabelUpdate() {
+      if (labelTimer) window.clearTimeout(labelTimer);
+      labelTimer = window.setTimeout(updateCanvasLabels, 180);
     }
 
-    function boxesOverlap(a, b, padding) {
-      return !(a.right + padding < b.left || a.left - padding > b.right || a.bottom + padding < b.top || a.top - padding > b.bottom);
+    function loadLabelAnchors() {
+      const labelUrl = window.location.pathname.startsWith("/workspace/") ? "../data/indonesia-adm2-label-anchors.json" : "./data/indonesia-adm2-label-anchors.json";
+      const load = () => fetch(labelUrl).then((response) => response.ok ? response.json() : null).then((data) => {
+        labelAnchors = Array.isArray(data && data.labels) ? data.labels.map(normalizeLabelAnchor).filter(Boolean) : [];
+        if (labelAnchors.length !== 519) throw new Error("ADM2 label anchor data is incomplete.");
+        scheduleLabelUpdate();
+      }).catch(() => {});
+      // Keep the map's first interactive frame free of label-data parsing.
+      window.setTimeout(load, 750);
     }
 
     function visibleProvinceCodes() {
@@ -259,7 +327,6 @@
           const id = feature.properties.region_id;
           layer.feature = feature;
           baseLayersById.set(id, layer);
-          bindRegionTooltip(layer, false);
           layer.on({
             click() { select(id, true); },
             mouseover() { if (id !== selectedId) showPresentationOutline(feature, "hover"); },
@@ -272,20 +339,19 @@
       const boundaryProvider = window.NusaCanvasBoundaryProvider && window.NusaCanvasBoundaryProvider.current;
       if (!boundaryProvider) throw new Error("Boundary provider metadata is required before map rendering.");
       window.NusaCanvasBoundaryRendering = Object.freeze({ boundaryVersion: boundaryProvider.getVersion(), strategy: "single-pass-exact-segment-mesh", renderer: "Leaflet Canvas (device-pixel-ratio aware)", geometryDetail: "lite-base", ...mesh.stats });
-      map.on("moveend resize", () => { scheduleLabelCollisionUpdate(); scheduleDetailViewportRequest(); });
+      labelCanvas = createLabelCanvas().addTo(map);
+      map.on("moveend zoomend resize", () => { scheduleLabelUpdate(); scheduleDetailViewportRequest(); });
       if (options.fit !== false) fitIndonesia();
       renderHighlightOutlines();
-      scheduleLabelCollisionUpdate();
       setLayerAccessibility();
+      loadLabelAnchors();
     }
 
-    function refreshTooltipLabels() {
+    function refreshAccessibleLabels() {
       baseLayersById.forEach((layer) => {
-        const tooltip = layer.getTooltip && layer.getTooltip();
-        if (tooltip) tooltip.setContent(labelText(layer.feature));
         if (layer._path) layer._path.setAttribute("aria-label", labelText(layer.feature));
       });
-      scheduleLabelCollisionUpdate();
+      scheduleLabelUpdate();
     }
 
     function fitIndonesia() {
@@ -305,7 +371,7 @@
         if (notify && callbacks && callbacks.onSelect) callbacks.onSelect(layer.feature);
       }
       setDetailOverlaysFromCurrent();
-      scheduleLabelCollisionUpdate();
+      scheduleLabelUpdate();
       scheduleDetailViewportRequest();
     }
 
@@ -339,11 +405,13 @@
       highlights = next || {};
       baseLayersById.forEach((layer) => layer.setStyle(styleFeature(layer.feature)));
       renderHighlightOutlines();
-      refreshTooltipLabels();
+      refreshAccessibleLabels();
       setDetailOverlaysFromCurrent();
     }
 
-    function setContextLabels(ids) { contextLabelIds = new Set((ids || []).map(String)); scheduleLabelCollisionUpdate(); }
+    function setContextLabels(ids) { contextLabelIds = new Set((ids || []).map(String)); scheduleLabelUpdate(); }
+
+    function setLabelDensity(value) { labelDensity = ["minimal", "detailed"].includes(value) ? value : "balanced"; scheduleLabelUpdate(); }
 
     function setPresentationView(enabled) {
       presentationView = Boolean(enabled);
@@ -353,7 +421,7 @@
       renderHighlightOutlines();
       setDetailOverlaysFromCurrent();
       if (selectedId && baseLayersById.has(selectedId)) showPresentationOutline(baseLayersById.get(selectedId).feature, "selected");
-      scheduleLabelCollisionUpdate();
+      scheduleLabelUpdate();
     }
 
     function setLegend(items, visible, position) {
@@ -381,10 +449,10 @@
       return { bounds: { minX: bounds.getWest(), minY: bounds.getSouth(), maxX: bounds.getEast(), maxY: bounds.getNorth() }, visibleIds };
     }
 
-    function invalidate() { map.invalidateSize(); scheduleLabelCollisionUpdate(); scheduleDetailViewportRequest(); }
+    function invalidate() { map.invalidateSize(); scheduleLabelUpdate(); scheduleDetailViewportRequest(); }
 
-    return { map, render, fitIndonesia, fitProvince, select, zoomTo, setHighlights, setContextLabels, setPresentationView, setLegend, setDetailOverlays, getCurrentView, invalidate, get selectedId() { return selectedId; }, get geometryDetail() { return geometryDetail; }, get detailOverlayCount() { return detailOverlays.size; } };
+    return { map, render, fitIndonesia, fitProvince, select, zoomTo, setHighlights, setContextLabels, setLabelDensity, setPresentationView, setLegend, setDetailOverlays, getCurrentView, invalidate, get selectedId() { return selectedId; }, get geometryDetail() { return geometryDetail; }, get detailOverlayCount() { return detailOverlays.size; } };
   }
 
-  window.IndonesiaMap = { createMap, geometryDetailForZoom, labelPriority, detailProvinceCodesForViewport };
+  window.IndonesiaMap = { createMap, geometryDetailForZoom, labelPriority, detailProvinceCodesForViewport, normalizeLabelAnchor, labelFontSize, labelCandidates, placeLabelsInGrid };
 })();

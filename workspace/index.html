@@ -132,6 +132,12 @@
 
       <section class="panel-section" data-workflow-step="visualize">
         <h2>Map appearance</h2>
+        <label for="labelDensity">Administrative labels</label>
+        <select id="labelDensity">
+          <option value="minimal">Minimal — selected and highlighted</option>
+          <option value="balanced" selected>Balanced — cities and key regencies</option>
+          <option value="detailed">Detailed — visible regions that fit</option>
+        </select>
         <label class="check-row"><input id="presentationView" type="checkbox"> Presentation view</label>
         <p class="notice">Softens background boundaries and keeps attention on highlighted regions with minimal labels.</p>
       </section>
