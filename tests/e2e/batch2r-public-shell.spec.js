@@ -17,7 +17,7 @@ async function assertNoOverflow(page) {
 
 test("landing page matches the approved public structure and stays lightweight", async ({ page }) => {
   const requests = [];
-  page.on("request", (request) => requests.push(new URL(request.url()).pathname));
+  page.on("request", (request) => requests.push(new URL(request.url())));
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/", { waitUntil: "domcontentloaded" });
 
@@ -42,11 +42,12 @@ test("landing page matches the approved public structure and stays lightweight",
   expect(await page.locator("main > section").evaluateAll((sections) => sections.map((section) => section.className))).toEqual([
     "hero-carousel site-inner", "trust-strip", "site-inner section-block choose-section", "site-inner section-block final-cta final-cta-dark"
   ]);
-  expect(requests.some((url) => forbiddenRuntime.test(url))).toBe(false);
-  expect(requests).toContain("/assets/images/public/hero-highlight-regions.svg");
-  expect(requests).not.toContain("/assets/images/public/hero-map-spreadsheet.svg");
-  expect(requests).not.toContain("/assets/images/public/hero-sales-territories.svg");
-  expect(requests).not.toContain("/assets/images/public/hero-coverage-analysis.svg");
+  expect(requests.some(({ pathname }) => forbiddenRuntime.test(pathname))).toBe(false);
+  expect(requests.every(({ origin }) => origin === new URL(page.url()).origin)).toBe(true);
+  expect(requests.map(({ pathname }) => pathname)).toContain("/assets/images/public/hero-highlight-regions.svg");
+  expect(requests.map(({ pathname }) => pathname)).not.toContain("/assets/images/public/hero-map-spreadsheet.svg");
+  expect(requests.map(({ pathname }) => pathname)).not.toContain("/assets/images/public/hero-sales-territories.svg");
+  expect(requests.map(({ pathname }) => pathname)).not.toContain("/assets/images/public/hero-coverage-analysis.svg");
   await assertNoOverflow(page);
   await assertAxe(page);
 });

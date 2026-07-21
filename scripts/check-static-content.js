@@ -83,7 +83,8 @@ function checkHeaders() {
     "frame-ancestors 'none'",
     "X-Content-Type-Options: nosniff",
     "Referrer-Policy: strict-origin-when-cross-origin",
-    "Permissions-Policy:"
+    "Permissions-Policy:",
+    "Cache-Control: no-transform"
   ];
   for (const item of required) {
     if (!headers.includes(item)) fail(`_headers missing ${item}`);
