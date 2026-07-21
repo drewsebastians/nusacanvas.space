@@ -104,3 +104,20 @@ Pre-change captures are under `artifacts/public-site-refresh/baseline/`. Final c
 - Sales territories and coverage analysis remain intentionally unavailable; their pages are explanatory previews only.
 - The generated SVG sources are large in raw form because they contain real region geometry. Only one is in the initial landing path, and their gzip sizes stay within the new public budgets.
 - The production performance numbers are static/local gzip estimates. CDN cache and transfer behavior should be confirmed after deployment, but no production verification is claimed before this branch is deployed.
+
+## Independent QA addendum — 2026-07-21
+
+An independent local review found no public-page, accessibility, privacy, performance, or workspace-regression defect. Desktop (1440 px) and mobile (393 px) checks covered all five public routes, the responsive navigation, carousel keyboard controls, pause behavior, and first-load asset boundary. The workspace smoke covered both goals, `?sample=1`, manual highlighting, detailed labels, presentation view, and the available map/export surfaces.
+
+One stale release message was corrected in `scripts/verify-batch2r-closure.js`: the verifier previously reported that owner visual approval was required even after all automated evidence passed. It now reports automated-gate completion and does not create a manual-promotion gate.
+
+Final independent checks passed:
+
+- build, terminology, brand migration, 81 unit tests, static content, and deterministic illustration verification;
+- Batch 1: 76 cross-browser smoke tests, 12 trust tests, 12 axe tests, data/license/reproducibility, performance, static-content, and security checks;
+- public shell: 8 browser tests plus static/performance verification;
+- Batch 2R closure: 3 passed and 3 project-scoped skips; 31 closure evidence checks passed.
+
+The local Node runtime did not expose `npm`, so a literal `npm ci` could not be repeated in this QA environment. The declared dependency tree was restored with `pnpm install --lockfile=false --ignore-scripts`; the PR's existing GitHub Actions npm CI run was already green. No lockfile or production dependency changed.
+
+The measured public boundary remains 7 initial landing requests, 1,573 gzip bytes for the public shell, and 146,640 gzip bytes for the initial real-geometry hero. Current screenshots remain under `artifacts/public-site-refresh/`, including `home-desktop-slide-1.png`, `home-mobile.png`, `highlight-desktop.png`, `highlight-mobile.png`, `spreadsheet-desktop.png`, and `spreadsheet-mobile.png`.

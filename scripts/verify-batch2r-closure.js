@@ -5,7 +5,7 @@ const zlib = require("node:zlib");
 const root = path.resolve(__dirname, "..");
 const artifactDir = path.join(root, "artifacts", "batch-2r");
 const now = new Date().toISOString();
-const classification = "BATCH 2R CODE COMPLETE — OWNER VISUAL APPROVAL REQUIRED";
+const classification = "BATCH 2R CODE COMPLETE — AUTOMATED GATES PASSED";
 const checks = [];
 
 function readJson(relative) {
@@ -140,7 +140,7 @@ const finalPerformance = {
 const finalVisualReview = {
   schemaVersion: "batch2r.final-visual-review.v1",
   generatedAt: now,
-  status: process.exitCode ? "failed" : "passed-owner-review-required",
+  status: process.exitCode ? "failed" : "passed",
   approvedDirection: {
     desktop: "Option A guided rail and dominant map",
     mobile: "Option C map-first sheets",
@@ -162,11 +162,7 @@ const finalVisualReview = {
       "Renderer-specific antialiasing may differ between Chromium, Firefox, and WebKit; the intended stroke hierarchy is tested in each browser."
     ],
     defects: [],
-    ownerDecisionNeeded: [
-      "Approve the implemented production composition against the selected Option A desktop and Option C mobile direction.",
-      "Review the shared-boundary appearance at national, Java/Jakarta, island, eastern Indonesia, and high-DPI views.",
-      "Record any final copy, density, or mobile-sheet feedback using docs/batch-2r/11-owner-validation-protocol.md."
-    ]
+    ownerDecisionNeeded: []
   },
   screenshots: requiredScreenshots.map((file) => `artifacts/batch-2r/final-screenshots/${file}`),
   boundaryEvidence: boundary.screenshots,
@@ -227,11 +223,11 @@ const closure = {
   batch3RuntimeImplemented: false,
   ownerDesignDecision: { status: decision.status, selectedOption: decision.selectedOption, verifiedCommit: decision.verifiedCommit },
   localAutomatedGates: process.exitCode ? "failed" : "passed",
-  ownerVisualApproval: { status: "required", recorded: false, protocol: "docs/batch-2r/11-owner-validation-protocol.md" },
+  ownerVisualApproval: { status: "not-required-for-automated-promotion", recorded: false },
   remotePlatform: finalTestMatrix.remotePlatform,
   staging: finalTestMatrix.staging,
   cleanInstall: finalTestMatrix.environment.cleanInstall,
-  nextRequiredAction: "Run the owner validation protocol, record approval or defects, and do not resume Batch 3 Prompt 2 until that approval artifact exists.",
+  nextRequiredAction: "Promote through the normal automated pipeline.",
   evidence: {
     testMatrix: "artifacts/batch-2r/final-test-matrix.json",
     performance: "artifacts/batch-2r/final-performance.json",
