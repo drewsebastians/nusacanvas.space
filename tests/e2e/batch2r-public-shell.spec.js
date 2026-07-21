@@ -29,6 +29,7 @@ test("landing page matches the approved public structure and stays lightweight",
   await expect(page.locator("[data-carousel-dot]")).toHaveCount(4);
   await expect(page.getByRole("button", { name: /previous|next/i })).toHaveCount(0);
   await expect(page.getByText("1 of 4", { exact: true })).toHaveCount(0);
+  expect(await page.locator("[data-carousel-slide]").evaluateAll((slides) => slides.map((slide) => slide.getAttribute("aria-label")))).toEqual([null, null, null, null]);
   await expect(page.locator("#hero-slide-1")).toBeVisible();
   await expect(page.locator("#hero-slide-2")).toBeHidden();
   await expect(page.locator("#hero-slide-1 img")).toHaveJSProperty("complete", true);
