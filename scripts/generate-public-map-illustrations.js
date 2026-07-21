@@ -37,7 +37,7 @@ function svg(title, description, body, viewBox = "0 0 900 430") {
   <title id="title">${escape(title)}</title>
   <desc id="description">${escape(description)}</desc>
   <style>text{font-family:Inter,ui-sans-serif,system-ui,sans-serif}.label{font-size:15px;font-weight:700;fill:#102a43}.small{font-size:12px;fill:#52636e}.outline{stroke:#fff;stroke-width:.8;stroke-linejoin:round}.pin{fill:#087f73;stroke:#fff;stroke-width:3}</style>
-  ${body}
+${body.trim()}
 </svg>
 `;
 }

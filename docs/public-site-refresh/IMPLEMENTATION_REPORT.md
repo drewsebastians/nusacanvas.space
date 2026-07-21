@@ -1,6 +1,6 @@
 # NusaCanvas public-site refresh implementation report
 
-Date: 2026-07-20  
+Date: 2026-07-20
 Branch: `feat/public-site-hero-feature-pages`
 
 ## Outcome
