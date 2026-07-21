@@ -5,6 +5,7 @@ const { buildProvinceChunks } = require("./build-detailed-province-chunks.js");
 const root = path.resolve(__dirname, "..");
 const dist = path.join(root, "dist");
 buildProvinceChunks();
+require("./generate-public-map-illustrations.js");
 
 const requiredFiles = [
   "_headers",
@@ -18,6 +19,12 @@ const requiredFiles = [
   "assets/css/design-system.css",
   "assets/images/nusacanvas-logo.png",
   "assets/images/nusacanvas-favicon.png",
+  "assets/images/public/hero-highlight-regions.svg",
+  "assets/images/public/hero-map-spreadsheet.svg",
+  "assets/images/public/hero-sales-territories.svg",
+  "assets/images/public/hero-coverage-analysis.svg",
+  "assets/images/public/highlight-map-styles.svg",
+  "assets/images/public/spreadsheet-example-output.svg",
   "assets/js/public-shell.js",
   "assets/js/workspace-shell.js",
   "assets/js/brand-config.js",
@@ -64,6 +71,9 @@ const requiredFiles = [
   "guides/ekspor-peta-ke-powerpoint/index.html",
   "guides/contoh-peta-nilai-kota/index.html",
   "excel-to-map/index.html",
+  "highlight-regions/index.html",
+  "sales-territories/index.html",
+  "coverage-analysis/index.html",
   "sample/sample-project.json",
   "sample/sample-region-colors.csv",
   "sample/contoh-nilai-kota.csv",
@@ -121,6 +131,46 @@ function addBrandAssets(relativePath) {
 }
 
 requiredFiles.forEach(addBrandAssets);
+
+function normalizePublicNavigation(relativePath) {
+  if (!relativePath.endsWith(".html") || relativePath === "workspace/index.html") return;
+  const filePath = path.join(dist, relativePath);
+  const directory = path.dirname(relativePath);
+  const depth = directory === "." ? 0 : directory.split(/[\\/]/).filter(Boolean).length;
+  const prefix = "../".repeat(depth) || "./";
+  const route = relativePath === "index.html" ? "/" : `/${relativePath.replace(/index\.html$/, "").replaceAll("\\", "/")}`;
+  const active = route.startsWith("/highlight-regions/") ? "highlight"
+    : route.startsWith("/excel-to-map/") ? "spreadsheet"
+      : route.startsWith("/guides/") ? "guides"
+        : route.startsWith("/data-methodology/") ? "data"
+          : route.startsWith("/about/") ? "about" : "";
+  const current = (key) => active === key ? ' aria-current="page"' : "";
+  const brandCurrent = route === "/" ? ' aria-current="page"' : "";
+  const header = `<header class="site-header" data-public-header>
+    <nav class="site-inner site-nav" aria-label="Main navigation">
+      <a class="brand" href="${prefix}" aria-label="NusaCanvas home"${brandCurrent}>NusaCanvas</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="public-navigation">Menu</button>
+      <div id="public-navigation" class="nav-links">
+        <a href="${prefix}highlight-regions/"${current("highlight")}>Highlight regions</a>
+        <a href="${prefix}excel-to-map/"${current("spreadsheet")}>Map spreadsheet</a>
+        <a href="${prefix}guides/"${current("guides")}>Guides</a>
+        <a href="${prefix}data-methodology/"${current("data")}>Region data</a>
+        <a href="${prefix}about/"${current("about")}>About</a>
+        <a class="nav-workspace" href="${prefix}workspace/">Open workspace</a>
+      </div>
+    </nav>
+  </header>`;
+  let html = fs.readFileSync(filePath, "utf8");
+  if (!/<header class="site-header"[\s\S]*?<\/header>/i.test(html)) throw new Error(`${relativePath} is missing its public header.`);
+  html = html.replace(/<header class="site-header"[\s\S]*?<\/header>/i, header);
+  if (!html.includes("assets/css/design-system.css")) html = html.replace("</head>", `  <link rel="stylesheet" href="${prefix}assets/css/design-system.css">\n</head>`);
+  if (!html.includes("assets/js/public-shell.js")) html = html.replace("</head>", `  <script src="${prefix}assets/js/public-shell.js" defer></script>\n</head>`);
+  if (!html.includes('class="skip-link"')) html = html.replace(/<body([^>]*)>/i, `<body$1>\n  <a class="skip-link" href="#main-content">Skip to main content</a>`);
+  if (!/<main[^>]*id="main-content"/i.test(html)) html = html.replace(/<main(\s|>)/i, '<main id="main-content"$1');
+  fs.writeFileSync(filePath, html);
+}
+
+requiredFiles.forEach(normalizePublicNavigation);
 
 function bundleWorkspaceRuntime() {
   const earlyRuntimeModules = [

@@ -4,7 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NusaCanvas — Create clear Indonesia maps</title>
-  <meta name="description" content="Turn Indonesia data into clear, presentation-ready maps in minutes. No GIS skills, account, or upload required.">
+  <meta name="description" content="Highlight regions and turn spreadsheet data into clear Indonesia maps. No GIS skills, account, or upload required.">
+  <link rel="canonical" href="https://nusacanvas.space/">
+  <link rel="icon" type="image/png" sizes="512x512" href="./assets/images/nusacanvas-favicon.png" data-nusacanvas-assets>
+  <link rel="apple-touch-icon" href="./assets/images/nusacanvas-favicon.png">
   <link rel="stylesheet" href="./assets/css/design-system.css">
   <link rel="stylesheet" href="./assets/css/content.css">
   <script src="./assets/js/public-shell.js" defer></script>
@@ -13,12 +16,11 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header" data-public-header>
     <nav class="site-inner site-nav" aria-label="Main navigation">
-      <a class="brand" href="./" aria-label="NusaCanvas home">NusaCanvas</a>
+      <a class="brand" href="./" aria-label="NusaCanvas home" aria-current="page">NusaCanvas</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="public-navigation">Menu</button>
       <div id="public-navigation" class="nav-links">
-        <a href="#create">Create</a>
-        <a href="#templates">Templates</a>
-        <a href="#examples">Examples</a>
+        <a href="./highlight-regions/">Highlight regions</a>
+        <a href="./excel-to-map/">Map spreadsheet</a>
         <a href="./guides/">Guides</a>
         <a href="./data-methodology/">Region data</a>
         <a href="./about/">About</a>
@@ -28,100 +30,89 @@
   </header>
 
   <main id="main-content">
-    <section class="hero site-inner" aria-labelledby="home-title">
-      <p class="eyebrow">Indonesia mapping, made clear</p>
-      <h1 id="home-title">Turn Indonesia data into clear, presentation-ready maps.</h1>
-      <p class="lead">Highlight regions, upload a spreadsheet, build sales territories, or analyze coverage — no GIS skills required.</p>
-      <div class="button-row">
-        <a class="button" href="./workspace/">Create a map</a>
-        <a class="button secondary" href="./workspace/?sample=1">Try a sample</a>
+    <section class="hero-carousel site-inner" data-carousel aria-roledescription="carousel" aria-label="Ways to create Indonesia maps">
+      <div class="carousel-viewport">
+        <article id="hero-slide-1" class="carousel-slide is-active" data-carousel-slide aria-roledescription="slide" aria-label="1 of 4">
+          <div class="carousel-copy">
+            <p class="eyebrow">Indonesia mapping, made clear</p>
+            <h1>Highlight regions and cities clearly.</h1>
+            <p class="lead">Spot key locations, compare performance, and communicate insights with clarity.</p>
+            <div class="button-row"><a class="button" href="./workspace/?goal=highlight">Create a map</a><a class="button secondary" href="./highlight-regions/">Learn more</a></div>
+            <p class="hero-note">Start in your browser. Nothing is uploaded.</p>
+          </div>
+          <img class="carousel-visual" src="./assets/images/public/hero-highlight-regions.svg" alt="Illustrative Indonesia map with highlighted regions and city labels" width="900" height="430" fetchpriority="high">
+        </article>
+        <article id="hero-slide-2" class="carousel-slide" data-carousel-slide aria-roledescription="slide" aria-label="2 of 4" hidden>
+          <div class="carousel-copy">
+            <p class="eyebrow">Spreadsheet mapping</p>
+            <h2>Map your spreadsheet data in minutes.</h2>
+            <p class="lead">Upload or paste your data and turn rows and columns into clear, color-coded maps.</p>
+            <div class="button-row"><a class="button" href="./workspace/?goal=spreadsheet">Map your data</a><a class="button secondary" href="./excel-to-map/">Learn more</a></div>
+            <p class="hero-note">Synthetic values are shown in this example.</p>
+          </div>
+          <img class="carousel-visual" data-src="./assets/images/public/hero-map-spreadsheet.svg" alt="Synthetic spreadsheet values transformed into a color-coded Indonesia map" width="900" height="430">
+        </article>
+        <article id="hero-slide-3" class="carousel-slide" data-carousel-slide aria-roledescription="slide" aria-label="3 of 4" hidden>
+          <div class="carousel-copy">
+            <p class="eyebrow">Coming soon</p>
+            <h2>Plan sales territories visually.</h2>
+            <p class="lead">Group regions, balance workloads, and communicate territory ideas clearly.</p>
+            <div class="button-row"><a class="button secondary" href="./sales-territories/">Learn more</a></div>
+            <p class="hero-note">This illustrative workflow is not available yet.</p>
+          </div>
+          <img class="carousel-visual" data-src="./assets/images/public/hero-sales-territories.svg" alt="Illustrative Indonesia sales territory groups marked as coming soon" width="900" height="430">
+        </article>
+        <article id="hero-slide-4" class="carousel-slide" data-carousel-slide aria-roledescription="slide" aria-label="4 of 4" hidden>
+          <div class="carousel-copy">
+            <p class="eyebrow">Coming soon</p>
+            <h2>Analyze coverage with clear visuals.</h2>
+            <p class="lead">See where you reach, where you grow, and what to prioritize.</p>
+            <div class="button-row"><a class="button secondary" href="./coverage-analysis/">Learn more</a></div>
+            <p class="hero-note">This illustrative workflow is not available yet.</p>
+          </div>
+          <img class="carousel-visual" data-src="./assets/images/public/hero-coverage-analysis.svg" alt="Illustrative coverage markers on an Indonesia map marked as coming soon" width="900" height="430">
+        </article>
       </div>
-      <p class="hero-note">Start in your browser. Nothing is uploaded.</p>
+      <div class="carousel-controls" role="group" aria-label="Choose a hero slide">
+        <div class="carousel-dots">
+          <button type="button" data-carousel-dot aria-label="Show Highlight regions" aria-controls="hero-slide-1" aria-current="true"></button>
+          <button type="button" data-carousel-dot aria-label="Show Map spreadsheet" aria-controls="hero-slide-2"></button>
+          <button type="button" data-carousel-dot aria-label="Show Sales territories" aria-controls="hero-slide-3"></button>
+          <button type="button" data-carousel-dot aria-label="Show Coverage analysis" aria-controls="hero-slide-4"></button>
+        </div>
+        <button class="carousel-toggle" type="button" data-carousel-toggle aria-pressed="false"><span data-carousel-toggle-label>Pause slides</span></button>
+      </div>
     </section>
 
     <section class="trust-strip" aria-label="NusaCanvas trust points">
       <div class="site-inner trust-grid">
-        <div><strong>Works in your browser</strong><span>No install required.</span></div>
-        <div><strong>No account required</strong><span>Open a workspace when you are ready.</span></div>
-        <div><strong>Your spreadsheet stays on your device</strong><span>No uploads or analytics.</span></div>
-        <div><strong>Indonesia region data with source details</strong><span><a href="./data-methodology/">Read the method</a></span></div>
+        <div><span class="trust-icon" aria-hidden="true">◎</span><p><strong>Works in your browser</strong><span>No install required.</span></p></div>
+        <div><span class="trust-icon" aria-hidden="true">◇</span><p><strong>No account required</strong><span>Open a workspace when you are ready.</span></p></div>
+        <div><span class="trust-icon" aria-hidden="true">▣</span><p><strong>Your spreadsheet stays on your device</strong><span>No uploads or analytics.</span></p></div>
+        <div><span class="trust-icon" aria-hidden="true">▱</span><p><strong>Indonesia region data with source details</strong><span><a href="./data-methodology/">Read the method</a></span></p></div>
       </div>
     </section>
 
-    <section id="create" class="site-inner section-block" aria-labelledby="create-title">
+    <section id="create" class="site-inner section-block choose-section" aria-labelledby="create-title">
       <div class="section-heading-public">
-        <div>
-          <p class="eyebrow">Create</p>
-          <h2 id="create-title">Choose the map you need</h2>
-        </div>
+        <p class="eyebrow">Create</p>
+        <h2 id="create-title">Choose the map you need</h2>
         <p class="section-summary">Begin with a simple task. You can refine the details after your map is taking shape.</p>
       </div>
       <div class="goal-grid">
-        <article class="goal-card">
-          <p class="goal-kicker">Available now</p>
-          <h3>Highlight regions</h3>
-          <p>Select Indonesia regencies or cities, add clear colors and labels, then export a map.</p>
-          <a class="text-action" href="./workspace/?goal=highlight">Highlight regions <span aria-hidden="true">→</span></a>
-        </article>
-        <article class="goal-card goal-card-primary">
-          <p class="goal-kicker">Available now</p>
-          <h3>Map spreadsheet data</h3>
-          <p>Paste or upload a spreadsheet, match rows to regions, build a legend, and export.</p>
-          <a class="text-action" href="./workspace/?goal=spreadsheet">Map spreadsheet data <span aria-hidden="true">→</span></a>
-        </article>
-        <article class="goal-card goal-card-upcoming">
-          <p class="goal-kicker">Upcoming</p>
-          <h3>Build sales territories</h3>
-          <p>Plan and present territory ideas once this workflow is ready. It is not available yet.</p>
-          <span class="status-tag">Upcoming</span>
-        </article>
-        <article class="goal-card goal-card-upcoming">
-          <p class="goal-kicker">Upcoming</p>
-          <h3>Analyze coverage</h3>
-          <p>Explore coverage using your own metrics once this workflow is ready. It is not available yet.</p>
-          <span class="status-tag">Upcoming</span>
-        </article>
+        <article class="goal-card"><p class="goal-kicker">Available now</p><img data-card-src="./assets/images/public/hero-highlight-regions.svg" alt="" width="900" height="430"><h3>Highlight regions</h3><p>Select Indonesia regions or cities, add clear colors and labels, then export a map.</p><a class="text-action" href="./highlight-regions/">Learn more <span aria-hidden="true">→</span></a></article>
+        <article class="goal-card goal-card-primary"><p class="goal-kicker">Available now</p><img data-card-src="./assets/images/public/hero-map-spreadsheet.svg" alt="" width="900" height="430"><h3>Map spreadsheet data</h3><p>Paste or upload a spreadsheet, match rows to regions, build a legend, and export.</p><a class="text-action" href="./excel-to-map/">Learn more <span aria-hidden="true">→</span></a></article>
+        <article class="goal-card goal-card-upcoming"><p class="goal-kicker">Upcoming</p><img data-card-src="./assets/images/public/hero-sales-territories.svg" alt="" width="900" height="430"><h3>Build sales territories</h3><p>Plan and present territory ideas once this workflow is ready. It is not available yet.</p><a class="status-tag" href="./sales-territories/">Coming soon</a></article>
+        <article class="goal-card goal-card-upcoming"><p class="goal-kicker">Upcoming</p><img data-card-src="./assets/images/public/hero-coverage-analysis.svg" alt="" width="900" height="430"><h3>Analyze coverage</h3><p>Explore coverage using your own metrics once this workflow is ready. It is not available yet.</p><a class="status-tag" href="./coverage-analysis/">Coming soon</a></article>
       </div>
     </section>
 
-    <section id="examples" class="site-inner section-block process-band" aria-labelledby="example-title">
-      <div>
-        <p class="eyebrow">How spreadsheet mapping works</p>
-        <h2 id="example-title">From spreadsheet to map in four clear steps</h2>
-      </div>
-      <ol class="process-list">
-        <li><strong>1. Add data</strong><span>Paste a table or choose a spreadsheet.</span></li>
-        <li><strong>2. Match regions</strong><span>Confirm each row points to the right place.</span></li>
-        <li><strong>3. Design map</strong><span>Choose clear colors, labels, and a legend.</span></li>
-        <li><strong>4. Export</strong><span>Download an image or document for your work.</span></li>
-      </ol>
-    </section>
-
-    <section id="templates" class="site-inner section-block split-section template-section" aria-labelledby="template-title">
-      <div>
-        <p class="eyebrow">Useful starting points</p>
-        <h2 id="template-title">Start with a familiar example</h2>
-        <p class="section-summary">Use local examples to see the structure before you paste your own data.</p>
-      </div>
-      <div class="starting-points">
-        <a class="starting-point" href="./workspace/?sample=1"><strong>City values</strong><span>A small spreadsheet example with a legend.</span></a>
-        <a class="starting-point" href="./guides/contoh-peta-nilai-kota/"><strong>Read the example guide</strong><span>See how matching and color ranges work.</span></a>
-        <a class="starting-point" href="./sample/contoh-nilai-kota.csv"><strong>Download the sample CSV</strong><span>Open it in a spreadsheet app or paste it directly.</span></a>
-      </div>
-    </section>
-
-    <section class="site-inner section-block final-cta" aria-labelledby="final-cta-title">
-      <h2 id="final-cta-title">Ready to make your map?</h2>
-      <p>Start with regions or a spreadsheet. Your work stays in this browser.</p>
-      <a class="button secondary" href="./workspace/">Create a map</a>
+    <section class="site-inner section-block final-cta final-cta-dark" aria-labelledby="final-cta-title">
+      <div class="map-medallion" aria-hidden="true"><img data-card-src="./assets/images/public/hero-highlight-regions.svg" alt="" width="900" height="430"></div>
+      <div><h2 id="final-cta-title">Ready to make your map?</h2><p>Start with regions or a spreadsheet. Your work stays in this browser.</p><a class="button" href="./workspace/">Create a map</a></div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="site-inner footer-grid">
-      <div><a class="brand" href="./">NusaCanvas</a><p class="meta">Clear Indonesia maps for presentations and everyday analysis.</p></div>
-      <nav aria-label="Footer navigation"><a href="./guides/">Guides</a><a href="./data-methodology/">Region data</a><a href="./sources-licenses/">Sources and licenses</a><a href="./privacy/">Privacy</a><a href="./terms/">Terms</a><a href="./contact/">Contact</a></nav>
-    </div>
-  </footer>
+  <footer class="site-footer"><div class="site-inner footer-grid"><div><a class="brand" href="./">NusaCanvas</a><p class="meta">Clear Indonesia maps for presentations and everyday analysis.</p></div><nav aria-label="Footer navigation"><a href="./highlight-regions/">Highlight regions</a><a href="./excel-to-map/">Map spreadsheet</a><a href="./guides/">Guides</a><a href="./sources-licenses/">Sources and licenses</a><a href="./privacy/">Privacy</a><a href="./terms/">Terms</a><a href="./contact/">Contact</a></nav></div></footer>
 </body>
 </html>

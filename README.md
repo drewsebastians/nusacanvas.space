@@ -6,7 +6,9 @@ Production origin: `https://nusacanvas.space`.
 
 ## Current features
 
-- A lightweight public homepage at `/` with goal-led entry points, templates, examples, guides, and factual privacy/data trust points.
+- A lightweight public homepage at `/` with a four-slide accessible hero, goal-led entry points, and factual privacy/data trust points.
+- Full public feature pages for Highlight regions at `/highlight-regions/` and spreadsheet mapping at the canonical `/excel-to-map/` URL.
+- Truthful coming-soon pages at `/sales-territories/` and `/coverage-analysis/` without inactive workspace entry points.
 - The production workspace remains at `/workspace/` while its Batch 2 mapping engines are preserved for the approved Prompt 6 redesign.
 - Local paste, CSV, TSV, and XLSX input through one import workflow.
 - Column matching, Indonesian and international number formats, and browser-side input limits.
@@ -29,6 +31,8 @@ There is no backend, account system, analytics, external map tile service, runti
 6. Export SVG, PNG, PDF, or a region-match CSV.
 
 Synthetic examples are available as [CSV](./sample/contoh-nilai-kota.csv) and [TSV](./sample/contoh-nilai-kota.tsv). See the [Excel to map](./excel-to-map/) preview and the guides in `guides/`.
+
+Public-page map artwork is generated deterministically from the repository's simplified Indonesia geometry. It does not load GeoJSON, Leaflet, spreadsheet libraries, or workspace runtime assets in the browser.
 
 ## Spreadsheet formats and safety
 
@@ -59,6 +63,7 @@ Use Node.js 24.x.
 ```text
 npm ci
 npm run build
+npm run verify:public-illustrations
 npm run verify:batch1
 npm run verify:batch2r:public-shell
 npm run test:batch2r:closure
@@ -71,6 +76,6 @@ npm run verify:batch2r:closure
 
 Application code uses the MIT License. Boundary data and third-party libraries remain subject to their own source licenses and attribution requirements.
 
-## Recovery status (2026-07-16)
+## Public-site status (2026-07-20)
 
-**REMOTE PREPARATION IN PROGRESS — OWNER VISUAL APPROVAL REQUIRED.** Local recovery evidence is in `docs/batch-2r/12-remote-recovery-and-validation.md` and `artifacts/batch-2r/batch3r-readiness.json`. Historical Batch 3 Prompt 2 onward is superseded; run a fresh Batch 3R preflight only after owner approval and authenticated remote verification.
+The public landing and feature-page redesign is implemented and validated through automated static, browser, accessibility, performance, and workspace-regression gates. Historical recovery evidence remains in `docs/batch-2r/`; it is historical context rather than a current approval requirement.
