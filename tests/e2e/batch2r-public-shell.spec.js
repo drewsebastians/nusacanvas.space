@@ -27,6 +27,7 @@ test("landing page matches the approved public structure and stays lightweight",
   await expect(page.locator("#public-navigation > a")).toHaveText(navigation);
   await expect(page.locator("[data-carousel-slide]")).toHaveCount(4);
   await expect(page.locator("[data-carousel-dot]")).toHaveCount(4);
+  await expect(page.locator("[data-carousel-toggle]")).toHaveCount(0);
   await expect(page.getByRole("button", { name: /previous|next/i })).toHaveCount(0);
   await expect(page.getByText("1 of 4", { exact: true })).toHaveCount(0);
   expect(await page.locator("[data-carousel-slide]").evaluateAll((slides) => slides.map((slide) => slide.getAttribute("aria-label")))).toEqual([null, null, null, null]);
@@ -52,7 +53,7 @@ test("landing page matches the approved public structure and stays lightweight",
   await assertAxe(page);
 });
 
-test("carousel autoplays at seven seconds and direct controls pause it", async ({ page }) => {
+test("carousel autoplays at seven seconds and resumes after direct controls", async ({ page }) => {
   await page.clock.install();
   await page.goto("/");
   await page.clock.fastForward(6900);
@@ -61,9 +62,8 @@ test("carousel autoplays at seven seconds and direct controls pause it", async (
   await expect(page.locator("#hero-slide-2")).toBeVisible();
   await page.locator("[data-carousel-dot]").nth(3).click();
   await expect(page.locator("#hero-slide-4")).toBeVisible();
-  await expect(page.locator("[data-carousel-toggle]")).toHaveAttribute("aria-pressed", "true");
   await page.clock.fastForward(8000);
-  await expect(page.locator("#hero-slide-4")).toBeVisible();
+  await expect(page.locator("#hero-slide-1")).toBeVisible();
   await page.locator("[data-carousel-dot]").nth(3).press("Home");
   await expect(page.locator("#hero-slide-1")).toBeVisible();
   await page.locator("[data-carousel-dot]").first().press("End");
@@ -75,7 +75,7 @@ test("carousel autoplays at seven seconds and direct controls pause it", async (
 test("carousel pauses on hover and under reduced motion", async ({ page }) => {
   await page.clock.install();
   await page.goto("/");
-  await page.locator(".hero-carousel").hover();
+  await page.locator(".carousel-viewport").hover();
   await page.clock.fastForward(8000);
   await expect(page.locator("#hero-slide-1")).toBeVisible();
   await page.emulateMedia({ reducedMotion: "reduce" });

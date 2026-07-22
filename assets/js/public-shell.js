@@ -33,26 +33,17 @@
     if (!carousel) return;
     const slides = [...carousel.querySelectorAll("[data-carousel-slide]")];
     const dots = [...carousel.querySelectorAll("[data-carousel-dot]")];
-    const toggle = carousel.querySelector("[data-carousel-toggle]");
-    const toggleLabel = carousel.querySelector("[data-carousel-toggle-label]");
+    const viewport = carousel.querySelector(".carousel-viewport");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (slides.length < 2 || slides.length !== dots.length) return;
 
     let active = 0;
     let timer = null;
-    let userPaused = false;
     let pointerPaused = false;
-    let focusPaused = false;
     let touchStart = null;
 
     function paused() {
-      return userPaused || pointerPaused || focusPaused || document.hidden || reducedMotion.matches;
-    }
-
-    function syncToggle() {
-      if (!toggle || !toggleLabel) return;
-      toggle.setAttribute("aria-pressed", String(userPaused));
-      toggleLabel.textContent = userPaused ? "Play slides" : "Pause slides";
+      return pointerPaused || document.hidden || reducedMotion.matches;
     }
 
     function syncTimer() {
@@ -68,7 +59,7 @@
       image.removeAttribute("data-src");
     }
 
-    function show(index, direct = false) {
+    function show(index) {
       active = (index + slides.length) % slides.length;
       slides.forEach((slide, slideIndex) => {
         const selected = slideIndex === active;
@@ -77,25 +68,12 @@
         dots[slideIndex].toggleAttribute("aria-current", selected);
       });
       loadVisual(slides[active]);
-      if (direct) userPaused = true;
-      syncToggle();
       syncTimer();
     }
 
-    dots.forEach((dot, index) => dot.addEventListener("click", () => show(index, true)));
-    toggle?.addEventListener("click", () => {
-      userPaused = !userPaused;
-      syncToggle();
-      syncTimer();
-    });
-    carousel.addEventListener("pointerenter", () => { pointerPaused = true; syncTimer(); });
-    carousel.addEventListener("pointerleave", () => { pointerPaused = false; syncTimer(); });
-    carousel.addEventListener("focusin", () => { focusPaused = true; syncTimer(); });
-    carousel.addEventListener("focusout", (event) => {
-      if (event.relatedTarget && carousel.contains(event.relatedTarget)) return;
-      focusPaused = false;
-      syncTimer();
-    });
+    dots.forEach((dot, index) => dot.addEventListener("click", () => show(index)));
+    viewport?.addEventListener("pointerenter", () => { pointerPaused = true; syncTimer(); });
+    viewport?.addEventListener("pointerleave", () => { pointerPaused = false; syncTimer(); });
     carousel.addEventListener("touchstart", (event) => {
       const touch = event.changedTouches[0];
       touchStart = { x: touch.clientX, y: touch.clientY };
@@ -106,7 +84,7 @@
       const x = touch.clientX - touchStart.x;
       const y = touch.clientY - touchStart.y;
       touchStart = null;
-      if (Math.abs(x) > 45 && Math.abs(x) > Math.abs(y)) show(active + (x < 0 ? 1 : -1), true);
+      if (Math.abs(x) > 45 && Math.abs(x) > Math.abs(y)) show(active + (x < 0 ? 1 : -1));
     }, { passive: true });
     carousel.querySelector(".carousel-controls")?.addEventListener("keydown", (event) => {
       const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
@@ -118,7 +96,6 @@
     });
     document.addEventListener("visibilitychange", syncTimer);
     reducedMotion.addEventListener?.("change", syncTimer);
-    syncToggle();
     syncTimer();
   }
 
