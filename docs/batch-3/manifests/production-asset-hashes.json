@@ -1,0 +1,1326 @@
+{
+    "capturedAt":  "2026-07-22T16:20:00+07:00",
+    "hashAlgorithm":  "SHA-256",
+    "assets":  [
+                   {
+                       "url":  "https://nusacanvas.space/assets/css/app.css",
+                       "status":  200,
+                       "bytes":  39521,
+                       "sha256":  "cefaf61bc1cb938761f57d253162b7f66e48a8135ae5d9dbcc77fd04e4d16739",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=18,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=t%2F58jscvDS%2FjqLYjogxaob3dL0NL9K9ox20eImrMVDaBg0HOfL2PykVX%2FQqbEnTsOUzNTlTliQPc1COV5Tx6SfCUTQ9M%2F%2B%2F1rkQtsCfib4OkXUmXB5H5jZGOfwNAUoNMmI%2Bg\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f177193db8696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:10 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"07d05e53ecc396db0e12a2491d70db3e\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "39521"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/css"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/css/content.css",
+                       "status":  200,
+                       "bytes":  23916,
+                       "sha256":  "733cedb6340d7150e9ef713335751c8fc69fef60aa976d104b2f23a593846d44",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=21,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=YcGoNXG3MjffrunqanaeGj3iu9th4yYck5GRfpeCkIoiPRNCts%2BPwopeAwHhSmzWUnZllt8ZKsa0Z%2FiDr2wIQSCjRnReDOYlMnHJ15YL78T09UH3uRi%2Bi4P0w%2FlJfHqYv2g0\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771a0854696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:10 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"5135249f5925d5e43e1b5b7f45169ecb\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "23916"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/css"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/css/design-system.css",
+                       "status":  200,
+                       "bytes":  2061,
+                       "sha256":  "75694fc8b854d0ab66f7d6a59dd1f6fe4ad528956327779b4942e6e4dfea9808",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=15,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=3BdelmgnA8FsMgo4WEaI%2F3c4g%2FwGvIxSiErj2XpoZ59paobl7kVoSdAxgo9dcUyfHlfHIBbRtQFHWpNZ2ECi5O8FzGIk%2FFzZX3d%2BcZLWwSYRAs27wdKmwfuXwZqAGjLwHZo2\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771a4973696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:10 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"f373df0d5086e835c32896e02a62830d\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "2061"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/css"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/images/public/hero-coverage-analysis.svg",
+                       "status":  200,
+                       "bytes":  439111,
+                       "sha256":  "d1b6d75f2340b924603a02ba6cb923569b629086b792b4dd40687c377d976aa0",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=14,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=%2FhFTMo%2BL0Z8j04kubPnKpvFK67ZGEr2r0G0Up4y9CCSqNBZSPAHbMde2qb5Wuyq1irRqq4iWKYSz5xEMQcVa6LmInIlSt73Kq12LdWgXo%2F67xPpbd3Yi0A37P%2FiX%2BqHPPJ7z\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771a8a03696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:10 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"6f78b3dbbc093ad8f2fcce44f4c60429\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "439111"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "image/svg+xml"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/images/public/hero-highlight-regions.svg",
+                       "status":  200,
+                       "bytes":  500736,
+                       "sha256":  "decdb3edcefe93a442fb7accbdf819e2f57e0376cb5991576d0c5e9a859edf9e",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=13,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=LI1OmzbJqjapFjAKhDA8tiLJdW%2FGQU%2B7fyrqLlAu77Bh8I5DqwSDPPkkM4p9nLLKNQzmBTNYpYpX%2FGjmXubtMSFmCKEcESzlRosy6%2BwLA1z%2FuQpzCxa9zqXkd3CdE8eWQNuO\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771b2c34696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:10 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"5bb2d8a24fd6be9b350a60ae0d4be408\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "500736"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "image/svg+xml"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/images/public/hero-map-spreadsheet.svg",
+                       "status":  200,
+                       "bytes":  476464,
+                       "sha256":  "d878d01bc8b8543b5eaa75fa4d2be3707dcf1c8839bd41c5d62a5af699c01999",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=20,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=C80mbQ4yq7lI95jBFrcPQDu5ve0J3gc1erfzPwCd7dcEkMza0MhXYI42g6eg2HZg4LMuSjtPpwvxt1xhbSPg7H3GdexRLjHmsQQNxC7U4cKLe%2F308TUTUk9KqD33zhTn9y2N\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771bbde7696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"5bcdbcfe1764cd420c68657b58adafd9\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "476464"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "image/svg+xml"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/images/public/hero-sales-territories.svg",
+                       "status":  200,
+                       "bytes":  438964,
+                       "sha256":  "244a98c39b636f5dc63534d4b797d7dfabeabbaab4f7b103f45e4f1187eab478",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=14,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=rbQtYfvrnZMuabSce5UPCmpiY8DXmWJIY2T8B2m5wXKSsQ6FaEtpTj%2FZXZ%2B0v8UfrGKYgxFJymD2QvNgdk46lL%2Bt9wDyz8BxlTadMaEAOteLxupsJv1Ft0HmV0bBpipiJBDn\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771c4f8c696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"ca26081729d71d494471cdf2e9e6e594\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "438964"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "image/svg+xml"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/images/public/highlight-map-styles.svg",
+                       "status":  200,
+                       "bytes":  825464,
+                       "sha256":  "10d6708fb8c12bfb47e5cf814a6f8d6ac4adaac64ab8fe0e481917c41db1437a",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=26,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=1MwM%2BCHzLbVhwpiAS9ZFc9yuBcQ0Hy5qXMQhFfphOLECJCLX%2FGxFt2zDeTA%2F10DmCfsHwBn%2FoUIsrd7zuCskqX3Gn3h9KyZAjHD4RCMFlxICABha2z8PoedNtZfnGwdVNpFb\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771cd955696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"8eebd992ebb20e50d5cd098e1ca0163c\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "825464"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "image/svg+xml"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/images/public/spreadsheet-example-output.svg",
+                       "status":  200,
+                       "bytes":  527079,
+                       "sha256":  "56781b8fbb1cbb6afb6d218c5d4d0130de34f2b64890de72c464120bbcdaa8bb",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=16,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=dQdO4reR7qaeZH6LqoEOH74INVl%2BchzFNgYvGWNipa07ysRYAGMoK90SIX3o7PpCdeFGY7jioEOE4NE17Fq9eQwF8XA%2Bg2GbbwZcAS0gTlfb0AXVzyBuF7twxex46TcehQzu\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771daba0696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"1fe1daaeaa0743731c44894e4222e1ab\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "527079"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "image/svg+xml"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/app.js",
+                       "status":  200,
+                       "bytes":  114981,
+                       "sha256":  "e909ca85ab8df8ac651f0a3eac22a3023f2dcae290d26ee9c7761e9a1441311b",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=9,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=HjWWdbeWvVI5zrmElZp8gMJPdPPNmsWtRTkfM5M%2BH4bhjduWrJiubabjAk9w5S7pet7PeXVmdS%2F4ASXWeg6B1k0cASfn49E1WQY3mve8HhMSFQkCwqFxLsikzjr7Y%2FGVNGLS\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771e2d03696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"f6c6dfa6968ab0b2343ef9b38af62513\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "114981"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/boundary-provider.js",
+                       "status":  200,
+                       "bytes":  22264,
+                       "sha256":  "9e0a1351f2eb195dfb3e0502f2afbc3abed052ff865f5b284d08a348dbfb288b",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=11,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=tz9tlPKhLY2qOUT1ydn3NY1SaNQ5IV7ngOuRVeQPPb4jFhdhCDCl2GdhLcPSJDAK0oyPm6VHz9a5WhaBatu5nOKjQXQCjYLpTiLFxAqRIb4R7iZOMGcpcY4PmqnkD2qc2FCE\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771e7de7696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"82db3b4d162030f95bc299e7cf6c3793\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "22264"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/brand-config.js",
+                       "status":  200,
+                       "bytes":  2672,
+                       "sha256":  "8b14e1bd57222b3403d05be0e7a20e01d4768f853e10565df85317ff3fe1ac6c",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=11,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=pGLdaG%2F811Ynsp4HUGRd9ff4C1bYTQCJhyFrVB1kz17sunbucL1%2BEdneLg7PoIigpO1L%2Bp45nm4Ek6ZiwzU37DB4tPGyrVT%2BfwsCs1spnP4R8qtdsntvT%2BvGYExPP1hOCxsB\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771ebe6f696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"e26bc868af82aa4b69119369aaccb659\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "2672"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/csv-import.js",
+                       "status":  200,
+                       "bytes":  6759,
+                       "sha256":  "9dec8aad1cce5f7f2f46bf8fc5bb490c8e90492d7ab778a82ccf4a4ba0c78360",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=12,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=NSivAkhHtQgZqRJl218p%2BsKL2f1bh%2BYNi3DDMu15ZhTgope7yu%2F1FRj52vsj8aHQKh6scrQIXqWS4fFMFln%2FHPjlzXJ0rHgKZl2vfDJnvl2hRUAMb8vwlnbt4M2G0ixKpjQE\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771eeef2696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"e2ecaf5c7974bf816d343410c54a5dcc\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "6759"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/export.js",
+                       "status":  200,
+                       "bytes":  31376,
+                       "sha256":  "dc2254b2f683e1f6d36975074bce40d0d61b2d5141eaae67602735a28533224a",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=11,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=FXlWqBs5CBRTeQkv8EHTiMQBKfcIBdBSKoN6tCLXOoppFZtfxrT%2FfeqsKM4eok6leHD6pRj%2BG4c%2BoPB%2BLSrmAPtPltq2ghmppMTJYGVLQDOPOue4UaAYABgETG6%2BRx3pAKUO\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771f1f95696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"0e16677b36c2df7bc23f7cb242a52788\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "31376"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/import-core.js",
+                       "status":  200,
+                       "bytes":  16128,
+                       "sha256":  "f57d2b6e5a5e78ac07029ca65afbf003b887b11646622fee7028754c3f57d2c2",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=13,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Crmjd5d3miSsAR0H6bJYwEv5p5gyuWM0ZhFYWy49Dey2w%2Bk%2BqmH3uZeIadvyoBJCLIpy%2Fz8%2B1jyD03yGnjGzLXevwhSn31ywYS6VjsDeZlu327%2BPItvF23wV4bm2uVC7H%2FVU\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771f5856696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"4dc27f0ada39de0a812809fa6c085a3f\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "16128"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/map.js",
+                       "status":  200,
+                       "bytes":  24595,
+                       "sha256":  "14b01de5d84cf19034f33e6ae075d29b4682df68ff1653a4ce7744f4ce44f1a2",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=12,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=cyDAanHPt7QW84VBR8ZJnYZ0r%2F1xXg3DxgFjjCHOv%2F%2Bj%2BQaoadeJJdkKVUukW9W7UYjr1NJGI8Hfize6%2FcM9q5f0KR55XGzeoMyNwrtZkykdc2KZIq3yGDZ%2B5%2F5C%2BW3EvV9M\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771f98fb696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"43b009ac7d18b0c9ca65f488945dbbb9\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "24595"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/project-storage.js",
+                       "status":  200,
+                       "bytes":  79384,
+                       "sha256":  "46cb8e2ed1254fa17256e1bb3cbb9f7ed79145308a3086e6c43d978deb127a2d",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=12,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=KzlL7%2FI%2FbQtazhlDzPN0D%2BEpc3CbZ8YJ2cGOggPuBtVmxvm5CNv9fBpWH%2FxHCwGcmcDVo5tMPEtrjO42WBMiy%2Bx7dD4ur8bLhGAoc%2FXwkX%2B5SosXUD1BnzZr4rPYa4k86sYL\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f1771fc9b4696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"eaa2307a9819453ebd3d1b2425b2d564\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "79384"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/public-shell.js",
+                       "status":  200,
+                       "bytes":  4672,
+                       "sha256":  "7e1e5db6d29e8dd6ad3bd84c9b2e0a0414a049d6c16e31e2d47143c33250d296",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=11,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=lfY85jNuMVCPgVrgmLJtzlsuXrlfFfXNIWwKrz40uo2vZM7%2BxWRYuskETf%2FKrmGrmN9FSydFpvCcRJgea1WUQVkxUymzQxbga%2BlHlFpBV89J3PPoo70sU1eKZHfeP6I2wr5K\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f177202ac1696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"18a62a9259a8278dcaf188072b121a4c\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "4672"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/report-template.js",
+                       "status":  200,
+                       "bytes":  3239,
+                       "sha256":  "6f73aed86125f81a76bd5ca411d35a85d54dda845e675215f446a1effab189b3",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=9,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=%2Bdp6BZB%2Bic3UcLS3YJL3FEW1fO6mP%2BsS4Ng78VXNe3aTWRS%2FKgxK89pYIRxGU3xIXgjd%2Bdh2KD0Q57m7vuY0Bj%2Bb%2FoFwyXIghDr5aTmzTD22ePuEXUeQWY5Sm6WDxHU9rptP\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f177205b66696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"a04ab60fa56460682c5a889cbcdb1281\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "3239"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/js/xlsx-import.js",
+                       "status":  200,
+                       "bytes":  12785,
+                       "sha256":  "a8169a08d9db291c017d78bdc47254c802f6115b9ae20c4081b1f444d93fd0a6",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=10,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=00Lmp%2BpueRVP04EjlkSNZeS3nwnGIOk1UU1Ha6Q0YZyE5KR9Yt7MyXURkO%2BwwG8laMsXFXoeUTrNCAyV9lFXcJrj0DxEyMqqR3UHgf19yJCQ%2FxY9jikE6JyIyY0n6HPY141a\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f177208bf0696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"74ba63d9485c1d95170084384d1fe95d\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "12785"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/vendor/leaflet/leaflet.css",
+                       "status":  200,
+                       "bytes":  14145,
+                       "sha256":  "337bfca5cabd03b39815b2700febe2b3b7edf55921c59cd49f88ecb328212303",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=10,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=aL78TYupbPcg5neZED1c0KCHh5fRWK2y4tywrEY%2BUcYWW%2FVuDcbDDR8FBvKkatCfp2f7fOdyBihmN0eAIHSqAyOdoDo40JJkgCQJYlWh9fuZpE73f8CcvngxQxdoeBLqJ2Ig\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f17720ccbe696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"5175bbe8244f2335fd0f2f457ec22f20\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "14145"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/css"
+                                                        ]
+                                   }
+                   },
+                   {
+                       "url":  "https://nusacanvas.space/assets/vendor/leaflet/leaflet.js",
+                       "status":  200,
+                       "bytes":  147552,
+                       "sha256":  "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
+                       "headers":  {
+                                       "Connection":  [
+                                                          "keep-alive"
+                                                      ],
+                                       "CF-Cache-Status":  [
+                                                               "HIT"
+                                                           ],
+                                       "content-security-policy":  [
+                                                                       "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                   ],
+                                       "permissions-policy":  [
+                                                                  "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                              ],
+                                       "referrer-policy":  [
+                                                               "strict-origin-when-cross-origin"
+                                                           ],
+                                       "x-content-type-options":  [
+                                                                      "nosniff"
+                                                                  ],
+                                       "Server-Timing":  [
+                                                             "cfCacheStatus;desc=\"HIT\"",
+                                                             "cfEdge;dur=15,cfOrigin;dur=0"
+                                                         ],
+                                       "Report-To":  [
+                                                         "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=1h2QGyXhSbv7W0mzLoSdy8YTEppMGlNtH1%2BeYjTCnX7wSsIvfWYyhWXIMxAoqfBHEnsRpC%2FSBPLoMKslR2H5HFL%2Ble7mheotrou2kIisFSemMpUW1%2FehZ9wmVRgWd2txfMkv\"}]}"
+                                                     ],
+                                       "Nel":  [
+                                                   "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                               ],
+                                       "CF-RAY":  [
+                                                      "a1f17720fd84696d-SIN"
+                                                  ],
+                                       "alt-svc":  [
+                                                       "h3=\":443\"; ma=86400"
+                                                   ],
+                                       "Cache-Control":  [
+                                                             "no-transform, public, max-age=3600"
+                                                         ],
+                                       "Date":  [
+                                                    "Wed, 22 Jul 2026 09:37:11 GMT"
+                                                ],
+                                       "ETag":  [
+                                                    "\"125703be3ac408d68fb28c38be3307cb\""
+                                                ],
+                                       "Server":  [
+                                                      "cloudflare"
+                                                  ],
+                                       "Content-Length":  [
+                                                              "147552"
+                                                          ],
+                                       "Content-Type":  [
+                                                            "text/javascript"
+                                                        ]
+                                   }
+                   }
+               ]
+}

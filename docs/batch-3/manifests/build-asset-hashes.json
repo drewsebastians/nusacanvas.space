@@ -1,0 +1,160 @@
+{
+    "capturedAt":  "2026-07-22T16:50:00+07:00",
+    "hashAlgorithm":  "SHA-256",
+    "assets":  [
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/css/app.css",
+                       "path":  "/assets/css/app.css",
+                       "status":  200,
+                       "bytes":  39521,
+                       "sha256":  "cefaf61bc1cb938761f57d253162b7f66e48a8135ae5d9dbcc77fd04e4d16739"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/css/content.css",
+                       "path":  "/assets/css/content.css",
+                       "status":  200,
+                       "bytes":  23916,
+                       "sha256":  "733cedb6340d7150e9ef713335751c8fc69fef60aa976d104b2f23a593846d44"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/css/design-system.css",
+                       "path":  "/assets/css/design-system.css",
+                       "status":  200,
+                       "bytes":  2061,
+                       "sha256":  "75694fc8b854d0ab66f7d6a59dd1f6fe4ad528956327779b4942e6e4dfea9808"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/images/public/hero-coverage-analysis.svg",
+                       "path":  "/assets/images/public/hero-coverage-analysis.svg",
+                       "status":  200,
+                       "bytes":  439111,
+                       "sha256":  "d1b6d75f2340b924603a02ba6cb923569b629086b792b4dd40687c377d976aa0"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/images/public/hero-highlight-regions.svg",
+                       "path":  "/assets/images/public/hero-highlight-regions.svg",
+                       "status":  200,
+                       "bytes":  500736,
+                       "sha256":  "decdb3edcefe93a442fb7accbdf819e2f57e0376cb5991576d0c5e9a859edf9e"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/images/public/hero-map-spreadsheet.svg",
+                       "path":  "/assets/images/public/hero-map-spreadsheet.svg",
+                       "status":  200,
+                       "bytes":  476464,
+                       "sha256":  "d878d01bc8b8543b5eaa75fa4d2be3707dcf1c8839bd41c5d62a5af699c01999"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/images/public/hero-sales-territories.svg",
+                       "path":  "/assets/images/public/hero-sales-territories.svg",
+                       "status":  200,
+                       "bytes":  438964,
+                       "sha256":  "244a98c39b636f5dc63534d4b797d7dfabeabbaab4f7b103f45e4f1187eab478"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/images/public/highlight-map-styles.svg",
+                       "path":  "/assets/images/public/highlight-map-styles.svg",
+                       "status":  200,
+                       "bytes":  825464,
+                       "sha256":  "10d6708fb8c12bfb47e5cf814a6f8d6ac4adaac64ab8fe0e481917c41db1437a"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/images/public/spreadsheet-example-output.svg",
+                       "path":  "/assets/images/public/spreadsheet-example-output.svg",
+                       "status":  200,
+                       "bytes":  527079,
+                       "sha256":  "56781b8fbb1cbb6afb6d218c5d4d0130de34f2b64890de72c464120bbcdaa8bb"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/app.js",
+                       "path":  "/assets/js/app.js",
+                       "status":  200,
+                       "bytes":  114981,
+                       "sha256":  "e909ca85ab8df8ac651f0a3eac22a3023f2dcae290d26ee9c7761e9a1441311b"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/boundary-provider.js",
+                       "path":  "/assets/js/boundary-provider.js",
+                       "status":  200,
+                       "bytes":  22264,
+                       "sha256":  "9e0a1351f2eb195dfb3e0502f2afbc3abed052ff865f5b284d08a348dbfb288b"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/brand-config.js",
+                       "path":  "/assets/js/brand-config.js",
+                       "status":  200,
+                       "bytes":  2672,
+                       "sha256":  "8b14e1bd57222b3403d05be0e7a20e01d4768f853e10565df85317ff3fe1ac6c"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/csv-import.js",
+                       "path":  "/assets/js/csv-import.js",
+                       "status":  200,
+                       "bytes":  6759,
+                       "sha256":  "9dec8aad1cce5f7f2f46bf8fc5bb490c8e90492d7ab778a82ccf4a4ba0c78360"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/export.js",
+                       "path":  "/assets/js/export.js",
+                       "status":  200,
+                       "bytes":  31160,
+                       "sha256":  "a244c45e9c416d99d5c5609170e7f7f810d98dedfe066a90320476054e604cee"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/import-core.js",
+                       "path":  "/assets/js/import-core.js",
+                       "status":  200,
+                       "bytes":  16128,
+                       "sha256":  "f57d2b6e5a5e78ac07029ca65afbf003b887b11646622fee7028754c3f57d2c2"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/map.js",
+                       "path":  "/assets/js/map.js",
+                       "status":  200,
+                       "bytes":  24595,
+                       "sha256":  "14b01de5d84cf19034f33e6ae075d29b4682df68ff1653a4ce7744f4ce44f1a2"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/project-storage.js",
+                       "path":  "/assets/js/project-storage.js",
+                       "status":  200,
+                       "bytes":  79373,
+                       "sha256":  "a109de36a5ee0aa05ac74a3c6bf1a93a9d699ba6e90bb6ff3a71422240d386ff"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/public-shell.js",
+                       "path":  "/assets/js/public-shell.js",
+                       "status":  200,
+                       "bytes":  4672,
+                       "sha256":  "7e1e5db6d29e8dd6ad3bd84c9b2e0a0414a049d6c16e31e2d47143c33250d296"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/report-template.js",
+                       "path":  "/assets/js/report-template.js",
+                       "status":  200,
+                       "bytes":  3239,
+                       "sha256":  "6f73aed86125f81a76bd5ca411d35a85d54dda845e675215f446a1effab189b3"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/js/xlsx-import.js",
+                       "path":  "/assets/js/xlsx-import.js",
+                       "status":  200,
+                       "bytes":  12785,
+                       "sha256":  "a8169a08d9db291c017d78bdc47254c802f6115b9ae20c4081b1f444d93fd0a6"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/vendor/leaflet/leaflet.css",
+                       "path":  "/assets/vendor/leaflet/leaflet.css",
+                       "status":  200,
+                       "bytes":  14145,
+                       "sha256":  "337bfca5cabd03b39815b2700febe2b3b7edf55921c59cd49f88ecb328212303"
+                   },
+                   {
+                       "url":  "http://127.0.0.1:4173/assets/vendor/leaflet/leaflet.js",
+                       "path":  "/assets/vendor/leaflet/leaflet.js",
+                       "status":  200,
+                       "bytes":  147552,
+                       "sha256":  "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a"
+                   }
+               ]
+}

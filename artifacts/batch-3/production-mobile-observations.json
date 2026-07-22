@@ -1,0 +1,233 @@
+{
+  "capturedAt": "2026-07-22T16:38:00+07:00",
+  "viewport": {
+    "width": 393,
+    "height": 852
+  },
+  "routes": [
+    {
+      "slug": "home",
+      "headings": [
+        "Highlight regions and cities clearly.",
+        "Map your spreadsheet data in minutes.",
+        "Plan sales territories visually.",
+        "Analyze coverage with clear visuals.",
+        "Choose the map you need",
+        "Ready to make your map?"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "NusaCanvas — Create clear Indonesia maps",
+      "url": "https://nusacanvas.space/"
+    },
+    {
+      "slug": "highlight-regions",
+      "headings": [
+        "Highlight regions and cities clearly.",
+        "Why use this feature?",
+        "What you can customize",
+        "Common use cases",
+        "How it works",
+        "Useful starting points"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Highlight Indonesia regions and cities — NusaCanvas",
+      "url": "https://nusacanvas.space/highlight-regions/"
+    },
+    {
+      "slug": "excel-to-map",
+      "headings": [
+        "Map your spreadsheet data in minutes.",
+        "From spreadsheet to map in four steps",
+        "Why it works for your workflow",
+        "Best practices",
+        "Useful starting points",
+        "Ready to map your data?"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Map spreadsheet data across Indonesia — NusaCanvas",
+      "url": "https://nusacanvas.space/excel-to-map/"
+    },
+    {
+      "slug": "sales-territories",
+      "headings": [
+        "Plan sales territories visually.",
+        "Planned use cases",
+        "Map what is available today"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Sales territory mapping — Coming soon | NusaCanvas",
+      "url": "https://nusacanvas.space/sales-territories/"
+    },
+    {
+      "slug": "coverage-analysis",
+      "headings": [
+        "Analyze coverage with clear visuals.",
+        "Planned use cases",
+        "Map what is available today"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Coverage analysis maps — Coming soon | NusaCanvas",
+      "url": "https://nusacanvas.space/coverage-analysis/"
+    },
+    {
+      "slug": "workspace",
+      "headings": [
+        "Your data"
+      ],
+      "mapRuntime": true,
+      "navLinkCount": 3,
+      "navVisible": true,
+      "title": "NusaCanvas — Create an Indonesia region map",
+      "url": "https://nusacanvas.space/workspace/"
+    },
+    {
+      "slug": "guides",
+      "headings": [
+        "Help, guides, and common questions",
+        "Make a map from Excel",
+        "Fix region names",
+        "See a city-value example",
+        "Export for slides",
+        "Frequently asked questions"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Help & guides - NusaCanvas",
+      "url": "https://nusacanvas.space/guides/"
+    },
+    {
+      "slug": "data-methodology",
+      "headings": [
+        "Data method",
+        "1. Boundary snapshot",
+        "2. Match administrative information",
+        "3. Stable region IDs",
+        "4. Simplified boundaries",
+        "5. Repeatable data and license checks"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Data method — NusaCanvas",
+      "url": "https://nusacanvas.space/data-methodology/"
+    },
+    {
+      "slug": "about",
+      "headings": [
+        "About NusaCanvas",
+        "Product principles",
+        "Publisher identity",
+        "Not available yet"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "About NusaCanvas",
+      "url": "https://nusacanvas.space/about/"
+    },
+    {
+      "slug": "contact",
+      "headings": [
+        "Contact and data reports",
+        "Contact status",
+        "Report a data issue"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Contact and data reports — NusaCanvas",
+      "url": "https://nusacanvas.space/contact/"
+    },
+    {
+      "slug": "privacy",
+      "headings": [
+        "Privacy notice",
+        "Your data",
+        "Browser storage",
+        "Exports and downloads",
+        "Network requests",
+        "Hosting logs"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Privacy notice — NusaCanvas",
+      "url": "https://nusacanvas.space/privacy/"
+    },
+    {
+      "slug": "terms",
+      "headings": [
+        "Terms of use",
+        "Purpose",
+        "Your responsibility",
+        "Third-party data and licenses",
+        "Service limits",
+        "Report a data issue"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Terms of use — NusaCanvas",
+      "url": "https://nusacanvas.space/terms/"
+    },
+    {
+      "slug": "sources-licenses",
+      "headings": [
+        "Sources and licenses",
+        "Map boundaries",
+        "Administrative information",
+        "Libraries and assets",
+        "License checks"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Sources and licenses — NusaCanvas",
+      "url": "https://nusacanvas.space/sources-licenses/"
+    },
+    {
+      "slug": "limitations",
+      "headings": [
+        "Data and app limitations",
+        "2020 boundary snapshot",
+        "519 mapped shapes",
+        "53 records need more evidence",
+        "Visual exports",
+        "Performance limits"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Data and app limitations — NusaCanvas",
+      "url": "https://nusacanvas.space/limitations/"
+    },
+    {
+      "slug": "changelog",
+      "headings": [
+        "Changelog",
+        "Batch 1",
+        "Batch 2 development record"
+      ],
+      "mapRuntime": false,
+      "navLinkCount": 7,
+      "navVisible": true,
+      "title": "Changelog — NusaCanvas",
+      "url": "https://nusacanvas.space/changelog/"
+    }
+  ],
+  "screenshotCapture": {
+    "status": "unavailable",
+    "reason": "in-app browser Page.captureScreenshot timed out for full, viewport, and clipped screenshots"
+  }
+}

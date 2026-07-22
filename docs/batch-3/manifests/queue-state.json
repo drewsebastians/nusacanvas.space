@@ -4,22 +4,14 @@
   "repository": "drewsebastians/nusacanvas.space",
   "branch": "codex/batch-3-production-reconciliation",
   "startingSha": "95c66f4efa0e496fc720bfcdbdd21dc3f7120b52",
-  "currentSha": "95c66f4efa0e496fc720bfcdbdd21dc3f7120b52",
-  "lastCompletedQueueItem": 1,
+  "currentSha": "ba1a936c2cd7b3459cc8d48cc53c9e1759a21d6b",
+  "lastCompletedQueueItem": 2,
   "status": "READY_FOR_NEXT",
-  "authoritativeBaseline": "UNRESOLVED",
-  "implementationAllowed": false,
+  "authoritativeBaseline": "main@95c66f4efa0e496fc720bfcdbdd21dc3f7120b52 + clean dist build (production-equivalent)",
+  "implementationAllowed": true,
   "deploymentAllowed": false,
   "blockers": [],
-  "changedFiles": [
-    "docs/batch-3/QUEUE_STATE.md",
-    "docs/batch-3/PREFLIGHT_REPORT.md",
-    "docs/batch-3/manifests/queue-state.json",
-    "docs/batch-3/manifests/repository-route-inventory.json",
-    "docs/batch-3/manifests/protected-ui-files.json",
-    "docs/batch-3/manifests/protected-map-files.json",
-    "docs/batch-3/manifests/changed-file-allowlist.json"
-  ],
-  "nextExpectedQueueItem": 2,
-  "updatedAt": "2026-07-22T15:51:15.2893661+07:00"
+  "changedFiles": [],
+  "nextExpectedQueueItem": 3,
+  "updatedAt": "2026-07-22T17:10:00+07:00"
 }

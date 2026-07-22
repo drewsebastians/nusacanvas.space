@@ -1,0 +1,2336 @@
+{
+    "schemaVersion":  "nusacanvas.batch3.production-route-inventory.v1",
+    "observedAt":  "2026-07-22T16:34:44.2290256+07:00",
+    "origin":  "https://nusacanvas.space",
+    "routes":  [
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/",
+                       "finalUrl":  "https://nusacanvas.space/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "10282"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform, no-cache"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"5b1837ca75eaacb310386bbc65f73a33\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=23,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f1736d99168195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:40 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=F9zYgED1slWk0rSPNHTXroiRgvjUs0VNK1PwpOKunPzm2PWPrtSUVqXxj3ohXQFhEP6kQ81tCbIt5zfA0Vk%2F%2FWn%2BSXxyttEEtMFPQw6LXcPY92GDduYOGG%2F557XMIPStb%2BjO\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/",
+                       "lang":  "en",
+                       "title":  "NusaCanvas — Create clear Indonesia maps",
+                       "description":  "Highlight regions and turn spreadsheet data into clear Indonesia maps. No GIS skills, account, or upload required.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  true
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Highlight regions and cities clearly.",
+                                         "Map your spreadsheet data in minutes.",
+                                         "Plan sales territories visually.",
+                                         "Analyze coverage with clear visuals.",
+                                         "Choose the map you need",
+                                         "Highlight regions",
+                                         "Map spreadsheet data",
+                                         "Build sales territories",
+                                         "Analyze coverage",
+                                         "Ready to make your map?"
+                                     ],
+                       "ctas":  [
+                                    "Create a map",
+                                    "Learn more",
+                                    "Map your data",
+                                    "Learn more ?"
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/design-system.css",
+                                         "https://nusacanvas.space/assets/css/content.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+                                           "https://nusacanvas.space/assets/images/public/hero-highlight-regions.svg",
+                                           "https://nusacanvas.space/assets/images/public/hero-map-spreadsheet.svg",
+                                           "https://nusacanvas.space/assets/images/public/hero-sales-territories.svg",
+                                           "https://nusacanvas.space/assets/images/public/hero-coverage-analysis.svg",
+                                           "https://nusacanvas.space/assets/images/public/hero-highlight-regions.svg",
+                                           "https://nusacanvas.space/assets/images/public/hero-map-spreadsheet.svg",
+                                           "https://nusacanvas.space/assets/images/public/hero-sales-territories.svg",
+                                           "https://nusacanvas.space/assets/images/public/hero-coverage-analysis.svg",
+                                           "https://nusacanvas.space/assets/images/public/hero-highlight-regions.svg"
+                                       ],
+                       "analyticsMarkers":  [
+                                                "analytics"
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/highlight-regions/",
+                       "finalUrl":  "https://nusacanvas.space/highlight-regions/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/highlight-regions/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "7698"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"a2b7d28717a369ec45e5d3d619452980\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=13,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f173703b9c8195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:40 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=nSm67pxkWyEkMA3%2FBWUybxW1%2BkxcmDIfLFeWuieoxdd5y4PenmW3xnpsXquSlNa8IzFODRtXFHOYkZ50rAY7gScmquyufMMBGTkt4qVTrHMwBAly8JJ%2FAuRTUFFwV0tFP4UL\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/highlight-regions/",
+                       "lang":  "en",
+                       "title":  "Highlight Indonesia regions and cities — NusaCanvas",
+                       "description":  "Highlight Indonesia provinces, regencies, and cities with clear colors, labels, and presentation-ready exports.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  true
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Highlight regions and cities clearly.",
+                                         "Why use this feature?",
+                                         "See patterns instantly",
+                                         "Communicate clearly",
+                                         "Focus your actions",
+                                         "Built for Indonesia",
+                                         "What you can customize",
+                                         "Common use cases",
+                                         "Sales performance",
+                                         "Territory planning",
+                                         "Operations and logistics",
+                                         "Marketing campaigns"
+                                     ],
+                       "ctas":  [
+                                    "Create a map",
+                                    "Try a sample"
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/design-system.css",
+                                         "https://nusacanvas.space/assets/css/content.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+                                           "https://nusacanvas.space/assets/images/public/hero-highlight-regions.svg",
+                                           "https://nusacanvas.space/assets/images/public/highlight-map-styles.svg"
+                                       ],
+                       "analyticsMarkers":  [
+                                                "analytics"
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/excel-to-map/",
+                       "finalUrl":  "https://nusacanvas.space/excel-to-map/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/excel-to-map/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "6841"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"edb036bde680bf12f169947b58868a2f\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=15,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f173714cab8195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:40 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=TC6UemsxPpZY4wsz7VT1TR8fgYGWmyzlDZ914rqELsmo7frA21dIibApKgBNHzd0rPVYNPt7OgJhMpTB35YznGdUCZ7o9outj7p%2BOTap36hv%2BdfT1We936iRKoLRij212CiG\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/excel-to-map/",
+                       "lang":  "en",
+                       "title":  "Map spreadsheet data across Indonesia — NusaCanvas",
+                       "description":  "Upload or paste spreadsheet data and turn it into a clear, color-coded Indonesia map in your browser.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  true
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Map your spreadsheet data in minutes.",
+                                         "From spreadsheet to map in four steps",
+                                         "Why it works for your workflow",
+                                         "Best practices",
+                                         "Useful starting points",
+                                         "Ready to map your data?"
+                                     ],
+                       "ctas":  [
+                                    "Map your data",
+                                    "Try a sample"
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/design-system.css",
+                                         "https://nusacanvas.space/assets/css/content.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+                                           "https://nusacanvas.space/assets/images/public/hero-map-spreadsheet.svg",
+                                           "https://nusacanvas.space/assets/images/public/spreadsheet-example-output.svg"
+                                       ],
+                       "analyticsMarkers":  [
+                                                "analytics"
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/sales-territories/",
+                       "finalUrl":  "https://nusacanvas.space/sales-territories/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/sales-territories/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "3675"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"80c3d0ef5587cc21baa873534068a47b\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=16,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f17371bd188195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:40 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=0EvX9Odpo41EhUk0e%2BuIvhIekXkfxAFa2p4DeImOqOPDH2wxNWW0QYUq0vvjdJ5K9rl3w88Cm5AjS5AV5cNrLGUIPMl32cNPO7YR0A23HMHzEfPE486SPYKTbC03ApqwPVtP\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/sales-territories/",
+                       "lang":  "en",
+                       "title":  "Sales territory mapping — Coming soon | NusaCanvas",
+                       "description":  "Learn about the planned NusaCanvas sales territory mapping feature and use available mapping workflows today.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Plan sales territories visually.",
+                                         "Planned use cases",
+                                         "Group regions",
+                                         "Discuss workloads",
+                                         "Present a plan",
+                                         "Map what is available today"
+                                     ],
+                       "ctas":  [
+
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/design-system.css",
+                                         "https://nusacanvas.space/assets/css/content.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+                                           "https://nusacanvas.space/assets/images/public/hero-sales-territories.svg"
+                                       ],
+                       "analyticsMarkers":  [
+
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/coverage-analysis/",
+                       "finalUrl":  "https://nusacanvas.space/coverage-analysis/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/coverage-analysis/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "3662"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"1fd6d0d82ac544c8a6b30bc3d6d59176\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=17,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f173721d708195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:40 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=qFmeGMVIcJ9XIruycP%2Fd3sdLg0mjdN7IJPdVJarc0augnCtS%2FTqDyBRVg2pTwUB1TI3jBEy6pIspBBkQHQ006z8u%2BqNA0wd6AC2dO5Hfopbr99NLYobCayDBZrfHyA29MXJH\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/coverage-analysis/",
+                       "lang":  "en",
+                       "title":  "Coverage analysis maps — Coming soon | NusaCanvas",
+                       "description":  "Learn about the planned NusaCanvas coverage analysis feature and use available Indonesia mapping workflows today.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Analyze coverage with clear visuals.",
+                                         "Planned use cases",
+                                         "See reach",
+                                         "Find gaps",
+                                         "Set priorities",
+                                         "Map what is available today"
+                                     ],
+                       "ctas":  [
+
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/design-system.css",
+                                         "https://nusacanvas.space/assets/css/content.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+                                           "https://nusacanvas.space/assets/images/public/hero-coverage-analysis.svg"
+                                       ],
+                       "analyticsMarkers":  [
+
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/workspace/",
+                       "finalUrl":  "https://nusacanvas.space/workspace/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/workspace/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "20653"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"b5678bae730c1e1f1f4930795f380fcc\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=23,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f173727dcf8195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=LzHbZvK1Lo30Ei6mEGNz254SGix8Z5veH0mA18bOIyff%2FPrjcjTTzOyp4Ih5qkSFY0qKUeD0OENwtVAVRSA8xNg5h1kcGhnqLPvp1bbdAakLCXj59xeXK%2BLbPVNggXpyCKQ5\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/workspace/",
+                       "lang":  "en",
+                       "title":  "NusaCanvas - Create an Indonesia region map",
+                       "description":  "NusaCanvas turns spreadsheet data into clear Indonesia regency and city maps in your browser.",
+                       "robots":  "noindex,follow",
+                       "navigation":  [
+                                          {
+                                              "text":  "Sources and licenses",
+                                              "href":  "https://nusacanvas.space/sources-licenses/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Limitations",
+                                              "href":  "https://nusacanvas.space/limitations/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Report a data issue",
+                                              "href":  "https://nusacanvas.space/contact/#laporkan-data",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "NusaCanvas",
+                                         "Create a map",
+                                         "Find a region",
+                                         "Style selected region",
+                                         "Highlighted regions",
+                                         "Color groups",
+                                         "Map appearance",
+                                         "Legend",
+                                         "Add data",
+                                         "Color spreadsheet data",
+                                         "Project",
+                                         "Export map"
+                                     ],
+                       "ctas":  [
+
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/design-system.css",
+                                         "https://nusacanvas.space/assets/vendor/leaflet/leaflet.css",
+                                         "https://nusacanvas.space/assets/css/app.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/vendor/leaflet/leaflet.js",
+                                        "https://nusacanvas.space/assets/js/project-storage.js",
+                                        "https://nusacanvas.space/assets/js/import-core.js",
+                                        "https://nusacanvas.space/assets/js/xlsx-import.js",
+                                        "https://nusacanvas.space/assets/js/csv-import.js",
+                                        "https://nusacanvas.space/assets/js/export.js",
+                                        "https://nusacanvas.space/assets/js/map.js",
+                                        "https://nusacanvas.space/assets/js/app.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+                                                "analytics"
+                                            ],
+                       "workspaceRuntimePresent":  true
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/guides/",
+                       "finalUrl":  "https://nusacanvas.space/guides/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/guides/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "4735"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"d274f23572b54fc49fb306d81a395ed7\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=20,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f17372ee428195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=mHkyTnlWV2PD21uoO6k6rcCJ15nA%2F1Y4JeaTDF5zfxJ3XqjFM1on7nmL0aY7yLOnnzScBp5Wf0QnmdUGDsHfKrAPHzgboBYm9cwao2B2ufFqrazux5EosRaXEscRL5Y1A8bQ\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/guides/",
+                       "lang":  "en",
+                       "title":  "Help \u0026amp; guides - NusaCanvas",
+                       "description":  "NusaCanvas help, FAQs, and plain-language guides for spreadsheets, Indonesia region matching, legends, and map export.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  true
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Help, guides, and common questions",
+                                         "Make a map from Excel",
+                                         "Fix region names",
+                                         "See a city-value example",
+                                         "Export for slides",
+                                         "Frequently asked questions"
+                                     ],
+                       "ctas":  [
+
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/design-system.css",
+                                         "https://nusacanvas.space/assets/css/content.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/data-methodology/",
+                       "finalUrl":  "https://nusacanvas.space/data-methodology/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/data-methodology/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "5186"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"4c22403fb3436cd0028e11e184f32cd8\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=17,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f173735e928195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=lKpE%2F0OR%2BleUJDKjksW0tDhqU6NFsFMhjUjQS5fVBOS%2FinpeusOqKyoszdAcJ3HiQS2XcvkBIQSGEYLdehgqoe8zNlST8U7oj8aBEA%2BZxKiC4Tgge17TnHHpzM0Y%2BRjnNCmE\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/data-methodology/",
+                       "lang":  "en",
+                       "title":  "Data method — NusaCanvas",
+                       "description":  "Understand how NusaCanvas keeps Indonesia boundary shapes, region names, matching, and exports traceable.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  true
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Data method",
+                                         "1. Boundary snapshot",
+                                         "2. Match administrative information",
+                                         "3. Stable region IDs",
+                                         "4. Simplified boundaries",
+                                         "5. Repeatable data and license checks",
+                                         "6. Spreadsheet data and region matches",
+                                         "7. Colors and exports",
+                                         "Advanced boundary review"
+                                     ],
+                       "ctas":  [
+                                    "Why region counts differ",
+                                    "Report a data issue"
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/content.css",
+                                         "https://nusacanvas.space/assets/css/design-system.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/about/",
+                       "finalUrl":  "https://nusacanvas.space/about/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/about/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "3563"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"c013bfa9c399ddbf38d3742253dc3530\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=17,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f17373ceea8195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=Ln%2F7pCXm%2Fczx0KZSWlaNuqMIssPD4tYF54oaLVyPwfIUWDXB0I9fWCFlaCFmmSb5t96LSyzfOHLHgt%2BnO8VhrZrHqaCFVUrZAtDvyimlYYOb7SpgfDZZMwm7JUlIWhw5Hc1Q\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/about/",
+                       "lang":  "en",
+                       "title":  "About NusaCanvas",
+                       "description":  "Learn how NusaCanvas creates clear Indonesia region maps privately in your browser.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  true
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "About NusaCanvas",
+                                         "Product principles",
+                                         "Static and private",
+                                         "For visual reference",
+                                         "Clear about the data",
+                                         "Publisher identity",
+                                         "Not available yet"
+                                     ],
+                       "ctas":  [
+                                    "Create a map",
+                                    "Why region counts differ"
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/content.css",
+                                         "https://nusacanvas.space/assets/css/design-system.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+                                                "analytics"
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/contact/",
+                       "finalUrl":  "https://nusacanvas.space/contact/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/contact/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "4581"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"20debd88312c239230ca504dc4b1f3f0\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=21,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f173742f458195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=TiSr%2B6dY%2Fy3fZP5AZq%2BnBpZSIoVsrkOVvXjuQ1W%2FhdI1xQxjV7D3GVta9Js8%2ByjAIK2Q8ew%2FMuqasFxdicRUA7fEVqh3cKJQsGt4a1pvMTIfk1wk%2Bf8dbMJJvlOHWzw6Jw7F\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/contact/",
+                       "lang":  "en",
+                       "title":  "Contact and data reports — NusaCanvas",
+                       "description":  "Prepare a privacy-conscious report about NusaCanvas region names, codes, boundaries, sources, or attribution.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Contact and data reports",
+                                         "Contact status",
+                                         "Report a data issue",
+                                         "Report template"
+                                     ],
+                       "ctas":  [
+
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/content.css",
+                                         "https://nusacanvas.space/assets/css/design-system.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js",
+                                        "https://nusacanvas.space/assets/js/brand-config.js",
+                                        "https://nusacanvas.space/assets/js/boundary-provider.js",
+                                        "https://nusacanvas.space/assets/js/report-template.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+                                                "analytics"
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/privacy/",
+                       "finalUrl":  "https://nusacanvas.space/privacy/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/privacy/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "4138"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"d3b4d12091193f24727e026287bd0997\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=18,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f173749f9b8195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=S%2FGKraXDJi47MPZYDAohgOs9%2FLOmjf2PZ123GRyzhbIhnad6M9uHs26%2F6grQPFWZhZVluE4Tf19SLBHLnD1oNlEyYYtxLjhI5ZxC%2F9c4D0OtCVmEWJMAWjI2h38Xdt1A8xTa\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/privacy/",
+                       "lang":  "en",
+                       "title":  "Privacy notice — NusaCanvas",
+                       "description":  "Read how NusaCanvas processes spreadsheets, projects, browser storage, and exports locally on your device.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Privacy notice",
+                                         "Your data",
+                                         "Browser storage",
+                                         "Exports and downloads",
+                                         "Network requests",
+                                         "Hosting logs",
+                                         "Contact"
+                                     ],
+                       "ctas":  [
+
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/content.css",
+                                         "https://nusacanvas.space/assets/css/design-system.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+                                                "analytics"
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/terms/",
+                       "finalUrl":  "https://nusacanvas.space/terms/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/terms/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "3067"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"e4a41cdd4aba95b79945c0998dc516a7\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=20,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f17374ffdc8195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=SOaqOYxiXIWRw8iWe79O%2F%2F0H7yJF6H3apC8haXf8H0iCkgkDQkeBLvQkFoI654BDVMUMNRyaaRy1y70%2F%2Ba5ibSZuEUOP9KWdJZ1GvLTAZUaTZ6LIGV7ZigyHpU8nzWpXSe7A\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/terms/",
+                       "lang":  "en",
+                       "title":  "Terms of use — NusaCanvas",
+                       "description":  "Read the purpose, responsibilities, third-party licenses, and service limits for NusaCanvas.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Terms of use",
+                                         "Purpose",
+                                         "Your responsibility",
+                                         "Third-party data and licenses",
+                                         "Service limits",
+                                         "Report a data issue"
+                                     ],
+                       "ctas":  [
+
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/content.css",
+                                         "https://nusacanvas.space/assets/css/design-system.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+                                                "analytics"
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/sources-licenses/",
+                       "finalUrl":  "https://nusacanvas.space/sources-licenses/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/sources-licenses/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "4172"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"4e981f0ac61ad2941a6ef42cb66a429c\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=19,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f17375783d8195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=2hRDM1NDr3%2F0inReWm509pKJQgnzoFIfhuiXOc7sUKdJ6ejrX2YXvxg7J5HG0y6iUwOsFtSxYwlIGONf6Hpnb1FZUB7Nwsb0gGJuxyFzOt%2BBJQoiZk4MiSIIAXHuNwlqZENe\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/sources-licenses/",
+                       "lang":  "en",
+                       "title":  "Sources and licenses — NusaCanvas",
+                       "description":  "Review the boundary data, administrative references, libraries, licenses, and attribution used by NusaCanvas.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Sources and licenses",
+                                         "Map boundaries",
+                                         "Administrative information",
+                                         "Libraries and assets",
+                                         "License checks"
+                                     ],
+                       "ctas":  [
+                                    "Report a data issue",
+                                    "Read the data method"
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/content.css",
+                                         "https://nusacanvas.space/assets/css/design-system.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/limitations/",
+                       "finalUrl":  "https://nusacanvas.space/limitations/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/limitations/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "4092"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"c2ab5e84cb03257c3cdb79544b598eff\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=13,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f17375e88d8195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=JMgJTTbJfDwOuvbs7rUFG9F5KFQip%2FP2%2FXEM6dWbVSs0mZXSEQOrCHT4W7WohUCAZ7%2FRiCVeRRIydX%2BYhcF5wJS64TCOqMD%2BY014LnQsVWcMNOjnF0kxnf8Wl6%2FaicQEgpe7\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/limitations/",
+                       "lang":  "en",
+                       "title":  "Data and app limitations — NusaCanvas",
+                       "description":  "Understand the boundary, matching, export, browser storage, and use limits of NusaCanvas.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        },
+                                        {
+                                            "tag":  "section",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Data and app limitations",
+                                         "2020 boundary snapshot",
+                                         "519 mapped shapes",
+                                         "53 records need more evidence",
+                                         "Visual exports",
+                                         "Performance limits",
+                                         "Spreadsheet limits",
+                                         "Legal and license limits"
+                                     ],
+                       "ctas":  [
+                                    "Report a data issue",
+                                    "View sources and licenses"
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/content.css",
+                                         "https://nusacanvas.space/assets/css/design-system.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   },
+                   {
+                       "requestedUrl":  "https://nusacanvas.space/changelog/",
+                       "finalUrl":  "https://nusacanvas.space/changelog/",
+                       "status":  200,
+                       "redirectChain":  [
+                                             {
+                                                 "url":  "https://nusacanvas.space/changelog/",
+                                                 "status":  200,
+                                                 "location":  null
+                                             }
+                                         ],
+                       "responseHeaders":  {
+                                               "alt-svc":  [
+                                                               "h3=\":443\"; ma=86400"
+                                                           ],
+                                               "Server":  [
+                                                              "cloudflare"
+                                                          ],
+                                               "x-content-type-options":  [
+                                                                              "nosniff"
+                                                                          ],
+                                               "Content-Length":  [
+                                                                      "4728"
+                                                                  ],
+                                               "Cache-Control":  [
+                                                                     "no-transform"
+                                                                 ],
+                                               "ETag":  [
+                                                            "\"2148c66cfb7f780c013cd4ee556daa26\""
+                                                        ],
+                                               "Content-Type":  [
+                                                                    "text/html"
+                                                                ],
+                                               "Server-Timing":  [
+                                                                     "cfCacheStatus;desc=\"HIT\"",
+                                                                     "cfEdge;dur=18,cfOrigin;dur=0"
+                                                                 ],
+                                               "CF-RAY":  [
+                                                              "a1f1737648f98195-SIN"
+                                                          ],
+                                               "Nel":  [
+                                                           "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}"
+                                                       ],
+                                               "CF-Cache-Status":  [
+                                                                       "HIT"
+                                                                   ],
+                                               "referrer-policy":  [
+                                                                       "strict-origin-when-cross-origin"
+                                                                   ],
+                                               "Connection":  [
+                                                                  "keep-alive"
+                                                              ],
+                                               "permissions-policy":  [
+                                                                          "accelerometer=(), ambient-light-sensor=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), usb=(), xr-spatial-tracking=()"
+                                                                      ],
+                                               "Date":  [
+                                                            "Wed, 22 Jul 2026 09:34:41 GMT"
+                                                        ],
+                                               "Report-To":  [
+                                                                 "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=nGGNTsBpSzLiP%2BYNVLRNKHofFiNwVa88QiSVIwCZSV3KTN9Fx6yLSFC9d65WraRs%2FmwniRMEuWHDDZc3DxPdZ22HN1I2RLLjeAzBhqycOLlmmVZJXy9pI0TZ19cSz40pL3Mv\"}]}"
+                                                             ],
+                                               "content-security-policy":  [
+                                                                               "default-src \u0027self\u0027; script-src \u0027self\u0027; style-src \u0027self\u0027 \u0027unsafe-inline\u0027; img-src \u0027self\u0027 blob: data:; connect-src \u0027self\u0027; font-src \u0027self\u0027; object-src \u0027none\u0027; base-uri \u0027none\u0027; form-action \u0027none\u0027; frame-ancestors \u0027none\u0027; frame-src \u0027none\u0027; worker-src \u0027self\u0027 blob:"
+                                                                           ]
+                                           },
+                       "canonical":  "https://nusacanvas.space/changelog/",
+                       "lang":  "en",
+                       "title":  "Changelog — NusaCanvas",
+                       "description":  "Review current NusaCanvas product, data, content, and deployment changes.",
+                       "robots":  null,
+                       "navigation":  [
+                                          {
+                                              "text":  "NusaCanvas",
+                                              "href":  "https://nusacanvas.space/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Highlight regions",
+                                              "href":  "https://nusacanvas.space/highlight-regions/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Map spreadsheet",
+                                              "href":  "https://nusacanvas.space/excel-to-map/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Guides",
+                                              "href":  "https://nusacanvas.space/guides/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Region data",
+                                              "href":  "https://nusacanvas.space/data-methodology/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "About",
+                                              "href":  "https://nusacanvas.space/about/",
+                                              "active":  false
+                                          },
+                                          {
+                                              "text":  "Open workspace",
+                                              "href":  "https://nusacanvas.space/workspace/",
+                                              "active":  false
+                                          }
+                                      ],
+                       "sections":  [
+                                        {
+                                            "tag":  "main",
+                                            "id":  ""
+                                        }
+                                    ],
+                       "landmarks":  [
+                                         "Changelog",
+                                         "Batch 1",
+                                         "Batch 2 development record"
+                                     ],
+                       "ctas":  [
+                                    "Create a map",
+                                    "Read the limitations"
+                                ],
+                       "cssAssets":  [
+                                         "https://nusacanvas.space/assets/css/content.css",
+                                         "https://nusacanvas.space/assets/css/design-system.css"
+                                     ],
+                       "jsAssets":  [
+                                        "https://nusacanvas.space/assets/js/public-shell.js"
+                                    ],
+                       "imageAssets":  [
+
+                                       ],
+                       "analyticsMarkers":  [
+                                                "analytics"
+                                            ],
+                       "workspaceRuntimePresent":  false
+                   }
+               ]
+}

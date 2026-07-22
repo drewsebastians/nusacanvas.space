@@ -1,0 +1,1039 @@
+{
+  "capturedAt": "2026-07-22T16:55:00+07:00",
+  "desktop": {
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "routes": [
+      {
+        "slug": "home",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/",
+        "headings": [
+          "Highlight regions and cities clearly.",
+          "Map your spreadsheet data in minutes.",
+          "Plan sales territories visually.",
+          "Analyze coverage with clear visuals.",
+          "Choose the map you need",
+          "Highlight regions",
+          "Map spreadsheet data",
+          "Build sales territories",
+          "Analyze coverage",
+          "Ready to make your map?"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": "page",
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "NusaCanvas — Create clear Indonesia maps",
+        "url": "http://127.0.0.1:4173/"
+      },
+      {
+        "slug": "highlight-regions",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/highlight-regions/",
+        "headings": [
+          "Highlight regions and cities clearly.",
+          "Why use this feature?",
+          "See patterns instantly",
+          "Communicate clearly",
+          "Focus your actions",
+          "Built for Indonesia",
+          "What you can customize",
+          "Common use cases",
+          "Sales performance",
+          "Territory planning",
+          "Operations and logistics",
+          "Marketing campaigns"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": "page",
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Highlight Indonesia regions and cities — NusaCanvas",
+        "url": "http://127.0.0.1:4173/highlight-regions/"
+      },
+      {
+        "slug": "excel-to-map",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/excel-to-map/",
+        "headings": [
+          "Map your spreadsheet data in minutes.",
+          "From spreadsheet to map in four steps",
+          "Why it works for your workflow",
+          "Best practices",
+          "Useful starting points",
+          "Ready to map your data?"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": "page",
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Map spreadsheet data across Indonesia — NusaCanvas",
+        "url": "http://127.0.0.1:4173/excel-to-map/"
+      },
+      {
+        "slug": "sales-territories",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/sales-territories/",
+        "headings": [
+          "Plan sales territories visually.",
+          "Planned use cases",
+          "Group regions",
+          "Discuss workloads",
+          "Present a plan",
+          "Map what is available today"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Sales territory mapping — Coming soon | NusaCanvas",
+        "url": "http://127.0.0.1:4173/sales-territories/"
+      },
+      {
+        "slug": "coverage-analysis",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/coverage-analysis/",
+        "headings": [
+          "Analyze coverage with clear visuals.",
+          "Planned use cases",
+          "See reach",
+          "Find gaps",
+          "Set priorities",
+          "Map what is available today"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Coverage analysis maps — Coming soon | NusaCanvas",
+        "url": "http://127.0.0.1:4173/coverage-analysis/"
+      },
+      {
+        "slug": "workspace",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/workspace/",
+        "headings": [
+          "Your data"
+        ],
+        "lang": "en",
+        "mapRuntime": true,
+        "nav": [
+          {
+            "active": null,
+            "href": "/sources-licenses/",
+            "text": "Sources and licenses"
+          },
+          {
+            "active": null,
+            "href": "/limitations/",
+            "text": "Limitations"
+          },
+          {
+            "active": null,
+            "href": "/contact/",
+            "text": "Report a data issue"
+          }
+        ],
+        "title": "NusaCanvas — Create an Indonesia region map",
+        "url": "http://127.0.0.1:4173/workspace/"
+      },
+      {
+        "slug": "guides",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/guides/",
+        "headings": [
+          "Help, guides, and common questions",
+          "Make a map from Excel",
+          "Fix region names",
+          "See a city-value example",
+          "Export for slides",
+          "Frequently asked questions"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": "page",
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Help & guides - NusaCanvas",
+        "url": "http://127.0.0.1:4173/guides/"
+      },
+      {
+        "slug": "data-methodology",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/data-methodology/",
+        "headings": [
+          "Data method",
+          "1. Boundary snapshot",
+          "2. Match administrative information",
+          "3. Stable region IDs",
+          "4. Simplified boundaries",
+          "5. Repeatable data and license checks",
+          "6. Spreadsheet data and region matches",
+          "7. Colors and exports",
+          "Advanced boundary review"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": "page",
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Data method — NusaCanvas",
+        "url": "http://127.0.0.1:4173/data-methodology/"
+      },
+      {
+        "slug": "about",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/about/",
+        "headings": [
+          "About NusaCanvas",
+          "Product principles",
+          "Static and private",
+          "For visual reference",
+          "Clear about the data",
+          "Publisher identity",
+          "Not available yet"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": "page",
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "About NusaCanvas",
+        "url": "http://127.0.0.1:4173/about/"
+      },
+      {
+        "slug": "contact",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/contact/",
+        "headings": [
+          "Contact and data reports",
+          "Contact status",
+          "Report a data issue",
+          "Report template"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Contact and data reports — NusaCanvas",
+        "url": "http://127.0.0.1:4173/contact/"
+      },
+      {
+        "slug": "privacy",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/privacy/",
+        "headings": [
+          "Privacy notice",
+          "Your data",
+          "Browser storage",
+          "Exports and downloads",
+          "Network requests",
+          "Hosting logs",
+          "Contact"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Privacy notice — NusaCanvas",
+        "url": "http://127.0.0.1:4173/privacy/"
+      },
+      {
+        "slug": "terms",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/terms/",
+        "headings": [
+          "Terms of use",
+          "Purpose",
+          "Your responsibility",
+          "Third-party data and licenses",
+          "Service limits",
+          "Report a data issue"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Terms of use — NusaCanvas",
+        "url": "http://127.0.0.1:4173/terms/"
+      },
+      {
+        "slug": "sources-licenses",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/sources-licenses/",
+        "headings": [
+          "Sources and licenses",
+          "Map boundaries",
+          "Administrative information",
+          "Libraries and assets",
+          "License checks"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Sources and licenses — NusaCanvas",
+        "url": "http://127.0.0.1:4173/sources-licenses/"
+      },
+      {
+        "slug": "limitations",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/limitations/",
+        "headings": [
+          "Data and app limitations",
+          "2020 boundary snapshot",
+          "519 mapped shapes",
+          "53 records need more evidence",
+          "Visual exports",
+          "Performance limits",
+          "Spreadsheet limits",
+          "Legal and license limits"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Data and app limitations — NusaCanvas",
+        "url": "http://127.0.0.1:4173/limitations/"
+      },
+      {
+        "slug": "changelog",
+        "analyticsScripts": [],
+        "canonical": "https://nusacanvas.space/changelog/",
+        "headings": [
+          "Changelog",
+          "Batch 1",
+          "Batch 2 development record"
+        ],
+        "lang": "en",
+        "mapRuntime": false,
+        "nav": [
+          {
+            "active": null,
+            "href": "/",
+            "text": "NusaCanvas"
+          },
+          {
+            "active": null,
+            "href": "/highlight-regions/",
+            "text": "Highlight regions"
+          },
+          {
+            "active": null,
+            "href": "/excel-to-map/",
+            "text": "Map spreadsheet"
+          },
+          {
+            "active": null,
+            "href": "/guides/",
+            "text": "Guides"
+          },
+          {
+            "active": null,
+            "href": "/data-methodology/",
+            "text": "Region data"
+          },
+          {
+            "active": null,
+            "href": "/about/",
+            "text": "About"
+          },
+          {
+            "active": null,
+            "href": "/workspace/",
+            "text": "Open workspace"
+          }
+        ],
+        "title": "Changelog — NusaCanvas",
+        "url": "http://127.0.0.1:4173/changelog/"
+      }
+    ]
+  },
+  "mobile": {
+    "viewport": {
+      "width": 393,
+      "height": 852
+    },
+    "routes": [
+      {
+        "slug": "home",
+        "headings": [
+          "Highlight regions and cities clearly.",
+          "Map your spreadsheet data in minutes.",
+          "Plan sales territories visually.",
+          "Analyze coverage with clear visuals.",
+          "Choose the map you need",
+          "Ready to make your map?"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "NusaCanvas — Create clear Indonesia maps",
+        "url": "http://127.0.0.1:4173/"
+      },
+      {
+        "slug": "highlight-regions",
+        "headings": [
+          "Highlight regions and cities clearly.",
+          "Why use this feature?",
+          "What you can customize",
+          "Common use cases",
+          "How it works",
+          "Useful starting points"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Highlight Indonesia regions and cities — NusaCanvas",
+        "url": "http://127.0.0.1:4173/highlight-regions/"
+      },
+      {
+        "slug": "excel-to-map",
+        "headings": [
+          "Map your spreadsheet data in minutes.",
+          "From spreadsheet to map in four steps",
+          "Why it works for your workflow",
+          "Best practices",
+          "Useful starting points",
+          "Ready to map your data?"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Map spreadsheet data across Indonesia — NusaCanvas",
+        "url": "http://127.0.0.1:4173/excel-to-map/"
+      },
+      {
+        "slug": "sales-territories",
+        "headings": [
+          "Plan sales territories visually.",
+          "Planned use cases",
+          "Map what is available today"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Sales territory mapping — Coming soon | NusaCanvas",
+        "url": "http://127.0.0.1:4173/sales-territories/"
+      },
+      {
+        "slug": "coverage-analysis",
+        "headings": [
+          "Analyze coverage with clear visuals.",
+          "Planned use cases",
+          "Map what is available today"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Coverage analysis maps — Coming soon | NusaCanvas",
+        "url": "http://127.0.0.1:4173/coverage-analysis/"
+      },
+      {
+        "slug": "workspace",
+        "headings": [
+          "Your data"
+        ],
+        "mapRuntime": true,
+        "navLinkCount": 3,
+        "navVisible": true,
+        "title": "NusaCanvas — Create an Indonesia region map",
+        "url": "http://127.0.0.1:4173/workspace/"
+      },
+      {
+        "slug": "guides",
+        "headings": [
+          "Help, guides, and common questions",
+          "Make a map from Excel",
+          "Fix region names",
+          "See a city-value example",
+          "Export for slides",
+          "Frequently asked questions"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Help & guides - NusaCanvas",
+        "url": "http://127.0.0.1:4173/guides/"
+      },
+      {
+        "slug": "data-methodology",
+        "headings": [
+          "Data method",
+          "1. Boundary snapshot",
+          "2. Match administrative information",
+          "3. Stable region IDs",
+          "4. Simplified boundaries",
+          "5. Repeatable data and license checks"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Data method — NusaCanvas",
+        "url": "http://127.0.0.1:4173/data-methodology/"
+      },
+      {
+        "slug": "about",
+        "headings": [
+          "About NusaCanvas",
+          "Product principles",
+          "Publisher identity",
+          "Not available yet"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "About NusaCanvas",
+        "url": "http://127.0.0.1:4173/about/"
+      },
+      {
+        "slug": "contact",
+        "headings": [
+          "Contact and data reports",
+          "Contact status",
+          "Report a data issue"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Contact and data reports — NusaCanvas",
+        "url": "http://127.0.0.1:4173/contact/"
+      },
+      {
+        "slug": "privacy",
+        "headings": [
+          "Privacy notice",
+          "Your data",
+          "Browser storage",
+          "Exports and downloads",
+          "Network requests",
+          "Hosting logs"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Privacy notice — NusaCanvas",
+        "url": "http://127.0.0.1:4173/privacy/"
+      },
+      {
+        "slug": "terms",
+        "headings": [
+          "Terms of use",
+          "Purpose",
+          "Your responsibility",
+          "Third-party data and licenses",
+          "Service limits",
+          "Report a data issue"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Terms of use — NusaCanvas",
+        "url": "http://127.0.0.1:4173/terms/"
+      },
+      {
+        "slug": "sources-licenses",
+        "headings": [
+          "Sources and licenses",
+          "Map boundaries",
+          "Administrative information",
+          "Libraries and assets",
+          "License checks"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Sources and licenses — NusaCanvas",
+        "url": "http://127.0.0.1:4173/sources-licenses/"
+      },
+      {
+        "slug": "limitations",
+        "headings": [
+          "Data and app limitations",
+          "2020 boundary snapshot",
+          "519 mapped shapes",
+          "53 records need more evidence",
+          "Visual exports",
+          "Performance limits"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Data and app limitations — NusaCanvas",
+        "url": "http://127.0.0.1:4173/limitations/"
+      },
+      {
+        "slug": "changelog",
+        "headings": [
+          "Changelog",
+          "Batch 1",
+          "Batch 2 development record"
+        ],
+        "mapRuntime": false,
+        "navLinkCount": 7,
+        "navVisible": true,
+        "title": "Changelog — NusaCanvas",
+        "url": "http://127.0.0.1:4173/changelog/"
+      }
+    ]
+  },
+  "screenshotCapture": {
+    "status": "unavailable",
+    "reason": "in-app browser Page.captureScreenshot timed out for full, viewport, and clipped screenshots on production; no unreliable retry was used for local routes"
+  }
+}

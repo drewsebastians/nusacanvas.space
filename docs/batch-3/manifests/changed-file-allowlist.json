@@ -1,7 +1,8 @@
 {
   "schemaVersion": "nusacanvas.batch3.changed-file-allowlist.v1",
-  "queueItem": 1,
-  "allowedPaths": ["docs/batch-3/**"],
+  "queueItem": 2,
+  "allowedFiles": [],
   "forbiddenAreas": ["assets/**", "data/**", "workspace/**", "index.html", "scripts/**", "tests/**", "package.json", "package-lock.json", "wrangler.jsonc", "_headers", "robots.txt", "sitemap.xml", "dist/**"],
-  "rationale": "Queue Item 1 is inventory and preflight only; it must not authorize runtime, map, build, deployment, dependency, or generated-output changes."
+  "rationale": "Production, current main, and the clean dist build are materially equivalent. No runtime reconciliation is justified; the two raw JavaScript hash differences are CRLF/LF representation only.",
+  "approval": {"implementationAllowed": true, "deploymentAllowed": false, "evidence": "docs/batch-3/PRODUCTION_REPOSITORY_DIFF.md"}
 }

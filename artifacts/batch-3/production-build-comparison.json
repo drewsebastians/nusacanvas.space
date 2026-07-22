@@ -1,0 +1,360 @@
+{
+    "capturedAt":  "2026-07-22T17:00:00+07:00",
+    "assetComparison":  [
+                            {
+                                "path":  "/assets/css/app.css",
+                                "productionSha256":  "cefaf61bc1cb938761f57d253162b7f66e48a8135ae5d9dbcc77fd04e4d16739",
+                                "buildSha256":  "cefaf61bc1cb938761f57d253162b7f66e48a8135ae5d9dbcc77fd04e4d16739",
+                                "productionBytes":  39521,
+                                "buildBytes":  39521,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/css/content.css",
+                                "productionSha256":  "733cedb6340d7150e9ef713335751c8fc69fef60aa976d104b2f23a593846d44",
+                                "buildSha256":  "733cedb6340d7150e9ef713335751c8fc69fef60aa976d104b2f23a593846d44",
+                                "productionBytes":  23916,
+                                "buildBytes":  23916,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/css/design-system.css",
+                                "productionSha256":  "75694fc8b854d0ab66f7d6a59dd1f6fe4ad528956327779b4942e6e4dfea9808",
+                                "buildSha256":  "75694fc8b854d0ab66f7d6a59dd1f6fe4ad528956327779b4942e6e4dfea9808",
+                                "productionBytes":  2061,
+                                "buildBytes":  2061,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/images/public/hero-coverage-analysis.svg",
+                                "productionSha256":  "d1b6d75f2340b924603a02ba6cb923569b629086b792b4dd40687c377d976aa0",
+                                "buildSha256":  "d1b6d75f2340b924603a02ba6cb923569b629086b792b4dd40687c377d976aa0",
+                                "productionBytes":  439111,
+                                "buildBytes":  439111,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/images/public/hero-highlight-regions.svg",
+                                "productionSha256":  "decdb3edcefe93a442fb7accbdf819e2f57e0376cb5991576d0c5e9a859edf9e",
+                                "buildSha256":  "decdb3edcefe93a442fb7accbdf819e2f57e0376cb5991576d0c5e9a859edf9e",
+                                "productionBytes":  500736,
+                                "buildBytes":  500736,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/images/public/hero-map-spreadsheet.svg",
+                                "productionSha256":  "d878d01bc8b8543b5eaa75fa4d2be3707dcf1c8839bd41c5d62a5af699c01999",
+                                "buildSha256":  "d878d01bc8b8543b5eaa75fa4d2be3707dcf1c8839bd41c5d62a5af699c01999",
+                                "productionBytes":  476464,
+                                "buildBytes":  476464,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/images/public/hero-sales-territories.svg",
+                                "productionSha256":  "244a98c39b636f5dc63534d4b797d7dfabeabbaab4f7b103f45e4f1187eab478",
+                                "buildSha256":  "244a98c39b636f5dc63534d4b797d7dfabeabbaab4f7b103f45e4f1187eab478",
+                                "productionBytes":  438964,
+                                "buildBytes":  438964,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/images/public/highlight-map-styles.svg",
+                                "productionSha256":  "10d6708fb8c12bfb47e5cf814a6f8d6ac4adaac64ab8fe0e481917c41db1437a",
+                                "buildSha256":  "10d6708fb8c12bfb47e5cf814a6f8d6ac4adaac64ab8fe0e481917c41db1437a",
+                                "productionBytes":  825464,
+                                "buildBytes":  825464,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/images/public/spreadsheet-example-output.svg",
+                                "productionSha256":  "56781b8fbb1cbb6afb6d218c5d4d0130de34f2b64890de72c464120bbcdaa8bb",
+                                "buildSha256":  "56781b8fbb1cbb6afb6d218c5d4d0130de34f2b64890de72c464120bbcdaa8bb",
+                                "productionBytes":  527079,
+                                "buildBytes":  527079,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/js/app.js",
+                                "productionSha256":  "e909ca85ab8df8ac651f0a3eac22a3023f2dcae290d26ee9c7761e9a1441311b",
+                                "buildSha256":  "e909ca85ab8df8ac651f0a3eac22a3023f2dcae290d26ee9c7761e9a1441311b",
+                                "productionBytes":  114981,
+                                "buildBytes":  114981,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/js/boundary-provider.js",
+                                "productionSha256":  "9e0a1351f2eb195dfb3e0502f2afbc3abed052ff865f5b284d08a348dbfb288b",
+                                "buildSha256":  "9e0a1351f2eb195dfb3e0502f2afbc3abed052ff865f5b284d08a348dbfb288b",
+                                "productionBytes":  22264,
+                                "buildBytes":  22264,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/js/brand-config.js",
+                                "productionSha256":  "8b14e1bd57222b3403d05be0e7a20e01d4768f853e10565df85317ff3fe1ac6c",
+                                "buildSha256":  "8b14e1bd57222b3403d05be0e7a20e01d4768f853e10565df85317ff3fe1ac6c",
+                                "productionBytes":  2672,
+                                "buildBytes":  2672,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/js/csv-import.js",
+                                "productionSha256":  "9dec8aad1cce5f7f2f46bf8fc5bb490c8e90492d7ab778a82ccf4a4ba0c78360",
+                                "buildSha256":  "9dec8aad1cce5f7f2f46bf8fc5bb490c8e90492d7ab778a82ccf4a4ba0c78360",
+                                "productionBytes":  6759,
+                                "buildBytes":  6759,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/js/export.js",
+                                "productionSha256":  "dc2254b2f683e1f6d36975074bce40d0d61b2d5141eaae67602735a28533224a",
+                                "buildSha256":  "a244c45e9c416d99d5c5609170e7f7f810d98dedfe066a90320476054e604cee",
+                                "productionBytes":  31376,
+                                "buildBytes":  31160,
+                                "match":  false
+                            },
+                            {
+                                "path":  "/assets/js/import-core.js",
+                                "productionSha256":  "f57d2b6e5a5e78ac07029ca65afbf003b887b11646622fee7028754c3f57d2c2",
+                                "buildSha256":  "f57d2b6e5a5e78ac07029ca65afbf003b887b11646622fee7028754c3f57d2c2",
+                                "productionBytes":  16128,
+                                "buildBytes":  16128,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/js/map.js",
+                                "productionSha256":  "14b01de5d84cf19034f33e6ae075d29b4682df68ff1653a4ce7744f4ce44f1a2",
+                                "buildSha256":  "14b01de5d84cf19034f33e6ae075d29b4682df68ff1653a4ce7744f4ce44f1a2",
+                                "productionBytes":  24595,
+                                "buildBytes":  24595,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/js/project-storage.js",
+                                "productionSha256":  "46cb8e2ed1254fa17256e1bb3cbb9f7ed79145308a3086e6c43d978deb127a2d",
+                                "buildSha256":  "a109de36a5ee0aa05ac74a3c6bf1a93a9d699ba6e90bb6ff3a71422240d386ff",
+                                "productionBytes":  79384,
+                                "buildBytes":  79373,
+                                "match":  false
+                            },
+                            {
+                                "path":  "/assets/js/public-shell.js",
+                                "productionSha256":  "7e1e5db6d29e8dd6ad3bd84c9b2e0a0414a049d6c16e31e2d47143c33250d296",
+                                "buildSha256":  "7e1e5db6d29e8dd6ad3bd84c9b2e0a0414a049d6c16e31e2d47143c33250d296",
+                                "productionBytes":  4672,
+                                "buildBytes":  4672,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/js/report-template.js",
+                                "productionSha256":  "6f73aed86125f81a76bd5ca411d35a85d54dda845e675215f446a1effab189b3",
+                                "buildSha256":  "6f73aed86125f81a76bd5ca411d35a85d54dda845e675215f446a1effab189b3",
+                                "productionBytes":  3239,
+                                "buildBytes":  3239,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/js/xlsx-import.js",
+                                "productionSha256":  "a8169a08d9db291c017d78bdc47254c802f6115b9ae20c4081b1f444d93fd0a6",
+                                "buildSha256":  "a8169a08d9db291c017d78bdc47254c802f6115b9ae20c4081b1f444d93fd0a6",
+                                "productionBytes":  12785,
+                                "buildBytes":  12785,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/vendor/leaflet/leaflet.css",
+                                "productionSha256":  "337bfca5cabd03b39815b2700febe2b3b7edf55921c59cd49f88ecb328212303",
+                                "buildSha256":  "337bfca5cabd03b39815b2700febe2b3b7edf55921c59cd49f88ecb328212303",
+                                "productionBytes":  14145,
+                                "buildBytes":  14145,
+                                "match":  true
+                            },
+                            {
+                                "path":  "/assets/vendor/leaflet/leaflet.js",
+                                "productionSha256":  "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
+                                "buildSha256":  "db49d009c841f5ca34a888c96511ae936fd9f5533e90d8b2c4d57596f4e5641a",
+                                "productionBytes":  147552,
+                                "buildBytes":  147552,
+                                "match":  true
+                            }
+                        ],
+    "routeComparison":  [
+                            {
+                                "slug":  "home",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "highlight-regions",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "excel-to-map",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "sales-territories",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "coverage-analysis",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "workspace",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "guides",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "data-methodology",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "about",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "contact",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "privacy",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "terms",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "sources-licenses",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "limitations",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            },
+                            {
+                                "slug":  "changelog",
+                                "productionStatus":  200,
+                                "buildStatus":  200,
+                                "differentFields":  [
+
+                                                    ],
+                                "match":  true
+                            }
+                        ],
+    "summary":  {
+                    "assetsCompared":  22,
+                    "assetHashMatches":  20,
+                    "assetHashMismatches":  2,
+                    "routesCompared":  15,
+                    "routeMetadataMatches":  15,
+                    "routeMetadataMismatches":  0
+                },
+    "lineEndingNormalization":  [
+                                    {
+                                        "path":  "/assets/js/export.js",
+                                        "productionLineEndings":  {
+                                                                      "crlf":  216,
+                                                                      "lf":  346
+                                                                  },
+                                        "buildLineEndings":  {
+                                                                 "crlf":  0,
+                                                                 "lf":  562
+                                                             },
+                                        "normalizedSha256":  {
+                                                                 "production":  "a244c45e9c416d99d5c5609170e7f7f810d98dedfe066a90320476054e604cee",
+                                                                 "build":  "a244c45e9c416d99d5c5609170e7f7f810d98dedfe066a90320476054e604cee",
+                                                                 "match":  true
+                                                             }
+                                    },
+                                    {
+                                        "path":  "/assets/js/project-storage.js",
+                                        "productionLineEndings":  {
+                                                                      "crlf":  11,
+                                                                      "lf":  1609
+                                                                  },
+                                        "buildLineEndings":  {
+                                                                 "crlf":  0,
+                                                                 "lf":  1620
+                                                             },
+                                        "normalizedSha256":  {
+                                                                 "production":  "a109de36a5ee0aa05ac74a3c6bf1a93a9d699ba6e90bb6ff3a71422240d386ff",
+                                                                 "build":  "a109de36a5ee0aa05ac74a3c6bf1a93a9d699ba6e90bb6ff3a71422240d386ff",
+                                                                 "match":  true
+                                                             }
+                                    }
+                                ]
+}
