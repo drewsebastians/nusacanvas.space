@@ -63,9 +63,8 @@
       active = (index + slides.length) % slides.length;
       slides.forEach((slide, slideIndex) => {
         const selected = slideIndex === active;
-        slide.hidden = !selected;
         slide.classList.toggle("is-active", selected);
-        dots[slideIndex].toggleAttribute("aria-current", selected);
+        dots[slideIndex].setAttribute("aria-current", String(selected));
       });
       loadVisual(slides[active]);
       syncTimer();
@@ -96,6 +95,10 @@
     });
     document.addEventListener("visibilitychange", syncTimer);
     reducedMotion.addEventListener?.("change", syncTimer);
+    slides.forEach((slide, index) => {
+      slide.hidden = false;
+      dots[index].setAttribute("aria-current", String(index === active));
+    });
     syncTimer();
   }
 

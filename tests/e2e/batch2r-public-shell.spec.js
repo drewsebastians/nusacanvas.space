@@ -60,6 +60,8 @@ test("carousel autoplays at seven seconds and resumes after direct controls", as
   await expect(page.locator("#hero-slide-1")).toBeVisible();
   await page.clock.fastForward(200);
   await expect(page.locator("#hero-slide-2")).toBeVisible();
+  await expect(page.locator("[data-carousel-dot]").nth(1)).toHaveAttribute("aria-current", "true");
+  await expect(page.locator("#hero-slide-2")).toHaveCSS("opacity", "1");
   await page.locator("[data-carousel-dot]").nth(3).click();
   await expect(page.locator("#hero-slide-4")).toBeVisible();
   await page.clock.fastForward(8000);
@@ -97,6 +99,7 @@ test("available feature pages keep approved section order, links, and accessibil
     expect(response.status()).toBe(200);
     await expect(page.locator(".breadcrumb")).toBeVisible();
     await expect(page.locator(".feature-badge")).toHaveText("Feature");
+    await expect(page.locator(".trust-icon")).toHaveCount(4);
     await expect(page.locator(".feature-section").first().getByRole("heading", { name: firstSection })).toBeVisible();
     await expect(page.locator(".feature-section h2")).toHaveText(headings);
     expect(requests.some((request) => forbiddenRuntime.test(request))).toBe(false);
