@@ -1,14 +1,28 @@
-# Batch 3 post-merge verification checklist
+# Batch 3 post-merge verification — completed
 
-This checklist is prospective. These commands are not claimed complete until an authorized merge and deployment occur.
+Completed against the exact merged `main` source `54985e7f21a3db6a9b23b1d4850ecc94d6d6bbb0` and active Worker version `76f76701-872a-4f4f-9690-9614d41b6c1b` on 2026-07-23.
 
-1. Push only `codex/batch-3-production-reconciliation` and open a review request.
-2. Review the exact merge diff and authorize the merge; do not force-push.
-3. On merged `main`, run `npm ci`, `npm run build`, `npm run test:unit`, `npm run test:e2e:smoke`, `npm run test:batch2r:guidance`, `npm run test:batch2r:boundary-rendering`, `npm run test:batch2r:workspace`, `npm run test:a11y`, `npm run test:security`, `npm run verify:public-performance`, and `npm run verify:production`.
-4. Deploy only after separate authorization.
-5. Verify `/workspace/?goal=spreadsheet` and `?sample=1`: exactly one visible `#workspaceFirstUse`, CSV/TSV/XLSX copy, local-device statement, guide link, and keyboard help.
-6. Recheck production routes, canonicals, headers/CSP, noindex, 404, asset hashes, analytics injection, and public/runtime boundaries.
-7. Capture authorized desktop `1440x1000` and mobile `393x851` workspace evidence, including manual export-ready and spreadsheet first-use states.
-8. Recheck 7 public requests, 1,430-byte shell, 146,640-byte hero, no new workspace request, local-only privacy, 519 map features, boundary/provider/registry versions, project schema, and exports.
-9. Record deployed SHA, cache/edge behavior, release/changelog evidence, and post-merge verifier output.
-10. Mark Batch 3 production-verified only after all checks pass. Keep Batch 4 blocked until then.
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Merge identity and clean main | PASS | local and remote `main` equal `54985e7`; clean tree |
+| Clean install/build | PASS | 70 allowlisted build files; 105-file inventory; 6 illustrations |
+| Production deployment | PASS | `npm run deploy`; Worker version recorded in deployment report |
+| Both production origins | PASS | apex and `www` consistent; no mixed cache state |
+| Expected routes, canonicals, indexing, 404 | PASS | `npm run verify:production` and independent route check |
+| Headers/CSP/runtime boundaries | PASS | restrictive CSP, workspace noindex, same-origin runtime |
+| Spreadsheet/sample guidance | PASS | one visible block in each; required local-only/format/guide/keyboard copy |
+| Manual guidance | PASS | hidden from visible manual flow; no map obstruction |
+| Asset hashes | PASS | 22/22 compared production assets raw SHA-256 exact |
+| Production smoke | PASS | 19/19 |
+| Public shell/workspace | PASS | 8/8 and 5/5 |
+| Accessibility | PASS | 3/3 |
+| Performance | PASS | 7 requests; 1,430-byte shell; 146,640-byte hero |
+| Security/privacy | PASS | no analytics beacon, external runtime, upload, backend, ads, or external tiles |
+| Map/data/project/export | PASS | 519 features and existing compatibility/export gates |
+| Visual evidence | PASS | fresh Playwright desktop/mobile evidence recorded externally and inventoried |
+| Rollback trigger review | PASS | zero triggers; prior version remains available |
+| Release/tag policy | PASS | no release/tag required or created |
+
+Known non-blocking observations remain explicit: the existing workspace `<base>` element emits one CSP console warning under the existing `base-uri 'none'` policy; page errors remain zero. One original guidance assertion assumes localhost and falsely counts same-origin production requests; the corrected production harness passed. Neither requires runtime or test changes.
+
+The post-merge checklist is complete. `productionVerified` is true; `batch4Allowed` becomes true only after the durable closure PR merges. No Batch 4 implementation is included.

@@ -1,0 +1,39 @@
+{
+  "batch": "3",
+  "decision": "PASS",
+  "repository": "drewsebastians/nusacanvas.space",
+  "mergedPr": 6,
+  "deployedSourceSha": "54985e7f21a3db6a9b23b1d4850ecc94d6d6bbb0",
+  "applicationBranchSha": "9dd0ff63b8c7e846efd17df7425aac9e13fabb02",
+  "worker": "nusacanvas-space",
+  "routes": ["nusacanvas.space", "www.nusacanvas.space"],
+  "deploymentMethod": "npm run deploy via documented local Wrangler fallback",
+  "previousVersionId": "9ef14418-227b-4635-a9d8-ff7097923034",
+  "activeVersionId": "76f76701-872a-4f4f-9690-9614d41b6c1b",
+  "deployedAt": "2026-07-23T05:22:35.733Z",
+  "rollbackRequired": false,
+  "releaseRequired": false,
+  "releaseCreated": false,
+  "build": {"allowlistedFiles": 70, "distInventoryFiles": 105, "deterministicIllustrations": 6},
+  "closure": {
+    "status": "CLOSED after this documentation PR merges",
+    "externalEvidence": [
+      "pre-deploy/deployment-manifest.json",
+      "deployment/deployment-result.json",
+      "post-deploy/final-decision.json",
+      "post-deploy/production-verification.json",
+      "post-deploy/production-browser-results.json",
+      "post-deploy/production-asset-comparison.json",
+      "post-deploy/screenshots/inventory.json"
+    ],
+    "repositoryEvidence": [
+      "artifacts/batch-3/production-deployment-summary.json",
+      "artifacts/batch-3/production-verification-summary.json",
+      "artifacts/batch-3/production-screenshot-inventory.json",
+      "artifacts/batch-3/documentation-closure-build-equivalence.json"
+    ],
+    "noSecretsCopied": true,
+    "noRuntimeChange": true,
+    "noRedeploymentRequired": true
+  }
+}

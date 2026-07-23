@@ -1,0 +1,19 @@
+{
+  "decision": "PASS",
+  "productionVerifier": "PASS",
+  "deployedSourceSha": "54985e7f21a3db6a9b23b1d4850ecc94d6d6bbb0",
+  "activeVersionId": "76f76701-872a-4f4f-9690-9614d41b6c1b",
+  "assetComparison": {"compared": 22, "rawExact": 22, "normalizedOnly": 0, "mismatches": 0},
+  "tests": {"smoke": {"passed": 19, "failed": 0}, "publicShell": {"passed": 8, "failed": 0}, "workspace": {"passed": 5, "failed": 0}, "accessibility": {"passed": 3, "failed": 0}},
+  "performance": {"initialPublicRequests": 7, "publicShellGzipBytes": 1430, "heroGzipBytes": 146640},
+  "securityPrivacy": {"passed": true, "restrictiveCsp": true, "sameOriginRuntime": true, "analyticsBeacon": false, "externalDataRequest": false, "externalRuntimeRequest": false, "ads": false, "backend": false, "uploads": false, "externalTiles": false},
+  "mapDataProjectExport": {"passed": true, "mappedFeatures": 519, "schemaCompatibilityPreserved": true, "exports": ["svg", "png", "pdf", "mapping-csv"]},
+  "guidance": {"spreadsheetVisibleCount": 1, "sampleVisibleCount": 1, "manualVisibleCount": 0, "formatsMentioned": ["CSV", "TSV", "XLSX"], "localOnlyMessage": true, "guideMessage": true, "keyboardMessage": true, "duplicate": false, "newNetworkRequest": false},
+  "originsConsistent": true,
+  "mixedCacheState": false,
+  "pageErrors": 0,
+  "knownNonBlockingObservations": ["Pre-existing CSP console warning for the existing workspace base element versus base-uri 'none'.", "One original guidance assertion is localhost-specific and counted valid same-origin production requests; corrected production harness passed."],
+  "rollbackTriggerCount": 0,
+  "productionVerified": true,
+  "batch4AllowedAfterClosureMerge": true
+}

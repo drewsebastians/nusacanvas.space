@@ -29,3 +29,7 @@ Public performance remains 7 requests, 1,430-byte gzip shell, and 146,640-byte g
 No map, boundary, canonical registry, data, dependency, deployment, project-schema, public UI, or runtime JavaScript file changed. Broader product changes, sleeps, retries, line-ending changes, and dependency changes were rejected.
 
 Rollback is a normal `git revert` of the eventual Queue 4R commit. No data or server migration exists. Final decision: **VERIFIED**. Queue Item 5 may independently review the focused commit; deployment remains prohibited.
+
+## Post-merge production addendum
+
+The statements above are the Queue 4R pre-merge snapshot and intentionally preserve that historical gate. They were superseded after PR #6 merged and the exact merged `main` source was deployed and verified at Worker version `76f76701-872a-4f4f-9690-9614d41b6c1b`. Production verification passed; deployment is complete, rollback was not required, and Batch 4 is allowed only after the separate durable closure PR merges.

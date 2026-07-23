@@ -14,4 +14,10 @@ Representative inspection confirms readable guidance, no overlap/clipping, a dom
 
 ## Queue Item 5 visual classification
 
-Queue 4R local Playwright captures and DOM/browser evidence are sufficient for the final non-blocking visual limitation: the repository capture tooling did not provide fresh pixel evidence for every workspace surface, and live production does not yet contain the branch-only guidance. No visual redesign or runtime reconciliation was performed. Final Batch 3 classification is **PASS** for owner review, with post-merge production screenshots and direct-query checks remaining prospective in `POST_MERGE_VERIFICATION.md`.
+Queue 4R local Playwright captures and DOM/browser evidence were sufficient for the owner-review visual classification. The repository capture tooling did not provide fresh pixel evidence for every workspace surface, and live production did not yet contain the branch-only guidance at that time. No visual redesign or runtime reconciliation was performed.
+
+## Authorized production evidence addendum
+
+Fresh Playwright Chromium production captures were completed after deployment at desktop `1440x1000` and mobile `393x852`. The external inventory covers the homepage, spreadsheet first-use, sample/export-ready, manual highlight, and mobile medium/expanded/collapsed sheet states. Representative images were inspected for readable guidance, no clipping/overlap, dominant map behavior, usable controls, and unchanged map rendering. DOM/browser checks recorded HTTP 200, zero page errors, and no off-origin requests.
+
+This is pixel evidence for the listed captures only; it does not claim screenshot coverage for every possible interaction. The existing CSP console warning and localhost-specific test assertion are documented non-blocking observations, not visual regressions. The durable screenshot inventory is `artifacts/batch-3/production-screenshot-inventory.json`; binary screenshots remain outside Git.

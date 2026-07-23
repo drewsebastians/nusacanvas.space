@@ -1,0 +1,19 @@
+{
+  "origin": "https://nusacanvas.space",
+  "secondaryOrigin": "https://www.nusacanvas.space",
+  "tool": "Playwright Chromium headless",
+  "deviceScaleFactor": 1,
+  "captureDate": "2026-07-23",
+  "inspection": "PASS: captured screenshots were inspected; DOM captures had no page errors or off-origin requests.",
+  "externalEvidenceDirectory": "operator backup post-deploy/screenshots/",
+  "screenshots": [
+    {"name": "home-desktop", "route": "/", "viewport": "1440x1000", "category": "public shell", "inspection": "PASS"},
+    {"name": "home-mobile", "route": "/", "viewport": "393x852", "category": "public responsive", "inspection": "PASS"},
+    {"name": "spreadsheet-first-use-desktop", "route": "/workspace/?goal=spreadsheet", "viewport": "1440x1000", "category": "guidance", "inspection": "PASS"},
+    {"name": "spreadsheet-first-use-mobile", "route": "/workspace/?goal=spreadsheet", "viewport": "393x852", "category": "guidance/mobile", "inspection": "PASS"},
+    {"name": "sample-export-ready-desktop", "route": "/workspace/?sample=1", "viewport": "1440x1000", "category": "export/map", "inspection": "PASS"},
+    {"name": "manual-highlighted-desktop", "route": "/workspace/?goal=manual", "viewport": "1440x1000", "category": "manual highlight", "inspection": "PASS"},
+    {"name": "manual-highlighted-mobile", "route": "/workspace/?goal=manual", "viewport": "393x852", "category": "manual/mobile", "inspection": "PASS"},
+    {"name": "mobile-sheet-states", "route": "/workspace/?sample=1", "viewport": "393x852", "category": "collapsed/medium/expanded sheets", "inspection": "PASS"}
+  ]
+}

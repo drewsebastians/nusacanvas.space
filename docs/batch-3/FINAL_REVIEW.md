@@ -17,4 +17,10 @@ From committed Queue 4R HEAD: clean install/build passed; unit 81/81; guidance 4
 
 The single `#workspaceFirstUse` block is semantic, spreadsheet-only, local-only, linked to the current guide, and keyboard-readable. Boundary tests use a real button, existing province-overlay readiness, and a valid highlight-before-export state. No assertion was weakened and no retry or sleep was added. Visual evidence shows readable desktop/mobile guidance, usable sheets and controls, dominant map behavior, and no redesign. Performance, security, privacy, map, project, import, matching, visualization, and export behavior remain within the locked baseline.
 
-Rollback is executable with normal `git revert`; no database/server/project migration exists. Production remains the approved baseline and does not yet include the branch-only guidance. Merge readiness is true; deployment and Batch 4 remain blocked pending owner authorization, merge, deployment, and post-merge production verification.
+Rollback is executable with normal `git revert`; no database/server/project migration exists. The pre-merge review correctly kept deployment and Batch 4 blocked pending owner authorization, merge, deployment, and post-merge production verification.
+
+## Production verification addendum
+
+The owner-authorized deployment completed from exact merged `main@54985e7f21a3db6a9b23b1d4850ecc94d6d6bbb0`. Worker `nusacanvas-space` version `76f76701-872a-4f4f-9690-9614d41b6c1b` is active on both production routes. Live verification passed for routes, canonical/indexing behavior, headers/CSP, 22/22 asset hashes, guidance, smoke 19/19, public shell 8/8, workspace 5/5, accessibility 3/3, performance, security/privacy, and map/data/project/export compatibility. No rollback or release/tag was required.
+
+This addendum supersedes only the earlier prospective deployment wording; the original Queue 4 FAIL and Queue 4R remediation history remains intact. The documentation-only closure branch is the final Batch 3 gate. Batch 4 has not started and may begin only after closure merge.

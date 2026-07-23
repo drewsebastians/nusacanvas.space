@@ -1,0 +1,16 @@
+{
+  "baselineSourceSha": "54985e7f21a3db6a9b23b1d4850ecc94d6d6bbb0",
+  "closureBranchSourceSha": "54985e7f21a3db6a9b23b1d4850ecc94d6d6bbb0",
+  "baselineInventory": "external operator evidence: closure-baseline-dist.json",
+  "baselineDistInventoryFiles": 105,
+  "allowlistedBuildFiles": 70,
+  "deterministicIllustrations": 6,
+  "matchCount": 105,
+  "mismatchCount": 0,
+  "addedFiles": [],
+  "removedFiles": [],
+  "sameSizes": true,
+  "sameFileSet": true,
+  "conclusion": "BYTE_IDENTICAL",
+  "deploymentRequired": false
+}

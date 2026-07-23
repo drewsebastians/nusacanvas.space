@@ -1,36 +1,39 @@
 {
-  "schemaVersion": "nusacanvas.batch3.changed-file-allowlist.v1",
-  "queueItem": "5",
+  "schemaVersion": "nusacanvas.batch3.changed-file-allowlist.v2",
+  "queueItem": "durable-closure",
   "allowedFiles": [
-    "workspace/index.html",
-    "tests/e2e/batch2r-boundary-rendering.spec.js",
-    "docs/batch-3/REMEDIATION_DIAGNOSIS.md",
-    "docs/batch-3/REMEDIATION_REPORT.md",
+    "artifacts/batch-3/production-deployment-summary.json",
+    "artifacts/batch-3/production-verification-summary.json",
+    "artifacts/batch-3/production-screenshot-inventory.json",
+    "artifacts/batch-3/documentation-closure-build-equivalence.json",
+    "docs/batch-3/PRODUCTION_DEPLOYMENT_REPORT.md",
+    "docs/batch-3/PRODUCTION_VERIFICATION_REPORT.md",
+    "docs/batch-3/DURABLE_CLOSURE.md",
+    "docs/batch-3/POST_MERGE_VERIFICATION.md",
+    "docs/batch-3/CLOSURE_REPORT.md",
+    "docs/batch-3/QUEUE_STATE.md",
+    "docs/batch-3/ROLLBACK_PLAN.md",
     "docs/batch-3/TEST_REPORT.md",
     "docs/batch-3/VISUAL_EVIDENCE.md",
-    "docs/batch-3/ROLLBACK_PLAN.md",
-    "docs/batch-3/QUEUE_STATE.md",
     "docs/batch-3/FINAL_REVIEW.md",
-    "docs/batch-3/CLOSURE_REPORT.md",
-    "docs/batch-3/POST_MERGE_VERIFICATION.md",
+    "docs/batch-3/REMEDIATION_REPORT.md",
     "docs/batch-3/manifests/queue-state.json",
     "docs/batch-3/manifests/changed-file-allowlist.json",
+    "docs/roadmap/PRODUCTION_SOURCE_OF_TRUTH.md",
     "docs/roadmap/UI_UX_LOCK.md",
-    "docs/roadmap/MAP_BEHAVIOR_LOCK.md",
-    "artifacts/batch-3/remediation-diagnosis.json",
-    "artifacts/batch-3/remediation-stability.json",
-    "artifacts/batch-3/verification-resume.json",
-    "artifacts/batch-3/verification-aggregate.json"
+    "docs/roadmap/MAP_BEHAVIOR_LOCK.md"
   ],
-  "forbiddenAreas": ["assets/**", "data/**", "index.html", "scripts/**", "package.json", "package-lock.json", "wrangler.jsonc", "_headers", "robots.txt", "sitemap.xml", "dist/**"],
-  "rationale": "Queue Item 4R diagnosis proves an approved first-use spreadsheet contract is absent and two boundary failures are test-harness/setup defects. The only approved product change is static semantic guidance in workspace/index.html; the only approved test change is the focused boundary-rendering evidence test. Queue Item 5 adds documentation-only final review, closure, and prospective post-merge verification. Runtime reconciliation remains otherwise unauthorized; the two raw JavaScript hash differences are CRLF/LF representation only.",
-  "approval": {
-    "implementationAllowed": true,
-    "deploymentAllowed": false,
-    "evidence": "docs/batch-3/REMEDIATION_DIAGNOSIS.md",
-    "entries": [
-      {"path": "workspace/index.html", "owner": "product", "change": "Restore one approved first-use spreadsheet guidance aside.", "visibleImpact": "Adds concise inline help only to the spreadsheet input state.", "protected": true, "tests": ["test:batch2r:guidance", "test:batch2r:workspace", "test:a11y"], "rollback": "Revert the focused hunk."},
-      {"path": "tests/e2e/batch2r-boundary-rendering.spec.js", "owner": "test", "change": "Scope the goal selector, wait on existing readiness, and establish a real export-ready precondition.", "visibleImpact": "None", "protected": false, "tests": ["test:batch2r:boundary-rendering"], "rollback": "Revert the focused hunk."}
-    ]
-  }
+  "forbiddenAreas": ["assets/**", "data/**", "index.html", "workspace/**", "tests/**", "scripts/**", "package.json", "package-lock.json", "wrangler.jsonc", "_headers", "robots.txt", "sitemap.xml", "dist/**"],
+  "entries": [
+    {"path": "artifacts/batch-3/production-deployment-summary.json", "reason": "Sanitized deployment identity and rollback/release decision.", "classification": "evidence", "runtimeImpact": "none", "buildImpact": "none", "deploymentRequired": false, "rollback": "revert closure documentation commit"},
+    {"path": "artifacts/batch-3/production-verification-summary.json", "reason": "Machine-readable live verification result.", "classification": "evidence", "runtimeImpact": "none", "buildImpact": "none", "deploymentRequired": false, "rollback": "revert closure documentation commit"},
+    {"path": "artifacts/batch-3/production-screenshot-inventory.json", "reason": "Sanitized inventory of external visual evidence; no binaries committed.", "classification": "evidence", "runtimeImpact": "none", "buildImpact": "none", "deploymentRequired": false, "rollback": "revert closure documentation commit"},
+    {"path": "artifacts/batch-3/documentation-closure-build-equivalence.json", "reason": "Proof that closure documentation leaves dist byte-identical.", "classification": "evidence", "runtimeImpact": "none", "buildImpact": "none", "deploymentRequired": false, "rollback": "revert closure documentation commit"},
+    {"path": "docs/batch-3/**", "reason": "Durable deployment, verification, closure, rollback, queue, and historical addenda.", "classification": "documentation", "runtimeImpact": "none", "buildImpact": "none", "deploymentRequired": false, "rollback": "revert closure documentation commit"},
+    {"path": "docs/batch-3/manifests/**", "reason": "Final machine-readable queue and allowlist state.", "classification": "documentation", "runtimeImpact": "none", "buildImpact": "none", "deploymentRequired": false, "rollback": "revert closure documentation commit"},
+    {"path": "docs/roadmap/PRODUCTION_SOURCE_OF_TRUTH.md", "reason": "Update source/deployed-version authority after verified deployment.", "classification": "documentation", "runtimeImpact": "none", "buildImpact": "none", "deploymentRequired": false, "rollback": "revert closure documentation commit"},
+    {"path": "docs/roadmap/UI_UX_LOCK.md", "reason": "Record verified guidance presence without redesign.", "classification": "documentation", "runtimeImpact": "none", "buildImpact": "none", "deploymentRequired": false, "rollback": "revert closure documentation commit"},
+    {"path": "docs/roadmap/MAP_BEHAVIOR_LOCK.md", "reason": "Record that production map behavior remained unchanged.", "classification": "documentation", "runtimeImpact": "none", "buildImpact": "none", "deploymentRequired": false, "rollback": "revert closure documentation commit"}
+  ],
+  "approval": {"implementationAllowed": true, "deploymentAllowed": false, "scope": "documentation and sanitized evidence only", "noRuntimeChange": true}
 }
