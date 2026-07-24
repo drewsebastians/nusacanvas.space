@@ -1,18 +1,18 @@
 {
   "batch": "3",
   "queueVersion": "batch3-gpt56-v1",
-  "repository": "drewsebastians/nusacanvas.space-recovered-20260722-135156",
-  "branch": "codex/batch-3-production-closure",
+  "repository": "drewsebastians/nusacanvas.space",
+  "branch": "main",
   "startingSha": "95c66f4efa0e496fc720bfcdbdd21dc3f7120b52",
   "deployedSourceSha": "54985e7f21a3db6a9b23b1d4850ecc94d6d6bbb0",
   "applicationBranchSha": "9dd0ff63b8c7e846efd17df7425aac9e13fabb02",
   "mergedPr": 6,
   "mergeCommitSha": "54985e7f21a3db6a9b23b1d4850ecc94d6d6bbb0",
-  "closureCommitSha": null,
-  "closureMergeCommitSha": null,
+  "closureCommitSha": "3d99e2423167e7953ebe4df334c3e3c843d51cef",
+  "closureMergeCommitSha": "18f5f03751a39abe3317d4f82d29ed8c0f402da7",
   "lastCompletedQueueItem": 5,
-  "status": "CLOSURE_READY",
-  "closureStatus": "PENDING_MERGE",
+  "status": "CLOSED",
+  "closureStatus": "CLOSED",
   "finalReviewStatus": "PASS",
   "deploymentStatus": "VERIFIED",
   "authoritativeBaseline": "main@54985e7f21a3db6a9b23b1d4850ecc94d6d6bbb0 + clean dist build (production-equivalent)",
@@ -20,7 +20,7 @@
   "deploymentAllowed": false,
   "productionVerified": true,
   "productionVerificationStatus": "PASS",
-  "batch4Allowed": false,
+  "batch4Allowed": true,
   "activeProductionVersion": "76f76701-872a-4f4f-9690-9614d41b6c1b",
   "previousProductionVersion": "9ef14418-227b-4635-a9d8-ff7097923034",
   "deployedAt": "2026-07-23T05:22:35.733Z",
@@ -28,7 +28,7 @@
   "releaseCreated": false,
   "rollbackRequired": false,
   "blockers": [],
-  "conditions": ["Durable closure PR must merge before Batch 4 begins"],
+  "conditions": [],
   "nextExpectedQueueItem": null,
   "closureBranch": "codex/batch-3-production-closure",
   "changedFiles": [
@@ -55,8 +55,8 @@
   ],
   "notes": [
     "Queue Item 4 FAIL and Queue 4R remediation history remain preserved.",
-    "closureCommitSha and closureMergeCommitSha remain null to avoid a self-referential commit cycle; Git history is authoritative.",
-    "Batch 4 did not start and may begin only after closure merge."
+    "The closure commit and merge commit are recorded after PR #7 merged; Git history remains authoritative.",
+    "Batch 4 did not start and may now begin through its own Queue Item 1 preflight."
   ],
   "updatedAt": "2026-07-23"
 }
