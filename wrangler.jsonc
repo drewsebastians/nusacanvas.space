@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "nusacanvas-space",
+  "name": "mapnesia",
   "compatibility_date": "2026-07-12",
   "workers_dev": false,
   "preview_urls": false,
